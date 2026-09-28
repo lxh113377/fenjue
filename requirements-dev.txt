@@ -1,6 +1,11 @@
 # 测试与门禁依赖（跑 `python -m pytest` 前必装）
-# 为什么单列：pyproject 的 addopts 带 `--timeout=120`，该参数由 pytest-timeout 提供；
-# 只装 pytest 会让 pytest 以「unrecognized arguments」直接退出码 4（CI 实测抓到）。
+# 为什么单列：
+#  1. pyproject 的 addopts 带 `--timeout=120`，该参数由 pytest-timeout 提供；
+#     只装 pytest 会让 pytest 以「unrecognized arguments」退出码 4（CI 实测抓到）。
+#  2. eval/tests/test_feedback_api.py 启真实 Flask 应用（feedback/app.py），
+#     缺 flask 时三条用例会 ModuleNotFoundError（CI 在全新环境实测抓到）。
+# 版本沿用 requirements-ci.txt 已在 CI 验证过的 pin，不另立一套。
 pytest==9.1.1
 pytest-timeout==2.4.0
 pytest-cov==7.1.0
+flask==3.1.3
