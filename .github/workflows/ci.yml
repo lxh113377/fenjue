@@ -55,9 +55,10 @@ jobs:
         # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
         # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。
         run: python -m pytest
-      - name: Coverage measurement (CI-face reading; floor set from this number)
+      - name: Coverage measurement (blocking, floor from the CI face)
         # 单独一趟而不是并进 Test suite：那一步红时这一步就不跑了，正好丢掉最需要的读数。
-        # 公开子集面本机实测 composite 34.07%（Windows/3.12.2），而 .coveragerc 的
-        # fail_under=43 是按**私有源仓面**定的 ⇒ 直接沿用会必红（判据量错了面）。
-        # 本轮先 --cov-fail-under=0 取 Linux 真值，下一轮据该值×0.87 定地板并改回阻断。
-        run: python -m pytest --cov=eval --cov-report=term --cov-fail-under=0
+        # 地板不取开发机、不取私有源仓面：run 36472484278 实测 Linux 面 composite 32%
+        # （同提交 Windows 面 34.07%，用例面 Linux 642 passed/58 skipped 对 Windows 652/48，
+        # 差的那 10 条是平台专属跳过）。沿用 .coveragerc 的 43 是**源仓面**的量 ⇒ 必红。
+        # 28 = 32 × 0.875，按本仓惯例留 3–7pp 缓冲；上调路径同 .coveragerc 注记。
+        run: python -m pytest --cov=eval --cov-report=term --cov-fail-under=28

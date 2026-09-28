@@ -184,6 +184,11 @@ python -m pytest
 现两处都收：flask 归入运行依赖（它是随包模块的 import 面），`requirements-dev.txt` 改为
 引用运行依赖而不是把同一个 pin 再抄一遍。
 
+同一提交的 **CI 面（Linux）实测 `642 passed, 58 skipped`**——比本机面多跳 10 条、少过 10 条，
+差的是平台专属用例（`scripts/*.ps1` 与计划任务那批）。两句都是实测，不折叠成一句：
+Windows 面 652/48，Linux 面 642/58。覆盖率同理：Linux 32% 对 Windows 34.07%，
+CI 地板按 Linux 面定（`--cov-fail-under=28`），不按开发机定。
+
 另有 20 个测试模块**没有**随本子集分发，因为它们断言的是作者本机的真仓状态、
 私有技能根或 182 MB 模型权重——在对外子集里必然测不到东西。处置是
 **具名摘除并登记原因**（`eval/tests/EXCLUDED.md`），而不是放宽断言：
