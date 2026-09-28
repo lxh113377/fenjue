@@ -23,12 +23,15 @@ python -m pip install -r requirements.txt
 # 命中率评估：合成数据集，零外部依赖、零网络
 python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
 
+# 规模基准：12 到 1000 个技能的建索引耗时与单查询延迟
+python eval/bench_router.py --sizes 12,100,500,1000
+
 # 测试（需 dev 依赖：pyproject 的 addopts 带 --timeout，由 pytest-timeout 提供）
 python -m pip install -r requirements-dev.txt
 python -m pytest
 ```
 
-上面三条命令都不需要作者本机的任何路径。
+上面每条命令都不需要作者本机的任何路径。
 
 > **Python 版本下限是 3.12**，不是随手写的：依赖钉了 `numpy==2.5.2`，
 > 而它在 PyPI 上的 `requires_python` 实测为 `>=3.12`。首版 CI 声明 3.11 因此装不上依赖直接判红——
@@ -69,12 +72,12 @@ flowchart LR
 
 | 目录 | 内容 |
 |---|---|
-| `eval/` | 路由与门禁主体：四层路由、真相源校验、闸的闸、状态聚合，以及 `hitrate_cli.py` |
-| `eval/tests/` | 70 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
+| `eval/` | 路由与门禁主体：四层路由、真相源校验、闸的闸、状态聚合，以及三个对外入口 `hitrate_cli.py` / `bench_router.py` / `mcp_server.py` |
+| `eval/tests/` | 73 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
 | `audit/` | 触发词冲突、语义重叠、注意力税模拟等审计脚本 |
 | `scripts/` | 外发内容安全门禁、噪声治理、钩子安装 |
 | `skill/registry/` | 跨端技能注册表（JSON，派生件） |
-| `examples/` | 12 个**合成**技能 + 14 条分层查询，用于零环境跑通评估链 |
+| `examples/` | 12 个**合成**技能 + 14 条分层查询（扁平 `*.md`）；另有 `agent-skills/` 演示标准 `<name>/SKILL.md` 布局，用于零环境跑通评估链 |
 | `docs/` | 各端安装册与演示页 |
 
 ## 示例用法
@@ -113,6 +116,53 @@ python scripts/public_clean_check.py              # 扫全树；缺身份配置�
 于是它扫不到自己、恒判 CLEAN——一个查隐私的门禁对作者本人的泄露失明，
 比没有门禁更糟，因为它给出虚假的安全感。
 
+### 3. 规模基准（技能库变大以后还跑得动吗）
+
+```bash
+python eval/bench_router.py --sizes 12,100,500,1000
+```
+
+实测输出（2026-09-29，Python 3.12.2 / Windows-AMD64；先预热把 sklearn 的惰性首趟
+挤出计时，再取 3 趟中位）：
+
+```
+技能数     查询数      建索引(s)        单查询中位(ms)          单查询p95(ms)      峰值内存(MB)      抽查
+12      20       0.0021        0.0017             0.0033          0.229         ok
+100     20       0.0064        0.0075             0.012           0.869         ok
+500     20       0.0246        0.0302             0.0421          3.34          ok
+1000    20       0.0446        0.0633             0.1069          6.465         ok
+```
+
+不预热的后果写在文件头：同一进程里第一趟恒约 6.2s，把它记进「12 个技能」那一行，
+公布的就是一个由取数顺序决定的数字。**抽查列**判的是「Top-1 的词对 == 查询词对」，
+规模涨了但检索无效的基准没有意义。
+
+### 4. 让 agent 直接调（MCP，可选依赖）
+
+```bash
+python -m pip install "mcp>=2.2,<3"
+python eval/mcp_server.py
+```
+
+stdio 传输，三个工具：`route_skill` / `list_skills` / `hitrate_report`；取数面由
+`FENJUE_SKILLS_DIR`、`FENJUE_QUERIES_FILE` 指定，默认指向仓内合成示例。
+协议面不是"文件在场"就算数：`eval/tests/test_mcp_server.py::TestStdioHandshake`
+起真子进程走 `initialize → tools/list → tools/call` 全握手，并断言工具回包里
+有实际打分结果。没装 `mcp` 时该组判 **SKIP 且写明缺什么**，不判 PASS。
+
+### 5. 技能格式互通
+
+`--skills-dir` 同时吃两种布局：本仓示例的扁平 `*.md`，和 Agent Skills 标准目录
+`<name>/SKILL.md`（anthropics/skills 用的那种）。第三方技能树不必先翻译成我们的形状：
+
+```bash
+python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills \
+  --queries examples/agent-skills/queries.json --top 3
+```
+
+⚠️ `examples/agent-skills/` 只有 3 个刻意互不重叠的技能，是**格式演示**，
+它跑出来的 100% 不构成任何路由质量评价——评价看上面第 1 节那张分层表。
+
 ## 测试说明
 
 ```bash
@@ -120,11 +170,19 @@ python -m pip install -r requirements-dev.txt
 python -m pytest
 ```
 
-干净 clone 面实测（2026-09-29，Windows + Python 3.12）：**`626 passed, 48 skipped in 28.24s`，rc=0**，
-覆盖 70 个测试模块 / 674 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+干净 clone 面实测（2026-09-29，Windows + Python 3.12.2，按 `requirements.txt` +
+`requirements-dev.txt` 精确 pin 装出来的隔离 venv）：**`652 passed, 48 skipped`，rc=0**，
+覆盖 73 个测试模块 / 700 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
 
 > 别在命令行再补一个 `-q`：`pyproject.toml` 的 `addopts` 已含 `-q`，
 > 叠加成 `-qq` 会把上面这行汇总整行压掉，你就只剩一串点了。
+
+⚠️ **这句必须带面**：同一份提交在「只装 `requirements.txt` 的环境」实测一度是 **3 条红**
+（`ModuleNotFoundError: No module named 'flask'`，来自随包分发的 `feedback/app.py`），
+而作者本机面是 0 红——因为本机全局 site-packages 里本来就有 flask。
+把「不写哪一面」的读数登进交付文档，等于把可复现性主张建立在评委装不出来的环境上。
+现两处都收：flask 归入运行依赖（它是随包模块的 import 面），`requirements-dev.txt` 改为
+引用运行依赖而不是把同一个 pin 再抄一遍。
 
 另有 20 个测试模块**没有**随本子集分发，因为它们断言的是作者本机的真仓状态、
 私有技能根或 182 MB 模型权重——在对外子集里必然测不到东西。处置是
@@ -162,6 +220,8 @@ python -m pytest
 | hard 层命中率 | 40%（5 条中 2 条 Top-1） | 未做同义扩展与查询改写，是下一步 |
 | 48 条跳过用例 | 需外部重资产 / 真实 CI | 不构成功能缺失，但这部分行为在本包内未被验证 |
 | Windows 专属工具链 | `scripts/*.ps1` 与计划任务脚本 | 非 Windows 不可用；CI 只覆盖 Linux |
+| `pip install .` | **不支持**（实测失败后已把假的入口点声明从 `pyproject.toml` 撤掉） | 本仓是扁平脚本仓：模块靠 `conftest.py` 的 sys.path 注入导入，不是 package。做成真包要动 73 个测试模块的导入面与派生 JSON 语料的打包语义，且需 PyPI 发布权限 |
+| ruff 未接 CI | 公开面实测 88 处告警（69 处可自动修） | 接进去而不清完 = 给下一个贡献者造一把必红的尺子；清完再接 |
 
 ## 文档
 

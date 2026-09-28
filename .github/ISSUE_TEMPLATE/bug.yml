@@ -1,0 +1,53 @@
+name: 缺陷报告
+description: 可复现的失败 —— 必须带复现命令与实跑输出
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本仓所有主张都要求可复算，缺陷报告也一样。
+        只写"感觉不对"的无法受理；请给**命令 + 实际输出 + 期望输出**三件套。
+  - type: input
+    id: sha
+    attributes:
+      label: commit SHA
+      description: 你测的是哪个提交（`git rev-parse --short HEAD`）
+      placeholder: "例如 29d7ebd"
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 运行环境
+      description: 操作系统 + Python 版本（`python -V`）。注意本仓公开面实测下限为 3.12
+      placeholder: "Windows / 3.12.2"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现命令
+      description: 一条从干净 clone 开始能走通的命令序列，不要贴本机绝对路径
+      value: |
+        ```bash
+        git clone https://github.com/lxh113377/fenjue.git
+        cd fenjue
+        # ...
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际输出（原样粘贴，含退出码）
+      description: 退出码请显式取（`python -m pytest -q; echo rc=$?`），管道后的 rc 是被管道的那条命令的
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为与依据
+      description: 依据请指向仓内具体文件/判据，不要只写常识
+    validations:
+      required: true

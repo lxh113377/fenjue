@@ -1,17 +1,36 @@
 # Fenjue (焚诀)
 
-> Multi-agent unified memory & skill-routing governance framework: shared memory source via junctions, four-layer skill router (direct → tag → semantic → memory), quantified lessons-hit-rate, attention-budget ratchets, and a 28-check truth-consistency CI gate. Built and maintained as a single-person project with 150+ machine-verified iterations.
+> Multi-agent unified memory & skill-routing governance framework: one shared memory source, a
+> four-layer skill router (direct → tag → semantic → memory), quantified lessons/skill hit rates,
+> attention-budget ratchets, and truth-consistency gates that compare prose against a single
+> machine-readable source of truth. This repository is the **public subset** — no personal memory
+> corpus, session logs, skill bodies or model weights.
 
-Agent skills are validated before publication by two content gates: zero-tolerance prompt-injection / credential-exfiltration scanning (`skill_security_scan`) and frontmatter conformance to the agentskills spec — description ≤1024 chars, required fields, frozen field whitelist (`skill_publish_compliance`).
+Agent skills are validated before publication by two content gates: zero-tolerance prompt-injection /
+credential-exfiltration scanning (`skill_security_scan`) and frontmatter conformance to the agentskills
+spec — description ≤1024 chars, required fields, frozen field whitelist (`skill_publish_compliance`).
+Those two gates live in the private source repository; in this subset the equivalent shipped gate is
+`scripts/public_clean_check.py` (with a drillable `--selftest`).
+
+## Claims you can recompute from a clean clone
+
+- Hit rate, tiered: `python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3`
+- Scale behaviour (index time / per-query latency / peak allocation): `python eval/bench_router.py --sizes 12,100,500,1000`
+- Test suite: `python -m pytest -q`
+- Endpoint count: length of `endpoints.active` in `eval/truth_constants.json`, asserted against prose by `python eval/doc_claim_face.py`
+- Documentation link integrity on shipped root docs: `python eval/check_doc_links.py`
+- MCP surface for agents: `python eval/mcp_server.py` (needs the optional `mcp>=2.2,<3` extra)
 
 ## Docs
 
-- [README (中文)](https://github.com/lxh113377/fenjue/blob/master/README.md): project overview, five mainlines, measured baselines
-- [README (English)](https://github.com/lxh113377/fenjue/blob/master/README.en.md): English introduction
+- [README (中文, authoritative)](https://github.com/lxh113377/fenjue/blob/main/README.md): project overview, architecture, measured baselines
+- [README (English)](https://github.com/lxh113377/fenjue/blob/main/README.en.md): English counterpart
 - [Installation — WorkBuddy](docs/INSTALL-wb.md) / [Codex CLI](docs/INSTALL-cx.md) / [Hermes](docs/INSTALL-hm.md) / [ZCode](docs/INSTALL-zc.md) / [overview](docs/INSTALL.md)
-- [Contributing](https://github.com/lxh113377/fenjue/blob/master/CONTRIBUTING.md): dev workflow + pre-publish security & compliance gates (mandatory before any skill ships)
-- [Online demo](https://lxh113377.github.io/fenjue/): showcase page
-- [License (MIT)](https://github.com/lxh113377/fenjue/blob/master/LICENSE)
+- [Contributing](https://github.com/lxh113377/fenjue/blob/main/CONTRIBUTING.md): dev workflow + concurrency discipline
+- [Security policy](https://github.com/lxh113377/fenjue/blob/main/SECURITY.md): what counts as a vulnerability here, and known structural risks
+- [Changelog](https://github.com/lxh113377/fenjue/blob/main/CHANGELOG.md): per-version behaviour changes with reproducible evidence
+- Demo page: `docs/showcase.html` in this repo (no hosted deployment exists; an earlier revision of this file linked a GitHub Pages URL that measures 404)
+- [License (MIT)](https://github.com/lxh113377/fenjue/blob/main/LICENSE)
 
 ## Optional
 

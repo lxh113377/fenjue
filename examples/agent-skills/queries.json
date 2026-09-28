@@ -1,0 +1,22 @@
+[
+  {
+    "query": "把这组销售数据画成柱状图看看每个月趋势",
+    "expected_skill": "chart-render",
+    "tier": "easy"
+  },
+  {
+    "query": "服务挂了，帮我从这段报错日志里找到根因",
+    "expected_skill": "log-triage",
+    "tier": "easy"
+  },
+  {
+    "query": "这个列表页接口要 3 秒才返回，数据库那边是不是有什么问题",
+    "expected_skill": "sql-optimize",
+    "tier": "medium"
+  },
+  {
+    "query": "给这份报表配一张图，另外把跑得很慢的那条语句调一下",
+    "expected_skill": "sql-optimize",
+    "tier": "hard"
+  }
+]

@@ -9,7 +9,7 @@
 | `eval/` | 四层路由管线评估工具集 | 活跃 |
 | `audit/` | 触发词 / 命中率 / 语义重叠审计 | 活跃 |
 | `skill/` | 跨平台技能注册 + 同步管理 | 活跃 |
-| `skill_tree/` | 路由索引 / 桥接配置 | 活跃 |
+| `examples/` | 合成技能与查询集（评估链零真实语料可跑） | 活跃 |
 | `docs/` | 演示页与文档 | 活跃 |
 | `scripts/` | 安全门禁 | 活跃 |
 
@@ -28,7 +28,7 @@
 - `README.md` / `README.en.md` — 项目介绍
 - `docs/showcase.html` — 演示页
 - `eval/unified_router.py` — 四层路由核心
-- `scripts/check_public_clean.py` — 提交安全门禁
+- `scripts/public_clean_check.py` — 提交安全门禁
 
 ## 版本控制
 

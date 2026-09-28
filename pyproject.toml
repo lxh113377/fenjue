@@ -19,8 +19,15 @@ classifiers = [
   "Topic :: Software Development :: Quality Assurance",
 ]
 
-[project.scripts]
-fenjue-hitrate = "eval.hitrate_cli:main"
+# ⚠️ 本仓**不是** pip 可安装的包，因此这里不声明 [project.scripts]。
+#    2026-09-29 对标轮实测：此前声明的 `fenjue-hitrate = "eval.hitrate_cli:main"`
+#    在干净面 `pip install .` 直接失败（无 [build-system]，且 eval/ 不是 package、
+#    仓内模块一律靠 conftest 的 sys.path 注入导入）。留着这行等于对外承诺一个
+#    装不出来的命令——按本仓纪律，做不到的事写进交付物就是对组委会不实陈述。
+#    正解二选一，均记为「未做·有前提」：① 把 eval/ 做成真 package（含 265 个文件
+#    与派生 JSON 语料的打包语义，会牵动 74 个测试模块的导入面）；② 只发布一个
+#    指向仓根的极薄 shim。两者都要 PyPI 发布权限，归归属方裁。
+#    现在唯一正确的用法就是 README 里那条：pip install -r requirements.txt 后在仓根跑 CLI。
 
 [tool.pytest.ini_options]
 testpaths = ["eval/tests"]

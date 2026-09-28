@@ -38,15 +38,35 @@ def parse_frontmatter(text: str) -> dict[str, str]:
 
 
 def load_skills(skills_dir: Path) -> list[dict]:
-    """每个 *.md 一个技能；profile = 名称 + 描述 + 触发词（与生产侧同构的三段文本）。"""
-    out = []
-    for p in sorted(skills_dir.glob("*.md")):
-        fm = parse_frontmatter(p.read_text(encoding="utf-8"))
-        name = fm.get("name") or p.stem
+    """两种布局都吃，返回值结构一致：
+
+    - 扁平：`<dir>/<name>.md`（本仓 `examples/skills` 的形态）
+    - Agent Skills 标准目录：`<dir>/<name>/SKILL.md`（anthropics/skills 的形态）
+
+    打通后一条 `--skills-dir` 就能指向任一份标准格式的技能树做命中率评估，
+    不必先把别人的仓库翻译成我们示例的形状。同名时**标准目录优先**（它是显式声明的
+    技能身份），并保留扁平件以免有人靠文件名匹配期望技能。
+    每个技能 profile = 名称 + 描述 + 触发词（与生产侧同构的三段文本）。
+    """
+    out: list[dict] = []
+    seen: dict[str, int] = {}
+
+    def add(name: str, text: str) -> None:
+        fm = parse_frontmatter(text)
+        name = fm.get("name") or name
         profile = " ".join([name, fm.get("description", ""), fm.get("triggers", "")])
         if not fm.get("description"):
-            profile += " " + p.read_text(encoding="utf-8")[:400]
+            profile += " " + text[:400]
+        if name in seen:
+            out[seen[name]] = {"name": name, "profile": profile}
+            return
+        seen[name] = len(out)
         out.append({"name": name, "profile": profile})
+
+    for p in sorted(skills_dir.glob("*.md")):
+        add(p.stem, p.read_text(encoding="utf-8"))
+    for p in sorted(skills_dir.glob("*/SKILL.md")):
+        add(p.parent.name, p.read_text(encoding="utf-8"))
     return out
 
 

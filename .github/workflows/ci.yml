@@ -16,6 +16,10 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Install test deps
         run: python -m pip install -r requirements-dev.txt
+      - name: Install MCP SDK (optional extra, exercised by eval/mcp_server.py)
+        # 不装则 test_mcp_server.py 整组判 SKIP —— 而 SKIP 不等于「验过了」。
+        # 这条步的存在，就是让「agent 可直接调用」这句话在共享面上拿到行为回执。
+        run: python -m pip install "mcp>=2.2,<3"
       - name: Public-clean gate is drillable (self-test both directions)
         run: python scripts/public_clean_check.py --selftest
       - name: Public-clean gate on the tree
@@ -31,7 +35,29 @@ jobs:
         run: python -m compileall -q eval audit scripts
       - name: Routing hit-rate evaluation on bundled examples
         run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
+      - name: Agent Skills standard layout is routable
+        # 打通 <name>/SKILL.md 布局后，这条步保证它是**真能评估**而不是仓里摆着好看。
+        run: python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills --queries examples/agent-skills/queries.json --top 3
+      - name: Doc-link integrity on shipped root docs
+        # 此前该判据在场却不在 CI 里，结果 README 引用了不存在的 SECURITY.md
+        # 达一个版本周期无人察觉（2026-09-29 对标轮实测）。
+        run: python eval/check_doc_links.py
+      - name: Endpoint-count claim face is drillable (self-test both directions)
+        run: python eval/doc_claim_face.py --selftest
+      - name: Endpoint-count claims in prose match eval/truth_constants.json
+        # 接线当场就抓到两处真漂移：README.en.md 声明 6 端、docs/INSTALL.md 声明 8 端，
+        # 而同一仓的 truth_constants.json 现值 7。判据不写常量，权威值现算。
+        run: python eval/doc_claim_face.py
+      - name: Scale benchmark smoke
+        # 12 与 100 两档；1000 档留给本地/夜间全量跑，CI 只保证「跑得动且抽查有效」。
+        run: python eval/bench_router.py --sizes 12,100 --queries 8
       - name: Test suite
         # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
         # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。
         run: python -m pytest
+      - name: Coverage measurement (CI-face reading; floor set from this number)
+        # 单独一趟而不是并进 Test suite：那一步红时这一步就不跑了，正好丢掉最需要的读数。
+        # 公开子集面本机实测 composite 34.07%（Windows/3.12.2），而 .coveragerc 的
+        # fail_under=43 是按**私有源仓面**定的 ⇒ 直接沿用会必红（判据量错了面）。
+        # 本轮先 --cov-fail-under=0 取 Linux 真值，下一轮据该值×0.87 定地板并改回阻断。
+        run: python -m pytest --cov=eval --cov-report=term --cov-fail-under=0

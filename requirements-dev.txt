@@ -4,8 +4,10 @@
 #     只装 pytest 会让 pytest 以「unrecognized arguments」退出码 4（CI 实测抓到）。
 #  2. eval/tests/test_feedback_api.py 启真实 Flask 应用（feedback/app.py），
 #     缺 flask 时三条用例会 ModuleNotFoundError（CI 在全新环境实测抓到）。
-# 版本沿用 requirements-ci.txt 已在 CI 验证过的 pin，不另立一套。
+#     flask 的 pin 落在 requirements.txt（它是随包分发模块的**运行**依赖，
+#     不只是测试依赖），本文件靠下面那行 -r 引用它 —— 同一个包在两份清单里
+#     各钉一个版本，迟早只改一处，那就是下一把"量错了面"的尺子的产地。
+-r requirements.txt
 pytest==9.1.1
 pytest-timeout==2.4.0
 pytest-cov==7.1.0
-flask==3.1.3

@@ -1,0 +1,30 @@
+# 公开子集仓的忽略面。
+# 存在理由：AGENTS.md 声明「个人记忆库通过 gitignore 的 junction 隔离，永不入库」，
+# 而此前本仓根本没有 .gitignore ⇒ 那句承诺对新克隆的贡献者不可执行（实测：文件缺失）。
+# 这里只放「跑起来必然生成、且绝不能进公开面」的两类：本机评估中间产物与外盘挂载目录名。
+
+# Python 运行产物
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+
+# 评估链的中间产物（跑 hitrate/bench 时生成，不属随包分发的语料）
+eval/route_trace.jsonl
+eval/_cache/
+
+# 本机 venv 与编辑器
+.venv/
+venv/
+.idea/
+.vscode/
+
+# 万一有人在克隆里重建私有挂载点，一律不入库
+/skill_tree/
+/memory_content/
+/global_memory/
+*.onnx

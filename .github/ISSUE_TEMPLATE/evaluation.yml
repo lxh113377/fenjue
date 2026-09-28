@@ -1,0 +1,50 @@
+name: 评估与判据问题
+description: 命中率读数异常、判据恒绿或恒红、基准结果不可复现
+title: "[eval] "
+labels: ["evaluation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        判据类问题按「尺子坏了」处理，不按「代码有 bug」处理。
+        **关键约束**：请同时给出"它应当判红"的反例 —— 一把从来没红过的尺子和一把坏尺子无法区分。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 命中率读数与文档不一致
+        - 判据恒绿（注入明显违例仍 PASS）
+        - 判据恒红（干净面也判红 / 红因与它想防的事无关）
+        - 判据取数面错了（分母来自手抄名册或另一个仓的面）
+        - 基准结果跨机器不可复现
+        - 其它（请在下面写清复算路径）
+    validations:
+      required: true
+  - type: textarea
+    id: carrier
+    attributes:
+      label: 复算载体
+      description: 一条能跑出该读数的命令（例：`python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3`）
+      value: |
+        ```bash
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: counterexample
+    attributes:
+      label: 反例（必填）
+      description: 你往哪个面注入了什么，判据回什么。恒绿类缺陷没有这一段就无法受理
+      placeholder: |
+        在副本里把 `examples/queries.json` 某条的 expected_skill 改成清单里不存在的名字，
+        期望 rc=2 且点名该名字；实测 rc=0 ⇒ 判据不受理该输入面。
+    validations:
+      required: true
+  - type: textarea
+    id: face
+    attributes:
+      label: 取数面声明
+      description: 你扫了哪些目录/文件、跳过了哪些（盲区与"量到 0"必须分开写）
+    validations:
+      required: true
