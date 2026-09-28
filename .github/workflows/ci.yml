@@ -55,13 +55,17 @@ jobs:
       - name: Scale benchmark smoke
         # 12 与 100 两档；1000 档留给夜间全量跑，CI 只保证「跑得动且抽查有效」。
         run: python eval/bench_router.py --sizes 12,100 --queries 8
+      - name: MCP stdio handshake probe (source-tree face)
+        # 与 install-face 用的是同一个探针，只是服务从仓内起：两面各证一次，
+        # 免得「装出来的能握手、仓里的不能」这种半瘫状态被单条步掩盖。
+        run: python scripts/mcp_stdio_smoke.py --server "$(command -v python) eval/mcp_server.py"
       - name: Scoped lint ratchet (new/shipped entrypoints)
         # 名册与 ci-pr.yml 同一份文件清单；全仓 ruff 尚有告警未清，见 docs/DEBT_UNWIRED.md 的 L-1。
         run: |
           python -m pip install "ruff==0.16.5"
           python -m ruff check --output-format=concise \
             eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
-            eval/doc_claim_face.py eval/check_doc_links.py \
+            eval/doc_claim_face.py eval/check_doc_links.py scripts/mcp_stdio_smoke.py \
             eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
       - name: Workflow job roster matches .ci/workflow_jobs.json
         # 接线原因：这条判据早在仓里，但判的是私有面的 8 作业名册，一跑就红，于是长期没人接。
@@ -111,11 +115,9 @@ jobs:
           "$BIN/fenjue-hitrate" --skills-dir "$GITHUB_WORKSPACE/examples/skills" \
             --queries "$GITHUB_WORKSPACE/examples/queries.json" --top 3
           "$BIN/fenjue-bench" --sizes 12,100 --queries 8
-          printf '%s\n' \
-            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
-            '{"jsonrpc":"2.0","method":"notifications/initialized","params":{}}' \
-            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | "$BIN/fenjue-mcp" > mcp.json
-          grep -q protocolVersion mcp.json
-          grep -q route_skill mcp.json
-          grep -q hitrate_report mcp.json
+          # MCP 握手走仓内 Popen 探针（scripts/mcp_stdio_smoke.py），不用 shell 管道：
+          # `printf | fenjue-mcp` 在写完那一刻 EOF，Linux runner 上服务端还没答 tools/list
+          # 就退出（run 36478129692 实测红在这），而同一条命令在 Windows 能拿到完整回包——
+          # 同一段 shell 在两个面行为不同，当判据就是造一把忽红忽绿的尺子。
+          "$BIN/python" "$GITHUB_WORKSPACE/scripts/mcp_stdio_smoke.py" --server "$BIN/fenjue-mcp"
           echo "装面回执齐全：三条命令均在仓外跑出读数"

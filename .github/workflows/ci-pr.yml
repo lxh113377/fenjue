@@ -38,7 +38,7 @@ jobs:
           python -m pip install "ruff==0.16.5"
           python -m ruff check --output-format=concise \
             eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
-            eval/doc_claim_face.py eval/check_doc_links.py \
+            eval/doc_claim_face.py eval/check_doc_links.py scripts/mcp_stdio_smoke.py \
             eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
       - name: Hit-rate face (flat layout)
         run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3

@@ -39,6 +39,17 @@
   `bench_router.py`（`F841` 未用变量、`E741` 歧义名 `l`）；顺带把基准的抽查改成复用计时趟的 top-k，
   不再多跑第四趟打分——「计时的那次」和「被检查的那次」必须是同一次。
 
+### 修复（第二轮落地时抓到的假判据）
+
+- **install-face 第一次跑就抓到一条"忽红忽绿"的尺子**（run `36478129692`）：MCP 握手原用
+  `printf frames | fenjue-mcp` 写，printf 写完即 EOF，Linux runner 上服务端还没答 `tools/list`
+  就退出 ⇒ `grep -q` 对空文件判红；而**同一条命令在 Windows 能拿 1,304 字节完整回包**。
+  一段在两个面行为不同的 shell 不能当判据 ⇒ 改为仓内探针 `scripts/mcp_stdio_smoke.py`
+  （Popen + 读线程 + 显式等待条件，与 `eval/tests/test_mcp_server.py::TestStdioHandshake` 同机制），
+  并补两条反例腿实测：服务起不来 ⇒ rc=2；起得来但从不应答 ⇒ rc=1（`--wait 5`）。
+  探针现在 build job（从仓内起服务）与 install-face（装出来的 `fenjue-mcp`）各跑一次，
+  免得「装出来的能握手、仓里的不能」这种半瘫状态被单条步掩盖。
+
 ### 未做（前提写在债册）
 
 - PyPI 发布（需账号 + Trusted Publishing）；`mypy` 未量过公开面告警故不接（L-3）；
