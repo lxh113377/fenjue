@@ -1,0 +1,8 @@
+{
+ "schema": "fenjue-release-face-state-v1",
+ "ts": "2026-09-25T19:49:28",
+ "verdict": "PASS",
+ "entries": 8,
+ "remote_tags": 1,
+ "reason": "8 个条目 / 24 个可引用 sha / 1 个 tag"
+}

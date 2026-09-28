@@ -1,0 +1,10 @@
+{
+  "schema": "fenjue-routing-holes-v1",
+  "updated": "2026-09-24",
+  "_note": "C30 覆盖空洞棘轮基线。empty_tags = CONTEXT_SKILL_MAP 中有意留空的意图标签（其映射目标已全部退役且无现役对位）。只许减少不许增加；新增必须写 reason。",
+  "empty_tags": ["路由", "提升"],
+  "reason": {
+    "路由": "原目标 fenjue-routing-health-check / skill-routing-test-driven-fix 均已退役（磁盘无、注册表无）。禁止用语义相近技能凑数（会静默误触发）；待建现役路由诊断技能后回填。",
+    "提升": "原目标 fenjue-routing-health-check / skill-hitrate-full-audit 均已退役。技能命中率域当前无现役对位（fenjue-lessons-hitrate 只覆盖 lessons 域）。"
+  }
+}

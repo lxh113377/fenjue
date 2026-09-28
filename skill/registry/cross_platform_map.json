@@ -1,0 +1,3004 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-09-26T11:20:00",
+  "description": "cross-platform skill INSTALL STATE + platform config (sync scripts consume this). ROUTING name mapping authority: <MEMORY_ROOT>\\cross_platform_map.json (V1.7). 本文件管安装状态/平台路径/用户自建保护; 路由名称映射/平台路由能力描述归权威源。",
+  "version": "1.25",
+  "cross_platform_mapping": {
+    "schema_version": "1.0",
+    "last_updated": "2026-07-10T12:52:24.5184451+08:00",
+    "description": "OC ↔ QW ↔ MV 跨平台等价skill映射",
+    "oc_only_skills": [
+      "1password",
+      "apple-notes",
+      "apple-reminders",
+      "bear-notes",
+      "blogwatcher",
+      "blucli",
+      "camsnap",
+      "eightctl",
+      "gemini",
+      "gh-issues",
+      "gifgrep",
+      "gog",
+      "goplaces",
+      "healthcheck",
+      "himalaya",
+      "imsg",
+      "meme-maker",
+      "model-usage",
+      "node-connect",
+      "notion",
+      "obsidian",
+      "openai-whisper",
+      "openhue",
+      "ordercli",
+      "peekaboo",
+      "sag",
+      "session-logs",
+      "sherpa-onnx-tts",
+      "songsee",
+      "sonoscli",
+      "spotify-player",
+      "summarize",
+      "things-mac",
+      "tmux",
+      "trello",
+      "weather",
+      "xurl"
+    ],
+    "version": "1.0"
+  },
+  "platforms": {
+    "mv": {
+      "name": "Marvis",
+      "skills_path": "<USER_HOME>\\AppData\\Roaming\\Tencent\\Marvis\\User\\oAN1i2SCnyX0seTMJQm2mTZikkLE\\skills",
+      "sync_type": "registry_bridge",
+      "memory_type": "tantivy_index"
+    },
+    "cc": {
+      "name": "Claude Code",
+      "skills_path": "<SKILLS_ROOT>",
+      "sync_type": "direct_read",
+      "memory_type": "junction",
+      "direct_read_note": "2026-08-24 R202 定案: .claude 目录不存在+CC installMethod=global, 经 7-step 指令链直读 <SKILLS_ROOT>/global_memory, junction 无消费者不补建; 2026-09-08 R219 补登记"
+    },
+    "oc": {
+      "name": "OpenCode",
+      "skills_path": "<SKILLS_ROOT>",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    },
+    "wb": {
+      "name": "WorkBuddy",
+      "skills_path": "<SKILLS_ROOT>",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    },
+    "tc": {
+      "name": "TRAE SOLO CN",
+      "skills_path": "<SKILLS_ROOT>",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    },
+    "td": {
+      "name": "ToDesk AI",
+      "sync_type": "junction",
+      "memory_type": "junction",
+      "skills_path": "D:\\\\to desk ai\\\\skills"
+    },
+    "hm": {
+      "name": "Hermes Agent",
+      "skills_path": "<USER_HOME>\\AppData\\Local\\hermes\\skills\\global",
+      "sync_type": "junction",
+      "memory_type": "logical_bridge"
+    },
+    "codex": {
+      "name": "Codex (OpenAI)",
+      "skills_path": "<USER_HOME>\\.agents\\skills",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    },
+    "zc": {
+      "name": "ZCode",
+      "skills_path": "<USER_HOME>\\.zcode\\skills",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    },
+    "qd": {
+      "name": "Qoder CN",
+      "skills_path": "<USER_HOME>\\.qoder-cn\\skills",
+      "sync_type": "junction",
+      "memory_type": "junction"
+    }
+  },
+  "skills": {
+    "pptx": {
+      "name": "pptx",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "video-whisper-transcribe": {
+      "name": "video-whisper-transcribe",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "pixelle-api-ensure": {
+      "name": "pixelle-api-ensure",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "gstack": {
+      "name": "gstack",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "ui-ux-pro-max": {
+      "name": "ui-ux-pro-max",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "refactoring": {
+      "name": "refactoring",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-ask-questions": {
+      "name": "A-ask-questions",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "utf8-encoding-fix": {
+      "name": "utf8-encoding-fix",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "c-cleanup": {
+      "name": "c-cleanup",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "debugging-fixing": {
+      "name": "debugging-fixing",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "fenjue-memory-audit": {
+      "name": "fenjue-memory-audit",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-memory-start": {
+      "name": "A-memory-start",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-prompt-better": {
+      "name": "A-prompt-better",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-project-handoff": {
+      "name": "A-project-handoff",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "github": {
+      "name": "github",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-get-memory": {
+      "name": "A-get-memory",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "shell-encoding-pitfalls": {
+      "name": "shell-encoding-pitfalls",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "_my-skills": {
+      "name": "_my-skills",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "wechat-automation": {
+      "name": "wechat-automation",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "data-visualization": {
+      "name": "data-visualization",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "byted-mediakit-shared": {
+      "name": "byted-mediakit-shared",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "byted-seedance-video-generate": {
+      "name": "byted-seedance-video-generate",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "byted-seedream-image-generate": {
+      "name": "byted-seedream-image-generate",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "canvas-design": {
+      "name": "canvas-design",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "data-analysis": {
+      "name": "data-analysis",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "doc-coauthoring": {
+      "name": "doc-coauthoring",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "gsap": {
+      "name": "gsap",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hook-analyzer-skill": {
+      "name": "hook-analyzer-skill",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hyperframes": {
+      "name": "hyperframes",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hyperframes-cli": {
+      "name": "hyperframes-cli",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hyperframes-media": {
+      "name": "hyperframes-media",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hyperframes-registry": {
+      "name": "hyperframes-registry",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "report-generator-skill": {
+      "name": "report-generator-skill",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "web-design-guidelines": {
+      "name": "web-design-guidelines",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "docx": {
+      "name": "docx",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "find-skills": {
+      "name": "find-skills",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "pdf": {
+      "name": "pdf",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "xlsx": {
+      "name": "xlsx",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "coding-agent": {
+      "name": "coding-agent",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "diagram-maker": {
+      "name": "diagram-maker",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "mcporter": {
+      "name": "mcporter",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "nano-pdf": {
+      "name": "nano-pdf",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "node-inspect-debugger": {
+      "name": "node-inspect-debugger",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openai-whisper-api": {
+      "name": "openai-whisper-api",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "oracle": {
+      "name": "oracle",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "python-debugpy": {
+      "name": "python-debugpy",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "spike": {
+      "name": "spike",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "taskflow": {
+      "name": "taskflow",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "video-frames": {
+      "name": "video-frames",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "agent-browser": {
+      "name": "agent-browser",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "algorithmic-art": {
+      "name": "algorithmic-art",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "consulting-analysis": {
+      "name": "consulting-analysis",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "dogfood": {
+      "name": "dogfood",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "electron": {
+      "name": "electron",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "frontend-skill": {
+      "name": "frontend-skill",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "screenshot": {
+      "name": "screenshot",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "shadcn": {
+      "name": "shadcn",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "computer-use-guidance-windows": {
+      "name": "computer-use-guidance-windows",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-dual-gate-quality-audit": {
+      "name": "openclaw-dual-gate-quality-audit",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-fenjue-weekly": {
+      "name": "openclaw-fenjue-weekly",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-task-supervision": {
+      "name": "openclaw-task-supervision",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "discover-agent-cli": {
+      "name": "discover-agent-cli",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "prompt-system-audit": {
+      "name": "prompt-system-audit",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "cross-platform-agent-sync": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "cross-platform-agent-sync"
+    },
+    "prompt-consolidation": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "prompt-consolidation"
+    },
+    "vp-perspective-audit": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "vp-perspective-audit"
+    },
+    "windows-cli-utf8-wrapper": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "windows-cli-utf8-wrapper"
+    },
+    "workflow-preflight-check": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "workflow-preflight-check"
+    },
+    "windows-gitbash-chinese-path-pit": {
+      "install_state": {
+        "oc": true,
+        "tc": true,
+        "mv": null,
+        "wb": true,
+        "cc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "qc_equivalent": null,
+      "name": "windows-gitbash-chinese-path-pit",
+      "user_created": true
+    },
+    "oc-dispatch-exec-guard": {
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0",
+      "compatible_platforms": "oc wb cc tc",
+      "name": "oc-dispatch-exec-guard",
+      "source": "user-created",
+      "user_created": true,
+      "domain": "system",
+      "display_name": "oc-dispatch-exec-guard"
+    },
+    "audit-runner-safe-aggregate": {
+      "name": "audit-runner-safe-aggregate",
+      "display_name": "Audit Runner Safe Aggregate",
+      "description": "安全判定范式：逐行精确匹配 [FAIL]/[DEVIATION]/[ERROR] 标签",
+      "domain": "05-testing-automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "bigfile-split": {
+      "name": "bigfile-split",
+      "display_name": "bigfile-split",
+      "description": "Split oversized memory/knowledge-base files via the **composite-pointer + semantic-leaf** paradigm",
+      "domain": "02-skill-ecosystem",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.1"
+    },
+    "byted-bp-cdn-pagesdeploy": {
+      "name": "byted-bp-cdn-pagesdeploy",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "chaoshi-admin-inline-edit": {
+      "name": "chaoshi-admin-inline-edit",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "chaoshi-image-optimization": {
+      "name": "chaoshi-image-optimization",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "chaoshi-web-deploy": {
+      "name": "chaoshi-web-deploy",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "static-site-batch-audit-fix": {
+      "name": "static-site-batch-audit-fix",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "windows-bash-cli-interop-pitfalls": {
+      "name": "windows-bash-cli-interop-pitfalls",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "wechat-voice-transcription": {
+      "name": "wechat-voice-transcription",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "fenjue-lessons-hitrate": {
+      "name": "fenjue-lessons-hitrate",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "cloudbase__skillhub": {
+      "name": "cloudbase__skillhub",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "html-ppt": {
+      "name": "html-ppt",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "elon-musk-perspective": {
+      "name": "elon-musk-perspective",
+      "qc_equivalent": null,
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "cloudbase-db-optimize": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "office-automation-pro": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-cover": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-deslop": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-import": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-long-analyze": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-long-write": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-review": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-setup": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-short-analyze": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-short-write": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "workbuddy-mcp": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "wps-knowledgebase": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "天眼一下": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "testing": {
+      "domain": "99-other",
+      "version": "1.0",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false
+    },
+    "9b-lightworkflow": {
+      "name": "9b-lightworkflow",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "browser-cdp": {
+      "name": "browser-cdp",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "first-principles-decomposer": {
+      "name": "first-principles-decomposer",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "frontend-slides": {
+      "name": "frontend-slides",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "hermes-installer": {
+      "name": "hermes-installer",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "taskflow-inbox-triage": {
+      "name": "taskflow-inbox-triage",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "windows-native-ocr": {
+      "name": "windows-native-ocr",
+      "qc_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "A-java-problem": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "code-review": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "sq-cleanmgr-c": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "wb-git-commit-recipe": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "ican-frontend-design-system": {
+      "name": "ican-frontend-design-system",
+      "qc_equivalent": "",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "cx": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "domain": "design"
+    },
+    "ican-deploy": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "story-scan": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "video-breakdown-skill": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "ai-video-homework-pipeline": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "audio-deliverable-pipeline": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "html-to-docx-win-fix": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "win-toolchain-pitfalls": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "A-project-better": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "A-skill-manager": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": true,
+      "source": "community"
+    },
+    "brainstorming": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "brand-guidelines": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "chart-visualization": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "defuddle": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "executing-plans": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "figma": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "frontend-design": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "internal-comms": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "json-canvas": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "knowledge-capture": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-asr": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-computer-use": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-img2img": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-mineru": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-ocr-npu": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-realtime-translator": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-screenshot-qa": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-tts": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-txt2img": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "local-vram": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "meeting-intelligence": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "notion-cli": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "obsidian-bases": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "obsidian-cli": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "obsidian-markdown": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "research-documentation": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "slides": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "spec-to-implementation": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "test-driven-development": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "theme-factory": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "writing-plans": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-aisearch": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-aitable": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-calendar": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-chat": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-contact": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-doc": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-drive": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-event": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-mail": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-minutes": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-misc": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-shared": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-todo": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "dingtalk-wiki": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "rag-eval": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    },
+    "sqlalchemy-loader-criteria-pitfalls": {
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community"
+    }
+  },
+  "user_created_skills": [
+    "_my-skills",
+    "A-ask-questions",
+    "A-get-memory",
+    "fenjue-memory-audit",
+    "A-memory-start",
+    "A-project-handoff",
+    "A-prompt-better",
+    "c-cleanup",
+    "openclaw-dual-gate-quality-audit",
+    "openclaw-fenjue-weekly",
+    "openclaw-task-supervision",
+    "fenjue-lessons-hitrate",
+    "9b-lightworkflow",
+    "hermes-installer",
+    "windows-native-ocr",
+    "A-skill-manager",
+    "windows-gitbash-chinese-path-pit"
+  ],
+  "routing_authority_ref": "<MEMORY_ROOT>\\cross_platform_map.json",
+  "role": "install_state_tracker",
+  "_meta": "AUTO-GENERATED by build_registry.py | DO NOT EDIT"
+}

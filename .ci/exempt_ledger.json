@@ -1,0 +1,6 @@
+{
+  "schema": "fenjue-ci-exempt-v1",
+  "note": "A 类裁定账本：只有登记在此的仓，`greencheck panel` 才允许把它的静音判成 exempt（而不是 naked/hollow）。条目必须写清谁在什么时候依据哪条裁定放行，以及怎么撤销 —— 静音可以豁免，但豁免必须留名。",
+  "restore_cmd_template": "gh api -X DELETE /repos/<owner>/<repo>/subscription",
+  "entries": {}
+}

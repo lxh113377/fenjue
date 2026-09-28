@@ -1,0 +1,220 @@
+[
+  {
+    "msg": "今天天气怎么样",
+    "not_expect": [
+      "*"
+    ],
+    "cat": "easy",
+    "note": "纯闲聊，不应触发任何skill"
+  },
+  {
+    "msg": "帮我算一下1+1等于几",
+    "not_expect": [
+      "*"
+    ],
+    "cat": "easy",
+    "note": "简单数学，不应触发任何skill"
+  },
+  {
+    "msg": "优化代码性能",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions"
+    ],
+    "cat": "medium",
+    "note": "此处'优化'指代码重构，非提示词优化；应触发refactoring而非A-prompt-better"
+  },
+  {
+    "msg": "帮我翻译这段英文",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions",
+      "A-memory-start"
+    ],
+    "cat": "easy",
+    "note": "翻译任务，不应触发闭环skill"
+  },
+  {
+    "msg": "写个Python爬虫",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy",
+      "chaoshi-image-optimization"
+    ],
+    "cat": "medium",
+    "note": "通用编程任务，不应触发超市/CloudBase专用skill"
+  },
+  {
+    "msg": "帮我做个PPT",
+    "not_expect": [
+      "frontend-skill",
+      "html-ppt",
+      "docx"
+    ],
+    "cat": "medium",
+    "note": "PPT需求应触发pptx/slides/html-deck，不应触发前端设计或文档skill"
+  },
+  {
+    "msg": "数据库查询很慢",
+    "not_expect": [
+      "A-memory-start",
+      "A-prompt-better",
+      "A-ask-questions"
+    ],
+    "cat": "medium",
+    "note": "DB性能问题应触发cloudbase-db-optimize或data-analysis，不应触发闭环skill"
+  },
+  {
+    "msg": "帮我记住这个偏好",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy",
+      "story-long-write"
+    ],
+    "cat": "medium",
+    "note": "记忆相关应触发A-get-memory或A-memory-start，不应触发部署/写作skill"
+  },
+  {
+    "msg": "这段代码有bug",
+    "not_expect": [
+      "A-prompt-better",
+      "chaoshi-web-deploy",
+      "html-ppt"
+    ],
+    "cat": "medium",
+    "note": "调试需求应触发debugging-fixing，不应触发提示词优化或部署"
+  },
+  {
+    "msg": "帮我部署到Render",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy",
+      "chaoshi-image-optimization"
+    ],
+    "cat": "medium",
+    "note": "Render部署应触发render-deploy，不应触发超市/CloudBase部署skill"
+  },
+  {
+    "msg": "写个邮件通知脚本",
+    "not_expect": [
+      "A-memory-start",
+      "story-long-write",
+      "frontend-skill"
+    ],
+    "cat": "medium",
+    "note": "自动化脚本应触发office-automation-pro，不应触发记忆/写作/前端skill"
+  },
+  {
+    "msg": "这个SQL怎么优化",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "SQL优化应触发cloudbase-db-optimize，不应触发提示词优化或部署"
+  },
+  {
+    "msg": "帮我看看这个截图",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "截图查看应触发local-screenshot-qa或screenshot，不应触发闭环或部署skill"
+  },
+  {
+    "msg": "Git怎么撤销上次提交",
+    "not_expect": [
+      "A-memory-start",
+      "chaoshi-web-deploy",
+      "story-long-write"
+    ],
+    "cat": "easy",
+    "note": "Git操作问题，不应触发记忆/部署/写作skill"
+  },
+  {
+    "msg": "这段文字太AI了",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "去AI味应触发humanizer或story-deslop，不应触发提示词优化"
+  },
+  {
+    "msg": "解释一下什么是闭包",
+    "not_expect": [
+      "screenshot",
+      "A-prompt-better",
+      "A-ask-questions"
+    ],
+    "cat": "easy",
+    "note": "编程概念解释，不应触发截图问答或闭环skill"
+  },
+  {
+    "msg": "帮我写个个人主页",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "前端开发需求，不应触发超市/CloudBase部署"
+  },
+  {
+    "msg": "今天吃什么好",
+    "not_expect": [
+      "*"
+    ],
+    "cat": "easy",
+    "note": "闲聊，不应触发任何skill"
+  },
+  {
+    "msg": "怎么部署到GitHub Pages",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "GitHub Pages部署，不应触发超市/CloudBase部署"
+  },
+  {
+    "msg": "帮我总结这篇文章",
+    "not_expect": [
+      "A-prompt-better",
+      "A-ask-questions",
+      "story-long-write"
+    ],
+    "cat": "easy",
+    "note": "文本总结，不应触发提示词优化或写作skill"
+  },
+  {
+    "msg": "这个Excel怎么筛选重复项",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "A-prompt-better"
+    ],
+    "cat": "medium",
+    "note": "Excel操作，不应触发部署或提示词优化"
+  },
+  {
+    "msg": "帮我写个定时任务脚本",
+    "not_expect": [
+      "A-memory-start",
+      "story-long-write"
+    ],
+    "cat": "medium",
+    "note": "脚本开发，不应触发记忆或写作skill"
+  },
+  {
+    "msg": "网站部署到vercel",
+    "not_expect": [
+      "chaoshi-web-deploy",
+      "chaoshi-web-deploy"
+    ],
+    "cat": "medium",
+    "note": "Vercel部署，不应触发超市/CloudBase部署（验证'部署'宽泛词已移除）"
+  }
+]

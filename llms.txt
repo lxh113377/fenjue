@@ -1,0 +1,19 @@
+# Fenjue (焚诀)
+
+> Multi-agent unified memory & skill-routing governance framework: shared memory source via junctions, four-layer skill router (direct → tag → semantic → memory), quantified lessons-hit-rate, attention-budget ratchets, and a 28-check truth-consistency CI gate. Built and maintained as a single-person project with 150+ machine-verified iterations.
+
+Agent skills are validated before publication by two content gates: zero-tolerance prompt-injection / credential-exfiltration scanning (`skill_security_scan`) and frontmatter conformance to the agentskills spec — description ≤1024 chars, required fields, frozen field whitelist (`skill_publish_compliance`).
+
+## Docs
+
+- [README (中文)](https://github.com/lxh113377/fenjue/blob/master/README.md): project overview, five mainlines, measured baselines
+- [README (English)](https://github.com/lxh113377/fenjue/blob/master/README.en.md): English introduction
+- [Installation — WorkBuddy](docs/INSTALL-wb.md) / [Codex CLI](docs/INSTALL-cx.md) / [Hermes](docs/INSTALL-hm.md) / [ZCode](docs/INSTALL-zc.md) / [overview](docs/INSTALL.md)
+- [Contributing](https://github.com/lxh113377/fenjue/blob/master/CONTRIBUTING.md): dev workflow + pre-publish security & compliance gates (mandatory before any skill ships)
+- [Online demo](https://lxh113377.github.io/fenjue/): showcase page
+- [License (MIT)](https://github.com/lxh113377/fenjue/blob/master/LICENSE)
+
+## Optional
+
+- Full source tree: https://github.com/lxh113377/fenjue
+- Issue tracker: https://github.com/lxh113377/fenjue/issues

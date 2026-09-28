@@ -1,0 +1,80 @@
+{
+  "schema": "fenjue-skill-trigger-acceptance-v1",
+  "_note": "P0-2 会话级技能触发验收用例集（对标 Superpowers 的 acceptance test：一句固定 prompt 必须自动触发指定技能）。本集用于离线预筛（喂 unified_router 看命中）+ 人工会话验证清单双轨。expect_skills 为「命中任一即通过」的技能集合。",
+  "_updated": "2026-09-23",
+  "_howto": "离线：python eval/skill_trigger_acceptance.py   |  采集/收紧基线：加 --update   |  机器可读：加 --json。人工：在**新会话**中原样输入 prompt，核对首个动作是否落在 expect_first_action。",
+  "cases": [
+    {
+      "id": "A01",
+      "prompt": "帮我把这个报错修掉：TypeError: cannot unpack non-sequence NoneType",
+      "expect_skills": ["debugging-fixing"],
+      "expect_first_action": "先定位根因（读相关代码/日志），不得直接改代码试错"
+    },
+    {
+      "id": "A02",
+      "prompt": "帮我全面审查一下这个项目的代码质量",
+      "expect_skills": ["code-review"],
+      "expect_first_action": "按五维（性能/缺陷/可维护性/安全/重复）扫描并输出结构化清单"
+    },
+    {
+      "id": "A03",
+      "prompt": "我想做个新功能但还没想清楚，先帮我把需求理一理",
+      "expect_skills": ["brainstorming", "A-ask-questions"],
+      "expect_first_action": "先提问澄清（目标/范围/约束/验收），不得直接动手写代码"
+    },
+    {
+      "id": "A04",
+      "prompt": "帮我分析一下这个 Excel 里的销售数据",
+      "expect_skills": ["data-analysis", "xlsx"],
+      "expect_first_action": "先看表结构与字段，再做汇总/透视"
+    },
+    {
+      "id": "A05",
+      "prompt": "帮我做一份汇报用的 PPT",
+      "expect_skills": ["pptx", "html-ppt", "slides"],
+      "expect_first_action": "先确认主题与页数，再生成"
+    },
+    {
+      "id": "A06",
+      "prompt": "帮我把这段录音转成文字稿",
+      "expect_skills": ["local-asr", "video-whisper-transcribe", "wechat-voice-transcription", "openai-whisper-api"],
+      "expect_first_action": "先确认音频路径与格式，再转写"
+    },
+    {
+      "id": "A07",
+      "prompt": "帮我生成一张赛博朋克风格的封面图",
+      "expect_skills": ["local-txt2img", "byted-seedream-image-generate", "local-img2img"],
+      "expect_first_action": "先确定尺寸/风格参数，再生成"
+    },
+    {
+      "id": "A08",
+      "prompt": "帮我把这个静态网站部署上线",
+      "expect_skills": ["chaoshi-web-deploy", "byted-bp-cdn-pagesdeploy", "ican-deploy"],
+      "expect_first_action": "先确认部署目标与凭据，再执行部署命令"
+    },
+    {
+      "id": "A09",
+      "prompt": "把这次踩的坑记到经验库里",
+      "expect_skills": ["A-get-memory"],
+      "expect_first_action": "走四维度反思后按模板落盘，含 trigger 三栏"
+    },
+    {
+      "id": "A10",
+      "prompt": "这个项目接下来该做什么，帮我规划一下方向",
+      "expect_skills": ["A-project-better"],
+      "expect_first_action": "先盘遗留待办台账并实测核验，再出建议清单"
+    },
+    {
+      "id": "A11",
+      "prompt": "帮我把这个项目的交接文档整理一下",
+      "expect_skills": ["A-project-handoff"],
+      "expect_first_action": "读/校验 memory 结构（P-1 绑定表 + 07 P0）后再动"
+    },
+    {
+      "id": "A12",
+      "prompt": "这些商品图太大了，帮我压缩一下",
+      "expect_skills": ["chaoshi-image-optimization", "local-img2img"],
+      "expect_first_action": "先审计体积与格式，再批量转 WebP/生成小图"
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+[
+  {
+    "tier": "blind_easy",
+    "description": "盲测-明确关键词（未参与任何调参，R20新建）",
+    "queries": [
+      {
+        "query": "PDF 表单自动填写",
+        "expected_skill": "pdf",
+        "domain": "doc"
+      },
+      {
+        "query": "用 whisper API 把音频转写成文字",
+        "expected_skill": "openai-whisper-api",
+        "domain": "media"
+      },
+      {
+        "query": "截取视频某一帧做封面",
+        "expected_skill": "video-frames",
+        "domain": "media"
+      },
+      {
+        "query": "gsap 做滚动触发动画",
+        "expected_skill": "gsap",
+        "domain": "web"
+      },
+      {
+        "query": "shadcn 组件安装管理",
+        "expected_skill": "shadcn",
+        "domain": "design"
+      },
+      {
+        "query": "p5.js 算法生成艺术",
+        "expected_skill": "algorithmic-art",
+        "domain": "design"
+      },
+      {
+        "query": "python 脚本下断点单步调试",
+        "expected_skill": "python-debugpy",
+        "domain": "code"
+      },
+      {
+        "query": "先写失败测试再实现功能",
+        "expected_skill": "test-driven-development",
+        "domain": "code"
+      },
+      {
+        "query": "GitHub 仓库 fork 一份并提 issue",
+        "expected_skill": "github",
+        "domain": "web"
+      },
+      {
+        "query": "CloudBase 云函数部署后报错排查",
+        "expected_skill": "chaoshi-web-deploy",
+        "domain": "web"
+      },
+      {
+        "query": "Electron 桌面应用自动化操作",
+        "expected_skill": "electron",
+        "domain": "web"
+      },
+      {
+        "query": "Obsidian 白板 canvas 文件编辑",
+        "expected_skill": "json-canvas",
+        "domain": "creative"
+      },
+      {
+        "query": "本地离线语音识别不联网",
+        "expected_skill": "video-whisper-transcribe",
+        "domain": "local"
+      },
+      {
+        "query": "PDF 扫描件本地解析成结构化数据",
+        "expected_skill": "pdf",
+        "domain": "local"
+      },
+      {
+        "query": "实时同声翻译",
+        "expected_skill": "byted-mediakit-shared",
+        "domain": "local"
+      },
+      {
+        "query": "MCP 服务器配置和认证管理",
+        "expected_skill": "mcporter",
+        "domain": "general_utils"
+      },
+      {
+        "query": "内部公告按公司格式模板写",
+        "expected_skill": "internal-comms",
+        "domain": "general_utils"
+      },
+      {
+        "query": "微信语音转文字",
+        "expected_skill": "wechat-voice-transcription",
+        "domain": "media"
+      },
+      {
+        "query": "给壁纸生成一张图",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "creative"
+      },
+      {
+        "query": "Excel 表格做数据透视",
+        "expected_skill": "xlsx",
+        "domain": "data"
+      },
+      {
+        "query": "生成一份 PPT 模板",
+        "expected_skill": "pptx",
+        "domain": "doc"
+      },
+      {
+        "query": "拆分超大 markdown 文件",
+        "expected_skill": "bigfile-split",
+        "domain": "memory"
+      },
+      {
+        "query": "路由健康快检",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      }
+    ]
+  },
+  {
+    "tier": "blind_medium",
+    "description": "盲测-中等难度（需语义理解）",
+    "queries": [
+      {
+        "query": "多源交叉验证的深度行业调研",
+        "expected_skill": "deep-research-pro",
+        "domain": "research"
+      },
+      {
+        "query": "竞品财务对比分析报告",
+        "expected_skill": "consulting-analysis",
+        "domain": "research"
+      },
+      {
+        "query": "让另一个大模型交叉复核我的方案",
+        "expected_skill": "oracle",
+        "domain": "research"
+      },
+      {
+        "query": "快速做个一次性原型验证这个技术路子行不行",
+        "expected_skill": "spike",
+        "domain": "research"
+      },
+      {
+        "query": "网页正文提取成干净的 markdown",
+        "expected_skill": "defuddle",
+        "domain": "research"
+      },
+      {
+        "query": "聚合多个检查脚本的 runner 老是假绿",
+        "expected_skill": "audit-runner-safe-aggregate",
+        "domain": "general_utils"
+      },
+      {
+        "query": "提示词系统里的矛盾规则查一遍",
+        "expected_skill": "prompt-system-audit",
+        "domain": "system"
+      },
+      {
+        "query": "两个功能重复的技能合并成一个",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "这个技能为什么没自动触发",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "新技能装之前先安全审查",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "把已写好的实施计划一步步落地执行完",
+        "expected_skill": "executing-plans",
+        "domain": "general_utils"
+      },
+      {
+        "query": "帮我把这条指令重写得更规范再执行",
+        "expected_skill": "A-prompt-better",
+        "domain": "creative"
+      },
+      {
+        "query": "Node 进程 CPU 飙高挂 inspector 排查",
+        "expected_skill": "node-inspect-debugger",
+        "domain": "code"
+      },
+      {
+        "query": "查这家公司的司法风险和股权结构",
+        "expected_skill": "天眼一下",
+        "domain": "research"
+      },
+      {
+        "query": "OpenClaw 派活全程监工含重试验证",
+        "expected_skill": "openclaw-task-supervision",
+        "domain": "system"
+      },
+      {
+        "query": "帮我配置新平台的记忆树和技能树",
+        "expected_skill": "cross-platform-agent-sync",
+        "domain": "system",
+        "note": "2026-08-03 R161: 修复盲区(原误标 A-get-memory, 实测误路由)"
+      },
+      {
+        "query": "注册表有漂移，修复 skill 同步",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "跑一下 lessons 命中率",
+        "expected_skill": "fenjue-lessons-hitrate",
+        "domain": "memory"
+      },
+      {
+        "query": "设计一个数据看板的配色方案",
+        "expected_skill": "chart-visualization",
+        "domain": "data",
+        "note": "2026-08-03 R161: 生产高频真实场景"
+      },
+      {
+        "query": "这周给客户写个邮件催款",
+        "expected_skill": "internal-comms",
+        "domain": "comms",
+        "note": "2026-08-03 R161: 生产高频真实场景"
+      },
+      {
+        "query": "提出我该项目的优化建议",
+        "expected_skill": "consulting-analysis",
+        "domain": "research",
+        "note": "2026-08-03 R162: 生产实测盲区(原误路由 A-ask-questions, needs_llm 无法救)"
+      }
+    ]
+  },
+  {
+    "tier": "blind_hard",
+    "description": "盲测-口语化/无关键词",
+    "queries": [
+      {
+        "query": "这堆屎山代码帮我捋顺点但别改功能",
+        "expected_skill": "refactoring",
+        "domain": "code"
+      },
+      {
+        "query": "磁盘快爆了帮我腾点地方",
+        "expected_skill": "c-cleanup",
+        "domain": "system"
+      },
+      {
+        "query": "桌面软件里藏着的命令行工具帮我挖出来",
+        "expected_skill": "discover-agent-cli",
+        "domain": "system"
+      },
+      {
+        "query": "上次聊到哪了新窗口接着干",
+        "expected_skill": "A-project-handoff",
+        "domain": "automation"
+      },
+      {
+        "query": "讲讲我的使用习惯你都记了啥",
+        "expected_skill": "A-get-memory",
+        "domain": "memory",
+        "note": "已卸载, 改指 A-get-memory"
+      },
+      {
+        "query": "灵感枯竭帮我发散一波点子",
+        "expected_skill": "brainstorming",
+        "domain": "general_utils"
+      },
+      {
+        "query": "屏幕上这块区域截下来",
+        "expected_skill": "screenshot",
+        "domain": "web"
+      },
+      {
+        "query": "显存不够用了咋限制",
+        "expected_skill": "c-cleanup",
+        "domain": "local"
+      },
+      {
+        "query": "这个模块派给 Codex 写",
+        "expected_skill": "coding-agent",
+        "domain": "code"
+      },
+      {
+        "query": "幻灯片排版帮我编辑一下",
+        "expected_skill": "slides",
+        "domain": "creative"
+      },
+      {
+        "query": "会议材料提前帮我备齐",
+        "expected_skill": "meeting-intelligence",
+        "domain": "research"
+      },
+      {
+        "query": "写个 Python 脚本处理 CSV",
+        "expected_skill": "coding-agent",
+        "domain": "code"
+      },
+      {
+        "query": "检查 BGE 嵌入矩阵行数",
+        "expected_skill": "A-skill-manager",
+        "domain": "memory"
+      },
+      {
+        "query": "Windows 原生 OCR 识别图片",
+        "expected_skill": "windows-native-ocr",
+        "domain": "local"
+      },
+      {
+        "query": "白屏",
+        "expected_skill": "debugging-fixing",
+        "domain": "code"
+      },
+      {
+        "query": "打不开",
+        "expected_skill": "debugging-fixing",
+        "domain": "code"
+      },
+      {
+        "query": "闪退",
+        "expected_skill": "debugging-fixing",
+        "domain": "code"
+      },
+      {
+        "query": "备份到腾讯云 COS",
+        "expected_skill": "tencent-cos-skill__skillhub",
+        "domain": "web",
+        "note": "2026-08-03 R102: 云备份窄模式直连, 防通用备份 NONE 误伤"
+      },
+      {
+        "query": "任务执行得怎么样了，模拟执行看看效果",
+        "expected_skill": "fenjue-memory-audit",
+        "domain": "memory",
+        "note": "2026-08-03 P1-3: 混合查询路由细化防回归"
+      },
+      {
+        "query": "帮我做一个 HTML 幻灯片",
+        "expected_skill": "html-ppt",
+        "domain": "creative",
+        "note": "2026-08-03 R140: Marvis html-ppt 跨端接入防回归"
+      },
+      {
+        "query": "多引擎搜索一下这个技术",
+        "expected_skill": "multi-search-engine",
+        "domain": "research",
+        "note": "2026-08-03 R140: Marvis multi-search-engine 接入防回归"
+      },
+      {
+        "query": "用第一性原理想想这个问题",
+        "expected_skill": "first-principles-decomposer",
+        "domain": "general_utils",
+        "note": "2026-08-03 R140: Marvis first-principles 接入防回归"
+      },
+      {
+        "query": "马斯克会怎么想这个问题",
+        "expected_skill": "elon-musk-perspective",
+        "domain": "general_utils",
+        "note": "2026-08-03 R140: Marvis elon-musk 接入防回归"
+      },
+      {
+        "query": "做视频封面",
+        "expected_skill": "video-frames",
+        "domain": "media",
+        "note": "2026-08-03 R154: 负标签'做视频'曾拦截视频封面直连 → 收紧后防回归"
+      },
+      {
+        "query": "用 OpenAI API 做语音识别",
+        "expected_skill": "openai-whisper-api",
+        "domain": "media",
+        "note": "2026-08-03 R154: 语音识别直连曾误伤 API 类查询 → 优先模式防回归"
+      },
+      {
+        "query": "开始写第一章小说",
+        "expected_skill": "doc-coauthoring",
+        "domain": "creative",
+        "note": "R170 生产缺口闭环: 由负例改为精确命中（小说创作起步→doc-coauthoring）"
+      },
+      {
+        "query": "写个脚本定期备份数据库",
+        "expected_skill": "tencent-cos-skill__skillhub",
+        "domain": "web",
+        "note": "R170 生产缺口闭环: 由盲区 NONE 改为精确命中（通用备份→对象存储备份技能）"
+      }
+    ]
+  },
+  {
+    "tier": "negative",
+    "description": "盲测-负例（不应命中任何skill）",
+    "queries": [
+      {
+        "query": "东京和北京时差几个小时",
+        "expected_skill": null,
+        "domain": null
+      },
+      {
+        "query": "世界杯哪年在卡塔尔办的",
+        "expected_skill": null,
+        "domain": null
+      },
+      {
+        "query": "帮我起个英文名",
+        "expected_skill": null,
+        "domain": null
+      },
+      {
+        "query": "苹果和香蕉哪个热量高",
+        "expected_skill": null,
+        "domain": null
+      }
+    ]
+  }
+]

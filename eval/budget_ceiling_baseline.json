@@ -1,0 +1,96 @@
+{
+ "ceiling_s": 120,
+ "scanned": 63,
+ "grandfathered": {
+  "eval/aggregate_status.py": {
+   "max_line": 243,
+   "max_budget": 900,
+   "violations": 5
+  },
+  "eval/cross_writer_idempotence.py": {
+   "max_line": 221,
+   "max_budget": 900,
+   "violations": 1
+  },
+  "eval/derivative_watch.py": {
+   "max_line": 207,
+   "max_budget": 1800,
+   "violations": 1
+  },
+  "eval/env_guard.py": {
+   "max_line": 87,
+   "max_budget": 300,
+   "violations": 1
+  },
+  "eval/functional_dim_checks.py": {
+   "max_line": 105,
+   "max_budget": 300,
+   "violations": 2
+  },
+  "eval/gate_stub_runner.py": {
+   "max_line": 56,
+   "max_budget": 900,
+   "violations": 1
+  },
+  "eval/monthly_check.py": {
+   "max_line": 25,
+   "max_budget": 900,
+   "violations": 1
+  },
+  "eval/scorecard.py": {
+   "max_line": 152,
+   "max_budget": 1800,
+   "violations": 1
+  },
+  "eval/scorecard_memory.py": {
+   "max_line": 75,
+   "max_budget": 300,
+   "violations": 2
+  },
+  "eval/scorecard_routing.py": {
+   "max_line": 132,
+   "max_budget": 900,
+   "violations": 4
+  },
+  "eval/scorecard_shared.py": {
+   "max_line": 155,
+   "max_budget": 900,
+   "violations": 1
+  },
+  "eval/scorecard_sync.py": {
+   "max_line": 164,
+   "max_budget": 300,
+   "violations": 1
+  },
+  "eval/workflow_gate.py": {
+   "max_line": 345,
+   "max_budget": 600,
+   "violations": 1
+  },
+  "eval/stubs/stub_check_junction.py": {
+   "max_line": 39,
+   "max_budget": 300,
+   "violations": 1
+  },
+  "scripts/ci_panel_report.py": {
+   "max_line": 38,
+   "max_budget": 1800,
+   "violations": 1
+  },
+  "scripts/retire_skill.py": {
+   "max_line": 149,
+   "max_budget": 900,
+   "violations": 2
+  },
+  "scripts/rollback_publish.py": {
+   "max_line": 20,
+   "max_budget": 300,
+   "violations": 1
+  },
+  "scripts/run_gate.py": {
+   "max_line": 85,
+   "max_budget": 1800,
+   "violations": 1
+  }
+ }
+}

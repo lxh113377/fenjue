@@ -1,0 +1,837 @@
+[
+  {
+    "name": "9b-lightworkflow",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-ask-questions",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-get-memory",
+    "domain": "memory",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-java-problem",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-memory-start",
+    "domain": "memory",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-project-better",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-project-handoff",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-prompt-better",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "A-skill-manager",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "_my-skills",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "agent-browser",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "ai-video-homework-pipeline",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "algorithmic-art",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "audio-deliverable-pipeline",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "audit-runner-safe-aggregate",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "bigfile-split",
+    "domain": "memory",
+    "sub_domain": ""
+  },
+  {
+    "name": "brainstorming",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "brand-guidelines",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "browser-cdp",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "byted-bp-cdn-pagesdeploy",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "byted-mediakit-shared",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "byted-seedance-video-generate",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "byted-seedream-image-generate",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "c-cleanup",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "canvas-design",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "chaoshi-admin-inline-edit",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "chaoshi-image-optimization",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "chaoshi-web-deploy",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "chart-visualization",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "cloudbase-db-optimize",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "cloudbase__skillhub",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "code-review",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "coding-agent",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "computer-use-guidance-windows",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "consulting-analysis",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "cross-platform-agent-sync",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "data-analysis",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "data-visualization",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "debugging-fixing",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "defuddle",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "diagram-maker",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-aisearch",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-aitable",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-calendar",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-chat",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-contact",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-doc",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-drive",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-event",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-mail",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-minutes",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-misc",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-shared",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-todo",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "dingtalk-wiki",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "discover-agent-cli",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "doc-coauthoring",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "docx",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "dogfood",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "electron",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "elon-musk-perspective",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "executing-plans",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "fenjue-lessons-hitrate",
+    "domain": "memory",
+    "sub_domain": ""
+  },
+  {
+    "name": "fenjue-memory-audit",
+    "domain": "memory",
+    "sub_domain": ""
+  },
+  {
+    "name": "figma",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "find-skills",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "first-principles-decomposer",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "frontend-design",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "frontend-skill",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "frontend-slides",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "github",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "gsap",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "gstack",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "hermes-installer",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "hook-analyzer-skill",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "html-ppt",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "html-to-docx-win-fix",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "hyperframes",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "hyperframes-cli",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "hyperframes-media",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "hyperframes-registry",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "ican-deploy",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "ican-frontend-design-system",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "internal-comms",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "json-canvas",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "knowledge-capture",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-asr",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-computer-use",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-img2img",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-mineru",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-ocr-npu",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-realtime-translator",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-screenshot-qa",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-tts",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-txt2img",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "local-vram",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "mcporter",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "meeting-intelligence",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "nano-pdf",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "node-inspect-debugger",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "notion-cli",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "obsidian-bases",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "obsidian-cli",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "obsidian-markdown",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "oc-dispatch-exec-guard",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "office-automation-pro",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "openai-whisper-api",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "openclaw-dual-gate-quality-audit",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "openclaw-fenjue-weekly",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "openclaw-task-supervision",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "oracle",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "pdf",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "pixelle-api-ensure",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "pptx",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "prompt-consolidation",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "prompt-system-audit",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "python-debugpy",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "rag-eval",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "refactoring",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "report-generator-skill",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "research-documentation",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "screenshot",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "shadcn",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "shell-encoding-pitfalls",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "slides",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "spec-to-implementation",
+    "domain": "doc",
+    "sub_domain": ""
+  },
+  {
+    "name": "spike",
+    "domain": "research",
+    "sub_domain": ""
+  },
+  {
+    "name": "sq-cleanmgr-c",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "sqlalchemy-loader-criteria-pitfalls",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "static-site-batch-audit-fix",
+    "domain": "web",
+    "sub_domain": ""
+  },
+  {
+    "name": "story",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-cover",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-deslop",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-import",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-long-analyze",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-long-write",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-review",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-scan",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-setup",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-short-analyze",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "story-short-write",
+    "domain": "creative",
+    "sub_domain": ""
+  },
+  {
+    "name": "taskflow",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "taskflow-inbox-triage",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "test-driven-development",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "testing",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "theme-factory",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "ui-ux-pro-max",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "utf8-encoding-fix",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "video-breakdown-skill",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "video-frames",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "video-whisper-transcribe",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "vp-perspective-audit",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "wb-git-commit-recipe",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "web-design-guidelines",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "wechat-automation",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "wechat-voice-transcription",
+    "domain": "media",
+    "sub_domain": ""
+  },
+  {
+    "name": "win-toolchain-pitfalls",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "windows-bash-cli-interop-pitfalls",
+    "domain": "code",
+    "sub_domain": ""
+  },
+  {
+    "name": "windows-cli-utf8-wrapper",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "windows-gitbash-chinese-path-pit",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "windows-native-ocr",
+    "domain": "local",
+    "sub_domain": ""
+  },
+  {
+    "name": "workbuddy-mcp",
+    "domain": "general_utils",
+    "sub_domain": ""
+  },
+  {
+    "name": "workflow-preflight-check",
+    "domain": "automation",
+    "sub_domain": ""
+  },
+  {
+    "name": "wps-knowledgebase",
+    "domain": "system",
+    "sub_domain": ""
+  },
+  {
+    "name": "writing-plans",
+    "domain": "design",
+    "sub_domain": ""
+  },
+  {
+    "name": "xlsx",
+    "domain": "data",
+    "sub_domain": ""
+  },
+  {
+    "name": "天眼一下",
+    "domain": "research",
+    "sub_domain": ""
+  }
+]

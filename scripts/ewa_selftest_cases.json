@@ -1,0 +1,252 @@
+{
+ "schemaVersion": "ewa-selftest-cases/v1",
+ "note": "ewa_taint 自测样本（数据/逻辑分离，2026-09-24 P0-11：样本含 open/exec/subprocess 模式文本，留在 .py 会被安全扫描文本级命中；迁 JSON 数据文件，载入器见 external_write_audit.py）",
+ "cases": [
+  {
+   "name": "hit_np_save_external",
+   "source": "import os\nimport numpy as np\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nnp.save(os.path.join(SKILL_CONTENT, \"x.npy\"), None)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_open_write_external",
+   "source": "import os\nGM_DIR = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nopen(os.path.join(GM_DIR, \"y.json\"), \"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_parent_traversal",
+   "source": "import os\np = os.path.join(\"..\", \"..\", \"global_memory\", \"skill_content\", \"z.json\")\nopen(p, \"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_traversal_via_env_root",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nopen(os.path.join(SKILL_CONTENT, \"..\", \"escape.json\"), \"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_variable_relay",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\np = os.path.join(SKILL_CONTENT, \"z\")\nopen(p, \"wb\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_fstring_path",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nopen(f\"{SKILL_CONTENT}/a.json\", \"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_pathlib_write_text",
+   "source": "import os\nfrom pathlib import Path\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nPath(GM).joinpath(\"a.txt\").write_text(\"x\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_pathlib_receiver_open_write",
+   "source": "import os\nfrom pathlib import Path\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nPath(GM).open(\"w\", encoding=\"utf-8\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_tarfile_receiver_open_read",
+   "source": "import os\nimport tarfile\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\ntarfile.open(os.path.join(root, \"a.tar.gz\"), \"r:gz\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_tarfile_receiver_open_write",
+   "source": "import os\nimport tarfile\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\ntarfile.open(os.path.join(root, \"a.tar.gz\"), \"w:gz\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_pathlib_receiver_open_variable_mode",
+   "source": "import os\nfrom pathlib import Path\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\np = Path(GM) / \"x.json\"\np.open(\"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_pathlib_receiver_open_readonly",
+   "source": "import os\nfrom pathlib import Path\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nPath(GM).open(encoding=\"utf-8\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_pathlib_receiver_open_handle_relay",
+   "source": "import json\nimport os\nfrom pathlib import Path\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nwith Path(GM).open(\"w\", encoding=\"utf-8\") as f:\n    json.dump({}, f)\n",
+   "want_hit": 2,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_shutil_rmtree",
+   "source": "import os\nimport shutil\nGM = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\nshutil.rmtree(os.path.join(GM, \"skill_content\"))\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_hardcoded_literal",
+   "source": "import os\nopen(os.path.join(\"X:\\\\global_memory\\\\skill_content\", \"a.json\"), \"w\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_local_call_chain",
+   "source": "import os\nimport numpy as np\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\ndef _atomic(writer, path):\n    tmp = path + \".tmp\"\n    with open(tmp, \"wb\") as handle:\n        writer(handle)\n    os.replace(tmp, path)\ndef write_npy(path, array):\n    return _atomic(lambda h: np.save(h, array), path)\ndef main():\n    write_npy(os.path.join(SKILL_CONTENT, \"bge.npy\"), None)\n",
+   "want_hit": 2,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_argparse_default",
+   "source": "import argparse\nimport json\nimport os\nDEFAULT_SC = os.environ.get(\"SKILL_CONTENT\", \"\")\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--skill-content\", default=DEFAULT_SC)\n    args = parser.parse_args()\n    target = os.path.join(args.skill_content, \"domain.json\")\n    with open(target, \"w\", encoding=\"utf-8\") as handle:\n        json.dump({}, handle)\n",
+   "want_hit": 2,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_empty_exempt_reason",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nopen(os.path.join(SKILL_CONTENT, \"a\"), \"w\")  # external-write-ok:\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa20_environ_subscript",
+   "source": "import os\nimport numpy as np\nnp.save(os.path.join(os.environ[\"SKILL_CONTENT\"], \"x.npy\"), None)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa03_dict_relay",
+   "source": "import os\nimport numpy as np\nroot = os.environ.get(\"GLOBAL_MEMORY_DIR\", \"\")\npaths = {\"idx\": root + \"/emb.npy\"}\nnp.save(paths[\"idx\"], None)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa14_pathlib_div",
+   "source": "import os\nimport numpy as np\nfrom pathlib import Path\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nnp.save(Path(root) / \"emb.npy\", None)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa22_atomic_replace_dst",
+   "source": "import os\nimport numpy as np\ndst = os.path.join(os.environ.get(\"SKILL_CONTENT\", \"\"), \"emb.npy\")\nnp.save(\"./tmp.npy\", None)\nos.replace(\"./tmp.npy\", dst)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa26_open_mode_variable",
+   "source": "import os\np = os.path.join(os.environ.get(\"SKILL_CONTENT\", \"\"), \"a.json\")\nm = \"wb\"\nopen(p, m)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa30_mmap_inplace",
+   "source": "import os\nimport numpy as np\np = os.path.join(os.environ.get(\"SKILL_CONTENT\", \"\"), \"emb.npy\")\narr = np.load(p, mmap_mode=\"r+\")\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa32_faiss_write_index",
+   "source": "import os\nimport faiss\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nfaiss.write_index(index, os.path.join(root, \"bge.index\"))\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa34_extractall_kwarg",
+   "source": "import os\nimport tarfile\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\ntarfile.open(\"b.tar.gz\").extractall(path=root)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa44_exec_dynamic",
+   "source": "import os\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nexec(f'np.save(r\"{root}/emb.npy\", arr)')\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa45_subprocess_shell",
+   "source": "import os\nimport subprocess\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nsubprocess.run(f\"cp -f a.npy {root}/\", shell=True)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_re_compile_not_dynamic_exec",
+   "source": "import os\nimport re\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\npattern = re.compile(r\"^\" + re.escape(root) + r\"\\.part\\d+\\.md$\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_handle_rebind_cleared",
+   "source": "import json\nimport os\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nhere = os.path.dirname(os.path.abspath(__file__))\nwith open(os.path.join(root, \"in.json\"), encoding=\"utf-8\") as f:\n    data = json.load(f)\nwith open(os.path.join(here, \"out.json\"), \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f)\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "hit_handle_rebind_still_dirty",
+   "source": "import json\nimport os\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nhere = os.path.dirname(os.path.abspath(__file__))\nwith open(os.path.join(here, \"in.json\"), encoding=\"utf-8\") as f:\n    data = json.load(f)\nwith open(os.path.join(root, \"out.json\"), \"w\", encoding=\"utf-8\") as f:\n    json.dump(data, f)\n",
+   "want_hit": 2,
+   "want_exempt": 0
+  },
+  {
+   "name": "atk_sa17_chdir_then_relative",
+   "source": "import os\nroot = os.environ.get(\"SKILL_CONTENT\", \"\")\nos.chdir(root)\n",
+   "want_hit": 1,
+   "want_exempt": 0
+  },
+  {
+   "name": "guard_scope_isolation",
+   "source": "import json\nimport os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nEVAL_DIR = os.path.dirname(os.path.abspath(__file__))\ndef dirty():\n    with open(os.path.join(SKILL_CONTENT, \"a.json\"), \"w\") as f:\n        json.dump({}, f)\ndef clean():\n    with open(os.path.join(EVAL_DIR, \"b.json\"), \"w\") as f:\n        json.dump({}, f)\n",
+   "want_hit": 2,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_non_file_methods",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\ndef pick(items):\n    boosted = list(items)\n    boosted.remove(boosted[0])\n    name = SKILL_CONTENT.replace(\"a\", \"b\")\n    return boosted, name\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_guard_called_in_same_function",
+   "source": "import os\nimport numpy as np\nfrom external_write_guard import require_backup_and_release\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\ndef save(matrix):\n    target = os.path.join(SKILL_CONTENT, \"x.npy\")\n    require_backup_and_release([target], purpose=\"rebuild\")\n    np.save(target, matrix)\n",
+   "want_hit": 0,
+   "want_exempt": 1
+  },
+  {
+   "name": "pass_inline_exempt_comment",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nopen(os.path.join(SKILL_CONTENT, \"a\"), \"w\")  # external-write-ok: 只读镜像，另有备份\n",
+   "want_hit": 0,
+   "want_exempt": 1
+  },
+  {
+   "name": "pass_json_dumps_to_stdout",
+   "source": "import json\nimport os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nprint(json.dumps({}))\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_open_read_only",
+   "source": "import os\nSKILL_CONTENT = os.environ.get(\"SKILL_CONTENT\", \"\")\nopen(os.path.join(SKILL_CONTENT, \"a.json\"), encoding=\"utf-8\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_repo_relative_write",
+   "source": "import json\nimport os\nEVAL_DIR = os.path.dirname(os.path.abspath(__file__))\nwith open(os.path.join(EVAL_DIR, \"out.json\"), \"w\") as f:\n    json.dump({}, f)\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_unrelated_env",
+   "source": "import os\nHOME = os.environ.get(\"HOME\", \"\")\nopen(os.path.join(HOME, \"a.txt\"), \"w\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  },
+  {
+   "name": "pass_mmap_readonly",
+   "source": "import os\nimport numpy as np\np = os.path.join(os.environ.get(\"SKILL_CONTENT\", \"\"), \"emb.npy\")\narr = np.load(p, mmap_mode=\"r\")\n",
+   "want_hit": 0,
+   "want_exempt": 0
+  }
+ ]
+}

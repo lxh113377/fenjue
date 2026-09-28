@@ -1,0 +1,15 @@
+{
+ "cap": 4096,
+ "measured": "2026-09-26",
+ "over": {
+  "STATUS.part1.md": 9479,
+  "reports/2026-09-24_GitHub对标第四轮_性能实测与上游漂移.md.part1.md": 13733,
+  "reports/2026-09-24_GitHub对标第四轮_性能实测与上游漂移.md.part2.md": 7684,
+  "reports/2026-09-24_GitHub对标第四轮_性能实测与上游漂移.md.part3.md": 14163,
+  "reports/2026-09-25_GitHub对标第七轮_换机即可用.md.part1.md": 4166,
+  "reports/2026-09-25_GitHub对标第八轮_分档可复现.md.part1.md": 4395,
+  "skill/checklist/weekly_maintenance.part1.md": 6866,
+  "skill/checklist/weekly_maintenance.part6.md": 14791
+ },
+ "scanned": 109
+}

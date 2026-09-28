@@ -1,0 +1,176 @@
+{
+  "schema": "fenjue-portability-baseline-v1",
+  "generated": "2026-09-23",
+  "note": "C20 技能可移植性棘轮基线：绝对路径引用只许降不许升；新增技能禁含绝对路径。只有 --update 才可收紧。code = 代码块内（高风险），inline = 行内说明（低风险）。",
+  "skills": {
+    "9b-lightworkflow": {
+      "code": 0,
+      "inline": 3
+    },
+    "A-ask-questions": {
+      "code": 0,
+      "inline": 1
+    },
+    "A-get-memory": {
+      "code": 1,
+      "inline": 21
+    },
+    "A-java-problem": {
+      "code": 0,
+      "inline": 2
+    },
+    "A-memory-start": {
+      "code": 0,
+      "inline": 22
+    },
+    "A-project-handoff": {
+      "code": 0,
+      "inline": 1
+    },
+    "A-prompt-better": {
+      "code": 0,
+      "inline": 1
+    },
+    "A-skill-manager": {
+      "code": 0,
+      "inline": 4
+    },
+    "audio-deliverable-pipeline": {
+      "code": 8,
+      "inline": 4
+    },
+    "bigfile-split": {
+      "code": 0,
+      "inline": 1
+    },
+    "c-cleanup": {
+      "code": 0,
+      "inline": 2
+    },
+    "chaoshi-image-optimization": {
+      "code": 10,
+      "inline": 2
+    },
+    "chaoshi-web-deploy": {
+      "code": 0,
+      "inline": 4
+    },
+    "discover-agent-cli": {
+      "code": 1,
+      "inline": 2
+    },
+    "fenjue-lessons-hitrate": {
+      "code": 0,
+      "inline": 1
+    },
+    "fenjue-memory-audit": {
+      "code": 0,
+      "inline": 9
+    },
+    "first-principles-decomposer": {
+      "code": 0,
+      "inline": 1
+    },
+    "github": {
+      "code": 1,
+      "inline": 0
+    },
+    "hermes-installer": {
+      "code": 0,
+      "inline": 1
+    },
+    "html-to-docx-win-fix": {
+      "code": 1,
+      "inline": 7
+    },
+    "ican-frontend-design-system": {
+      "code": 0,
+      "inline": 1
+    },
+    "local-asr": {
+      "code": 0,
+      "inline": 2
+    },
+    "local-mineru": {
+      "code": 0,
+      "inline": 1
+    },
+    "local-screenshot-qa": {
+      "code": 0,
+      "inline": 1
+    },
+    "oc-dispatch-exec-guard": {
+      "code": 3,
+      "inline": 1
+    },
+    "openclaw-fenjue-weekly": {
+      "code": 1,
+      "inline": 7
+    },
+    "openclaw-task-supervision": {
+      "code": 9,
+      "inline": 10
+    },
+    "pixelle-api-ensure": {
+      "code": 1,
+      "inline": 0
+    },
+    "prompt-system-audit": {
+      "code": 2,
+      "inline": 11
+    },
+    "sq-cleanmgr-c": {
+      "code": 1,
+      "inline": 0
+    },
+    "utf8-encoding-fix": {
+      "code": 2,
+      "inline": 0
+    },
+    "video-breakdown-skill": {
+      "code": 2,
+      "inline": 0
+    },
+    "vp-perspective-audit": {
+      "code": 0,
+      "inline": 4
+    },
+    "wb-git-commit-recipe": {
+      "code": 0,
+      "inline": 1
+    },
+    "wechat-voice-transcription": {
+      "code": 0,
+      "inline": 1
+    },
+    "win-toolchain-pitfalls": {
+      "code": 2,
+      "inline": 1
+    },
+    "windows-bash-cli-interop-pitfalls": {
+      "code": 1,
+      "inline": 0
+    },
+    "windows-gitbash-chinese-path-pit": {
+      "code": 3,
+      "inline": 1
+    },
+    "windows-native-ocr": {
+      "code": 0,
+      "inline": 2
+    },
+    "workbuddy-mcp": {
+      "code": 0,
+      "inline": 3
+    },
+    "workflow-preflight-check": {
+      "code": 6,
+      "inline": 1
+    }
+  },
+  "totals": {
+    "files_with_abs": 41,
+    "code": 55,
+    "inline": 137
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "schema": "fenjue-gate-stub-registry-v1",
+  "_note": "判据→隔离桩登记表（R272 / 建议 C 机器化落地）。任何新增或修改判据，必须在此登记对应隔离桩文件，由 eval/gate_stub_runner.py 统一复跑。桩文件本身必须满足「正例 + 违规样本 + 边界」三要素。字段 `covers` = 该桩声明覆盖的判据 id/type（**显式声明，机器不比字符串猜**）；新判据必须用 covers 声明覆盖，否则 runner 报「未登记桩」并 FAIL。豁免表内的历史判据无需 covers。covers 里写了不存在的判据 = 幽灵覆盖，同样 FAIL（防用假覆盖骗绿灯）。",
+  "_updated": "2026-09-24",
+  "baseline_unstubbed": {
+    "_note": "存量豁免：早于本契约存在、尚未补桩的判据（一次性登记）。**新增判据禁止加入本表**——runner 会检查「既未豁免、又无桩 covers 覆盖」的判据并 FAIL。",
+    "verify_checks": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16"
+    ],
+    "fingerprint_checks": [
+      "contains_any",
+      "contains_all",
+      "not_contains_any",
+      "context_evidence",
+      "npy_shape_matches",
+      "json_count_equal",
+      "version_toc_consistent",
+      "verify_scripts_exist",
+      "count_matches_source"
+    ]
+  },
+  "stubs": [
+    {
+      "id": "C16-domain",
+      "judge": "verify C16 ⑦ 域数一致性（域桶 == 注册表去重 == 产物/记忆文档）",
+      "file": "stubs/stub_c16_domain.py",
+      "added": "2026-09-22",
+      "covers": [
+        "C16"
+      ],
+      "why": "13 vs 14 域误判（引用过期快照）的直接缺口"
+    },
+    {
+      "id": "C16-memory-current",
+      "judge": "verify C16 ⑥ 记忆文档「当前口径」段一致性（R241 历史沿革段豁免）",
+      "file": "stubs/stub_c16_memory.py",
+      "added": "2026-09-22",
+      "covers": [
+        "C16"
+      ],
+      "why": "建议 #9 C16 扩面；防「当前口径行写错却不报」。2026-09-23 重写：期望值改当场从真相源推导（原版硬编码 181.6，活体升 183.9 后正例即失败，R263 同族），并补域数/总分/零命中 3 例 → 6/6"
+    },
+    {
+      "id": "FP15-count-source",
+      "judge": "lessons_hitrate FP-15 count_matches_source（文档计数 == 注册表实测）",
+      "file": "stubs/stub_fp15_count.py",
+      "added": "2026-09-22",
+      "covers": [
+        "count_matches_source"
+      ],
+      "why": "R263 判据升级（去过期字面量）；首版判据不可测（重读文件而非消费传入样本）"
+    },
+    {
+      "id": "JUNCTION-hm-skills",
+      "judge": "scripts/check_junction.ps1 ③ HM 逐技能 junction 扫描（非 junction 实体/断链/根缺失）",
+      "file": "stubs/stub_check_junction.py",
+      "added": "2026-09-23",
+      "covers": [],
+      "why": "该判据 2026-09-23 新增（此前 HM 端 164 条逐技能挂载完全不在探活面内，20 条断链长期假绿）；桩用 -SkipKnownTable + -Roots @() 隔离，5 例覆盖正例/两组违规样本/两组边界。非 verify/fingerprint 面判据，covers 留空"
+    },
+    {
+      "id": "C17-consumers",
+      "judge": "verify C17 实体排除清单跨消费方一致（R276，静态层）",
+      "file": "stubs/stub_c17_consumers.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C17"
+      ],
+      "why": "C17 自 2026-09-22 引入即无桩（豁免表未收录、runner 恒报未登记）。桩替换模块级 ENTITIES 表 + 夹具消费方文件，10 例覆盖普通排除/锚点行/禁止范围三分支 × 正例/违规/边界；并补「实体表为空不得静默 PASS」边界"
+    },
+    {
+      "id": "C18-cross-writer",
+      "judge": "verify C18 多写入方产物契约一致（R277，静态层）",
+      "file": "stubs/stub_c18_cross_writer.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C18"
+      ],
+      "why": "同 C17，自引入即无桩。桩每例独立夹具目录（首版同居一目录致正例被违规样本感染）+ 替换 CONTRACTS/SCAN_DIRS/KNOWN_WRITERS，6 例覆盖 v3 数据流判据（同行路径变量/产物字面量/skip 令牌）+ 空契约边界"
+    },
+    {
+      "id": "C19-gate-wiring",
+      "judge": "verify C19 门禁接入点真实落地（R278，静态层，含 W6 声明↔自检覆盖）",
+      "file": "stubs/stub_c19_gate_wiring.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C19"
+      ],
+      "why": "同 C17/C18。桩在 %TEMP% 造整套假世界（两仓 hook/副本/CI/周维护/verify 头部），8 例覆盖 W1-W7。顺带修 wrapper 两处：① 原 FAIL 详情恒为「见 stderr」不指原因（_cgw_run 不打印，bad 恒空）→ 改为回传 failures；② 原 wrapper 漏跑 W6（声明↔自检覆盖）→ 已补"
+    },
+    {
+      "id": "STUB-RUNNER-coverage",
+      "judge": "gate_stub_runner.compute_uncovered（覆盖检查判据本身：既未豁免又无桩 covers → 未登记）",
+      "file": "stubs/stub_runner_coverage.py",
+      "added": "2026-09-23",
+      "covers": [],
+      "why": "门禁的门禁。原实现只比豁免表、完全不看桩 → 「新增判据永远无法通过」（只能塞进明令禁止的豁免表），registry 声明的「被任何桩覆盖」这半条从未落地。桩为纯函数注入，6 例含幽灵覆盖反例与 covers 缺失边界"
+    },
+    {
+      "id": "C20-portability",
+      "judge": "verify C20 技能可移植性棘轮（SKILL.md 绝对路径引用只许降不许升）",
+      "file": "stubs/stub_c20_portability.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C20"
+      ],
+      "why": "P0-1（Superpowers 对标产出）：151 技能实测 35 个含行内绝对路径、18 个含代码块内绝对路径，此前无判据阻止新增技能硬编码 D 盘体系路径（对标项目有 local path leakage 检查，本仓为零）。棘轮冻结基线，只许降不许升；桩为包装桩，转发 portability_ratchet --selftest（8 例：正例 1 + 违规样本 3 + 边界 4）"
+    },
+    {
+      "id": "C21-commit-auth",
+      "judge": "verify C21 提交授权纪律防回滚（活文档不得重现「提交需授权/确认」，历史标记行豁免）",
+      "file": "stubs/stub_c21_commit_auth.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C21"
+      ],
+      "why": "C21 由并发会话于 2026-09-23 新增（用户立规：自动提交无需确认），落盘时无桩 → runner 报未登记。桩走 `watched=` 注入夹具，8 例覆盖四种违规句式 + 历史行豁免 + 空文件 + 空扫描面；同轮把 C21 改为可注入并补「零命中不得静默 PASS」（R247，与 C17/C18 同口径）"
+    },
+    {
+      "id": "C22-linkguard",
+      "judge": "verify C22 junction/符号链接排除守护（仓库内链接必须被 git 显式排除）",
+      "file": "stubs/stub_c22_linkguard.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C22"
+      ],
+      "why": "P2-3 worktree 非主力仓试点产出：junction 会被 git 当作普通目录，其指向的外部内容被纳入版本控制（实测 git ls-files 含 jdir/secret.txt）。焚诀靠 .gitignore L2-4 挡住，但该防线此前无任何机器校验（规则被删 / 新增 junction 忘登记 / 将来引入 worktree 均静默放行）。三段判据 W1 声明段非空 + W2 git check-ignore 命中 + W3 显式声明；桩 10 例覆盖正例 2 / 违规样本 5 / 边界 3（含「无法验证不得当通过」与真实 junction 扫描，清理先 rmdir 防跟随链接删外部）"
+    },
+    {
+      "id": "C23-landing",
+      "judge": "verify C23 技能文档落点声明合规（落点须真实存在且被 noise 认可）",
+      "file": "stubs/stub_c23_landing.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C23"
+      ],
+      "why": "P2-6（用户裁定把「约定改动须全量引用点核对」机器化）：A-skill-manager 铁律 #3 声明备份落点 _bak（记忆根下），而该目录经 junction 在焚诀侧呈嵌套 _bak 被 noise 二级扫描判 VIOL（清空后目录本身仍报），pre-commit 连拒 6 次；且 2026-09-21 已把代码落点改为 _trash 但四处文档漏改 —— 「声明落点」与「实际可行落点」长期脱节且无机器校验。三段判据 W1 声明面棘轮（实测基线 18）/ W2 绝对路径落点真实存在（模板取静态前缀）/ W3 落点根须在 noise 认可集且不得命中 _bak 黑名单；豁免历史文件与历史标记行。桩 11 例覆盖正例 2 / 违规样本 4 / 边界 5（含历史豁免、相对路径跳过、声明数==基线、真实扫描面 ≥ 基线）"
+    },
+    {
+      "id": "C24-directmap",
+      "judge": "verify C24 direct双写一致（fallback与direct_map.json条数+内容一致）",
+      "file": "stubs/stub_c24_directmap.py",
+      "added": "2026-09-23",
+      "covers": [
+        "C24"
+      ],
+      "why": "P2-8/6落地：P1-8实证fallback加1条而json未同步时direct_route走旧表。W1条数+W2内容一致，空面FAIL。桩6例（正例1/违规2/边界3，含真实双面267条）"
+    },
+    {
+      "id": "C26-memory-recall",
+      "judge": "verify C26 记忆召回评测集静态健康（结构/死链/基线，P1E-1）",
+      "file": "stubs/stub_c26_memory_recall.py",
+      "added": "2026-09-24",
+      "covers": [
+        "C26"
+      ],
+      "why": "P1E-1落地：记忆召回首次有可复现基准（44条gold用例 Hit@5+MRR），基准面被语料改名/拆卷打烂须当场暴露而非周维护才发现。判据单一实现源（复用 validate_testset，禁双实现漂移）；桩10例（正例2含真实面/违规4死链·空集·缺基线·schema/边界4条数越界·文件缺失·CI SKIP双语义）。踩坑注：消费夹具须在 TemporaryDirectory with 块内（首批4/10即延迟消费，目录已清）"
+    },
+    {
+      "id": "C27-C28-security-compliance",
+      "judge": "verify C27 技能内容安全（注入/外传零容忍，dangerous 告警分流）+ C28 发布合规（frontmatter/desc≤1024/字段白名单）",
+      "file": "stubs/stub_c27_c28_security_compliance.py",
+      "added": "2026-09-24",
+      "covers": [
+        "C27",
+        "C28"
+      ],
+      "why": "P2E-1/P2E-2 落地（对标 ClawHub 自动扫描 + agentskills.io 规范）：对外发布安全底线与合规门。关键设计=**全仓无豁免表**——2026-09-24 用户立规废除「治理文档引用违禁词=规则本体」豁免路（feedback-no-governance-cite-exemption.md），改 family 分流：inj/exfil 零容忍、dangerous 告警不阻断。桩 14 例（C27 正例2含真实面/违规2注入·外传/边界3分流·空面·CI SKIP；C28 正例1/违规3/边界2），合成样本词素拆写防自命中（check_public_clean 先例）"
+    },
+    {
+      "id": "GATE-secret-scan",
+      "judge": "global_memory 入库前敏感串扫描闸（scripts/secret_scan.py，pre-commit 挂载）",
+      "file": "stubs/stub_secret_scan.py",
+      "added": "2026-09-22",
+      "covers": [],
+      "why": "该仓收录各平台（TRAE/openclaw）会话记忆，曾有 2 把 sk- 密钥泄露；闸防「新密钥入库」。包装桩转发其 --selftest（正例/违规样本/边界三要素内置于被包装脚本）"
+    },
+    {
+      "id": "C25-inject-budget",
+      "judge": "verify C25 L1注入硬预算棘轮（P0注入区字节和<=baseline棘轮且<=hard_cap）",
+      "file": "stubs/stub_c25_inject_budget.py",
+      "added": "2026-09-24",
+      "covers": [
+        "C25"
+      ],
+      "why": "P1E-2落地：注入税无机器棘轮，膨胀靠人工手术（对标OpenClaw 20k/60k/Anthropic 25k硬预算）。W1清单/阈值缺失+倒挂、W3超硬顶、W4超基线全FAIL；CI注入盘不可达SKIP。桩7例（正例1/违规2/边界4，含真实五文件面）"
+    },
+    {
+      "id": "C29-C30-index-routing",
+      "judge": "verify C29 index.md 与派生评分产物对账 + C30 路由静态表目标存活与空洞棘轮（2026-09-24 GitHub 对标轮 P0-14/P1-17）",
+      "file": "stubs/stub_c29_c30_index_routing.py",
+      "added": "2026-09-24",
+      "covers": [
+        "C29",
+        "C30"
+      ],
+      "why": "对标轮实测两处「门禁绿但产物说谎」：① index.md 不在 C14/C16 看护面，同文件并存「头部八端 vs 端点数 6」「注册表 151 vs 167」「C1~C24 vs C29」「track_150…track_200 待 owner 确认 vs active=track_200」；② recheck_scorecard.json 只按 mtime 看护，内容可与 STATUS 差 7.4 分（175.1 vs 182.5）仍放行；③ CONTEXT_SKILL_MAP 7 个目标指向已退役技能（意图静默退化为裸 BGE）。桩 22 例=C29 正例1/违规9 + C30 正例1/违规5/边界2 + **层 b 集成面 3 例**：走 checks 注册表真实调用路径断言「注册 lambda 必须无位置参」，并含**对照组**复现「skip_external 误落 map_ 形参 ⇒ 映射表扫描数归零仍判 PASS」的真假通过（R238：仅纯函数单测拦不住接线错误，本桩落地当天即抓到该缺陷）。注册表条数/门禁号/direct_map 对数一律当场实测，禁写死（防正常新增技能致桩假红）。C29 容差按实测漂移定（同轮 scorecard 182.5 vs STATUS 182.3，根因主线⑥读活 route_trace）：C29_SCORE_TOL=0.5，含「漂移 0.2 在容差内」边界例，防把非确定当说谎"
+    },
+    {
+      "id": "C31-inject-ledger",
+      "judge": "verify C31 L1注入预算归因台账（2026-09-24 对标轮四 7-E，治 D-22/D-28）",
+      "file": "stubs/stub_c31_inject_ledger.py",
+      "added": "2026-09-24",
+      "covers": ["C31"],
+      "why": "实测病灶：C25 的基线是 truth_constants 里一个裸数字，改一行即可让它「绿」；且注入面增长源在 global_skills 仓（该仓 .git/hooks 无 pre-commit），一次技能版本发布（V10.68.0/V10.69.0，+3000B）在提交当时零校验，焚诀侧表现为「本地一字未动却 28/28→29PASS/1FAIL」且无从归因。桩 10 例=正例1/违规4（空台账未初始化、基线裸改、applied 无署名、硬顶超天花板）/边界3（待裁决可见、余量<5% 告警、临时台账落盘往返+坏行容错）+ 差分对照组（同一夹具只翻 baseline 即须 PASS→FAIL，防违规样本其实是干净数据的空转型假绿 R271 同族）。"
+    },
+    {
+      "id": "C32-empty-baseline",
+      "judge": "verify C32 空基线已初始化台账（2026-09-24 对标轮四 7-C/6-B，治 vacuous pass 整族）",
+      "file": "stubs/stub_c32_empty_baseline.py",
+      "added": "2026-09-24",
+      "covers": ["C32"],
+      "why": "R3 D-10 实测三处空基线长期以「空」过关：style_ratchet={} / llm_failure_cases=[] / blindset_rotation active_version=0+history=[]（季度轮换从没跑过却恒绿）。病根是「扫过且干净」与「根本没扫」在文件里字节同形，闸无法区分。桩 13 例=正例2（空面已登记/非空免登记）+ 违规8（未登记、scanned=0、虚报超实扫面、登记过期、坏日期、计数器缺 next_due、缺 surface、基线文件缺失）+ 边界1（台账文件不存在 W0，禁手写空台账求绿）+ 差分对照组（同夹具只撤登记必须 PASS→FAIL）。scanned_units 设上下双向界：只查下界会放过虚报。"
+    },
+    {
+      "id": "C33-memory-index",
+      "judge": "verify C33 GM记忆路由表健康（2026-09-24 对标轮四 7-D/6-C，治按需加载链断裂）",
+      "file": "stubs/stub_c33_memory_index.py",
+      "added": "2026-09-24",
+      "covers": ["C33"],
+      "why": "R3 D-11 实测：八端启动契约都写「按 meta/memory_index.md 精准加载」，而该文件自 09-21 R9 事故后是 9 行重建壳、内含 4 处「（待重建）」——按需加载链静默断了 3 天，因为没有任何判据看它。表已改生成物（eval/build_memory_index.py，口径=磁盘实测目录树+注解）。桩 9 例=正例1/违规5（占位残留、超 4KB、声明死链、目录漏登记、指向不存在目录）/边界1（W1 只匹配「（待重建）」真实形态，判据说明文字提到该词不得自触——本仓当日第三次踩注释触发断言坑）/差分对照组1（同一好表只删一行必须 PASS→FAIL，防全覆盖判据空转）。"
+    },
+    {
+      "id": "VOLUME-gov",
+      "judge": "A-project-handoff 体量治理五层判据 + 四道处置护栏 + 心跳自证（volume --sweep/--apply 链）",
+      "file": "stubs/stub_volume_gov.py",
+      "added": "2026-09-26",
+      "covers": ["L1", "L2", "L3", "L4", "L5"],
+      "why": "R3 实测：体量判据内建 92 项断言（含 46 处反例/变异体）却从未被任何门禁复跑 —— registry 21 桩里 'volume' 零命中，volumegov.py 改坏 CI 与本地闸都不反应。同轮踩到的两类缺陷正是该面缺锁的后果：__pycache__ 写在 VOL_SKIP_DIRS 里使 827 个 .pyc 在所有判据面读数为 0（治理者结构性看不见，故 11 天不减反增）；auto_moved 单位与 auto_freed 不一致（数「处置项」而非「份数」，账面治理量少一个数量级）。包装桩取不到技能根记 FAIL 不记 SKIP（对照 ci.yml routing-health 的 SKIP 保绿——不可达被读成通过）。分母侧配套：gate_stub_runner.collect_judges 增 volumegov.LAYER_NAMES 为第三个判据源，加一层不补桩即红。"
+    }
+  ]
+}

@@ -1,0 +1,2465 @@
+{
+  "_meta": {
+    "total_tags": 468,
+    "total_skills": 167,
+    "avg_skills_per_tag": 3.2,
+    "sources": [
+      "CONTEXT_SKILL_MAP",
+      "SKILL.md triggers",
+      "domain_tags"
+    ]
+  },
+  "index": {
+    "报错": [
+      "debugging-fixing"
+    ],
+    "部署": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "记忆": [
+      "A-get-memory",
+      "A-memory-start",
+      "bigfile-split",
+      "fenjue-lessons-hitrate",
+      "fenjue-memory-audit"
+    ],
+    "路由": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "fenjue-routing-health-check",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "skill-routing-test-driven-fix",
+      "wps-knowledgebase"
+    ],
+    "编码": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "乱码": [
+      "shell-encoding-pitfalls",
+      "utf8-encoding-fix"
+    ],
+    "拆分": [
+      "bigfile-split"
+    ],
+    "拆小": [
+      "bigfile-split"
+    ],
+    "安装": [
+      "skill-install"
+    ],
+    "装个": [
+      "skill-install"
+    ],
+    "创建skill": [
+      "skill-creator"
+    ],
+    "同步": [
+      "cross-platform-agent-sync",
+      "cross-platform-skill-sync"
+    ],
+    "审计": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "fenjue-advisor-scoring",
+      "fenjue-memory-audit",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "评分": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "fenjue-advisor-scoring",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "超市": [
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy"
+    ],
+    "命中率": [
+      "skill-hitrate-full-audit",
+      "skill-routing-test-driven-fix"
+    ],
+    "提升": [
+      "fenjue-routing-health-check",
+      "skill-hitrate-full-audit"
+    ],
+    "重构": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "测试": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "debug": [
+      "debugging-fixing"
+    ],
+    "修复": [
+      "debugging-fixing"
+    ],
+    "分析": [
+      "consulting-analysis",
+      "data-analysis"
+    ],
+    "报告": [
+      "consulting-analysis",
+      "internal-comms",
+      "report-generator-skill"
+    ],
+    "视频": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "生成视频": [
+      "byted-seedance-video-generate"
+    ],
+    "生成图片": [
+      "byted-seedream-image-generate"
+    ],
+    "文生图": [
+      "byted-seedream-image-generate",
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "图生图": [
+      "byted-seedream-image-generate",
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "优化": [
+      "A-prompt-better",
+      "fenjue-routing-health-check"
+    ],
+    "画图": [
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker"
+    ],
+    "图表": [
+      "chart-visualization",
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "表格": [
+      "data-analysis",
+      "xlsx"
+    ],
+    "项目": [
+      "A-project-handoff"
+    ],
+    "交接": [
+      "A-project-handoff"
+    ],
+    "prompt": [
+      "A-prompt-better"
+    ],
+    "提示词": [
+      "A-prompt-better",
+      "prompt-system-audit"
+    ],
+    "triggers:": [
+      "A-ask-questions",
+      "A-memory-start",
+      "A-project-better",
+      "A-project-handoff",
+      "A-prompt-better"
+    ],
+    "description: 任务后经验反哺引擎。四维度反思+经验分类路由+已有Skill升级检查+漏用Skill审计(根因定位→自解→修复→验证闭环)+用户画像增量更新+项目经验总结(冷启动续接摘要)+技能自我进化(全树自检+经验反哺闭环+进化账本)。每次实质性任务完成后自动触发，确保踩坑经验不流失；V4.6.0 起含 Step9 遗忘/retire 衰减（引用 retire_policy.md，补记忆第四动作防只写不忘）。": [
+      "A-get-memory"
+    ],
+    "绝对路径#版本行": [
+      "A-get-memory"
+    ],
+    "backup": [
+      "A-get-memory"
+    ],
+    "缺证据判未闭环）；Step 3 daily log 模板补 footer 锚点块硬要求（GM 端 append 必须带块）；ROUTER 行与触发词同步；新增 Step 8.3.5「每轮收口」子集（每轮必跑": [
+      "A-get-memory"
+    ],
+    "区别于 8.1": [
+      "A-get-memory"
+    ],
+    "8.2": [
+      "A-get-memory"
+    ],
+    "8.3 低频）；模板唯一真相源 = `A-memory-start": [
+      "A-get-memory"
+    ],
+    "references": [
+      "A-get-memory"
+    ],
+    "reply_footer.md`": [
+      "A-get-memory"
+    ],
+    "description: \"Java 课程作业与练习总入口（<OWNER_NICK>自建，2026-09-07）。触发词：Java作业、Java练习、写个Java程序、javac、java编译运行报错、语法基础、面向对象/OOP/类与对象、集合/List/Map、异常处理、IO/文件读写、多线程、Swing、Java实验/实训/实验报告。强制路由：一切 Java 类作业必须先加载本 skill 再动手，禁止绕过直接作答（用户铁律 #45）。内置：本机环境档案（JDK8/17 实测路径、编码铁律）、常见错误速查（含 2026-09-07 实测踩坑）、代码模板库、迭代账本（每次使用后必须回写）。\"": [
+      "A-java-problem"
+    ],
+    "Java作业": [
+      "A-java-problem"
+    ],
+    "Java练习": [
+      "A-java-problem"
+    ],
+    "写个Java程序": [
+      "A-java-problem"
+    ],
+    "javac": [
+      "A-java-problem"
+    ],
+    "java编译运行报错": [
+      "A-java-problem"
+    ],
+    "语法基础": [
+      "A-java-problem"
+    ],
+    "面向对象": [
+      "A-java-problem"
+    ],
+    "OOP": [
+      "A-java-problem"
+    ],
+    "类与对象": [
+      "A-java-problem"
+    ],
+    "集合": [
+      "A-java-problem"
+    ],
+    "List": [
+      "A-java-problem"
+    ],
+    "Map": [
+      "A-java-problem"
+    ],
+    "异常处理": [
+      "A-java-problem"
+    ],
+    "IO": [
+      "A-java-problem"
+    ],
+    "文件读写": [
+      "A-java-problem"
+    ],
+    "多线程": [
+      "A-java-problem"
+    ],
+    "Swing": [
+      "A-java-problem"
+    ],
+    "Java实验": [
+      "A-java-problem"
+    ],
+    "实训": [
+      "A-java-problem"
+    ],
+    "实验报告。强制路由": [
+      "A-java-problem"
+    ],
+    "Step 0.8 阶段边界动态重评估门禁 + 非首轮快速重加载协议（每轮 session r2+ 加载时触发轻量 skill 重探）。": [
+      "A-memory-start"
+    ],
+    "description: 技能全生命周期唯一总管——增/删/改/合并/上架/四端同步/依赖安装/安全审计/注册漂移/路由命中率一站式。当对话中出现主动增删改技能、装删技能、技能不生效、注册漂移、命中率诊断、技能安全审计等任何技能管理意图时加载。触发：加技能、删技能、改技能、合并技能、装技能、技能上架、skill注册、技能同步、技能漂移、命中率、技能安全、skill依赖、技能清理、退役技能。": [
+      "A-skill-manager"
+    ],
+    "unified-skills-index（build_registry 生成）→ build_indexes --apply → skill_content": [
+      "A-skill-manager"
+    ],
+    "*.json。禁直改派生件；禁 scan_skills 全量重生（冲 triggers）。": [
+      "A-skill-manager"
+    ],
+    "description: 音频交付流水线（语音旁白 / 主题音乐 / 可选 MP4）— 固化「local-tts 不可用 → edge-tts 降级 + lameenc 编码 + mutagen/波形双核验」链路。触发：生成语音/旁白/TTS、生成音乐/BGM、作业音频交付、要求 MP3 音频文件。": [
+      "audio-deliverable-pipeline"
+    ],
+    "description: \"Use this skill when you need to control a Chrome browser via CDP (Chrome DevTools Protocol) to reuse existing login sessions. Covers: launching Chrome in debug mode, opening URLs, waiting for page load, evaluating JavaScript, taking snapshots, and extracting auth tokens. Trigger phrases: browser automation, CDP, agent-browser, 浏览器操作, 操作浏览器, Chrome CDP, 复用登录态, extract token from browser.\"": [
+      "browser-cdp"
+    ],
+    "description: Windows C盘空间清理技能。当用户需要释放C盘空间、清理磁盘、删除不必要的文件时使用此技能。支持分析磁盘使用情况、识别大文件夹、删除工作备份、清理临时文件和回收站。触发词：C盘清理、磁盘空间不足、释放空间、清理备份、c-delete、磁盘清理。": [
+      "c-cleanup"
+    ],
+    "C盘清理": [
+      "c-cleanup",
+      "sq-cleanmgr-c"
+    ],
+    "磁盘空间不足": [
+      "c-cleanup"
+    ],
+    "释放空间": [
+      "c-cleanup"
+    ],
+    "清理备份": [
+      "c-cleanup"
+    ],
+    "c-delete": [
+      "c-cleanup"
+    ],
+    "磁盘清理。": [
+      "c-cleanup"
+    ],
+    "description: 超市web管理后台商品编辑——禁弹窗/禁抽屉/禁底部面板，唯一交互为InlineEditForm内联展开（条目正下方）。用户连续3轮纠正后确认的强偏好。含搜索+分类筛选+批量操作+快捷上下架开关的完整ProductsTab模式。触发词：内联编辑、inline edit、管理后台编辑、ProductsTab、商品编辑模式、编辑展开、admin CRUD、禁弹窗。": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "内联编辑": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "inline edit": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "管理后台编辑": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "ProductsTab": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "商品编辑模式": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "编辑展开": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "admin CRUD": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "禁弹窗。": [
+      "chaoshi-admin-inline-edit"
+    ],
+    "description: 超市web图片资产优化流水线——审计→ffmpeg批量WebP压缩→响应式srcset小图生成→问题图替换(ImageGen降级ImageSearch)→代码引用更新→build验证。当需要优化supermarket-web商品图片（体积压缩、格式转换、响应式srcset、问题图替换、引用迁移）时使用。触发词：图片优化、WebP压缩、商品图替换、图片资产治理、chaoshi image、图片瘦身、图片审计、响应式srcset、responsive images、小图生成、400w。": [
+      "chaoshi-image-optimization"
+    ],
+    "图片优化": [
+      "chaoshi-image-optimization"
+    ],
+    "WebP压缩": [
+      "chaoshi-image-optimization"
+    ],
+    "商品图替换": [
+      "chaoshi-image-optimization"
+    ],
+    "图片资产治理": [
+      "chaoshi-image-optimization"
+    ],
+    "chaoshi image": [
+      "chaoshi-image-optimization"
+    ],
+    "图片瘦身": [
+      "chaoshi-image-optimization"
+    ],
+    "图片审计": [
+      "chaoshi-image-optimization"
+    ],
+    "响应式srcset": [
+      "chaoshi-image-optimization"
+    ],
+    "responsive images": [
+      "chaoshi-image-optimization"
+    ],
+    "小图生成": [
+      "chaoshi-image-optimization"
+    ],
+    "400w。": [
+      "chaoshi-image-optimization"
+    ],
+    "description: 超市web部署唯一权威源（v3 新架构：Cloudflare Pages Functions + D1 + GitHub Pages 双前端）。任何 wrangler pages deploy / gh pages 推送 / d1 execute 前必须先加载本 skill 获取对应模式 checklist，禁止凭记忆裸跑。覆盖两种部署目标：①Cloudflare Pages（管理后台+API，supermarket-web.pages.dev）②GitHub Pages（微信顾客端，lxh113377.github.io）。触发词：超市部署、chaoshi deploy、超市上线、部署超市、wrangler pages deploy、gh pages 推送、D1 迁移、部署 Cloudflare。": [
+      "chaoshi-web-deploy"
+    ],
+    "Cloudflare Pages Functions + D1 + GitHub Pages 双前端）。任何 wrangler pages deploy": [
+      "chaoshi-web-deploy"
+    ],
+    "gh pages 推送": [
+      "chaoshi-web-deploy"
+    ],
+    "d1 execute 前必须先加载本 skill 获取对应模式 checklist": [
+      "chaoshi-web-deploy"
+    ],
+    "禁止凭记忆裸跑。覆盖两种部署目标": [
+      "chaoshi-web-deploy"
+    ],
+    "description: CloudBase 云开发文档库（MongoDB 兼容）性能优化流水线——诊断五类根因（缺索引/N+1/无投影/无缓存/分页漏算）→建索引→改批量查询→加字段投影→只读数据 TTL 缓存+写操作失效→验证。当 CloudBase/云开发项目出现查询慢、响应时间长、数据库成为瓶颈时使用。触发词：数据库慢、查询慢、数据库优化、DB优化、性能瓶颈、云开发慢、CloudBase 优化、tcb 数据库、集合索引、createIndex、全集合扫描、N+1 查询、云函数慢、接口响应慢。": [
+      "cloudbase-db-optimize"
+    ],
+    "数据库慢": [
+      "cloudbase-db-optimize"
+    ],
+    "查询慢": [
+      "cloudbase-db-optimize"
+    ],
+    "数据库优化": [
+      "cloudbase-db-optimize"
+    ],
+    "DB优化": [
+      "cloudbase-db-optimize"
+    ],
+    "性能瓶颈": [
+      "cloudbase-db-optimize"
+    ],
+    "云开发慢": [
+      "cloudbase-db-optimize"
+    ],
+    "CloudBase 优化": [
+      "cloudbase-db-optimize"
+    ],
+    "tcb 数据库": [
+      "cloudbase-db-optimize"
+    ],
+    "集合索引": [
+      "cloudbase-db-optimize"
+    ],
+    "createIndex": [
+      "cloudbase-db-optimize"
+    ],
+    "全集合扫描": [
+      "cloudbase-db-optimize"
+    ],
+    "N+1 查询": [
+      "cloudbase-db-optimize"
+    ],
+    "云函数慢": [
+      "cloudbase-db-optimize"
+    ],
+    "接口响应慢。": [
+      "cloudbase-db-optimize"
+    ],
+    "description: 跨平台AI agent行为规则同步方法论。通过junction + 共享文件 + 平台启动文件引用实现\"改一处N端响应\"。在役端清单**只读不抄**：权威 = `焚诀\\eval\\truth_constants.json` endpoints.active（2026-09-26 实测七端 wb/tr/cx/hm/zc/oc/qd；cc 弃用 2026-09-08、OpenClaw 退役 2026-09-21、千问办公 qw 退役 2026-09-26）。当需要新增或修改跨平台铁律、修复启动文件引用链、验证各在役端规则传播、诊断某端不响应问题、**接入或退役一个端（上下架/摘端）**时使用。触发词：agent同步、规则同步、改一处N端响应、多端同步、BOOTSTRAP传播链、启动文件引用、junction规则同步、跨平台铁律、端退役、新增端、摘端、上下架端点、退役端点对账。【边界区分】本 skill 管\"行为规则/铁律\"跨端传播；skill 文件本身的同步与注册表检测由 A-skill-manager 负责，二者职责不重叠，勿混用。": [
+      "cross-platform-agent-sync"
+    ],
+    "权威 = `焚诀\\eval\\truth_constants.json` endpoints.active（2026-09-26 实测七端 wb": [
+      "cross-platform-agent-sync"
+    ],
+    "tr": [
+      "cross-platform-agent-sync"
+    ],
+    "cx": [
+      "cross-platform-agent-sync"
+    ],
+    "hm": [
+      "cross-platform-agent-sync"
+    ],
+    "zc": [
+      "cross-platform-agent-sync"
+    ],
+    "oc": [
+      "cross-platform-agent-sync"
+    ],
+    "qd；cc 弃用 2026-09-08": [
+      "cross-platform-agent-sync"
+    ],
+    "OpenClaw 退役 2026-09-21": [
+      "cross-platform-agent-sync"
+    ],
+    "千问办公 qw 退役 2026-09-26）。当需要新增或修改跨平台铁律": [
+      "cross-platform-agent-sync"
+    ],
+    "修复启动文件引用链": [
+      "cross-platform-agent-sync"
+    ],
+    "验证各在役端规则传播": [
+      "cross-platform-agent-sync"
+    ],
+    "诊断某端不响应问题": [
+      "cross-platform-agent-sync"
+    ],
+    "**接入或退役一个端（上下架": [
+      "cross-platform-agent-sync"
+    ],
+    "摘端）**时使用。触发词": [
+      "cross-platform-agent-sync"
+    ],
+    "新增卷10（四维澄清 + 12 处消费面清单）与卷11（四条机器判据 + 收口顺序）；端清单从「抄一份在 description」改为**只指权威源**（原抄本写 WB": [
+      "cross-platform-agent-sync"
+    ],
+    "TR": [
+      "cross-platform-agent-sync"
+    ],
+    "CX": [
+      "cross-platform-agent-sync"
+    ],
+    "HM 四端": [
+      "cross-platform-agent-sync"
+    ],
+    "与实测七端脱节即本 skill 自己犯了它治的病）；触发词补「端退役": [
+      "cross-platform-agent-sync"
+    ],
+    "新增端": [
+      "cross-platform-agent-sync"
+    ],
+    "摘端」。起因实测": [
+      "cross-platform-agent-sync"
+    ],
+    "description: 钉钉 AI 表格（多维表）。Use when 用户说 AI表格/多维表/数据表/base/table/应用模式/App 页面/Widget/建表/查记录/写数据/字段/记录增删改查/记录评论/评论回复/SQL/PostgreSQL/SELECT/JOIN/跨表关联查询/筛选/排序/公式/模板搜索/批量导入CSV或JSON/导出/仪表盘/图表/上传附件到表格/按字段类型建表/数据源/创建数据源/更新数据源配置/触发数据源同步/按任务 ID 查询同步状态/获取数据源配置/列出数据源可用来源/获取数据源可同步字段/审批数据同步。不做电子表格单元格读写或单元格批注（走 dingtalk-misc）、文档编辑（走 dingtalk-doc）；听记待办入表先用 dingtalk-minutes 提取，再由本 skill 写入。命令前缀：dws aitable。": [
+      "dingtalk-aitable"
+    ],
+    "description: 钉钉知识库与空间管理。Use when 用户明确说 知识库/wiki/创建、查找或列出知识库/命名的团队知识空间/个人知识库/知识库成员/库内节点创建、列表、搜索、复制、移动、删除或知识库动态。仅说“文档空间/我的文档”不触发：普通存储管理与全局文件搜索走 dingtalk-drive；节点正文读写走 dingtalk-doc。命令前缀：dws wiki。": [
+      "dingtalk-wiki"
+    ],
+    "触发词：discover CLI、发现CLI、找CLI、agent CLI、命令行接口、headless、无头模式、CLI发现。": [
+      "discover-agent-cli"
+    ],
+    "discover CLI": [
+      "discover-agent-cli"
+    ],
+    "发现CLI": [
+      "discover-agent-cli"
+    ],
+    "找CLI": [
+      "discover-agent-cli"
+    ],
+    "agent CLI": [
+      "discover-agent-cli"
+    ],
+    "命令行接口": [
+      "discover-agent-cli"
+    ],
+    "headless": [
+      "discover-agent-cli"
+    ],
+    "无头模式": [
+      "discover-agent-cli"
+    ],
+    "CLI发现。": [
+      "discover-agent-cli"
+    ],
+    "description: Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.": [
+      "doc-coauthoring"
+    ],
+    "description: \"Comprehensive Word (.docx) skill: create, read, edit, and manipulate Word documents end-to-end. Covers turning Markdown or structured text into polished Word output, filling reusable templates ({{token}} or reference-doc), applying correct Chinese (CJK) typography defaults, generating bespoke docs from scratch with docx-js, and low-level OOXML patching including tracked changes and comments. Triggers include any mention of 'Word doc', 'word document', '.docx', '报告', '备忘录', '信函', '合同', '会议纪要', 'Markdown 转 Word', 'md 转 docx', '套模板生成 Word', '中文 Word 报告', 'tracked changes', '修订标记', 'Word 批注', 'OOXML', or requests to insert/replace images, perform find-and-replace, or convert content into a polished Word document. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"": [
+      "docx"
+    ],
+    "description_zh: \"全功能 Word(.docx) 技能：端到端创建、读取、编辑和操作 Word 文档。覆盖 Markdown/结构化文本转 Word、模板套用（{{token}} 或 reference-doc 两种）、正确的中文排版默认值、用 docx-js 从零定制文档、以及 OOXML 底层修补（含修订标记、批注）。触发词：'Word 文档'、'.docx'、'报告/备忘录/信函/合同/会议纪要'、'Markdown 转 Word'、'md 转 docx'、'套模板生成 Word'、'中文 Word 报告'、'修订标记'、'Word 批注'、'OOXML'，以及插入/替换图片、查找替换、把内容转为精美 Word 文档等请求。不适用于 PDF、电子表格、Google Docs 或与文档生成无关的编程任务。\"": [
+      "docx"
+    ],
+    "Comprehensive Word (.docx) skill": [
+      "docx"
+    ],
+    "端到端创建": [
+      "docx"
+    ],
+    "读取": [
+      "docx"
+    ],
+    "编辑和操作 Word 文档。覆盖 Markdown": [
+      "docx"
+    ],
+    "结构化文本转 Word": [
+      "docx"
+    ],
+    "模板套用（{{token}} 或 reference-doc 两种）": [
+      "docx"
+    ],
+    "正确的中文排版默认值": [
+      "docx"
+    ],
+    "用 docx-js 从零定制文档": [
+      "docx"
+    ],
+    "以及 OOXML 底层修补（含修订标记": [
+      "docx"
+    ],
+    "批注）。触发词": [
+      "docx"
+    ],
+    "description: 系统化探索和测试本地Web应用 — 浏览器QA。应用探索测试。适用：本地/开发服务器已启动、需要模拟真实用户走查页面与QA验收时使用；触发词：dogfood、应用探索测试、浏览器QA、页面走查、本地Web测试": [
+      "dogfood"
+    ],
+    "本地": [
+      "dogfood"
+    ],
+    "开发服务器已启动": [
+      "dogfood"
+    ],
+    "需要模拟真实用户走查页面与QA验收时使用；触发词": [
+      "dogfood"
+    ],
+    "description: Automate Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) using agent-browser via Chrome DevTools Protocol. Use when the user needs to interact with an Electron app, automate a desktop app, connect to a running app, control a native app, or test an Electron application. Triggers include \"automate Slack app\", \"control VS Code\", \"interact with Discord app\", \"test this Electron app\", \"connect to desktop app\", or any task requiring automation of a native Electron application.": [
+      "electron"
+    ],
+    "Automate Electron desktop apps (VS Code": [
+      "electron"
+    ],
+    "Slack": [
+      "electron"
+    ],
+    "Discord": [
+      "electron"
+    ],
+    "Figma": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "electron",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "Notion": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "electron",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "Spotify": [
+      "electron"
+    ],
+    "etc.) using agent-browser via Chrome DevTools Protocol. Use when the user needs to interact with an Electron app": [
+      "electron"
+    ],
+    "automate a desktop app": [
+      "electron"
+    ],
+    "connect to a running app": [
+      "electron"
+    ],
+    "control a native app": [
+      "electron"
+    ],
+    "or test an Electron application. Triggers include \"automate Slack app": [
+      "electron"
+    ],
+    "control VS Code": [
+      "electron"
+    ],
+    "interact with Discord app": [
+      "electron"
+    ],
+    "test this Electron app": [
+      "electron"
+    ],
+    "connect to desktop app": [
+      "electron"
+    ],
+    "or any task requiring automation of a native Electron application.": [
+      "electron"
+    ],
+    "即使用户只是说「这个成本合理吗」「从第一性原理想想」「白痴指数是多少」「五步算法」「能不能垂直整合」也可触发。": [
+      "elon-musk-perspective"
+    ],
+    "不要在用户只是问「能不能更快」「流程有必要吗」等一般性问题时触发——只在涉及成本拆解、第一性原理、激进迭代等马斯克核心方法论时激活。": [
+      "elon-musk-perspective"
+    ],
+    "description: （已弃用 / DEPRECATED）计划执行——本仓不再使用独立执行技能，执行控制统一由七步闭环第⑥步 + workflow_gate + flow 状态机承担。触发词：执行计划、按计划做、executing plans（命中后按正文迁移指引走本仓机制）。": [
+      "executing-plans"
+    ],
+    "执行计划": [
+      "A-ask-questions",
+      "audit-runner-safe-aggregate",
+      "dingtalk-event",
+      "dingtalk-todo",
+      "elon-musk-perspective",
+      "executing-plans",
+      "figma",
+      "find-skills",
+      "first-principles-decomposer",
+      "mcporter",
+      "rag-eval",
+      "story-scan",
+      "theme-factory",
+      "workbuddy-mcp"
+    ],
+    "按计划做": [
+      "executing-plans"
+    ],
+    "executing plans（命中后按正文迁移指引走本仓机制）。": [
+      "executing-plans"
+    ],
+    "description: 焚诀全局记忆三视角融合审计 — 前端体验(40%)+认知工程(40%)+账面健康(20%)=160分制（三视角内部满分各100=维度合计）。覆盖算力消耗感知、skill调用丝滑度、对话舒适度、系统自愈率、版本一致性、大文件分类治理、路由追问能力、经验查找命中率、用户价值占比、可移植性、规则密度等全部维度。30维(D1-D30)测量以 fenjue_measure.py 实跑为准。触发词覆盖原A-memory-align+fenjue-cogrel-scoring+前端体验关键词。agent_created: true": [
+      "fenjue-memory-audit"
+    ],
+    "焚诀全局记忆三视角融合审计 — 前端体验(40%)+认知工程(40%)+账面健康(20%)=160分制（三视角内部满分各100=维度合计）。覆盖算力消耗感知": [
+      "fenjue-memory-audit"
+    ],
+    "skill调用丝滑度": [
+      "fenjue-memory-audit"
+    ],
+    "对话舒适度": [
+      "fenjue-memory-audit"
+    ],
+    "系统自愈率": [
+      "fenjue-memory-audit"
+    ],
+    "版本一致性": [
+      "fenjue-memory-audit"
+    ],
+    "大文件分类治理": [
+      "fenjue-memory-audit"
+    ],
+    "路由追问能力": [
+      "fenjue-memory-audit"
+    ],
+    "经验查找命中率": [
+      "fenjue-memory-audit"
+    ],
+    "用户价值占比": [
+      "fenjue-memory-audit"
+    ],
+    "可移植性": [
+      "fenjue-memory-audit"
+    ],
+    "规则密度等全部维度。30维(D1-D30)测量以 fenjue_measure.py 实跑为准。触发词覆盖原A-memory-align+fenjue-cogrel-scoring+前端体验关键词。agent_created": [
+      "fenjue-memory-audit"
+    ],
+    "**": [
+      "fenjue-memory-audit"
+    ],
+    "description: Use the Figma MCP server to fetch design context, screenshots, variables, and assets from Figma, and to translate Figma nodes into production code. Trigger when a task involves Figma URLs, node IDs, design-to-code implementation, or Figma MCP setup and troubleshooting.": [
+      "figma"
+    ],
+    "description: HTML PPT Studio — author professional static HTML presentations in many styles, layouts, and animations, all driven by templates. Use when the user asks for a presentation, PPT, slides, keynote, deck, slideshow, \"幻灯片\", \"演讲稿\", \"做一份 PPT\", \"做一份 slides\", a reveal-style HTML deck, a 小红书 图文, or any kind of multi-slide pitch/report/sharing document that should look tasteful and be usable with keyboard navigation. Triggers include keywords like \"presentation\", \"ppt\", \"slides\", \"deck\", \"keynote\", \"reveal\", \"slideshow\", \"幻灯片\", \"演讲稿\", \"分享稿\", \"小红书图文\", \"talk slides\", \"pitch deck\", \"tech sharing\", \"technical presentation\".": [
+      "html-ppt"
+    ],
+    "HTML PPT Studio — author professional static HTML presentations in many styles": [
+      "html-ppt"
+    ],
+    "layouts": [
+      "html-ppt"
+    ],
+    "and animations": [
+      "html-ppt"
+    ],
+    "all driven by templates. Use when the user asks for a presentation": [
+      "html-ppt"
+    ],
+    "PPT": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-ppt",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "slides": [
+      "html-ppt"
+    ],
+    "keynote": [
+      "html-ppt"
+    ],
+    "deck": [
+      "html-ppt"
+    ],
+    "slideshow": [
+      "html-ppt"
+    ],
+    "幻灯片": [
+      "html-ppt"
+    ],
+    "演讲稿": [
+      "html-ppt"
+    ],
+    "做一份 PPT": [
+      "html-ppt"
+    ],
+    "做一份 slides": [
+      "html-ppt"
+    ],
+    "a reveal-style HTML deck": [
+      "html-ppt"
+    ],
+    "a 小红书 图文": [
+      "html-ppt"
+    ],
+    "or any kind of multi-slide pitch": [
+      "html-ppt"
+    ],
+    "report": [
+      "html-ppt"
+    ],
+    "sharing document that should look tasteful and be usable with keyboard navigation. Triggers include keywords like \"presentation": [
+      "html-ppt"
+    ],
+    "ppt": [
+      "html-ppt"
+    ],
+    "reveal": [
+      "html-ppt"
+    ],
+    "分享稿": [
+      "html-ppt"
+    ],
+    "小红书图文": [
+      "html-ppt"
+    ],
+    "talk slides": [
+      "html-ppt"
+    ],
+    "pitch deck": [
+      "html-ppt"
+    ],
+    "tech sharing": [
+      "html-ppt"
+    ],
+    "technical presentation\".": [
+      "html-ppt"
+    ],
+    "description: 修复 tencent-docx 内置插件的 setup-html-to-docx.sh 在 Windows/Git Bash 下静默失败（uv 把 MSYS 路径 /c/... 当相对路径 → venv 建到 D:\\c\\...，且脚本按 Linux 的 bin/python 探测）。触发场景：html-to-docx 环境准备卡在「▶ Creating venv」后无输出、文档转换报 ModuleNotFoundError、或磁盘上出现 D:\\c\\Users\\... 这类畸形 venv 路径。": [
+      "html-to-docx-win-fix"
+    ],
+    "description: iCAN 门店 AI 管理智能体（Python/Flask）的部署与地址名册。PythonAnywhere 免费层全自动部署通道（API 只认表单编码 / 控制台需浏览器唤醒 / WSGI 导入期引导执行 / 改默认 wsgi 文件）、环境变量与 DeepSeek 在线 AI 配置、上线验证清单，以及「真实系统 vs 静态快照站 vs 本地离线」的地址名册口径（避免混淆）。触发词：iCAN 部署、重部、PythonAnywhere、部署上线、地址名册、ican-demo 快照站、SECRET_KEY / DEEPSEEK_API_KEY 配置、reload 站点。": [
+      "ican-deploy"
+    ],
+    "iCAN 部署": [
+      "ican-deploy"
+    ],
+    "重部": [
+      "ican-deploy"
+    ],
+    "PythonAnywhere": [
+      "ican-deploy"
+    ],
+    "部署上线": [
+      "ican-deploy"
+    ],
+    "地址名册": [
+      "ican-deploy"
+    ],
+    "ican-demo 快照站": [
+      "ican-deploy"
+    ],
+    "SECRET_KEY": [
+      "ican-deploy"
+    ],
+    "DEEPSEEK_API_KEY 配置": [
+      "ican-deploy"
+    ],
+    "reload 站点。": [
+      "ican-deploy"
+    ],
+    "description: iCAN 门店 AI 管理智能体（Flask + Jinja + 单 CSS 原生前端）的 V4 设计体系与交付链。含「雾山青」令牌表（色彩/间距/字阶/圆角/高程/动效/图表分类色板）、指标带与分割行范式、44px 触控基线、全站 class 清单，以及「改 dev → 三副本同步 → 重建演示快照集 → quality_gate 第10项」的强制交付命令。触发词：iCAN 前端、门店管理助手界面、改 style.css、V3 设计体系、雾山青、改看板/填报/AI 对话页样式、重建演示快照、交付一致性门禁、三副本同步、批量补丁脚本、锚点失配、假交付对账、控制字符扫描。": [
+      "ican-frontend-design-system"
+    ],
+    "iCAN 前端": [
+      "ican-frontend-design-system"
+    ],
+    "门店管理助手界面": [
+      "ican-frontend-design-system"
+    ],
+    "改 style.css": [
+      "ican-frontend-design-system"
+    ],
+    "V3 设计体系": [
+      "ican-frontend-design-system"
+    ],
+    "雾山青": [
+      "ican-frontend-design-system"
+    ],
+    "改看板": [
+      "ican-frontend-design-system"
+    ],
+    "填报": [
+      "ican-frontend-design-system"
+    ],
+    "AI 对话页样式": [
+      "ican-frontend-design-system"
+    ],
+    "重建演示快照": [
+      "ican-frontend-design-system"
+    ],
+    "交付一致性门禁": [
+      "ican-frontend-design-system"
+    ],
+    "三副本同步": [
+      "ican-frontend-design-system"
+    ],
+    "批量补丁脚本": [
+      "ican-frontend-design-system"
+    ],
+    "锚点失配": [
+      "ican-frontend-design-system"
+    ],
+    "假交付对账": [
+      "ican-frontend-design-system"
+    ],
+    "控制字符扫描。": [
+      "ican-frontend-design-system"
+    ],
+    "多文件补丁一律走本 skill 自带 `assets": [
+      "ican-frontend-design-system"
+    ],
+    "patch_verify.py` —— `apply`（逐处即写 + 回读复核 + 控制字符拒写并回滚 + 写盘台账）": [
+      "ican-frontend-design-system"
+    ],
+    "`verify`（声称清单与实际证据对账": [
+      "ican-frontend-design-system"
+    ],
+    "支持 ledger 与 git 两种模式；共享工作区务必加 `--scope <自己的子树>`": [
+      "ican-frontend-design-system"
+    ],
+    "否则他人未提交 WIP 会被误判成「漏报」）": [
+      "ican-frontend-design-system"
+    ],
+    "`scan`（控制字符": [
+      "ican-frontend-design-system"
+    ],
+    "f-string 残留双花括号）": [
+      "ican-frontend-design-system"
+    ],
+    "`ledger-immutable`（走查第 19 轮新增": [
+      "ican-frontend-design-system"
+    ],
+    "Intel Local Windows ASR (本地离线语音识别). Use this skill when the user, in Chinese or English, asks to transcribe audio or video files, convert speech to text, or extract text from a recording. Trigger on Chinese verbs like 转录/转写/转文字/识别/提取文本 and phrases like 把...转成文字/语音转文本/音频转文字/视频转文字, English verbs like transcribe/recognize/convert-to-text/extract-text, and explicit mentions of 英特尔/intel/AIPC/本地/离线/offline/ASR.": [
+      "local-asr"
+    ],
+    "Intel Local Windows Computer Use (本地计算机使用). Use this skill when the user, in Chinese or English, asks to query or change Windows system state/settings in the supported categories. Trigger on Chinese verbs like 打开/开启/关闭/设置/调整/切换/查询/查看/列出, English verbs like open/turn on/turn off/set/adjust/switch/query/list, and explicit mentions of 英特尔/intel/AIPC/LocalComputer/本地/助手/Assistant.": [
+      "local-computer-use"
+    ],
+    "Intel Local Image-to-Image (本地图像编辑). Use this skill when the user asks to modify, edit, restyle, transform, or regenerate an existing image from a source image and a prompt. Trigger on Chinese requests like 修改图片/编辑图片/图生图/把这张图改成... and English requests like edit/modify/transform/restyle this image.": [
+      "local-img2img"
+    ],
+    "Intel Local Windows Document Parsing (本地离线文档与图片解析). Use this skill when the user, in Chinese or English, asks to parse, extract, OCR, or convert PDF documents or images to text or Markdown. Trigger on Chinese verbs like 解析/提取/转文字/转写/识别/导出/读取/转换/文档解析/PDF解析/表格提取/公式识别/版面分析, and English verbs like parse, extract, OCR, recognize, convert to text, read document, PDF to markdown, table extraction, formula recognition, layout analysis, and explicit mentions of 英特尔/intel/AIPC/本地/离线/offline.": [
+      "local-mineru"
+    ],
+    "Also trigger on non-English language intent: 多语言/其他语言/外文/外语/日文/日语/日文文档/韩文/韩语/俄文/俄语/阿拉伯/西班牙/法文/德文/non-English/non-Chinese/foreign-language/Japanese/Korean/Russian/Arabic/Spanish/French/German.": [
+      "local-mineru"
+    ],
+    "recognize, or read text from one or more local image files. Trigger on:": [
+      "local-ocr-npu"
+    ],
+    "Trigger on Chinese like 实时翻译 / 我要翻译 / 帮我翻译 / 翻译成英文 / 翻译成中文 / 同声传译 / 同传 / 边说边译 / 实时字幕 / 翻译软件, and English like realtime translate / translation app / live translation / simultaneous interpretation / translate as I speak — whether or not the user says \"本地\" / \"实时\".": [
+      "local-realtime-translator"
+    ],
+    "Intel Local Windows Screenshot Q&A (本地离线截图问答). Use this skill when the user, in Chinese or English, asks to read, describe, or answer questions about a screenshot, screen capture, or image. Trigger on Chinese verbs like 看看/识别/读图/描述/解释 and phrases like 这张图说的啥/帮我看下这张截图/这张报错截图什么意思/读一下这张图/这个界面是什么, English verbs like read/describe/explain/interpret/analyze-image, and explicit mentions of 英特尔/intel/AIPC/本地/离线/offline. Also trigger when the user asks about their CURRENT screen WITHOUT providing an image path — Chinese phrases like 看看我现在屏幕/当前界面是什么/我屏幕上是啥/这个报错什么意思(无附图), English like what's on my screen/describe my screen — in which case the skill captures the primary screen automatically.": [
+      "local-screenshot-qa"
+    ],
+    "Intel Local Text-to-Speech (本地文字转语音) on Windows AI PCs. Use this skill when the user, in Chinese or English, asks to synthesize / speak / read aloud / clone a voice / generate audio from text. Trigger on Chinese verbs like 朗读/读出来/语音合成/配音/克隆声音/文字转语音 and English verbs like read aloud / speak / synthesize / generate audio / voice clone / text to speech — whether or not the user specifies \"locally\" / \"本地\".": [
+      "local-tts"
+    ],
+    "Intel Local Text-to-Image (本地文字转图片). Use this skill when the user, in Chinese or English, asks to generate/create/draw/paint/make an image or picture from a text prompt. Trigger on Chinese verbs like 生成/画/绘制/出图/文生图 or English verbs like generate/create/draw/paint/make an image/picture — whether or not the user specifies \"locally\"/\"本地\".": [
+      "local-txt2img"
+    ],
+    "Intel Local GPU Memory Limit / VRAM Adjust (集成显卡显存调整) on Windows AI PCs. Use this skill when the user, in Chinese or English, asks to limit, adjust, increase, change, or query the GPU shared memory limit. Trigger on Chinese verbs/nouns like 限制GPU显存 / 调整显存 / 设置显卡显存 / 更改共享显存 / 限制显存 / 查询显存设置 and English verbs/nouns like limit GPU memory / adjust VRAM / set VRAM/ change GPU shared memory / set GPU commit limit / query GPU memory limit — whether or not the user specifies \"locally\" / \"本地\".": [
+      "local-vram"
+    ],
+    "description: 办公自动化专家 — 编写自动发邮件脚本、定时群发、邮件合并、报表自动推送、Excel/Word 批量处理。当用户说\"自动发邮件的脚本\"\"定时发送邮件\"\"邮件合并\"\"自动生成报表并发送\"\"办公自动化脚本\"\"批量发邮件\"\"用脚本发通知\"时触发。支持 Python（smtplib/email/openpyxl/docx）与 PowerShell 两种实现，含 SMTP 配置、附件、HTML 邮件、计划任务（cron / Windows Task Scheduler）定时执行。": [
+      "office-automation-pro"
+    ],
+    "description: OpenClaw双门禁质量审计 — 让 openclaw 先自评，再由 Codex 独立逐文件审计验证，发现虚高后要求修复并实测重评，直到双门禁均 ≥85 分或确认已最优（最多 5 轮）。**仅适用于「审计某个交付物或系统的质量评分」场景**（见下方「何时不用本 skill」）；不做任务进度监督（改投 openclaw-task-supervision）、不做周度维护（改投 openclaw-fenjue-weekly）。触发词：双门禁审计、openclaw质量审计、自评加独立审计、逐文件审计、审计员视角、虚高识别、质量评分打分。": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "双门禁审计": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "openclaw质量审计": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "自评加独立审计": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "逐文件审计": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "审计员视角": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "虚高识别": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "质量评分打分。": [
+      "openclaw-dual-gate-quality-audit"
+    ],
+    "trigger: [\"pixelle\", \"视频生成\", \"3D生成\", \"localhost:8000\", \"API未运行\", \"bridge.py\"]": [
+      "pixelle-api-ensure"
+    ],
+    "description: \"PPT演示文稿(.pptx)创建/编辑/文本提取/路演稿。Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.\"": [
+      "pptx"
+    ],
+    "触发词：提示词整合、提示词清理、prompt consolidation、清理补丁、": [
+      "prompt-consolidation"
+    ],
+    "提示词整合": [
+      "prompt-consolidation"
+    ],
+    "提示词清理": [
+      "prompt-consolidation"
+    ],
+    "prompt consolidation": [
+      "prompt-consolidation"
+    ],
+    "清理补丁": [
+      "prompt-consolidation"
+    ],
+    "description: 多agent提示词系统逻辑一致性审计 + 数据层验证。提示词系统审计。适用：提示词/规则体系改动后需要做逻辑一致性与数据层漂移审计时使用；触发词：提示词审计、一致性审计、prompt-system-audit、规则体检": [
+      "prompt-system-audit"
+    ],
+    "规则体系改动后需要做逻辑一致性与数据层漂移审计时使用；触发词": [
+      "prompt-system-audit"
+    ],
+    "description: Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".": [
+      "shadcn"
+    ],
+    "Manages shadcn components and projects — adding": [
+      "shadcn"
+    ],
+    "searching": [
+      "shadcn"
+    ],
+    "fixing": [
+      "shadcn"
+    ],
+    "debugging": [
+      "shadcn"
+    ],
+    "styling": [
+      "shadcn"
+    ],
+    "and composing UI. Provides project context": [
+      "shadcn"
+    ],
+    "component docs": [
+      "shadcn"
+    ],
+    "and usage examples. Applies when working with shadcn": [
+      "shadcn"
+    ],
+    "ui": [
+      "shadcn"
+    ],
+    "component registries": [
+      "shadcn"
+    ],
+    "presets": [
+      "shadcn"
+    ],
+    "--preset codes": [
+      "shadcn"
+    ],
+    "or any project with a components.json file. Also triggers for \"shadcn init": [
+      "shadcn"
+    ],
+    "create an app with --preset": [
+      "shadcn"
+    ],
+    "or \"switch to --preset\".": [
+      "shadcn"
+    ],
+    "description: \"C盘深度清理分析技能：分析软件安装与缓存占用，识别可清理项（Windows 临时文件、用户/浏览器/应用/开发工具缓存），生成可视化 HTML 报告并执行安全清理（预览优先 + 前后对比）。触发词：C盘清理、磁盘清理、清理C盘、分析C盘空间、temp清理、缓存清理、释放C盘空间、清理垃圾文件、C盘不够用。\"": [
+      "sq-cleanmgr-c"
+    ],
+    "description_zh: C盘深度清理分析技能。自动分析C盘软件安装和缓存占用，识别可清理项目（Windows临时文件、用户缓存、浏览器缓存、应用缓存、开发工具缓存等），生成可视化HTML报告，并执行安全清理操作。触发词：C盘清理、磁盘清理、清理C盘、分析C盘空间、temp清理、缓存清理、释放C盘空间、清理垃圾文件、C盘不够用。": [
+      "sq-cleanmgr-c"
+    ],
+    "分析软件安装与缓存占用": [
+      "sq-cleanmgr-c"
+    ],
+    "识别可清理项（Windows 临时文件": [
+      "sq-cleanmgr-c"
+    ],
+    "用户": [
+      "sq-cleanmgr-c"
+    ],
+    "浏览器": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "sq-cleanmgr-c",
+      "static-site-batch-audit-fix"
+    ],
+    "应用": [
+      "sq-cleanmgr-c"
+    ],
+    "开发工具缓存）": [
+      "sq-cleanmgr-c"
+    ],
+    "生成可视化 HTML 报告并执行安全清理（预览优先 + 前后对比）。触发词": [
+      "sq-cleanmgr-c"
+    ],
+    "磁盘清理": [
+      "sq-cleanmgr-c"
+    ],
+    "清理C盘": [
+      "sq-cleanmgr-c"
+    ],
+    "分析C盘空间": [
+      "sq-cleanmgr-c"
+    ],
+    "temp清理": [
+      "sq-cleanmgr-c"
+    ],
+    "缓存清理": [
+      "sq-cleanmgr-c"
+    ],
+    "释放C盘空间": [
+      "sq-cleanmgr-c"
+    ],
+    "清理垃圾文件": [
+      "sq-cleanmgr-c"
+    ],
+    "C盘不够用。": [
+      "sq-cleanmgr-c"
+    ],
+    "description: \"SQLAlchemy 全局租户守卫（with_loader_criteria + do_orm_execute 行级过滤）的三个缓存/边界坑与排查法：闭包键丢失致跨租户绑定冻结、None 未武装态被固化致登录后漏防、身份表进守卫名单致 strict 态自锁。Use when 用 SQLAlchemy 做多租户/行级安全/全局查询拦截，或排查『换租户数据串号、user_loader 恒 None、登录后 302、隔离时好时坏』。触发词：with_loader_criteria、do_orm_execute、租户拦截器、行级隔离、lambda 缓存、scope 固化、ORM 全局过滤器、tenant guard。\"": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "闭包键丢失致跨租户绑定冻结": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "None 未武装态被固化致登录后漏防": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "身份表进守卫名单致 strict 态自锁。Use when 用 SQLAlchemy 做多租户": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "行级安全": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "全局查询拦截": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "或排查『换租户数据串号": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "user_loader 恒 None": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "登录后 302": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "隔离时好时坏』。触发词": [
+      "sqlalchemy-loader-criteria-pitfalls"
+    ],
+    "description: 纯静态HTML站点批量审计+修复+验证流水线。当需要对多文件HTML/CSS/JS站点做全站扫描、批量文本替换、一致性修复（品牌名/lang/ARIA/favicon/meta）、开源项目对标后的缺陷清单执行、暗色模式与适老化字号改造、并用浏览器复验计算样式时使用。触发词：静态站点审计、批量修复HTML、全站替换、static site audit、batch fix、HTML批量修复、多页面修复、站点一致性修复、全站扫描、多页站改文案、i18n双语字典改键、生成产物漂移、暗色模式对比度、长者字号、审计结论复核。": [
+      "static-site-batch-audit-fix"
+    ],
+    "静态站点审计": [
+      "static-site-batch-audit-fix"
+    ],
+    "批量修复HTML": [
+      "static-site-batch-audit-fix"
+    ],
+    "全站替换": [
+      "static-site-batch-audit-fix"
+    ],
+    "static site audit": [
+      "static-site-batch-audit-fix"
+    ],
+    "batch fix": [
+      "static-site-batch-audit-fix"
+    ],
+    "HTML批量修复": [
+      "static-site-batch-audit-fix"
+    ],
+    "多页面修复": [
+      "static-site-batch-audit-fix"
+    ],
+    "站点一致性修复": [
+      "static-site-batch-audit-fix"
+    ],
+    "全站扫描": [
+      "static-site-batch-audit-fix"
+    ],
+    "多页站改文案": [
+      "static-site-batch-audit-fix"
+    ],
+    "i18n双语字典改键": [
+      "static-site-batch-audit-fix"
+    ],
+    "生成产物漂移": [
+      "static-site-batch-audit-fix"
+    ],
+    "暗色模式对比度": [
+      "static-site-batch-audit-fix"
+    ],
+    "长者字号": [
+      "static-site-batch-audit-fix"
+    ],
+    "审计结论复核。": [
+      "static-site-batch-audit-fix"
+    ],
+    "description: \"网络小说工具箱主入口。根据用户需求自动路由到对应 skill，并可启动本地 Dashboard 查看拆文库、写作项目和编辑文本。触发方式：/story、$story、/story dashboard、$story dashboard、/网文、「我想写小说」「打开工作台」「检查更新」。\"": [
+      "story"
+    ],
+    "description: \"小说封面生成。根据书名、作者名自动分析题材风格，调用 GPT-Image-2 直接生成含标题和署名的专业级网文封面。触发方式：/story-cover、/封面、「帮我做个封面」「生成封面图」「做个小说封面」「封面设计」。\"": [
+      "story-cover"
+    ],
+    "description: \"网文去AI味。检测并清除文本中的AI写作痕迹，让文字回归自然、非模板化。触发方式：/story-deslop、/去AI味、「去AI味」「这篇太AI了」「网文去AI味」。\"": [
+      "story-deslop"
+    ],
+    "description: \"逆向导入已有小说。将已写好的小说（半成品或完本）反向解析为标准项目目录结构，兼容 story-long-write / story-short-write 后续写作流程；内部复用 story-long-analyze / story-short-analyze 的拆解管道，按篇幅自动分流。触发方式：/story-import、「导入小说」「反向解析」「导入」「把我的书导进来」。\"": [
+      "story-import"
+    ],
+    "description: \"长篇网文拆文。深度拆解爆款长篇小说的黄金三章、人设架构、爽点设计、节奏控制。单一深度拆解管道：跑完黄金三章（Stage 1）后产出快速预览报告并询问是否继续全量拆解，确认后从 Stage 2 续跑逐章摘要、聚合分析、设定关系、汇总报告，全程产物落盘 拆文库/{书名}/。触发方式：/story-long-analyze、/长篇拆文、「帮我拆这本书」「拆这本书」「分析黄金三章」「深度拆解」「完整拆解」「系统拆解」或提供小说文本文件路径——全部进入同一管道。\"": [
+      "story-long-analyze"
+    ],
+    "description: \"长篇网文写作。从大纲到正文，辅助长篇网络小说的创作，包括世界观、人物、情节线管理。触发方式：/story-long-write、/写长篇、「帮我开书」「写大纲」「日更」「续写」「继续写」「修改第X章」「回炉」「重写第X章」。\"": [
+      "story-long-write"
+    ],
+    "description: \"多视角对抗式审查。full/lean 模式在已部署 reviewer agents 时并行 spawn；缺失/异常 agents 或 spawn 失败时自动降级 solo，参考文件不可读时使用内置 rubric fallback。触发方式：/story-review、/审查、「审查一下」「帮我审一下」。\"": [
+      "story-review"
+    ],
+    "description: \"长篇/短篇网文扫榜统一入口。长篇：起点/番茄/七猫/晋江/刺猬猫；短篇：知乎盐言/点众/黑岩/七猫短篇。触发：/story-scan、/扫榜、「长篇什么火」「短篇什么火」「起点排行」「知乎故事排行」「短篇扫榜」。\"": [
+      "story-scan"
+    ],
+    "description: \"网文写作工具集基础设施部署。为 Claude Code / OpenCode / Codex / ZCode / OpenClaw / Reasonix 提供内置适配；Web AI / 通用 Agent 可走 skills + AGENTS.md 文件模式。触发方式：/story-setup、$story-setup、「准备写书」「帮我搭一下环境」「配置写作项目」。\"": [
+      "story-setup"
+    ],
+    "description: \"短篇网文拆文。拆解爆款短篇小说（番茄短篇 / 故事会 / 知乎盐选 / 追妻 / 世情 / 重生 / 虐渣等通俗题材）的故事核、结构、情感线、反转设计、写作手法、共鸣层次。单一全量拆解管道：跑完 Stage 2-6 产出完整拆文报告，落盘到 拆文库/{书名}/，下游 story-short-write 同时读拆文报告 + 情节节点 + 写作手法 + 原文 + _meta.json 写下一篇。触发方式：/story-short-analyze、/短篇拆文、「拆短篇」「拆这篇短文」「短篇拆文」「精细拆解短篇」「8000 字短篇拆解」「番茄短篇拆文」「故事会拆解」「盐言故事拆解」「分析这篇短篇」——均进入同一管道。\"": [
+      "story-short-analyze"
+    ],
+    "description: \"短篇网文写作。辅助短篇小说创作，从构思到成稿，聚焦情绪拉扯与节奏把控。触发方式：/story-short-write、/写短篇、「帮我写一篇短篇」「写个盐言故事」。\"": [
+      "story-short-write"
+    ],
+    "description: 编排多步骤分离任务为持久TaskFlow作业。多步骤任务编排引擎。适用：需要把多步骤任务拆分为可跟踪、可恢复的持久作业并跨会话推进时使用；触发词：taskflow、任务编排、持久作业、多步骤任务": [
+      "taskflow"
+    ],
+    "需要把多步骤任务拆分为可跟踪": [
+      "taskflow"
+    ],
+    "可恢复的持久作业并跨会话推进时使用；触发词": [
+      "taskflow"
+    ],
+    "description: 视频分镜拆解技能——把视频文件或 URL 拆成分镜（镜头）序列，产出 breakdown.json（时长/分辨率/分镜边界/关键帧/音频电平）。是 hook-analyzer-skill（前三秒钩子提取）与 report-generator-skill（分析报告生成）的共同上游。运行脚本 `python scripts/process_video.py \"<video_path_or_url>\" --json-out breakdown.json`。触发词：分镜拆解、拆镜头、视频拆解、镜头切分、关键帧提取、video breakdown、shot detection、scene detection、视频分析前置、process_video。": [
+      "video-breakdown-skill"
+    ],
+    "分镜拆解": [
+      "video-breakdown-skill"
+    ],
+    "拆镜头": [
+      "video-breakdown-skill"
+    ],
+    "视频拆解": [
+      "video-breakdown-skill"
+    ],
+    "镜头切分": [
+      "video-breakdown-skill"
+    ],
+    "关键帧提取": [
+      "video-breakdown-skill"
+    ],
+    "video breakdown": [
+      "video-breakdown-skill"
+    ],
+    "shot detection": [
+      "video-breakdown-skill"
+    ],
+    "scene detection": [
+      "video-breakdown-skill"
+    ],
+    "视频分析前置": [
+      "video-breakdown-skill"
+    ],
+    "process_video。": [
+      "video-breakdown-skill"
+    ],
+    "description: 副总视角审计——预判每个agent的行为模式，而不只是读它的配置文件。通过三层递进模型（信息层→决策层→行为层），构建每个agent的心智模型，预测它收到指令后的完整行为链：会怎么理解、怎么决策、怎么行动、在哪犯错。不是调度员视角（检查流程对不对），是管理者视角（预判每个员工的行为模式）。适用范围仅限于\"需预判 agent 行为链\"的诊断场景（见下方「何时不用本 skill」）。触发词：副总视角、员工思维、VP perspective、站在XX的视角、预判agent行为、用它的眼睛看、工位审计、agent视角审计、行为模式预测、心智模型。": [
+      "vp-perspective-audit"
+    ],
+    "会怎么理解": [
+      "vp-perspective-audit"
+    ],
+    "怎么决策": [
+      "vp-perspective-audit"
+    ],
+    "怎么行动": [
+      "vp-perspective-audit"
+    ],
+    "在哪犯错。不是调度员视角（检查流程对不对）": [
+      "vp-perspective-audit"
+    ],
+    "是管理者视角（预判每个员工的行为模式）。适用范围仅限于\"需预判 agent 行为链\"的诊断场景（见下方「何时不用本 skill」）。触发词": [
+      "vp-perspective-audit"
+    ],
+    "description: WorkBuddy Bash 环境下 git commit 触发 pre-commit hook 链必失败的根因诊断与修复配方。典型症状为 FatalError: git failed. Is it installed...，pre-commit 日志内 Executable `git` not found。当在 WB Bash 提交带 pre-commit 钩子的仓库失败、或 hook 链内子进程报 Executable not found 时使用；提供 PATHEXT 注入 + 极简 POSIX PATH 的完整命令序列（逐条注明作用）与验证方法。": [
+      "wb-git-commit-recipe"
+    ],
+    "description: \"Windows bash (Git Bash/MSYS2) 调用外部 CLI 或现代构建工具时的语法兼容坑合集。覆盖：bash extglob 吞 PowerShell $_ 变量、Vite 8 Rolldown 拒绝对象式 manualChunks 等。触发词：$_ 被吞、extglob、PowerShell 内联失败、manualChunks 报错、Rolldown、Vite 8 build 失败、bash 调 PowerShell、临时 ps1、manualChunks must be a function。\"": [
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "bash extglob 吞 PowerShell $_ 变量": [
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "Vite 8 Rolldown 拒绝对象式 manualChunks 等。触发词": [
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "触发词：预检、preflight、模拟一遍、执行前检查、链路验证、pipeline预检、": [
+      "workflow-preflight-check"
+    ],
+    "预检": [
+      "9b-lightworkflow",
+      "A-project-handoff",
+      "dingtalk-shared",
+      "dogfood",
+      "hook-analyzer-skill",
+      "office-automation-pro",
+      "pixelle-api-ensure",
+      "taskflow",
+      "taskflow-inbox-triage",
+      "vp-perspective-audit",
+      "wechat-automation",
+      "workflow-preflight-check"
+    ],
+    "preflight": [
+      "workflow-preflight-check"
+    ],
+    "模拟一遍": [
+      "workflow-preflight-check"
+    ],
+    "执行前检查": [
+      "workflow-preflight-check"
+    ],
+    "链路验证": [
+      "workflow-preflight-check"
+    ],
+    "pipeline预检": [
+      "workflow-preflight-check"
+    ],
+    "description: \"Excel表格(.xlsx/.xlsm/.csv)读写/编辑/修复。Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \\\"the xlsx in my downloads\\\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.\"": [
+      "xlsx"
+    ],
+    "description_zh: \"当电子表格文件是主要输入或输出时使用此技能。包括：打开、读取、编辑或修复现有的 .xlsx、.xlsm、.csv 或 .tsv 文件（如添加列、计算公式、格式化、图表、清洗数据）；从零或其他数据源创建新电子表格；在表格文件格式之间转换。当用户提及电子表格文件名或路径时触发——即使是随意提及（如\\\"下载文件夹里的 xlsx\\\"）——并希望对其进行操作或生成电子表格。也适用于将混乱的表格数据文件（格式错误的行、错位的表头、垃圾数据）清理重组为规范的电子表格。交付物必须是电子表格文件。当主要交付物是 Word 文档、HTML 报告、独立 Python 脚本、数据库管道或 Google Sheets API 集成时，即使涉及表格数据也不要触发。\"": [
+      "xlsx"
+    ],
+    "系统": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "skill管理": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "openclaw": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "跨平台同步": [
+      "A-project-better",
+      "A-skill-manager",
+      "_my-skills",
+      "cloudbase__skillhub",
+      "computer-use-guidance-windows",
+      "cross-platform-agent-sync",
+      "dingtalk-misc",
+      "discover-agent-cli",
+      "hermes-installer",
+      "internal-comms",
+      "oc-dispatch-exec-guard",
+      "openclaw-dual-gate-quality-audit",
+      "openclaw-fenjue-weekly",
+      "openclaw-task-supervision",
+      "prompt-consolidation",
+      "prompt-system-audit",
+      "wps-knowledgebase"
+    ],
+    "本地计算": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "NPU": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "TTS": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "ASR": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "OCR": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "语音": [
+      "dingtalk-drive",
+      "dingtalk-minutes",
+      "local-asr",
+      "local-computer-use",
+      "local-img2img",
+      "local-mineru",
+      "local-ocr-npu",
+      "local-realtime-translator",
+      "local-screenshot-qa",
+      "local-tts",
+      "local-txt2img",
+      "local-vram",
+      "windows-cli-utf8-wrapper",
+      "windows-gitbash-chinese-path-pit",
+      "windows-native-ocr"
+    ],
+    "代码": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "调试": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "bug修复": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "Python": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "Node.js": [
+      "A-java-problem",
+      "c-cleanup",
+      "code-review",
+      "coding-agent",
+      "debugging-fixing",
+      "node-inspect-debugger",
+      "obsidian-cli",
+      "python-debugpy",
+      "refactoring",
+      "shell-encoding-pitfalls",
+      "sq-cleanmgr-c",
+      "test-driven-development",
+      "testing",
+      "utf8-encoding-fix",
+      "wb-git-commit-recipe",
+      "win-toolchain-pitfalls",
+      "windows-bash-cli-interop-pitfalls"
+    ],
+    "自动化": [
+      "9b-lightworkflow",
+      "A-project-handoff",
+      "dingtalk-shared",
+      "dogfood",
+      "hook-analyzer-skill",
+      "office-automation-pro",
+      "pixelle-api-ensure",
+      "taskflow",
+      "taskflow-inbox-triage",
+      "vp-perspective-audit",
+      "wechat-automation",
+      "workflow-preflight-check"
+    ],
+    "微信": [
+      "9b-lightworkflow",
+      "A-project-handoff",
+      "dingtalk-shared",
+      "dogfood",
+      "hook-analyzer-skill",
+      "office-automation-pro",
+      "pixelle-api-ensure",
+      "taskflow",
+      "taskflow-inbox-triage",
+      "vp-perspective-audit",
+      "wechat-automation",
+      "workflow-preflight-check"
+    ],
+    "工作流": [
+      "9b-lightworkflow",
+      "A-project-handoff",
+      "dingtalk-shared",
+      "dogfood",
+      "hook-analyzer-skill",
+      "office-automation-pro",
+      "pixelle-api-ensure",
+      "taskflow",
+      "taskflow-inbox-triage",
+      "vp-perspective-audit",
+      "wechat-automation",
+      "workflow-preflight-check"
+    ],
+    "agent编排": [
+      "9b-lightworkflow",
+      "A-project-handoff",
+      "dingtalk-shared",
+      "dogfood",
+      "hook-analyzer-skill",
+      "office-automation-pro",
+      "pixelle-api-ensure",
+      "taskflow",
+      "taskflow-inbox-triage",
+      "vp-perspective-audit",
+      "wechat-automation",
+      "workflow-preflight-check"
+    ],
+    "设计": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "UI": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "前端": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "SVG": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "shadcn": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "落地页": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "图标": [
+      "algorithmic-art",
+      "brainstorming",
+      "brand-guidelines",
+      "canvas-design",
+      "chart-visualization",
+      "diagram-maker",
+      "frontend-skill",
+      "ican-frontend-design-system",
+      "shadcn",
+      "ui-ux-pro-max",
+      "web-design-guidelines",
+      "writing-plans"
+    ],
+    "经验反哺": [
+      "A-get-memory",
+      "A-memory-start",
+      "bigfile-split",
+      "fenjue-lessons-hitrate",
+      "fenjue-memory-audit"
+    ],
+    "任务复盘": [
+      "A-get-memory",
+      "A-memory-start",
+      "bigfile-split",
+      "fenjue-lessons-hitrate",
+      "fenjue-memory-audit"
+    ],
+    "自我认知": [
+      "A-get-memory",
+      "A-memory-start",
+      "bigfile-split",
+      "fenjue-lessons-hitrate",
+      "fenjue-memory-audit"
+    ],
+    "大文件拆分": [
+      "A-get-memory",
+      "A-memory-start",
+      "bigfile-split",
+      "fenjue-lessons-hitrate",
+      "fenjue-memory-audit"
+    ],
+    "音频": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "ffmpeg": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "字幕": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "whisper": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "视频生成": [
+      "ai-video-homework-pipeline",
+      "audio-deliverable-pipeline",
+      "byted-mediakit-shared",
+      "byted-seedance-video-generate",
+      "byted-seedream-image-generate",
+      "dingtalk-calendar",
+      "openai-whisper-api",
+      "video-breakdown-skill",
+      "video-frames",
+      "video-whisper-transcribe",
+      "wechat-voice-transcription"
+    ],
+    "Web开发": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "GitHub": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "GSAP": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "gstack": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "截图": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "插件": [
+      "agent-browser",
+      "browser-cdp",
+      "byted-bp-cdn-pagesdeploy",
+      "chaoshi-admin-inline-edit",
+      "chaoshi-image-optimization",
+      "chaoshi-web-deploy",
+      "electron",
+      "frontend-design",
+      "github",
+      "gsap",
+      "gstack",
+      "ican-deploy",
+      "screenshot",
+      "static-site-batch-audit-fix"
+    ],
+    "数据": [
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "Excel": [
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "可视化": [
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "xlsx": [
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "数据分析": [
+      "cloudbase-db-optimize",
+      "data-analysis",
+      "data-visualization",
+      "dingtalk-aitable",
+      "sqlalchemy-loader-criteria-pitfalls",
+      "xlsx"
+    ],
+    "研究": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "搜索": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "天眼查": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "深度研究": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "网页提取": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "会议": [
+      "consulting-analysis",
+      "defuddle",
+      "dingtalk-aisearch",
+      "dingtalk-chat",
+      "dingtalk-contact",
+      "dingtalk-mail",
+      "dingtalk-wiki",
+      "meeting-intelligence",
+      "oracle",
+      "research-documentation",
+      "spike",
+      "天眼一下"
+    ],
+    "文档": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "Obsidian": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "Word": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "PDF": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "演示文稿": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "项目交接": [
+      "dingtalk-doc",
+      "doc-coauthoring",
+      "docx",
+      "html-to-docx-win-fix",
+      "json-canvas",
+      "knowledge-capture",
+      "nano-pdf",
+      "notion-cli",
+      "obsidian-bases",
+      "obsidian-markdown",
+      "pdf",
+      "pptx",
+      "report-generator-skill",
+      "slides",
+      "spec-to-implementation"
+    ],
+    "创意": [
+      "A-prompt-better",
+      "frontend-slides",
+      "html-ppt",
+      "hyperframes",
+      "hyperframes-cli",
+      "hyperframes-media",
+      "hyperframes-registry",
+      "story",
+      "story-cover",
+      "story-deslop",
+      "story-import",
+      "story-long-analyze",
+      "story-long-write",
+      "story-review",
+      "story-setup",
+      "story-short-analyze",
+      "story-short-write"
+    ],
+    "动画": [
+      "A-prompt-better",
+      "frontend-slides",
+      "html-ppt",
+      "hyperframes",
+      "hyperframes-cli",
+      "hyperframes-media",
+      "hyperframes-registry",
+      "story",
+      "story-cover",
+      "story-deslop",
+      "story-import",
+      "story-long-analyze",
+      "story-long-write",
+      "story-review",
+      "story-setup",
+      "story-short-analyze",
+      "story-short-write"
+    ],
+    "hyperframes": [
+      "A-prompt-better",
+      "frontend-slides",
+      "html-ppt",
+      "hyperframes",
+      "hyperframes-cli",
+      "hyperframes-media",
+      "hyperframes-registry",
+      "story",
+      "story-cover",
+      "story-deslop",
+      "story-import",
+      "story-long-analyze",
+      "story-long-write",
+      "story-review",
+      "story-setup",
+      "story-short-analyze",
+      "story-short-write"
+    ],
+    "提示词优化": [
+      "A-prompt-better",
+      "frontend-slides",
+      "html-ppt",
+      "hyperframes",
+      "hyperframes-cli",
+      "hyperframes-media",
+      "hyperframes-registry",
+      "story",
+      "story-cover",
+      "story-deslop",
+      "story-import",
+      "story-long-analyze",
+      "story-long-write",
+      "story-review",
+      "story-setup",
+      "story-short-analyze",
+      "story-short-write"
+    ],
+    "通用工具": [
+      "A-ask-questions",
+      "audit-runner-safe-aggregate",
+      "dingtalk-event",
+      "dingtalk-todo",
+      "elon-musk-perspective",
+      "executing-plans",
+      "figma",
+      "find-skills",
+      "first-principles-decomposer",
+      "mcporter",
+      "rag-eval",
+      "story-scan",
+      "theme-factory",
+      "workbuddy-mcp"
+    ],
+    "计划": [
+      "A-ask-questions",
+      "audit-runner-safe-aggregate",
+      "dingtalk-event",
+      "dingtalk-todo",
+      "elon-musk-perspective",
+      "executing-plans",
+      "figma",
+      "find-skills",
+      "first-principles-decomposer",
+      "mcporter",
+      "rag-eval",
+      "story-scan",
+      "theme-factory",
+      "workbuddy-mcp"
+    ],
+    "头脑风暴": [
+      "A-ask-questions",
+      "audit-runner-safe-aggregate",
+      "dingtalk-event",
+      "dingtalk-todo",
+      "elon-musk-perspective",
+      "executing-plans",
+      "figma",
+      "find-skills",
+      "first-principles-decomposer",
+      "mcporter",
+      "rag-eval",
+      "story-scan",
+      "theme-factory",
+      "workbuddy-mcp"
+    ],
+    "MCP": [
+      "A-ask-questions",
+      "audit-runner-safe-aggregate",
+      "dingtalk-event",
+      "dingtalk-todo",
+      "elon-musk-perspective",
+      "executing-plans",
+      "figma",
+      "find-skills",
+      "first-principles-decomposer",
+      "mcporter",
+      "rag-eval",
+      "story-scan",
+      "theme-factory",
+      "workbuddy-mcp"
+    ]
+  }
+}

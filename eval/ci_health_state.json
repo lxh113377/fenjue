@@ -1,0 +1,25 @@
+{
+ "checked_at": "2026-09-25T21:18:36",
+ "jobs": 11,
+ "reason": "账单/支出上限被卡（账号设置页处理，Agent 不代办）",
+ "receipts": {
+  "by_slug": {},
+  "have": 0,
+  "pending": [
+   "adversarial",
+   "attribution",
+   "historical",
+   "negative",
+   "portability-diff"
+  ],
+  "want": 5
+ },
+ "run": {
+  "conclusion": "failure",
+  "created_at": "2026-09-25T13:15:21Z",
+  "display_title": "docs(release): 轮十八追加轮第二班 D-122~124 落发布面与报告第八节（含接线率虚高的撤回与读法提示）",
+  "head_sha": "ce289aefd944344e99244ae4abe2d2191b642d1e",
+  "id": 36139802877
+ },
+ "verdict": "BILLING"
+}

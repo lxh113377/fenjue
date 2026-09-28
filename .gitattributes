@@ -1,0 +1,13 @@
+# R162: 统一行尾 LF（消除 autocrlf=true 的转换警告与 diff 噪声）
+* text=auto eol=lf
+
+# 二进制派生文件（明确声明，防被当文本处理）
+*.npy binary
+*.npz binary
+*.pkl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

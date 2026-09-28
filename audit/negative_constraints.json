@@ -1,0 +1,266 @@
+{
+  "computer-use-guidance-windows": {
+    "current_desc": "\"Operation guidance for automating the Windows desktop via Computer Use: open ap",
+    "negative": "不要用于安装skill、创建skill、安全审计——这是Windows桌面自动化操作指南",
+    "positive": "Windows桌面自动化：打开应用/点击/截图/文件操作",
+    "full_desc": "Windows桌面自动化：打开应用/点击/截图/文件操作。不要用于安装skill、创建skill、安全审计——这是Windows桌面自动化操作指南"
+  },
+  "oc-dispatch-exec-guard": {
+    "current_desc": "用 openclaw CLI 派发任务时，防止 agent 把\"规程/架构类提示词\"误读为待 review 文档而秒停 0 产出的执行护栏。派发 OC 任务前必",
+    "negative": "不要用于OpenClaw每周维护任务调度——那是openclaw-fenjue-weekly的活",
+    "positive": "用openclaw CLI派发任务时防止agent秒停的执行护栏",
+    "full_desc": "用openclaw CLI派发任务时防止agent秒停的执行护栏。不要用于OpenClaw每周维护任务调度——那是openclaw-fenjue-weekly的活"
+  },
+  "openclaw-fenjue-weekly": {
+    "current_desc": "每周控制 OpenClaw 执行焚诀项目 3 个维护任务（skill 互通审计、skill tree 百维度评分、全局记忆优化）的完整监督工作流。当用户提到「焚",
+    "negative": "不要用于单个任务的OC派发护栏——那是oc-dispatch-exec-guard的活",
+    "positive": "每周控制OpenClaw执行焚诀项目3个维护任务的监督工作流",
+    "full_desc": "每周控制OpenClaw执行焚诀项目3个维护任务的监督工作流。不要用于单个任务的OC派发护栏——那是oc-dispatch-exec-guard的活"
+  },
+  "python-debugpy": {
+    "current_desc": "Debug Python with pdb, breakpoint(), post-mortem inspection, and debugpy remote ",
+    "negative": "不要用于Node.js调试、TDD流程、编码修复——那是node-inspect-debugger/test-driven-development/utf8-encoding-fix的活",
+    "positive": "Python专用调试：pdb/breakpoint/debugpy远程调试",
+    "full_desc": "Python专用调试：pdb/breakpoint/debugpy远程调试。不要用于Node.js调试、TDD流程、编码修复——那是node-inspect-debugger/test-driven-development/utf8-encoding-fix的活"
+  },
+  "node-inspect-debugger": {
+    "current_desc": "Debug Node.js with node inspect, --inspect, breakpoints, CDP, heap, and CPU prof",
+    "negative": "不要用于Python调试、TDD、编码修复——那是python-debugpy/test-driven-development/utf8-encoding-fix的活",
+    "positive": "Node.js专用调试：inspect/--inspect/CDP/heap分析",
+    "full_desc": "Node.js专用调试：inspect/--inspect/CDP/heap分析。不要用于Python调试、TDD、编码修复——那是python-debugpy/test-driven-development/utf8-encoding-fix的活"
+  },
+  "test-driven-development": {
+    "current_desc": "TDD测试驱动开发:先写测试再写实现。Use when implementing any feature or bugfix, before writing i",
+    "negative": "不要用于纯粹调试bug、编码修复——那是debugging-fixing/utf8-encoding-fix的活。TDD是写测试先于实现",
+    "positive": "TDD流程：先写测试→再写实现→重构",
+    "full_desc": "TDD流程：先写测试→再写实现→重构。不要用于纯粹调试bug、编码修复——那是debugging-fixing/utf8-encoding-fix的活。TDD是写测试先于实现"
+  },
+  "shell-encoding-pitfalls": {
+    "current_desc": "中文乱码/编码坑修复(curl Bash sed CRLF UTF-8)。Use when running curl/Bash with Chinese tex",
+    "negative": "不要用于Python/Node调试——这是Shell/Bash中文编码修复专用",
+    "positive": "curl/Bash/sed中文乱码+CRLF+UTF-8编码修复",
+    "full_desc": "curl/Bash/sed中文乱码+CRLF+UTF-8编码修复。不要用于Python/Node调试——这是Shell/Bash中文编码修复专用"
+  },
+  "algorithmic-art": {
+    "current_desc": "Creating algorithmic art using p5.js with seeded randomness and interactive para",
+    "negative": "不要用于一般UI设计/前端页面/品牌规范/SVG图表——那是frontend-skill/diagram-maker/ui-ux-pro-max的活",
+    "positive": "用p5.js创作算法艺术、生成艺术（代码生成视觉）",
+    "full_desc": "用p5.js创作算法艺术、生成艺术（代码生成视觉）。不要用于一般UI设计/前端页面/品牌规范/SVG图表——那是frontend-skill/diagram-maker/ui-ux-pro-max的活"
+  },
+  "brand-guidelines": {
+    "current_desc": "Applies Anthropic's official brand colors and typography to any sort of artifact",
+    "negative": "不要用于一般UI设计/前端页面/SVG图表——这是Anthropic品牌规范专用",
+    "positive": "应用Anthropic官方品牌色和字体到任意产出物",
+    "full_desc": "应用Anthropic官方品牌色和字体到任意产出物。不要用于一般UI设计/前端页面/SVG图表——这是Anthropic品牌规范专用"
+  },
+  "diagram-maker": {
+    "current_desc": "Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, and wh",
+    "negative": "不要用于前端页面设计/品牌规范/算法艺术——那是frontend-skill/brand-guidelines/algorithmic-art的活",
+    "positive": "创建SVG/HTML/Excalidraw架构图/流程图/概念图",
+    "full_desc": "创建SVG/HTML/Excalidraw架构图/流程图/概念图。不要用于前端页面设计/品牌规范/算法艺术——那是frontend-skill/brand-guidelines/algorithmic-art的活"
+  },
+  "frontend-skill": {
+    "current_desc": "落地页/网站/原型/游戏UI高颜值前端设计实现。Use when the task asks for a visually strong landing pag",
+    "negative": "不要用于品牌规范/SVG图表/算法艺术——那是brand-guidelines/diagram-maker/algorithmic-art的活",
+    "positive": "落地页/网站/游戏UI的全栈前端实现",
+    "full_desc": "落地页/网站/游戏UI的全栈前端实现。不要用于品牌规范/SVG图表/算法艺术——那是brand-guidelines/diagram-maker/algorithmic-art的活"
+  },
+  "theme-factory": {
+    "current_desc": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs,",
+    "negative": "不要用于从零设计UI/画图表——那是frontend-skill/diagram-maker/ui-ux-pro-max的活",
+    "positive": "为已有产出物（slides/docs/reports）套主题样式",
+    "full_desc": "为已有产出物（slides/docs/reports）套主题样式。不要用于从零设计UI/画图表——那是frontend-skill/diagram-maker/ui-ux-pro-max的活"
+  },
+  "ui-ux-pro-max": {
+    "current_desc": "UI/UX design intelligence and implementation guidance for building polished inte",
+    "negative": "不要用于画架构图/算法艺术/品牌规范——那是diagram-maker/algorithmic-art/brand-guidelines的活",
+    "positive": "UI/UX设计智能：实施指导+打磨交互",
+    "full_desc": "UI/UX设计智能：实施指导+打磨交互。不要用于画架构图/算法艺术/品牌规范——那是diagram-maker/algorithmic-art/brand-guidelines的活"
+  },
+  "doc-coauthoring": {
+    "current_desc": "Guide users through a structured workflow for co-authoring documentation. Use wh",
+    "negative": "不要用于操作PDF/Notion/Obsidian——那是pdf/nano-pdf/notion-cli/obsidian-*的活",
+    "positive": "结构化文档协作写作工作流",
+    "full_desc": "结构化文档协作写作工作流。不要用于操作PDF/Notion/Obsidian——那是pdf/nano-pdf/notion-cli/obsidian-*的活"
+  },
+  "knowledge-capture": {
+    "current_desc": "Transforms conversations and discussions into structured documentation pages in ",
+    "negative": "不要用于操作PDF/PPT/Obsidian——那是pdf/nano-pdf/pptx/obsidian-*的活",
+    "positive": "将对话/讨论转化为Notion结构化文档",
+    "full_desc": "将对话/讨论转化为Notion结构化文档。不要用于操作PDF/PPT/Obsidian——那是pdf/nano-pdf/pptx/obsidian-*的活"
+  },
+  "nano-pdf": {
+    "current_desc": "\"Edit PDFs with natural-language instructions using the nano-pdf CLI.\"",
+    "negative": "不要用于创建PPT/Notion文档/Obsidian笔记——那是pptx/knowledge-capture/obsidian-*的活",
+    "positive": "用自然语言编辑PDF（CLI工具）",
+    "full_desc": "用自然语言编辑PDF（CLI工具）。不要用于创建PPT/Notion文档/Obsidian笔记——那是pptx/knowledge-capture/obsidian-*的活"
+  },
+  "pdf": {
+    "current_desc": "PDF读取/提取文本表格/合并/拆分/旋转/水印/表单填写。Use this skill whenever the user wants to do anyth",
+    "negative": "不要用于自然语言编辑PDF、创建新文档——nano-pdf是编辑专用，pdf是读取/合并/拆分",
+    "positive": "PDF读取/提取文本表格/合并/拆分/旋转/水印/表单填写",
+    "full_desc": "PDF读取/提取文本表格/合并/拆分/旋转/水印/表单填写。不要用于自然语言编辑PDF、创建新文档——nano-pdf是编辑专用，pdf是读取/合并/拆分"
+  },
+  "pptx": {
+    "current_desc": "\"PPT演示文稿(.pptx)创建/编辑/文本提取/路演稿。Use this skill any time a .pptx file is involved i",
+    "negative": "不要用于编辑PDF/操作Notion/Obsidian——那是pdf/nano-pdf/notion-cli/obsidian-*的活",
+    "positive": "PPT演示文稿创建/编辑/文本提取",
+    "full_desc": "PPT演示文稿创建/编辑/文本提取。不要用于编辑PDF/操作Notion/Obsidian——那是pdf/nano-pdf/notion-cli/obsidian-*的活"
+  },
+  "obsidian-bases": {
+    "current_desc": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and ",
+    "negative": "不要用于Obsidian笔记写作或CLI操作——那是obsidian-markdown/obsidian-cli的活",
+    "positive": "创建/编辑Obsidian Bases（.base文件，含视图/过滤器/公式）",
+    "full_desc": "创建/编辑Obsidian Bases（.base文件，含视图/过滤器/公式）。不要用于Obsidian笔记写作或CLI操作——那是obsidian-markdown/obsidian-cli的活"
+  },
+  "obsidian-cli": {
+    "current_desc": "Interact with Obsidian vaults using the Obsidian CLI to read, create, search, an",
+    "negative": "不要用于编辑Obsidian Markdown内容或Bases——那是obsidian-markdown/obsidian-bases的活",
+    "positive": "通过CLI读写/搜索Obsidian vault",
+    "full_desc": "通过CLI读写/搜索Obsidian vault。不要用于编辑Obsidian Markdown内容或Bases——那是obsidian-markdown/obsidian-bases的活"
+  },
+  "obsidian-markdown": {
+    "current_desc": "Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, pro",
+    "negative": "不要用于CLI操作或Bases管理——那是obsidian-cli/obsidian-bases的活",
+    "positive": "创建/编辑Obsidian Flavored Markdown（wikilinks/embeds/callouts）",
+    "full_desc": "创建/编辑Obsidian Flavored Markdown（wikilinks/embeds/callouts）。不要用于CLI操作或Bases管理——那是obsidian-cli/obsidian-bases的活"
+  },
+  "notion-cli": {
+    "current_desc": ">-",
+    "negative": "不要用于文档协作写作/Knowledge Capture——那是doc-coauthoring/knowledge-capture的活",
+    "positive": "用Notion CLI操作Notion（读/写/搜索）",
+    "full_desc": "用Notion CLI操作Notion（读/写/搜索）。不要用于文档协作写作/Knowledge Capture——那是doc-coauthoring/knowledge-capture的活"
+  },
+  "slides": {
+    "current_desc": "Create and edit presentation slide decks (`.pptx`) with PptxGenJS, bundled layou",
+    "negative": "不要用于标准PPT编辑——那是pptx的活。slides是PptxGenJS驱动的编程式幻灯片",
+    "positive": "用PptxGenJS编程创建演示文稿（含布局模板）",
+    "full_desc": "用PptxGenJS编程创建演示文稿（含布局模板）。不要用于标准PPT编辑——那是pptx的活。slides是PptxGenJS驱动的编程式幻灯片"
+  },
+  "defuddle": {
+    "current_desc": "Extract clean markdown content from web pages using Defuddle CLI, removing clutt",
+    "negative": "不要用于深度研究/Notion搜索/VM问题——那是research-documentation的活",
+    "positive": "从网页提取干净markdown内容（去广告/导航/杂讯）",
+    "full_desc": "从网页提取干净markdown内容（去广告/导航/杂讯）。不要用于深度研究/Notion搜索/VM问题——那是research-documentation/vm-error-recovery的活"
+  },
+  "oracle": {
+    "current_desc": "\"Oracle CLI second-model review/debug/refactor/design with selected files, dry-r",
+    "negative": "不要用于网页提取/Notion搜索/VM诊断——那是defuddle/research-documentation的活",
+    "positive": "Oracle CLI：第二模型review/debug/refactor（双模型审查）",
+    "full_desc": "Oracle CLI：第二模型review/debug/refactor（双模型审查）。不要用于网页提取/Notion搜索/VM诊断——那是defuddle/research-documentation/vm-error-recovery的活"
+  },
+  "research-documentation": {
+    "current_desc": "Searches across your Notion workspace, synthesizes findings from multiple pages,",
+    "negative": "不要用于网页提取/深度搜索/VM诊断——那是defuddle的活",
+    "positive": "跨Notion workspace搜索+综合多页研究",
+    "full_desc": "跨Notion workspace搜索+综合多页研究。不要用于网页提取/深度搜索/VM诊断——那是defuddle/vm-error-recovery的活"
+  },
+  "meeting-intelligence": {
+    "current_desc": "Prepares meeting materials by gathering context from Notion, enriching with Clau",
+    "negative": "不要用于技术规格转任务/一般研究——那是spec-to-implementation的活",
+    "positive": "准备会议材料：收集Notion上下文→Claude丰富→生成议程",
+    "full_desc": "准备会议材料：收集Notion上下文→Claude丰富→生成议程。不要用于技术规格转任务/一般研究——那是spec-to-implementation的活"
+  },
+  "spec-to-implementation": {
+    "current_desc": "Turns product or tech specs into concrete Notion tasks that Claude code can impl",
+    "negative": "不要用于会议准备/一般研究——那是meeting-intelligence的活",
+    "positive": "将产品/技术规格转为Notion中Claude可执行的任务",
+    "full_desc": "将产品/技术规格转为Notion中Claude可执行的任务。不要用于会议准备/一般研究——那是meeting-intelligence的活"
+  },
+  "byted-mediakit-shared": {
+    "current_desc": "'1. mediakit-cli: supports a variety of operations such as audio/video processin",
+    "negative": "不要用于生成视频/图片/转录音频——那是seedance/seedream/whisper的活",
+    "positive": "mediakit-cli：音视频处理操作的瑞士军刀（非生成）",
+    "full_desc": "mediakit-cli：音视频处理操作的瑞士军刀（非生成）。不要用于生成视频/图片/转录音频——那是seedance/seedream/whisper的活"
+  },
+  "byted-seedance-video-generate": {
+    "current_desc": "Generate videos using Seedance models. Invoke when user wants to create videos f",
+    "negative": "不要用于图片生成/音频转录/mediakit操作——那是seedream/whisper/mediakit的活",
+    "positive": "用Seedance模型生成视频（文生视频/图生视频）",
+    "full_desc": "用Seedance模型生成视频（文生视频/图生视频）。不要用于图片生成/音频转录/mediakit操作——那是seedream/whisper/mediakit的活"
+  },
+  "byted-seedream-image-generate": {
+    "current_desc": "Generate high-quality images from text prompts using Volcano Engine Seedream mod",
+    "negative": "不要用于视频生成/音频转录/mediakit操作——那是seedance/whisper/mediakit的活",
+    "positive": "用Seedream模型生成高质量图片（文生图）",
+    "full_desc": "用Seedream模型生成高质量图片（文生图）。不要用于视频生成/音频转录/mediakit操作——那是seedance/whisper/mediakit的活"
+  },
+  "openai-whisper-api": {
+    "current_desc": "\"OpenAI Audio Transcriptions API via curl; gpt-4o-transcribe, mini, diarize, or ",
+    "negative": "不要用于视频抽帧/视频生成——那是video-frames/seedance/seedream的活",
+    "positive": "用OpenAI Whisper API做音频转录（云端，非本地）",
+    "full_desc": "用OpenAI Whisper API做音频转录（云端，非本地）。不要用于视频抽帧/视频生成——那是video-frames/seedance/seedream的活"
+  },
+  "video-whisper-transcribe": {
+    "current_desc": "用 ffmpeg + OpenAI Whisper 从视频提取音频并转录为文字。支持含特殊字符（中文引号等）的路径，输出 txt + json（含时间戳）。适用",
+    "negative": "不要用于纯音频转录/视频抽帧——那是openai-whisper-api/video-frames的活",
+    "positive": "从视频提取音频+Whisper转录为文字（含时间戳JSON）",
+    "full_desc": "从视频提取音频+Whisper转录为文字（含时间戳JSON）。不要用于纯音频转录/视频抽帧——那是openai-whisper-api/video-frames的活"
+  },
+  "video-frames": {
+    "current_desc": "\"Extract frames or short clips from videos using ffmpeg.\"",
+    "negative": "不要用于音频转录/视频生成——那是whisper/seedance的活",
+    "positive": "用ffmpeg从视频提取帧或短片段",
+    "full_desc": "用ffmpeg从视频提取帧或短片段。不要用于音频转录/视频生成——那是whisper/seedance的活"
+  },
+  "chaoshi-web-deploy": {
+    "current_desc": "超市web部署唯一权威源。任何 tcb hosting/fn deploy 命令执行前必须先加载本 skill 获取对应模式 checklist，禁止凭记忆裸跑",
+    "negative": "不要用于CloudBase通用项目部署。chaoshi-web-deploy是超市项目专用",
+    "positive": "超市web部署唯一权威源（tcb hosting/fn deploy专用）",
+    "full_desc": "超市web部署唯一权威源（tcb hosting/fn deploy专用）。不要用于CloudBase通用项目部署。chaoshi-web-deploy是超市项目专用"
+  },
+  "github": {
+    "current_desc": "\"Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and",
+    "negative": "不要用于搜索skill/截图/动画——那是screenshot/gsap的活",
+    "positive": "用gh CLI操作GitHub（issues/PRs/runs/releases）",
+    "full_desc": "用gh CLI操作GitHub（issues/PRs/runs/releases）。不要用于搜索skill/截图/动画——那是screenshot/gsap的活"
+  },
+  "gsap": {
+    "current_desc": "GSAP animation reference for HyperFrames. Covers gsap.to(), from(), fromTo(), ea",
+    "negative": "不要用于GitHub操作/截图/搜索skill——那是github/screenshot的活",
+    "positive": "GSAP动画：HyperFrames的动画参考（gsap.to/from/timeline）",
+    "full_desc": "GSAP动画：HyperFrames的动画参考（gsap.to/from/timeline）。不要用于GitHub操作/截图/搜索skill——那是github/screenshot的活"
+  },
+  "screenshot": {
+    "current_desc": "\"桌面截图/窗口截屏/区域截取。Use when the user explicitly asks for a desktop or system screen",
+    "negative": "不要用于GitHub操作/搜索skill/插件创建——那是github的活",
+    "positive": "桌面截图/窗口截屏/区域截取",
+    "full_desc": "桌面截图/窗口截屏/区域截取。不要用于GitHub操作/搜索skill/插件创建——那是github的活"
+  },
+  "hyperframes": {
+    "current_desc": "Create video compositions, animations, title cards, overlays, captions, voiceove",
+    "negative": "不要用于CLI脚手架/媒体预处理/注册积木——那是hyperframes-cli/hyperframes-media/hyperframes-registry的活",
+    "positive": "创建视频合成/动画/标题卡/叠加层/字幕/配音",
+    "full_desc": "创建视频合成/动画/标题卡/叠加层/字幕/配音。不要用于CLI脚手架/媒体预处理/注册积木——那是hyperframes-cli/hyperframes-media/hyperframes-registry的活"
+  },
+  "hyperframes-cli": {
+    "current_desc": "HyperFrames CLI dev loop — `npx hyperframes` for scaffolding (init), validation ",
+    "negative": "不要用于视频合成/媒体预处理/注册积木——那是hyperframes/hyperframes-media/hyperframes-registry的活",
+    "positive": "HyperFrames CLI：scaffolding(init)/validation/build",
+    "full_desc": "HyperFrames CLI：scaffolding(init)/validation/build。不要用于视频合成/媒体预处理/注册积木——那是hyperframes/hyperframes-media/hyperframes-registry的活"
+  },
+  "hyperframes-media": {
+    "current_desc": "Asset preprocessing for HyperFrames compositions — text-to-speech narration (Kok",
+    "negative": "不要用于视频合成/CLI脚手架/注册积木——那是hyperframes/hyperframes-cli/hyperframes-registry的活",
+    "positive": "HyperFrames素材预处理：TTS配音/图片优化/视频转码",
+    "full_desc": "HyperFrames素材预处理：TTS配音/图片优化/视频转码。不要用于视频合成/CLI脚手架/注册积木——那是hyperframes/hyperframes-cli/hyperframes-registry的活"
+  },
+  "hyperframes-registry": {
+    "current_desc": "Install and wire registry blocks and components into HyperFrames compositions. U",
+    "negative": "不要用于视频合成/CLI脚手架/素材预处理——那是hyperframes/hyperframes-cli/hyperframes-media的活",
+    "positive": "安装和接线HyperFrames注册积木和组件",
+    "full_desc": "安装和接线HyperFrames注册积木和组件。不要用于视频合成/CLI脚手架/素材预处理——那是hyperframes/hyperframes-cli/hyperframes-media的活"
+  },
+  "json-canvas": {
+    "current_desc": "Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and conne",
+    "negative": "不要用于HyperFrames系列操作——那些都是hyperframes-*的活",
+    "positive": "创建/编辑JSON Canvas文件（.canvas，含节点/边/分组）",
+    "full_desc": "创建/编辑JSON Canvas文件（.canvas，含节点/边/分组）。不要用于HyperFrames系列操作——那些都是hyperframes-*的活"
+  },
+  "taskflow": {
+    "current_desc": "\"Coordinate multi-step detached tasks as one durable TaskFlow job with owner con",
+    "negative": "不要用于单步简单任务——taskflow是生产级多步骤任务编排",
+    "positive": "编排多步骤分离任务为持久TaskFlow作业",
+    "full_desc": "编排多步骤分离任务为持久TaskFlow作业。不要用于单步简单任务——taskflow是生产级多步骤任务编排"
+  }
+}

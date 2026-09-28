@@ -1,0 +1,44 @@
+# P1-11（2026-09-02）：覆盖率收集配置
+# 用法（CI 已接线）：pytest --cov=eval --cov-report=xml
+# 本地（需先安装 pytest-cov）：python -m pytest eval/tests --cov=eval --cov-report=term
+[run]
+source = eval
+branch = true
+omit =
+    eval/tests/*
+    eval/_cache/*
+
+[report]
+# R208 ② fail-under 基线（2026-09-03 上调）:
+#   首跑 25 基线（31%）后经 scorecard 体系补测（shared 99%/三线 82-86%）+ 拆分，
+#   实测 33.75% → 上调至 28（= 33.75 × 0.83，预留 ~5.7pp 环境缓冲），
+#   恢复门禁对低覆盖代码的约束力（>0 即可拦截"被测模块整体失测"级回归）。
+#   再上调路径: 随核心模块补测推进（如 ewa_taint AST 引擎），每轮以新基线重定（×0.8~0.9）。
+#   R209-2③（2026-09-04）: 六模块补测 + direct_layer 守护组 → 实测 39%（34.14%+4.9pp；
+#   frozen_blind_eval 98% / direct_layer 78% / rebuild_no_bge 50% / cc_blind_recheck 44%）
+#   → 上调至 32（39×0.82，缓冲 ~7pp）。
+#   R210（2026-09-04）: 双会话互补补测——d571a06 26 例（38.5%）叠加 R210 轮 38 例
+#   （status_report/functional_dim_checks/prune_direct_map/lessons_hitrate/scorecard 编排层
+#   /direct_layer 守护）→ 实测 41.61% → 上调至 36（41.61×0.87，缓冲 ~5.6pp）。
+#   R216（2026-09-06）: R214-3 覆盖率遗留清偿——unified_router 58→99% / status_report 45→98%
+#   （+21 用例，512 全绿）→ 实测 49.76% → 上调至 43（49.76×0.87，缓冲 ~6.8pp）。
+#   对标轮十七 D-99（2026-09-25）: ① 开 `branch = true`（上游口径对齐——pallets/flask 与
+#   werkzeug 的 [tool.coverage.run] 都开分支，本仓此前只量行覆盖，判别力被系统性高估）；
+#   ② Windows 本机分支口径 53.04%（行 54.17% / 分支 50.11%），一度据此把 fail_under 抬到 46；
+#   ③ **D-103 回退到 43**：同一份 HEAD 在干净 Linux 签出（Docker `python:3.12-slim` + CI=true +
+#   真实 requirements-ci.txt）实测 composite 只有 **45.70%**（缺 7137/13584 语句，比本机多缺
+#   911 行）——因为外盘面（D: 技能盘/记忆盘/junction）在 Linux 上不可达，那些分支根本没被走。
+#   抬到 46 = runner 一恢复就把 CI 当场判红 ⇒ 门槛必须按 **CI 形状的实测值**定，不按开发机；
+#   缓冲按 45.70 计仅 2.7pp，比历史惯例（5~7pp）更薄，所以既不抬也不降（降=放松棘轮，禁）。
+#   ④ 探针实证 fail_under 真在拦：临时置 99 后 CI 同款命令 rc=1 并打印
+#   "Required test coverage of 99.0% not reached"，不是装饰性配置。
+#   D-112 复测（同日晚，本轮 78 例新测试并入后）：同一份 HEAD 在干净 Linux 签出里
+#   composite = 47.19%（"Required test coverage of 43.0% reached"）。**不再上调**：
+#   47.19×0.87 = 41.1 低于现值 43，而 43 的余量只有 4.19pp，比本文件惯例的 5~7pp 缓冲更薄——
+#   门槛的价值在于"量出来再抬"，不在"每次都抬"；Linux 面比本机面低 7pp 是结构性事实（外盘不可达），
+#   拿本机数抬门槛就是 D-103 那次差点犯错的复发路径。
+fail_under = 43
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    raise NotImplementedError

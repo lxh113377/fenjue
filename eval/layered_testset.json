@@ -1,0 +1,2076 @@
+[
+  {
+    "tier": "skills",
+    "queries": [
+      {
+        "query": "需求有点模糊，帮我先问清楚再动手",
+        "expected_skill": "A-ask-questions",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-ask-questions"
+      },
+      {
+        "query": "记忆管理经验反哺",
+        "expected_skill": "A-get-memory",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-get-memory"
+      },
+      {
+        "query": "全局记忆加载",
+        "expected_skill": "A-memory-start",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-memory-start"
+      },
+      {
+        "query": "写项目交接文档",
+        "expected_skill": "A-project-handoff",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-project-handoff"
+      },
+      {
+        "query": "优化提示词",
+        "expected_skill": "A-prompt-better",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-prompt-better"
+      },
+      {
+        "query": "浏览器自动填表单",
+        "expected_skill": "agent-browser",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "agent-browser"
+      },
+      {
+        "query": "用代码画个艺术作品",
+        "expected_skill": "algorithmic-art",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "algorithmic-art"
+      },
+      {
+        "query": "聚合多个检查脚本的 runner 老是假绿",
+        "expected_skill": "audit-runner-safe-aggregate",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "audit-runner-safe-aggregate"
+      },
+      {
+        "query": "大文件拆分",
+        "expected_skill": "bigfile-split",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "bigfile-split"
+      },
+      {
+        "query": "灵感枯竭帮我发散一波点子",
+        "expected_skill": "brainstorming",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "brainstorming"
+      },
+      {
+        "query": "帮我定一套品牌配色和字体规范",
+        "expected_skill": "brand-guidelines",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "brand-guidelines"
+      },
+      {
+        "query": "帮我一键部署静态网站到 CDN",
+        "expected_skill": "byted-bp-cdn-pagesdeploy",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "byted-bp-cdn-pagesdeploy"
+      },
+      {
+        "query": "给视频加背景音乐和动画",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "帮我把这段文案生成视频",
+        "expected_skill": "byted-seedance-video-generate",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "byted-seedance-video-generate"
+      },
+      {
+        "query": "生成一张图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "byted-seedream-image-generate"
+      },
+      {
+        "query": "清理 C 盘空间",
+        "expected_skill": "c-cleanup",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "c-cleanup"
+      },
+      {
+        "query": "帮我设计一个 logo",
+        "expected_skill": "canvas-design",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "canvas-design"
+      },
+      {
+        "query": "超市后台商品编辑，用内联编辑模式改",
+        "expected_skill": "chaoshi-admin-inline-edit",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "chaoshi-admin-inline-edit"
+      },
+      {
+        "query": "把超市商品图片批量压缩成 WebP",
+        "expected_skill": "chaoshi-image-optimization",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "chaoshi-image-optimization"
+      },
+      {
+        "query": "超市网站部署上线",
+        "expected_skill": "chaoshi-web-deploy",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "chaoshi-web-deploy"
+      },
+      {
+        "query": "用柱状图展示数据",
+        "expected_skill": "chart-visualization",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "chart-visualization"
+      },
+      {
+        "query": "帮我在技能市场搜索技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "这个项目怎么部署到 CloudStudio",
+        "expected_skill": "chaoshi-web-deploy",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "chaoshi-web-deploy"
+      },
+      {
+        "query": "写个 Python 脚本处理 CSV",
+        "expected_skill": "coding-agent",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "coding-agent"
+      },
+      {
+        "query": "帮我自动化操作 Windows 桌面",
+        "expected_skill": "computer-use-guidance-windows",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "computer-use-guidance-windows"
+      },
+      {
+        "query": "做一份市场分析报告",
+        "expected_skill": "consulting-analysis",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "consulting-analysis"
+      },
+      {
+        "query": "帮我新建一个技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "帮我配置新平台的记忆树和技能树",
+        "expected_skill": "cross-platform-agent-sync",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "cross-platform-agent-sync"
+      },
+      {
+        "query": "跨平台 skill 同步",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "分析这个 CSV 文件",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "data-analysis"
+      },
+      {
+        "query": "数据层有死链和不一致，帮我修复",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "做个交互式数据可视化仪表盘",
+        "expected_skill": "data-visualization",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "data-visualization"
+      },
+      {
+        "query": "debug 这个报错",
+        "expected_skill": "debugging-fixing",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "debugging-fixing"
+      },
+      {
+        "query": "搜索网上资料写研究报告",
+        "expected_skill": "deep-research-pro",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "deep-research-pro"
+      },
+      {
+        "query": "批量下载网页内容",
+        "expected_skill": "defuddle",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "defuddle"
+      },
+      {
+        "query": "画个流程图",
+        "expected_skill": "diagram-maker",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "diagram-maker"
+      },
+      {
+        "query": "桌面软件里藏着的命令行工具帮我挖出来",
+        "expected_skill": "discover-agent-cli",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "discover-agent-cli"
+      },
+      {
+        "query": "帮我协作写一份技术文档",
+        "expected_skill": "doc-coauthoring",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "doc-coauthoring"
+      },
+      {
+        "query": "写个 Word 文档",
+        "expected_skill": "docx",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "docx"
+      },
+      {
+        "query": "帮我系统测试一下这个本地网页应用",
+        "expected_skill": "dogfood",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "dogfood"
+      },
+      {
+        "query": "Electron 桌面应用自动化操作",
+        "expected_skill": "electron",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "electron"
+      },
+      {
+        "query": "马斯克会怎么想这个问题",
+        "expected_skill": "elon-musk-perspective",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "elon-musk-perspective"
+      },
+      {
+        "query": "检查 BGE 嵌入矩阵行数",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "把已写好的实施计划一步步落地执行完",
+        "expected_skill": "executing-plans",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "executing-plans"
+      },
+      {
+        "query": "按焚诀评分机制给三件套评个分",
+        "expected_skill": "fenjue-advisor-scoring",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "fenjue-advisor-scoring"
+      },
+      {
+        "query": "跑一轮 CC 审计闭环把分数推到达标线",
+        "expected_skill": "fenjue-cc-audit-cycle",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "fenjue-cc-audit-cycle"
+      },
+      {
+        "query": "跑一下 lessons 命中率",
+        "expected_skill": "fenjue-lessons-hitrate",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "fenjue-lessons-hitrate"
+      },
+      {
+        "query": "记忆系统运行得怎么样了，模拟执行看看效果",
+        "expected_skill": "fenjue-memory-audit",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "fenjue-memory-audit"
+      },
+      {
+        "query": "检查路由健康度",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "figma 设计稿转代码",
+        "expected_skill": "figma",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "figma"
+      },
+      {
+        "query": "帮我找找有没有相关技能",
+        "expected_skill": "find-skills",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "find-skills"
+      },
+      {
+        "query": "用第一性原理想想这个问题",
+        "expected_skill": "first-principles-decomposer",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "first-principles-decomposer"
+      },
+      {
+        "query": "帮我设计一个前端页面组件",
+        "expected_skill": "frontend-skill",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "frontend-skill"
+      },
+      {
+        "query": "帮我做一个高颜值的落地页",
+        "expected_skill": "frontend-skill",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "frontend-skill"
+      },
+      {
+        "query": "帮我做一个动画丰富的 HTML 演示文稿",
+        "expected_skill": "frontend-slides",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "frontend-slides"
+      },
+      {
+        "query": "GitHub 创建 PR",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "github"
+      },
+      {
+        "query": "gsap 做滚动触发动画",
+        "expected_skill": "gsap",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "gsap"
+      },
+      {
+        "query": "用无头浏览器跑页面测试和截图对比",
+        "expected_skill": "gstack",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "gstack"
+      },
+      {
+        "query": "帮我做一个电子杂志风格的翻页 PPT",
+        "expected_skill": "html-ppt",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "html-ppt"
+      },
+      {
+        "query": "帮我分析视频前三秒的钩子吸引力",
+        "expected_skill": "hook-analyzer-skill",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "hook-analyzer-skill"
+      },
+      {
+        "query": "帮我做一个 HTML 幻灯片",
+        "expected_skill": "html-ppt",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "html-ppt"
+      },
+      {
+        "query": "帮我用 HTML 做视频合成动画",
+        "expected_skill": "hyperframes",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "hyperframes"
+      },
+      {
+        "query": "用 hyperframes CLI 渲染我的视频合成",
+        "expected_skill": "hyperframes-cli",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "hyperframes-cli"
+      },
+      {
+        "query": "帮我给视频合成做配音和音频转写",
+        "expected_skill": "hyperframes-media",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "hyperframes-media"
+      },
+      {
+        "query": "帮我安装一个 hyperframes registry 组件",
+        "expected_skill": "hyperframes-registry",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "hyperframes-registry"
+      },
+      {
+        "query": "技能缺依赖跑不起来，帮我装运行时",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "这周给客户写个邮件催款",
+        "expected_skill": "internal-comms",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "internal-comms"
+      },
+      {
+        "query": "Obsidian 白板 canvas 文件编辑",
+        "expected_skill": "json-canvas",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "json-canvas"
+      },
+      {
+        "query": "帮我把这段对话沉淀到 Notion",
+        "expected_skill": "knowledge-capture",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "knowledge-capture"
+      },
+      {
+        "query": "本地离线语音识别不联网",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "帮我打开 Windows 设置改系统配置",
+        "expected_skill": "computer-use-guidance-windows",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "computer-use-guidance-windows"
+      },
+      {
+        "query": "帮我把这张图改成水彩风格",
+        "expected_skill": "byted-seedream-image-generate",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "byted-seedream-image-generate"
+      },
+      {
+        "query": "PDF 扫描件本地解析成结构化数据",
+        "expected_skill": "pdf",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "pdf"
+      },
+      {
+        "query": "本地 OCR 识别图片文字",
+        "expected_skill": "windows-native-ocr",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "byted-seedream-image-generate",
+        "note": "R-fix(2026-08-16): expected byted-seedream-image-generate -> windows-native-ocr（OCR 识别语义，windows-native-ocr 直连可达）"
+      },
+      {
+        "query": "实时同声翻译",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "帮我看看这张截图里写了什么",
+        "expected_skill": "windows-native-ocr",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "screenshot",
+        "note": "R-fix(2026-08-16): expected screenshot -> windows-native-ocr（OCR 识别语义，windows-native-ocr 直连可达）"
+      },
+      {
+        "query": "本地文字转语音",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "不用云端本地生成图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "byted-seedream-image-generate"
+      },
+      {
+        "query": "显存不够用了咋限制",
+        "expected_skill": "c-cleanup",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "c-cleanup"
+      },
+      {
+        "query": "MCP 服务器配置和认证管理",
+        "expected_skill": "mcporter",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "mcporter"
+      },
+      {
+        "query": "Notion 会议准备",
+        "expected_skill": "meeting-intelligence",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "meeting-intelligence"
+      },
+      {
+        "query": "多引擎搜索一下这个技术",
+        "expected_skill": "multi-search-engine",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "multi-search-engine"
+      },
+      {
+        "query": "帮我在 PDF 里改一段文字",
+        "expected_skill": "nano-pdf",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "nano-pdf"
+      },
+      {
+        "query": "Node 进程 CPU 飙高挂 inspector 排查",
+        "expected_skill": "node-inspect-debugger",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "node-inspect-debugger"
+      },
+      {
+        "query": "帮我用 Notion CLI 查询数据库",
+        "expected_skill": "notion-cli",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "notion-cli"
+      },
+      {
+        "query": "帮我在 Obsidian 里创建 Bases 视图",
+        "expected_skill": "obsidian-bases",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "obsidian-bases"
+      },
+      {
+        "query": "帮我在 Obsidian 里搜索笔记",
+        "expected_skill": "obsidian-cli",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "obsidian-cli"
+      },
+      {
+        "query": "Obsidian 笔记管理",
+        "expected_skill": "obsidian-markdown",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "obsidian-markdown"
+      },
+      {
+        "query": "派发 OC 任务时加执行护栏防秒停",
+        "expected_skill": "oc-dispatch-exec-guard",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "oc-dispatch-exec-guard"
+      },
+      {
+        "query": "用 whisper API 把音频转写成文字",
+        "expected_skill": "openai-whisper-api",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "openai-whisper-api"
+      },
+      {
+        "query": "对 OC 输出做双门禁质量审计",
+        "expected_skill": "openclaw-dual-gate-quality-audit",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "openclaw-dual-gate-quality-audit"
+      },
+      {
+        "query": "跑一轮焚诀周维护任务",
+        "expected_skill": "openclaw-fenjue-weekly",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "openclaw-fenjue-weekly"
+      },
+      {
+        "query": "OpenClaw 派活全程监工含重试验证",
+        "expected_skill": "openclaw-task-supervision",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "openclaw-task-supervision"
+      },
+      {
+        "query": "让另一个大模型交叉复核我的方案",
+        "expected_skill": "oracle",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "oracle"
+      },
+      {
+        "query": "把这个 PDF 合并一下",
+        "expected_skill": "pdf",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "pdf"
+      },
+      {
+        "query": "帮我检测并启动本地 Pixelle 视频服务",
+        "expected_skill": "pixelle-api-ensure",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "pixelle-api-ensure"
+      },
+      {
+        "query": "写个 PPT",
+        "expected_skill": "pptx",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "pptx"
+      },
+      {
+        "query": "帮我清理提示词里堆积的补丁",
+        "expected_skill": "prompt-consolidation",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "prompt-consolidation"
+      },
+      {
+        "query": "提示词系统里的矛盾规则查一遍",
+        "expected_skill": "prompt-system-audit",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "prompt-system-audit"
+      },
+      {
+        "query": "python 脚本下断点单步调试",
+        "expected_skill": "python-debugpy",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "python-debugpy"
+      },
+      {
+        "query": "代码重构",
+        "expected_skill": "refactoring",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "refactoring"
+      },
+      {
+        "query": "帮我把分镜和钩子数据生成分析报告",
+        "expected_skill": "report-generator-skill",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "report-generator-skill"
+      },
+      {
+        "query": "帮我在 Notion 里做综合调研文档",
+        "expected_skill": "research-documentation",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "research-documentation"
+      },
+      {
+        "query": "拍个屏幕截图",
+        "expected_skill": "screenshot",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "screenshot"
+      },
+      {
+        "query": "shadcn 组件安装管理",
+        "expected_skill": "shadcn",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "shadcn"
+      },
+      {
+        "query": "帮我修 Git Bash 里的中文乱码",
+        "expected_skill": "shell-encoding-pitfalls",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "shell-encoding-pitfalls"
+      },
+      {
+        "query": "帮我写个 skill",
+        "expected_skill": "skill-creator",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "skill-creator"
+      },
+      {
+        "query": "检测 skill 与权威规则冲突",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "修复 skill 注册表漂移",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "对路由命中率做全链路诊断",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "跑一轮命中率提升 pipeline",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "帮我装个 skill",
+        "expected_skill": "skill-install",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "skill-install"
+      },
+      {
+        "query": "帮我管理 skill 的安装和删除",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "两个功能重复的技能合并成一个",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "任务中途帮我重跑 skill 匹配检查",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "路由触发词质量差需要重生",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "帮我修路由命中率太低的问题",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "修复 skill 路由问题",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "新技能装之前先安全审查",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "幻灯片排版帮我编辑一下",
+        "expected_skill": "slides",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "slides"
+      },
+      {
+        "query": "帮我把产品规格拆成实施任务",
+        "expected_skill": "spec-to-implementation",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "spec-to-implementation"
+      },
+      {
+        "query": "快速做个一次性原型验证这个技术路子行不行",
+        "expected_skill": "spike",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "spike"
+      },
+      {
+        "query": "帮我批量审计并修复静态站点",
+        "expected_skill": "static-site-batch-audit-fix",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "static-site-batch-audit-fix"
+      },
+      {
+        "query": "多 agent 工作流",
+        "expected_skill": "taskflow",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "taskflow"
+      },
+      {
+        "query": "参考 TaskFlow 示例给我的收件箱分类",
+        "expected_skill": "taskflow-inbox-triage",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "taskflow-inbox-triage"
+      },
+      {
+        "query": "TDD 开发新功能",
+        "expected_skill": "test-driven-development",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "test-driven-development"
+      },
+      {
+        "query": "写个自动化测试",
+        "expected_skill": "testing",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "testing"
+      },
+      {
+        "query": "帮我给这个页面换个主题配色",
+        "expected_skill": "theme-factory",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "theme-factory"
+      },
+      {
+        "query": "帮我做一套 UI 设计规范",
+        "expected_skill": "ui-ux-pro-max",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "ui-ux-pro-max"
+      },
+      {
+        "query": "修复中文编码乱码",
+        "expected_skill": "utf8-encoding-fix",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "utf8-encoding-fix"
+      },
+      {
+        "query": "做视频封面",
+        "expected_skill": "video-frames",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "video-frames"
+      },
+      {
+        "query": "视频加字幕",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "用副总视角审计一下 agent 行为模式",
+        "expected_skill": "vp-perspective-audit",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "vp-perspective-audit"
+      },
+      {
+        "query": "帮我审查这个页面是否符合 Web 设计规范",
+        "expected_skill": "web-design-guidelines",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "web-design-guidelines"
+      },
+      {
+        "query": "微信消息自动化处理",
+        "expected_skill": "wechat-automation",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "wechat-automation"
+      },
+      {
+        "query": "微信语音转文字",
+        "expected_skill": "wechat-voice-transcription",
+        "judge": "exact",
+        "source": "blind_test_queries.json(reuse)",
+        "skill": "wechat-voice-transcription"
+      },
+      {
+        "query": "Git Bash 调 CLI 报错帮我排查",
+        "expected_skill": "windows-bash-cli-interop-pitfalls",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "windows-bash-cli-interop-pitfalls"
+      },
+      {
+        "query": "python subprocess 调用 CLI 输出乱码",
+        "expected_skill": "windows-cli-utf8-wrapper",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "windows-cli-utf8-wrapper"
+      },
+      {
+        "query": "Git Bash 中文路径报错帮我修",
+        "expected_skill": "windows-gitbash-chinese-path-pit",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "windows-gitbash-chinese-path-pit"
+      },
+      {
+        "query": "Windows 原生 OCR 识别图片",
+        "expected_skill": "windows-native-ocr",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "windows-native-ocr"
+      },
+      {
+        "query": "执行前帮我预检一遍工作流",
+        "expected_skill": "workflow-preflight-check",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "workflow-preflight-check"
+      },
+      {
+        "query": "帮我写一份实施计划",
+        "expected_skill": "writing-plans",
+        "judge": "exact",
+        "source": "auto-draft",
+        "skill": "writing-plans"
+      },
+      {
+        "query": "Excel 数据分析",
+        "expected_skill": "xlsx",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "xlsx"
+      },
+      {
+        "query": "企业查一下天眼查",
+        "expected_skill": "天眼一下",
+        "judge": "exact",
+        "source": "test_queries.json(reuse)",
+        "skill": "天眼一下"
+      },
+      {
+        "query": "云开发数据库查询慢怎么优化",
+        "expected_skill": "cloudbase-db-optimize",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "cloudbase-db-optimize"
+      },
+      {
+        "query": "数据库查询慢建索引",
+        "expected_skill": "cloudbase-db-optimize",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "cloudbase-db-optimize"
+      },
+      {
+        "query": "帮我开书写长篇网文",
+        "expected_skill": "story-long-write",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "story-long-write"
+      },
+      {
+        "query": "帮我拆解这本爆款小说",
+        "expected_skill": "story-long-analyze",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "story-long-analyze"
+      },
+      {
+        "query": "wttr 天气查询",
+        "expected_skill": "weather",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "weather"
+      },
+      {
+        "query": "写个能自动发邮件的脚本",
+        "expected_skill": "office-automation-pro",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "office-automation-pro"
+      },
+      {
+        "query": "在知识库里查资料",
+        "expected_skill": "wps-knowledgebase",
+        "judge": "exact",
+        "source": "2026-08-16 coverage 补测",
+        "skill": "wps-knowledgebase"
+      }
+    ]
+  },
+  {
+    "tier": "cli",
+    "queries": [
+      {
+        "query": "用ffmpeg把视频转成gif动图",
+        "expected_skill": "video-frames",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "video-frames"
+      },
+      {
+        "query": "ffmpeg 截取视频前10秒",
+        "expected_skill": "video-frames",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "video-frames"
+      },
+      {
+        "query": "ffmpeg 从视频提取音频转文字",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "ffmpeg 合并两个视频",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "用 curl 调用 OpenAI 语音转写 API",
+        "expected_skill": "openai-whisper-api",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "openai-whisper-api"
+      },
+      {
+        "query": "curl 拉取 GitHub 上的技能包",
+        "expected_skill": "skill-install",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "skill-install"
+      },
+      {
+        "query": "git 提交代码并推送",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "用 gh 创建 issue",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "git 回滚上一个提交",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "用 gh 检查 CI 状态",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "用 gh 提 PR",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "npm 安装技能缺的依赖",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "pip 安装 requirements 后报错",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "node --inspect 排查 CPU 飙高",
+        "expected_skill": "node-inspect-debugger",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "node-inspect-debugger"
+      },
+      {
+        "query": "python pdb 断点调试",
+        "expected_skill": "python-debugpy",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "python-debugpy"
+      },
+      {
+        "query": "python 读取 Excel 文件",
+        "expected_skill": "xlsx",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "xlsx"
+      },
+      {
+        "query": "python 生成 docx 文档",
+        "expected_skill": "docx",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "docx"
+      },
+      {
+        "query": "python 合并 PDF",
+        "expected_skill": "pdf",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "pdf"
+      },
+      {
+        "query": "python 画 matplotlib 交互图",
+        "expected_skill": "data-visualization",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "data-visualization"
+      },
+      {
+        "query": "python 写个定时任务脚本",
+        "expected_skill": "taskflow",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "taskflow"
+      },
+      {
+        "query": "node 写个定时脚本",
+        "expected_skill": "taskflow",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "taskflow"
+      },
+      {
+        "query": "sqlite3 查询数据表",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "data-analysis"
+      },
+      {
+        "query": "mysql 导出数据做透视",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "data-analysis"
+      },
+      {
+        "query": "p5.js 创作生成艺术",
+        "expected_skill": "algorithmic-art",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "algorithmic-art"
+      },
+      {
+        "query": "npx hyperframes 渲染视频合成",
+        "expected_skill": "hyperframes-cli",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "hyperframes-cli"
+      },
+      {
+        "query": "npx 安装 HF 组件",
+        "expected_skill": "hyperframes-registry",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "hyperframes-registry"
+      },
+      {
+        "query": "ntn 创建 Notion 页面",
+        "expected_skill": "notion-cli",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "notion-cli"
+      },
+      {
+        "query": "obsidian CLI 搜索 vault 笔记",
+        "expected_skill": "obsidian-cli",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "obsidian-cli"
+      },
+      {
+        "query": "用 tyc 命令查企业背景",
+        "expected_skill": "天眼一下",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "天眼一下"
+      },
+      {
+        "query": "用 oracle 命令二审代码",
+        "expected_skill": "oracle",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "oracle"
+      },
+      {
+        "query": "无头浏览器跑表单测试",
+        "expected_skill": "gstack",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "gstack"
+      },
+      {
+        "query": "截个屏",
+        "expected_skill": "screenshot",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "screenshot"
+      },
+      {
+        "query": "tcb hosting 部署超市前端",
+        "expected_skill": "chaoshi-web-deploy",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "chaoshi-web-deploy"
+      },
+      {
+        "query": "cloudbase 云函数部署后订单不显示",
+        "expected_skill": "chaoshi-web-deploy",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "chaoshi-web-deploy"
+      },
+      {
+        "query": "静态站点批量替换图片路径",
+        "expected_skill": "static-site-batch-audit-fix",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "static-site-batch-audit-fix"
+      },
+      {
+        "query": "ffmpeg 批量压缩图片转 WebP",
+        "expected_skill": "chaoshi-image-optimization",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "chaoshi-image-optimization"
+      },
+      {
+        "query": "mediakit-cli 剪辑视频加背景音乐",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "用 Seedance 生成视频",
+        "expected_skill": "byted-seedance-video-generate",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-seedance-video-generate"
+      },
+      {
+        "query": "用 Seedream 生成图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-seedream-image-generate"
+      },
+      {
+        "query": "whisper 转录本地音频",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "Codex 委派编码任务给后台",
+        "expected_skill": "coding-agent",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "coding-agent"
+      },
+      {
+        "query": "discover 找桌面应用的隐藏 CLI",
+        "expected_skill": "discover-agent-cli",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "discover-agent-cli"
+      },
+      {
+        "query": "Electron 自动化操作 VS Code",
+        "expected_skill": "electron",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "electron"
+      },
+      {
+        "query": "本地 tts 生成语音文件",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "whisper 转录音频",
+        "expected_skill": "openai-whisper-api",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "openai-whisper-api"
+      },
+      {
+        "query": "NPU OCR 识别截图文字",
+        "expected_skill": "windows-native-ocr",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "byted-seedream-image-generate",
+        "note": "R-fix(2026-08-16): expected byted-seedream-image-generate -> windows-native-ocr（OCR 识别语义，windows-native-ocr 直连可达）"
+      },
+      {
+        "query": "silk 解码微信语音转文字",
+        "expected_skill": "wechat-voice-transcription",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "wechat-voice-transcription"
+      },
+      {
+        "query": "powershell 中文乱码修复",
+        "expected_skill": "shell-encoding-pitfalls",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "shell-encoding-pitfalls"
+      },
+      {
+        "query": "git bash 里跑 python 报 extglob 错",
+        "expected_skill": "windows-bash-cli-interop-pitfalls",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "windows-bash-cli-interop-pitfalls"
+      },
+      {
+        "query": "subprocess 调用 CLI 输出乱码",
+        "expected_skill": "windows-cli-utf8-wrapper",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "windows-cli-utf8-wrapper"
+      },
+      {
+        "query": "Git Bash 调用 node 中文路径报错",
+        "expected_skill": "windows-gitbash-chinese-path-pit",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "windows-gitbash-chinese-path-pit"
+      },
+      {
+        "query": "重建 BGE 嵌入矩阵",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "wsl 里跑 ffmpeg 转码",
+        "expected_skill": "video-frames",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "video-frames"
+      },
+      {
+        "query": "用 gh 看仓库 PR 列表",
+        "expected_skill": "github",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "github"
+      },
+      {
+        "query": "sqlite 打开数据库文件",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "data-analysis"
+      },
+      {
+        "query": "python 写个定时任务监控文件夹",
+        "expected_skill": "taskflow",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "taskflow"
+      },
+      {
+        "query": "npm 装 shadcn 组件",
+        "expected_skill": "shadcn",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "shadcn"
+      },
+      {
+        "query": "curl 下载中文文件名乱码",
+        "expected_skill": "shell-encoding-pitfalls",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "shell-encoding-pitfalls"
+      },
+      {
+        "query": "用 claude 无头模式协作写文档",
+        "expected_skill": "doc-coauthoring",
+        "judge": "exact",
+        "source": "curated-cli",
+        "skill": "doc-coauthoring"
+      }
+    ]
+  },
+  {
+    "tier": "short",
+    "queries": [
+      {
+        "query": "C盘满了",
+        "expected_skill": "c-cleanup",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "c-cleanup"
+      },
+      {
+        "query": "报错了",
+        "expected_skill": "debugging-fixing",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "debugging-fixing"
+      },
+      {
+        "query": "写测试",
+        "expected_skill": "testing",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "testing"
+      },
+      {
+        "query": "跑测试",
+        "expected_skill": "testing",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "testing"
+      },
+      {
+        "query": "重构代码",
+        "expected_skill": "refactoring",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "refactoring"
+      },
+      {
+        "query": "画个图表",
+        "expected_skill": "chart-visualization",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "chart-visualization"
+      },
+      {
+        "query": "做海报",
+        "expected_skill": "byted-seedream-image-generate",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "byted-seedream-image-generate"
+      },
+      {
+        "query": "做PPT",
+        "expected_skill": "pptx",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "pptx"
+      },
+      {
+        "query": "读Excel",
+        "expected_skill": "xlsx",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "xlsx"
+      },
+      {
+        "query": "生成Word",
+        "expected_skill": "docx",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "docx"
+      },
+      {
+        "query": "编辑PDF",
+        "expected_skill": "nano-pdf",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "nano-pdf"
+      },
+      {
+        "query": "读PDF",
+        "expected_skill": "pdf",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "pdf"
+      },
+      {
+        "query": "录音转文字",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "文字转语音",
+        "expected_skill": "byted-mediakit-shared",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "byted-mediakit-shared"
+      },
+      {
+        "query": "识别图片文字",
+        "expected_skill": "windows-native-ocr",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "byted-seedream-image-generate",
+        "note": "R-fix(2026-08-16): expected byted-seedream-image-generate -> windows-native-ocr（OCR 识别语义，windows-native-ocr 直连可达）"
+      },
+      {
+        "query": "微信语音转写",
+        "expected_skill": "wechat-voice-transcription",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "wechat-voice-transcription"
+      },
+      {
+        "query": "总结一下",
+        "expected_skill": "A-get-memory",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-get-memory"
+      },
+      {
+        "query": "加载记忆",
+        "expected_skill": "A-memory-start",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-memory-start"
+      },
+      {
+        "query": "拆分文件",
+        "expected_skill": "bigfile-split",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "bigfile-split"
+      },
+      {
+        "query": "写周报",
+        "expected_skill": "internal-comms",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "internal-comms"
+      },
+      {
+        "query": "写邮件",
+        "expected_skill": "internal-comms",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "internal-comms"
+      },
+      {
+        "query": "写实施计划",
+        "expected_skill": "writing-plans",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "writing-plans"
+      },
+      {
+        "query": "头脑风暴",
+        "expected_skill": "brainstorming",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "brainstorming"
+      },
+      {
+        "query": "新建技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "找技能",
+        "expected_skill": "find-skills",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "find-skills"
+      },
+      {
+        "query": "装技能",
+        "expected_skill": "skill-install",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "skill-install"
+      },
+      {
+        "query": "删技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "合并技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "审计提示词",
+        "expected_skill": "prompt-system-audit",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "prompt-system-audit"
+      },
+      {
+        "query": "路由健康",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "记忆审计",
+        "expected_skill": "fenjue-memory-audit",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "fenjue-memory-audit"
+      },
+      {
+        "query": "经验反哺",
+        "expected_skill": "A-get-memory",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-get-memory"
+      },
+      {
+        "query": "同步技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "规则同步",
+        "expected_skill": "cross-platform-agent-sync",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "cross-platform-agent-sync"
+      },
+      {
+        "query": "深度调研",
+        "expected_skill": "deep-research-pro",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "deep-research-pro"
+      },
+      {
+        "query": "多引擎搜索",
+        "expected_skill": "multi-search-engine",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "multi-search-engine"
+      },
+      {
+        "query": "公司调查",
+        "expected_skill": "天眼一下",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "天眼一下"
+      },
+      {
+        "query": "一起写技术文档",
+        "expected_skill": "doc-coauthoring",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "doc-coauthoring"
+      },
+      {
+        "query": "画架构图",
+        "expected_skill": "diagram-maker",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "diagram-maker"
+      },
+      {
+        "query": "画脑图",
+        "expected_skill": "diagram-maker",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "diagram-maker"
+      },
+      {
+        "query": "做落地页",
+        "expected_skill": "frontend-skill",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "frontend-skill"
+      },
+      {
+        "query": "写个页面",
+        "expected_skill": "frontend-skill",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "frontend-skill"
+      },
+      {
+        "query": "UI设计",
+        "expected_skill": "ui-ux-pro-max",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "ui-ux-pro-max"
+      },
+      {
+        "query": "换主题",
+        "expected_skill": "theme-factory",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "theme-factory"
+      },
+      {
+        "query": "数据分析",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "data-analysis"
+      },
+      {
+        "query": "查企业",
+        "expected_skill": "天眼一下",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "天眼一下"
+      },
+      {
+        "query": "视频抽帧",
+        "expected_skill": "video-frames",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "video-frames"
+      },
+      {
+        "query": "视频转文字",
+        "expected_skill": "video-whisper-transcribe",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "video-whisper-transcribe"
+      },
+      {
+        "query": "创建技能",
+        "expected_skill": "A-skill-manager",
+        "judge": "exact",
+        "source": "curated-short",
+        "skill": "A-skill-manager"
+      },
+      {
+        "query": "开始写第一章小说",
+        "expected_skill": "doc-coauthoring",
+        "judge": "exact",
+        "source": "R170 生产缺口闭环",
+        "skill": "doc-coauthoring"
+      },
+      {
+        "query": "写个脚本定期备份数据库",
+        "expected_skill": "tencent-cos-skill__skillhub",
+        "judge": "exact",
+        "source": "R170 生产缺口闭环",
+        "skill": "tencent-cos-skill__skillhub"
+      }
+    ]
+  },
+  {
+    "tier": "fault_finding",
+    "queries": [
+      {
+        "query": "帮我配一下",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "弄个好看的",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "怎么搞",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "优化一下",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "查一下",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "帮我看看",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "画个东西",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "写个报告",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "帮我下载",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "我该怎么做",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "帮我处理一下",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "curated-fault",
+        "skill": "NONE"
+      },
+      {
+        "query": "同步一下",
+        "expected_skill": "A-skill-manager",
+        "judge": "usable-suboptimal",
+        "source": "curated-fault",
+        "skill": "A-skill-manager",
+        "note": "R165 U1 审计保持: 无宾语『同步』在 skill-sync/agent-sync(规则同步) 间多义, 无唯一规范答案"
+      },
+      {
+        "query": "帮我总结",
+        "expected_skill": "A-get-memory",
+        "judge": "exact",
+        "source": "curated-fault",
+        "skill": "A-get-memory",
+        "note": "R165 U1 数据质量修正: 与 exact 条目『总结一下→A-get-memory』同语义; 无更佳注册技能(通用总结=A-get-memory, knowledge-capture/report-generator/internal-comms 均需特定上下文词)"
+      },
+      {
+        "query": "做个页面",
+        "expected_skill": "frontend-skill",
+        "judge": "exact",
+        "source": "curated-fault",
+        "skill": "frontend-skill",
+        "note": "R165 U1 数据质量修正: 与 exact 条目『写个页面→frontend-skill』同语义; R164 路由轮 DIRECT_MAP+NOT USE 负标签收窄已确立『通用页面→frontend-skill、落地页→frontend-skill』口径"
+      },
+      {
+        "query": "搞个自动化",
+        "expected_skill": "taskflow",
+        "judge": "usable-suboptimal",
+        "source": "curated-fault",
+        "skill": "taskflow",
+        "note": "R165 U1 审计保持: 『自动化』在任务编排(taskflow)/桌面自动化(computer-use)/浏览器应用自动化(agent-browser,electron) 间多义"
+      },
+      {
+        "query": "数据分析一下",
+        "expected_skill": "data-analysis",
+        "judge": "exact",
+        "source": "curated-fault",
+        "skill": "data-analysis",
+        "note": "R165 U1 数据质量修正: 与 exact 条目『数据分析→data-analysis』同语义; 无更佳注册技能(data-visualization/chart-visualization 均为可视化子能力)"
+      },
+      {
+        "query": "推荐个工具",
+        "expected_skill": "find-skills",
+        "judge": "usable-suboptimal",
+        "source": "curated-fault",
+        "skill": "find-skills",
+        "note": "R165 U1 审计保持: 『推荐个工具』在技能推荐(find-skills)/外部工具检索(multi-search-engine)/隐藏CLI发现(discover-agent-cli) 间多义"
+      },
+      {
+        "query": "有没有相关技能",
+        "expected_skill": "find-skills",
+        "judge": "exact",
+        "source": "curated-fault",
+        "skill": "find-skills",
+        "note": "R165 U1 数据质量修正: find-skills 触发词字面包含『有没有相关技能』; clawhub=外部技能市场(安装意图), multi-search-engine=网页搜索, 均非规范答案"
+      },
+      {
+        "query": "这轮做得怎么样",
+        "expected_skill": "A-get-memory",
+        "judge": "exact",
+        "source": "curated-fault",
+        "skill": "A-get-memory",
+        "note": "R165 U1 数据质量修正: 与 exact 条目『经验反哺/总结一下→A-get-memory』同语义(任务复盘); 竞争审计技能均针对路由指标(命中率/lessons度量), 与本查询意图不同"
+      }
+    ]
+  },
+  {
+    "tier": "negative",
+    "queries": [
+      {
+        "query": "今天天气怎么样？",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "讲个笑话",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "1+1等于几",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "你是谁",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "现在几点了",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "推荐一本好书",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "周末去哪玩",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "东京和北京时差几个小时",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "blind_test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "世界杯哪年在卡塔尔办的",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "blind_test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "帮我起个英文名",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "blind_test_queries.json",
+        "skill": "NONE"
+      },
+      {
+        "query": "苹果和香蕉哪个热量高",
+        "expected_skill": null,
+        "judge": "blindspot",
+        "source": "blind_test_queries.json",
+        "skill": "NONE"
+      }
+    ]
+  }
+]

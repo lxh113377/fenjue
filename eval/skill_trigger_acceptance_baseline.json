@@ -1,0 +1,22 @@
+{
+  "schema": "fenjue-skill-trigger-acceptance-baseline-v1",
+  "generated": "2026-09-23",
+  "note": "会话级技能触发验收基线（棘轮）：命中数只许升不许降；改进后可 --update 收紧。",
+  "total": 12,
+  "passed": 12,
+  "failed_ids": [],
+  "top1_hits": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11",
+    "A12"
+  ]
+}

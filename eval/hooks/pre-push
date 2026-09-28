@@ -1,0 +1,41 @@
+#!/bin/sh
+# pre-push — 推送前跑「CI 全绿契约」的 blocking 检查（A-project-handoff/scripts/greencheck.py）
+#
+# 为什么要有这个钩子（2026-09-25 实测）：本机 9 个项目里只有 2 个带 workflow，GitHub 侧 27 仓
+# 有 13 仓带 CI，而红是从邮件第一次被知道的 —— 且邮件把「job 没拿到 runner（账号计费）」和
+# 「判据真跑并判红」混成同一个红色图标。本钩子把判红点从远端挪到推送前：红不推出去，
+# 远端就不会产生失败 run，也就不会有"看起来一样"的红邮件。
+#
+# 边界（诚实声明）：
+#   · 本钩子不修计费、不改仓库可见性 —— BLOCKED 类（steps=0）不是项目缺陷，由 greencheck panel 单列。
+#   · 契约文件必须被 git 跟踪，否则拒绝执行（契约=要执行什么命令，未入库的契约可能是别人塞进来的）。
+#   · 找不到判据时**失败关闭**并给出修复命令；紧急绕过用 git 自带的 `--no-verify`（会在历史里留痕），
+#     本钩子不自建豁免表。
+#
+# 版本化副本 = eval/hooks/pre-push；在役副本 = .git/hooks/pre-push（不被 git 跟踪）。
+# 装/体检：python scripts/install_hooks.py --install / --check
+
+set -u
+ROOT=$(git rev-parse --show-toplevel)
+PY=${PYTHON:-python}
+GC=$("$PY" -c "import os,sys;sys.path.insert(0,os.path.join(r'$ROOT','eval'));import config;print(os.path.join(config.GLOBAL_SKILLS,'A-project-handoff','scripts','greencheck.py'))" 2>/dev/null)
+
+if [ -z "$GC" ] || [ ! -f "$GC" ]; then
+  echo "[pre-push] FAIL: 找不到 greencheck.py（受管根 global_skills 未挂载？）" >&2
+  echo "[pre-push] 修复：确认 <SKILLS_ROOT> junction 存在后重跑 python scripts/install_hooks.py --check" >&2
+  exit 1
+fi
+
+if [ ! -f "$ROOT/.ci/contract.json" ]; then
+  echo "[pre-push] FAIL: 本仓没有 .ci/contract.json ⇒ 契约缺位时不得默认放行（R247）" >&2
+  echo "[pre-push] 修复：按 A-project-handoff/references/ci-green-contract.md 建契约（焚诀已有模板）" >&2
+  exit 1
+fi
+
+echo "[pre-push] 跑 CI 全绿契约（blocking checks）…"
+if "$PY" "$GC" run --repo-dir "$ROOT"; then
+  echo "[pre-push] PASS: 契约内 blocking 检查全绿，放行推送"
+  exit 0
+fi
+echo "[pre-push] FAIL: 契约判红 ⇒ 已拦下推送。看上面每条的 log 路径，修完再推。" >&2
+exit 1

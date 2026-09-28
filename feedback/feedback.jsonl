@@ -1,0 +1,1 @@
+{"session": "smoke-test", "task": "反馈通道冒烟测试（R194）", "wrong": "无实际错误，验证通道落盘", "expected": "POST 后 JSONL 出现 open 条目，savepoint 可列出，--close 可关闭", "category": "其他", "severity": "中", "recovered": false, "source": "manual", "status": "closed", "id": "84bd44431a64", "ts": "2026-08-12T06:11:05", "closed_ts": "2026-08-12T06:11:12"}

@@ -1,0 +1,559 @@
+[
+  {
+    "tier": "easy",
+    "description": "明确关键词+唯一答案",
+    "queries": [
+      {
+        "query": "帮我装个 skill",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "figma 设计稿转代码",
+        "expected_skill": "figma",
+        "domain": "design"
+      },
+      {
+        "query": "GitHub 创建 PR",
+        "expected_skill": "github",
+        "domain": "web"
+      },
+      {
+        "query": "生成一张图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "media"
+      },
+      {
+        "query": "把这个 PDF 合并一下",
+        "expected_skill": "pdf",
+        "domain": "doc"
+      },
+      {
+        "query": "Excel 数据分析",
+        "expected_skill": "xlsx",
+        "domain": "data"
+      },
+      {
+        "query": "超市网站部署上线",
+        "expected_skill": "chaoshi-web-deploy",
+        "domain": "web"
+      },
+      {
+        "query": "写个 PPT",
+        "expected_skill": "pptx",
+        "domain": "doc"
+      },
+      {
+        "query": "Notion 会议准备",
+        "expected_skill": "meeting-intelligence",
+        "domain": "research"
+      },
+      {
+        "query": "搜索网上资料写研究报告",
+        "expected_skill": "consulting-analysis",
+        "domain": "research"
+      },
+      {
+        "query": "检查路由健康度",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "视频加字幕",
+        "expected_skill": "video-whisper-transcribe",
+        "domain": "media"
+      },
+      {
+        "query": "debug 这个报错",
+        "expected_skill": "debugging-fixing",
+        "domain": "code"
+      },
+      {
+        "query": "写个自动化测试",
+        "expected_skill": "testing",
+        "domain": "code"
+      },
+      {
+        "query": "记忆管理经验反哺",
+        "expected_skill": "A-get-memory",
+        "domain": "memory"
+      },
+      {
+        "query": "TDD 开发新功能",
+        "expected_skill": "test-driven-development",
+        "domain": "code"
+      },
+      {
+        "query": "Obsidian 笔记管理",
+        "expected_skill": "obsidian-markdown",
+        "domain": "doc"
+      },
+      {
+        "query": "本地 OCR 识别图片文字",
+        "expected_skill": "windows-native-ocr",
+        "domain": "local",
+        "note": "R-fix(2026-08-16): local-ocr-npu 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 windows-native-ocr(OCR 识别可达替代)"
+      },
+      {
+        "query": "大文件拆分",
+        "expected_skill": "bigfile-split",
+        "domain": "memory"
+      },
+      {
+        "query": "跨平台 skill 同步",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "用柱状图展示数据",
+        "expected_skill": "chart-visualization",
+        "domain": "data"
+      },
+      {
+        "query": "写个 Word 文档",
+        "expected_skill": "docx",
+        "domain": "doc"
+      },
+      {
+        "query": "代码重构",
+        "expected_skill": "refactoring",
+        "domain": "code"
+      },
+      {
+        "query": "企业查一下天眼查",
+        "expected_skill": "天眼一下",
+        "domain": "research"
+      },
+      {
+        "query": "本地文字转语音",
+        "expected_skill": "byted-mediakit-shared",
+        "domain": "local",
+        "note": "R-fix(2026-08-16): local-tts 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 byted-mediakit-shared(音频处理可达替代)"
+      },
+      {
+        "query": "生成一张壁纸",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "media",
+        "note": "L2缺口: 壁纸→图片生成"
+      },
+      {
+        "query": "不用云端本地生成图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "local",
+        "note": "R-fix(2026-08-16): local-txt2img 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 byted-seedream-image-generate(文生图可达替代)"
+      },
+      {
+        "query": "代码重构一下",
+        "expected_skill": "refactoring",
+        "domain": "code"
+      },
+      {
+        "query": "画个柱状图",
+        "expected_skill": "chart-visualization",
+        "domain": "data"
+      },
+      {
+        "query": "帮我写个 Word",
+        "expected_skill": "docx",
+        "domain": "doc"
+      },
+      {
+        "query": "OCR 识别图片文字",
+        "expected_skill": "windows-native-ocr",
+        "domain": "local",
+        "note": "R-fix(2026-08-16): local-ocr-npu 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 windows-native-ocr(OCR 识别可达替代)"
+      },
+      {
+        "query": "修复中文编码乱码",
+        "expected_skill": "utf8-encoding-fix",
+        "domain": "code"
+      },
+      {
+        "query": "画个流程图",
+        "expected_skill": "diagram-maker",
+        "domain": "design"
+      },
+      {
+        "query": "整理最近的经验教训",
+        "expected_skill": "A-get-memory",
+        "domain": "memory"
+      }
+    ]
+  },
+  {
+    "tier": "medium",
+    "description": "口语化/同义词/需语义理解",
+    "queries": [
+      {
+        "query": "刚才那个报错怎么修？",
+        "expected_skill": "debugging-fixing",
+        "domain": "code"
+      },
+      {
+        "query": "帮我看下路由有没有毛病",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "这玩意儿咋装",
+        "expected_skill": "A-skill-manager",
+        "domain": "system"
+      },
+      {
+        "query": "能不能把那个大的 markdown 拆小",
+        "expected_skill": "bigfile-split",
+        "domain": "memory"
+      },
+      {
+        "query": "网站做好了怎么发布上线",
+        "expected_skill": "chaoshi-web-deploy",
+        "domain": "web"
+      },
+      {
+        "query": "帮我整理下最近学到的经验教训",
+        "expected_skill": "A-get-memory",
+        "domain": "memory"
+      },
+      {
+        "query": "画个架构图",
+        "expected_skill": "diagram-maker",
+        "domain": "design"
+      },
+      {
+        "query": "查一下这家公司的背景",
+        "expected_skill": "天眼一下",
+        "domain": "research"
+      },
+      {
+        "query": "微信消息自动化处理",
+        "expected_skill": "wechat-automation",
+        "domain": "automation"
+      },
+      {
+        "query": "拍个屏幕截图",
+        "expected_skill": "screenshot",
+        "domain": "web"
+      },
+      {
+        "query": "用代码画个艺术作品",
+        "expected_skill": "algorithmic-art",
+        "domain": "design"
+      },
+      {
+        "query": "浏览器自动填表单",
+        "expected_skill": "agent-browser",
+        "domain": "web"
+      },
+      {
+        "query": "全局记忆加载",
+        "expected_skill": "A-memory-start",
+        "domain": "memory"
+      },
+      {
+        "query": "清理 C 盘空间",
+        "expected_skill": "c-cleanup",
+        "domain": "code"
+      },
+      {
+        "query": "修复中文乱码",
+        "expected_skill": "utf8-encoding-fix",
+        "domain": "code"
+      },
+      {
+        "query": "分析这个 CSV 文件",
+        "expected_skill": "data-analysis",
+        "domain": "data"
+      },
+      {
+        "query": "做一份市场分析报告",
+        "expected_skill": "consulting-analysis",
+        "domain": "research"
+      },
+      {
+        "query": "把这段文字转成语音",
+        "expected_skill": "byted-mediakit-shared",
+        "domain": "local",
+        "note": "R-fix(2026-08-16): local-tts 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 byted-mediakit-shared(音频处理可达替代)"
+      },
+      {
+        "query": "帮我设计一个 logo",
+        "expected_skill": "canvas-design",
+        "domain": "design"
+      },
+      {
+        "query": "批量下载网页内容",
+        "expected_skill": "defuddle",
+        "domain": "research"
+      },
+      {
+        "query": "想画个图但是不知道用什么",
+        "expected_skill": "chart-visualization",
+        "domain": "data",
+        "note": "口语化模糊→图表"
+      },
+      {
+        "query": "帮我看看哪里出毛病了",
+        "expected_skill": "debugging-fixing",
+        "domain": "code",
+        "note": "口语化→debug"
+      },
+      {
+        "query": "测测这个功能有没有bug",
+        "expected_skill": "testing",
+        "domain": "code",
+        "note": "口语化→测试"
+      },
+      {
+        "query": "这代码太乱了帮我理理",
+        "expected_skill": "refactoring",
+        "domain": "code",
+        "note": "口语化→重构"
+      },
+      {
+        "query": "写个 Python 脚本处理 CSV",
+        "expected_skill": "coding-agent",
+        "domain": "code",
+        "note": "2026-08-03 实测盲区修复: BGE 误路由 shell-encoding-pitfalls → DIRECT_MAP 直连 coding-agent"
+      },
+      {
+        "query": "检查 BGE 嵌入矩阵行数",
+        "expected_skill": "A-skill-manager",
+        "domain": "memory",
+        "note": "2026-08-03 orphan 注册: embedding-index-alignment 入 memory 域后此查询可命中"
+      },
+      {
+        "query": "Windows 原生 OCR 识别图片",
+        "expected_skill": "windows-native-ocr",
+        "domain": "local",
+        "note": "2026-08-03 实测: 曾被 DIRECT_MAP 生.*图 短路到 byted-seedream-image-generate → 补专用直连"
+      },
+      {
+        "query": "记忆系统运行得怎么样了，模拟执行看看效果",
+        "expected_skill": "fenjue-memory-audit",
+        "domain": "memory",
+        "note": "2026-08-03 P1-3: 混合查询曾误判 A-get-memory(记忆.*经验 泛匹配) → 审计语义直连"
+      },
+      {
+        "query": "帮我做一个 HTML 幻灯片",
+        "expected_skill": "html-ppt",
+        "domain": "creative",
+        "note": "2026-08-03 R140: Marvis html-ppt 接入防回归"
+      },
+      {
+        "query": "做视频封面",
+        "expected_skill": "video-frames",
+        "domain": "media",
+        "note": "2026-08-03 R154: 负标签'做视频'收紧后防回归"
+      },
+      {
+        "query": "生成一张海报",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "creative",
+        "note": "2026-08-03 R154: 海报默认云端 seedream(本地限定 byted-seedream-image-generate) 防回归"
+      },
+      {
+        "query": "帮我配置新平台的记忆树和技能树",
+        "expected_skill": "cross-platform-agent-sync",
+        "domain": "system",
+        "note": "2026-08-03 R161: 生产盲区修复(原误路由 A-get-memory)"
+      },
+      {
+        "query": "设计一个数据看板的配色方案",
+        "expected_skill": "chart-visualization",
+        "domain": "data",
+        "note": "2026-08-03 R161: 生产高频 93 条直连"
+      },
+      {
+        "query": "这周给客户写个邮件催款",
+        "expected_skill": "internal-comms",
+        "domain": "comms",
+        "note": "2026-08-03 R161: 生产高频 93 条直连"
+      },
+      {
+        "query": "提出我该项目的优化建议",
+        "expected_skill": "consulting-analysis",
+        "domain": "research",
+        "note": "2026-08-03 R162: 生产盲区修复(原误路由 A-ask-questions)"
+      }
+    ]
+  },
+  {
+    "tier": "hard",
+    "description": "模糊意图/多候选消歧/需 body 区分",
+    "queries": [
+      {
+        "query": "部署到线上",
+        "expected_skill": [
+          "chaoshi-web-deploy",
+          "cloudbase-webapp-deploy-debug"
+        ],
+        "note": "需上下文消歧：超市项目 vs CloudBase 项目"
+      },
+      {
+        "query": "生成视频",
+        "expected_skill": [
+          "byted-seedance-video-generate"
+        ],
+        "note": "字节视频 vs AI 视频流水线 | 已卸载"
+      },
+      {
+        "query": "优化提示词",
+        "expected_skill": "A-prompt-better",
+        "note": "可能误匹配 prompt-consolidation"
+      },
+      {
+        "query": "做前端页面",
+        "expected_skill": [
+          "frontend-skill",
+          "frontend-skill"
+        ],
+        "note": "两个前端 skill"
+      },
+      {
+        "query": "帮我写个 skill",
+        "expected_skill": "A-skill-manager",
+        "note": "R-fix(2026-09-22): 原期望 skill-creator 不在注册表/磁盘，改指 A-skill-manager"
+      },
+      {
+        "query": "多 agent 工作流",
+        "expected_skill": "taskflow",
+        "note": "与 workflow-preflight-check 混淆"
+      },
+      {
+        "query": "修复 skill 路由问题",
+        "expected_skill": "A-skill-manager",
+        "note": "与 skill-routing-test-driven-fix 易混"
+      },
+      {
+        "query": "写项目交接文档",
+        "expected_skill": "A-project-handoff",
+        "note": "与 doc-coauthoring 混淆"
+      },
+      {
+        "query": "local 本地生成图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "note": "R-fix(2026-08-16): local-txt2img 为 TRAE 内置不可达(无 SKILL.md)，路由器回落 byted-seedream-image-generate(文生图可达替代)"
+      },
+      {
+        "query": "审计记忆系统",
+        "expected_skill": "fenjue-memory-audit",
+        "note": "与 prompt-system-audit 易混"
+      },
+      {
+        "query": "给视频加背景音乐和动画",
+        "expected_skill": "byted-mediakit-shared",
+        "note": "多候选: mediakit/hyperframes/seedance"
+      },
+      {
+        "query": "帮我管理 skill 的安装和删除",
+        "expected_skill": "A-skill-manager",
+        "note": "与 skill-install/skill-creator 混淆"
+      },
+      {
+        "query": "做个交互式数据可视化仪表盘",
+        "expected_skill": "data-visualization",
+        "note": "与 chart-visualization 混淆"
+      },
+      {
+        "query": "把设计稿转成前端代码",
+        "expected_skill": [
+          "figma",
+          "frontend-skill"
+        ],
+        "note": "figma→代码 vs 直接写前端"
+      },
+      {
+        "query": "设置定时任务每天自动运行",
+        "expected_skill": "taskflow",
+        "routable": false,
+        "note": "内置工具(非skill) — BGE索引不可达，需系统层直接调用[2026-08-01 ghost重指] automation_update 不存在→taskflow"
+      },
+      {
+        "query": "帮我修路由命中率太低的问题",
+        "expected_skill": "A-skill-manager",
+        "note": "修复→fix而非diagnose"
+      },
+      {
+        "query": "AI 画图生成图片",
+        "expected_skill": "byted-seedream-image-generate",
+        "note": "AI画图 vs 本地画图→字节种子"
+      },
+      {
+        "query": "代码画个动画",
+        "expected_skill": "algorithmic-art",
+        "note": "p5算法艺术 vs canvas静态设计"
+      }
+    ]
+  },
+  {
+    "tier": "extra_hard",
+    "description": "极模糊/跨域混淆/需LLM推理",
+    "queries": [
+      {
+        "query": "帮我写一份计划然后再执行它",
+        "expected_skill": [
+          "writing-plans",
+          "executing-plans"
+        ],
+        "note": "写计划 vs 执行计划，可能需两个skill"
+      },
+      {
+        "query": "这个项目怎么部署到 CloudStudio",
+        "expected_skill": "cloudbase-webapp-deploy-debug",
+        "routable": false,
+        "note": "内置skill(不在<SKILLS_ROOT>) — BGE索引不可达[2026-08-01 ghost重指] cloudstudio-deploy 不存在→cloudbase-webapp-deploy-debug"
+      },
+      {
+        "query": "写个能自动发邮件的脚本",
+        "expected_skill": "office-automation-pro__skillhub",
+        "routable": false,
+        "note": "MCP连接器(非skill) — BGE索引不可达[2026-08-01 ghost重指] agent-mail 不存在→office-automation-pro__skillhub"
+      },
+      {
+        "query": "我遇到一个 bug，帮我分析日志找原因",
+        "expected_skill": "debugging-fixing",
+        "routable": false,
+        "note": "gstack子skill(非独立skill) — BGE索引不可达[2026-08-01 ghost重指] investigate 不存在→debugging-fixing"
+      },
+      {
+        "query": "把这段视频转成 GIF 动图",
+        "expected_skill": "video-frames",
+        "note": "与 hyperframes-media 混淆"
+      }
+    ]
+  },
+  {
+    "tier": "negative",
+    "description": "不该触发任何 skill",
+    "queries": [
+      {
+        "query": "今天天气怎么样？",
+        "expected_skill": null
+      },
+      {
+        "query": "讲个笑话",
+        "expected_skill": null
+      },
+      {
+        "query": "1+1等于几",
+        "expected_skill": null
+      },
+      {
+        "query": "你是谁",
+        "expected_skill": null
+      },
+      {
+        "query": "现在几点了",
+        "expected_skill": null
+      },
+      {
+        "query": "推荐一本好书",
+        "expected_skill": null
+      },
+      {
+        "query": "周末去哪玩",
+        "expected_skill": null
+      }
+    ]
+  }
+]

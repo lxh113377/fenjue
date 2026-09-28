@@ -1,0 +1,6 @@
+# 运行时依赖（对外子集：示例评估链所需的最小集）
+# 与 requirements-ci.txt 的分工：后者是完整 CI 链（含 onnxruntime 语义层与
+# pytest-cov 门禁），前者是「clone 完 pip install 就能跑 README 第一条命令」。
+# 版本口径沿用本仓 CI 已验证的 pin，不另立一套。
+numpy==2.5.2
+scikit-learn==1.9.0

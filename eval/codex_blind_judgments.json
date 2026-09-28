@@ -1,0 +1,315 @@
+{
+  "schema": "fenjue-codex-blind-v1",
+  "ts": "2026-08-03",
+  "judged_by": "Codex 独立判定 (R158 口径延续, R163 补建逐条档案)",
+  "samples": "eval/three_door_samples/sample_{oc,cc,hermes}.json (30 条真实查询)",
+  "entries": [
+    {
+      "id": "oc-1",
+      "query": "silk语音文件怎么转写",
+      "router_top1": "wechat-voice-transcription",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "silk 是微信语音格式, 微信语音转写技能直接命中"
+    },
+    {
+      "id": "oc-2",
+      "query": "给视频加字幕转文字",
+      "router_top1": "video-whisper-transcribe",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "视频字幕转文字 = 视频语音转写技能"
+    },
+    {
+      "id": "oc-3",
+      "query": "把经验反哺到记忆里",
+      "router_top1": "A-get-memory",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "经验反哺正是 A-get-memory 的核心语义"
+    },
+    {
+      "id": "oc-4",
+      "query": "我手机上的笔记怎么同步",
+      "router_top1": "NONE",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "手机笔记同步无对应技能, R158 修复为 NONE 显式声明, 行为正确"
+    },
+    {
+      "id": "oc-5",
+      "query": "做一个本地前端可视化html页面,展示我这个项目做的所有东西(是什么东西,为什么这么做,解决了什么问题)",
+      "router_top1": "chart-visualization",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "本地前端可视化页面 → chart-visualization (R158 语义直连决策)"
+    },
+    {
+      "id": "oc-6",
+      "query": "查企业工商信息",
+      "router_top1": "天眼一下",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "企业工商信息查询 → 天眼一下"
+    },
+    {
+      "id": "oc-7",
+      "query": "帮我查一下这个公司靠不靠谱",
+      "router_top1": "天眼一下",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "公司靠谱度查询 → 天眼一下"
+    },
+    {
+      "id": "oc-8",
+      "query": "帮我做个流程图",
+      "router_top1": "diagram-maker",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "流程图 → diagram-maker"
+    },
+    {
+      "id": "oc-9",
+      "query": "画一个系统架构图",
+      "router_top1": "diagram-maker",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "系统架构图 → diagram-maker"
+    },
+    {
+      "id": "oc-10",
+      "query": "这个视频太长了帮我总结下",
+      "router_top1": "video-whisper-transcribe",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "usable",
+      "reason": "长视频总结无专用技能, 转写为最近可用入口 (次优可接受)"
+    },
+    {
+      "id": "cc-1",
+      "query": "用 OpenAI 的 API 做语音识别",
+      "router_top1": "openai-whisper-api",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "OpenAI 语音识别 API → openai-whisper-api"
+    },
+    {
+      "id": "cc-2",
+      "query": "记忆系统审计一下",
+      "router_top1": "fenjue-memory-audit",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "记忆系统审计 → fenjue-memory-audit"
+    },
+    {
+      "id": "cc-3",
+      "query": "这是我的记忆系统项目文件夹，为codex配置我的记忆系统memory tree和skill tree",
+      "router_top1": "A-memory-start",
+      "domain": "memory",
+      "confidence": "HIGH",
+      "needs_llm": true,
+      "verdict": "usable",
+      "reason": "配置记忆系统无专用技能, A-memory-start 为记忆入口 (次优可接受)"
+    },
+    {
+      "id": "cc-4",
+      "query": "提取视频字幕",
+      "router_top1": "video-whisper-transcribe",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "提取视频字幕 → 视频转写技能"
+    },
+    {
+      "id": "cc-5",
+      "query": "关于主线任务,还有哪些不足?在阅读完项目文件后提出建议",
+      "router_top1": "vp-perspective-audit",
+      "domain": "direct",
+      "confidence": "HIGH",
+      "needs_llm": false,
+      "verdict": "exact",
+      "reason": "项目不足/提建议 → vp-perspective-audit (R164 DIRECT_MAP 直连修复)"
+    },
+    {
+      "id": "cc-6",
+      "query": "帮我设计一个网站的前端界面",
+      "router_top1": "frontend-design",
+      "domain": "direct",
+      "confidence": "HIGH",
+      "needs_llm": false,
+      "verdict": "exact",
+      "reason": "设计网站前端界面 → frontend-design (R164 DIRECT_MAP 直连修复)"
+    },
+    {
+      "id": "cc-7",
+      "query": "总结一下这轮的经验",
+      "router_top1": "A-get-memory",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "总结本轮经验 → A-get-memory"
+    },
+    {
+      "id": "cc-8",
+      "query": "1.番茄免费小说作品标签 2.简介 3.为这本书创作一个封面",
+      "router_top1": "canvas-design",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "小说封面创作 → canvas-design (R158 语义直连决策)"
+    },
+    {
+      "id": "cc-9",
+      "query": "微信群发消息自动化",
+      "router_top1": "wechat-automation",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "微信群发自动化 → wechat-automation"
+    },
+    {
+      "id": "cc-10",
+      "query": "分析一下我的历史对话总结我的习惯",
+      "router_top1": "A-get-memory",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "历史对话总结习惯 → A-get-memory (R158 修复项)"
+    },
+    {
+      "id": "hermes-1",
+      "query": "帮我优化一下这个Excel表格",
+      "router_top1": "xlsx",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "Excel 优化 → xlsx"
+    },
+    {
+      "id": "hermes-2",
+      "query": "UI设计一个dashboard页面",
+      "router_top1": "ui-ux-pro-max",
+      "domain": "direct",
+      "confidence": "HIGH",
+      "needs_llm": false,
+      "verdict": "exact",
+      "reason": "UI设计 dashboard → ui-ux-pro-max (R164 DIRECT_MAP 直连修复)"
+    },
+    {
+      "id": "hermes-3",
+      "query": "帮我做个思维导图",
+      "router_top1": "diagram-maker",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "思维导图 → diagram-maker"
+    },
+    {
+      "id": "hermes-4",
+      "query": "把文件备份到对象存储",
+      "router_top1": "tencent-cos-skill__skillhub",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "对象存储备份 → tencent-cos"
+    },
+    {
+      "id": "hermes-5",
+      "query": "帮我把微信语音转成文字",
+      "router_top1": "wechat-voice-transcription",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "微信语音转文字 → wechat-voice-transcription"
+    },
+    {
+      "id": "hermes-6",
+      "query": "写个自动化脚本监控文件夹变化",
+      "router_top1": "taskflow",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "自动化脚本监控文件夹 → taskflow"
+    },
+    {
+      "id": "hermes-7",
+      "query": "查找全局记忆找到相关经验",
+      "router_top1": "A-get-memory",
+      "domain": "memory",
+      "confidence": "HIGH",
+      "needs_llm": true,
+      "verdict": "exact",
+      "reason": "查找全局记忆经验 → A-get-memory"
+    },
+    {
+      "id": "hermes-8",
+      "query": "生成一张海报",
+      "router_top1": "byted-seedream-image-generate",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "生成海报 → byted-seedream-image-generate"
+    },
+    {
+      "id": "hermes-9",
+      "query": "帮我做一个落地页，科技风格的，要有动画效果",
+      "router_top1": "hyperframes",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "科技动画落地页 → hyperframes"
+    },
+    {
+      "id": "hermes-10",
+      "query": "做PPT汇报",
+      "router_top1": "pptx",
+      "domain": null,
+      "confidence": "HIGH",
+      "needs_llm": null,
+      "verdict": "exact",
+      "reason": "PPT 汇报 → pptx"
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "exact": 28,
+    "usable": 2,
+    "wrong": 0,
+    "weighted_pct": 98.3
+  }
+}

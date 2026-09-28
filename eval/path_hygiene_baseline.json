@@ -1,0 +1,182 @@
+{
+ "eval/aggregate_status.py": [
+  684
+ ],
+ "eval/boost_lesson_confidence.py": [
+  83,
+  87
+ ],
+ "eval/build_indexes.py": [
+  14
+ ],
+ "eval/build_layered_testset.py": [
+  24
+ ],
+ "eval/build_registry.py": [
+  22,
+  23
+ ],
+ "eval/build_skill_tags.py": [
+  6
+ ],
+ "eval/check_index_refs.py": [
+  9,
+  20,
+  22,
+  43,
+  44,
+  45,
+  46
+ ],
+ "eval/check_path_index_due.py": [
+  6,
+  42
+ ],
+ "eval/env_guard.py": [
+  7,
+  31,
+  76
+ ],
+ "eval/functional_dim_checks.py": [
+  39,
+  41,
+  313
+ ],
+ "eval/generate_index.py": [
+  62,
+  63,
+  64,
+  76
+ ],
+ "eval/guardrail_checks.py": [
+  21,
+  59
+ ],
+ "eval/index_integrity.py": [
+  5
+ ],
+ "eval/lessons_hitrate.py": [
+  22,
+  27,
+  28,
+  30,
+  42,
+  162
+ ],
+ "eval/lessons_pread_audit.py": [
+  26
+ ],
+ "eval/lessons_quality_report.py": [
+  22
+ ],
+ "eval/lessons_usage_coverage.py": [
+  16,
+  17
+ ],
+ "eval/llm_layer.py": [
+  14
+ ],
+ "eval/memory_layer.py": [
+  256
+ ],
+ "eval/monthly_check.py": [
+  19
+ ],
+ "eval/pre_commit_hooks.py": [
+  50,
+  51,
+  120,
+  121,
+  132,
+  234,
+  247
+ ],
+ "eval/record_lessons_usage.py": [
+  11,
+  64
+ ],
+ "eval/recurrence_audit.py": [
+  12,
+  13
+ ],
+ "eval/retire_reconcile.py": [
+  11
+ ],
+ "eval/routing_index_health.py": [
+  11,
+  130,
+  131,
+  132,
+  133,
+  134,
+  142,
+  143,
+  144,
+  145,
+  146,
+  147,
+  148,
+  149
+ ],
+ "eval/scorecard.py": [
+  293
+ ],
+ "eval/skill_hitrate_eval_v2.py": [
+  91
+ ],
+ "eval/tfidf_router.py": [
+  221,
+  222
+ ],
+ "eval/verify_truth_consistency.py": [
+  338
+ ],
+ "eval/workflow_gate.py": [
+  223
+ ],
+ "scripts/ci_workflow_spec_check.py": [
+  8
+ ],
+ "scripts/collect_review_metrics.py": [
+  53
+ ],
+ "scripts/external_write_audit.py": [
+  1090,
+  1109,
+  1121,
+  1124,
+  1253,
+  1269,
+  1284,
+  1399,
+  1401,
+  1413,
+  1415,
+  1460
+ ],
+ "scripts/noise_guard.py": [
+  45
+ ],
+ "scripts/noise_lint.py": [
+  9
+ ],
+ "scripts/prompt_version.py": [
+  19,
+  31
+ ],
+ "scripts/retire_skill.py": [
+  10,
+  92
+ ],
+ "scripts/routing_health.py": [
+  7,
+  14
+ ],
+ "scripts/sync_routing_mirror.py": [
+  5,
+  28
+ ],
+ "scripts/trace_view.py": [
+  9
+ ]
+}

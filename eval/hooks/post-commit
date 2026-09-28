@@ -1,0 +1,48 @@
+#!/bin/sh
+# 提交即自动推送（A-project-handoff #20）。
+# 对标轮六 D-39：旧版本写的是 `git push ... >/dev/null 2>&1 || true`，把失败吞成
+# **结构上不可见**——当晚 GM 仓一次推送撞上他人并发而失败，本地领先远端 1 个提交、
+# 全场零提示，而本仓"破坏性操作有 Git 兜底"的前提正是远端真有一份。
+# 现：失败写 .git/push-failure.log 并在 stderr 喊一声；pre-commit 第 16 闸（push-health）
+# 把"领先几个"变成每次提交都量的硬判据（≥3 直接拒提交）。
+# 2026-09-25 补：失败不再只喊一声，而是**有界退避重试**（见下方 P0-32 段）。
+#
+# 本文件是**版本化副本**（.git/hooks/* 不被 git 跟踪，换机即失）：
+#   cp eval/hooks/post-commit .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+# 若目标钩子里有 IDE 注入的 tracker 段（# BEGIN/END Qoder AI tracker），保留它、接在本文件之后。
+[ -n "$CI" ] && exit 0
+git remote get-url origin >/dev/null 2>&1 || exit 0
+
+GITDIR=$(git rev-parse --git-dir)
+# ── 有界退避重试（GM P0-32，2026-09-25 实测）────────────────────────────
+# 单次 push 不够：本机代理到 GitHub 的 TLS 握手是**间歇性**失败——同一时间窗口里
+# `git ls-remote` 连 3 次全通，而 `git push` 连 5 次 rc=128、第 6 次才成功
+# （global_memory `ad4cc86..afaacff`）。换 sslBackend 也无效（openssl 与 schannel 都失败过），
+# 所以唯一的处置是重试。上限双保险：次数 5 + 总时长 45s，绝不把提交无限挂在钩子里。
+PUSH_ATTEMPTS=5
+PUSH_BUDGET_S=45
+# SECONDS 必须**显式归零**并按"至少试满 2 次"再启用时长闸门：
+# 实测首次上线就只试 1 次即退出（03:13 本仓 push-failure.log `attempts=1 rc=1`），
+# 因为时长判据一进来就成立（继承/污染来的 SECONDS 已 ≥45）——保险丝把重试本身掐死了。
+SECONDS=0
+attempt=1
+while : ; do
+  OUT=$(git push --quiet origin HEAD 2>&1)
+  RC=$?
+  [ $RC -eq 0 ] && break
+  if [ $attempt -ge $PUSH_ATTEMPTS ]; then
+    break
+  fi
+  if [ $attempt -ge 2 ] && [ "${SECONDS:-0}" -ge "$PUSH_BUDGET_S" ]; then
+    break
+  fi
+  sleep $((attempt * 2))
+  attempt=$((attempt + 1))
+done
+if [ $RC -ne 0 ]; then
+  # git 的报错常是多行；折叠成一行才机读（多行记录会让 `tail -1` 只拿到残句）
+  OUT1=$(printf '%s' "$OUT" | tr '\n\r' '  ')
+  printf '%s rc=%s attempts=%s %s\n' "$(date -Iseconds)" "$RC" "$attempt" "$OUT1" >> "$GITDIR/push-failure.log"
+  echo "[post-commit] 自动推送失败（已试 $attempt 次 / 用时 ${SECONDS:-0}s，已记 .git/push-failure.log）：$OUT" >&2
+fi
+exit 0

@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install runtime deps
+        run: python -m pip install -r requirements.txt
+      - name: Install test deps
+        run: python -m pip install pytest
+      - name: Public-clean gate is drillable (self-test both directions)
+        run: python scripts/public_clean_check.py --selftest
+      - name: Public-clean gate on the tree
+        run: python scripts/public_clean_check.py
+      # compileall 对不存在的目录只印 "Can't list" 并返回 rc=0（本机实测），
+      # 所以先显式断言目录在场，否则下一步是假绿。
+      - name: Assert expected source dirs exist
+        run: |
+          for d in eval audit scripts; do
+            test -d "$d" || { echo "MISSING $d"; exit 1; }
+          done
+      - name: Syntax check
+        run: python -m compileall -q eval audit scripts
+      - name: Routing hit-rate evaluation on bundled examples
+        run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
+      - name: Test suite
+        run: python -m pytest -q

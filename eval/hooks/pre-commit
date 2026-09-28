@@ -1,0 +1,78 @@
+#!/bin/sh
+# 焚诀仓 pre-commit — 全量闸（R278，2026-09-22 恢复）
+#
+# 【为什么不用 pre-commit 框架】
+# `.pre-commit-config.yaml` 里的 hook 由 pre-commit 框架调度，而该框架在 Windows
+# 下会自己 exec `/bin/sh` 并以 `ExecutableNotFoundError: Executable /bin/sh not found`
+# 失败 ⇒ **这正是一直以来本地全量闸从未生效的根本原因**（`pre-commit install`
+# 看似成功，实际每次提交都在框架层报错/被忽略）。
+# 故本 hook **直接调用 Python 入口**（git 自带 MSYS sh 可执行），不依赖 pre-commit 框架。
+#
+# 【覆盖范围 = 全量闸】
+#   1) eval/pre_commit_hooks.py —— 全量闸（闸名清单与闸数的唯一权威 = 该模块 GATES；
+#      本文件不抄写清单，抄一次腐烂一次 —— 对标轮四 D-21）
+#   2) scripts/noise_lint.py      —— R198 生成文件存放规范
+#   3) scripts/noise_guard.py     —— R198.2 广义噪声 F5/F6/F9 硬门禁
+#   4) <MEMORY_ROOT>/scripts/conflict_detect.py —— R198.3 规则冲突 D1-D4
+#   （2/3/4 原在 .pre-commit-config.yaml 内，框架不可用故并入本 hook）
+#
+# 【回滚方式】把本文件替换为「只跑 verify」的精简版（见 eval/hooks/pre-commit.minimal），
+#   或 `git checkout -- .git/hooks/pre-commit`（若已入库副本）；两者都不影响 CI 与每日任务。
+# 【版本化副本】eval/hooks/pre-commit（本文件，供换机重装 —— .git/hooks/* 不被 git 跟踪）
+
+[ -n "$CI" ] && exit 0
+
+REPO=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+[ -n "$REPO" ] || exit 0
+
+PY="<USER_HOME>/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
+if [ ! -x "$PY" ]; then
+  PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || true)
+fi
+if [ -z "$PY" ]; then
+  echo "[pre-commit] 跳过：未找到 python 解释器（不阻塞提交）" >&2
+  exit 0
+fi
+
+cd "$REPO" || exit 0
+
+# ---- 闸 1：eval/pre_commit_hooks.py（全量闸，闸数由脚本 GATES 派生）----
+if [ -f "$REPO/eval/pre_commit_hooks.py" ]; then
+  if ! "$PY" "$REPO/eval/pre_commit_hooks.py" >/tmp/fenjue_pch.log 2>&1; then
+    echo '[pre-commit] ❌ eval/pre_commit_hooks.py 未通过 —— 提交被拒。' >&2
+    # D-67（对标轮十四，R-ENUM 补条）：原来只 `tail -25`，而闸链在 pytest 之后还打印自己的
+    # 汇总与后续闸门输出 ⇒ 真凶用例名（FAILED ...）刚好被截在窗口之外，连续三轮把
+    # "钩子说红却指不出红在哪" 当成环境噪声。失败上下文必须自带：点名用例 + 给全文路径。
+    grep -aE '^(FAILED|ERROR)|short test summary|\[GATE [a-z-]+\] FAIL|❌ C[0-9]+:' \
+      /tmp/fenjue_pch.log 2>/dev/null | head -12 >&2
+    echo "[pre-commit] 明细全文: /tmp/fenjue_pch.log（本次尾部 25 行如下）" >&2
+    tail -25 /tmp/fenjue_pch.log >&2
+    exit 1
+  fi
+fi
+
+# ---- 闸 2/3：noise_lint + noise_guard ----
+for h in noise_lint noise_guard; do
+  if [ -f "$REPO/scripts/$h.py" ]; then
+    if ! "$PY" "$REPO/scripts/$h.py" --quiet >/tmp/fenjue_$h.log 2>&1; then
+      echo "[pre-commit] ❌ scripts/$h.py 未通过 —— 提交被拒。明细尾部：" >&2
+      tail -15 /tmp/fenjue_$h.log >&2
+      exit 1
+    fi
+  fi
+done
+
+# ---- 闸 4：conflict_detect（GM 仓脚本）----
+CD="<MEMORY_ROOT>/scripts/conflict_detect.py"
+if [ -f "$CD" ]; then
+  if ! "$PY" "$CD" --quiet >/tmp/fenjue_cd.log 2>&1; then
+    echo '[pre-commit] ❌ conflict_detect.py 未通过 —— 提交被拒。明细尾部：' >&2
+    tail -15 /tmp/fenjue_cd.log >&2
+    exit 1
+  fi
+fi
+
+# 闸数从 pre_commit_hooks.py 的 GATES-COUNT 回显行取（派生，不抄写）
+GATE_N=$(sed -n 's/^GATES-COUNT: //p' /tmp/fenjue_pch.log | tail -1)
+echo "[pre-commit] ✅ 全量闸通过（${GATE_N:-?} 道 + noise×2 + conflict×1）"
+exit 0

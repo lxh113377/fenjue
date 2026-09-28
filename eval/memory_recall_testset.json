@@ -1,0 +1,670 @@
+{
+  "schema": "fenjue-memory-recall-testset-v1",
+  "_note": "P1E-1 记忆召回评测集（2026-09-24 首批 44 条）。召回契约与 A-memory-start Step 0.55 同构：keywords = 模拟 AI 提取的高信号关键词（人工策展，逐条对照 <MEMORY_ROOT> 磁盘实测标题落盘），expected = 期望召回条目（file 相对记忆根 + heading 逐字精确）。跑分: python eval/memory_recall_eval.py。条目增删须保持 30~60 区间（C26 门禁）。",
+  "corpus_roots": [
+    "lessons",
+    "core",
+    "meta",
+    "system"
+  ],
+  "exclude_prefixes": [],
+  "params": {
+    "top_k": 10,
+    "hit_at": 5
+  },
+  "baseline": {
+    "hit_at_5": 1.0,
+    "mrr": 0.9886,
+    "measured": "2026-09-24",
+    "_note": "首次基线（P1E-1）：44 条 gold 用例，语料 510 条目，确定性关键词引擎。周维护复跑，命中率/MRR 低于本基线 = 记忆层回归信号，先查语料改名/拆卷再判引擎"
+  },
+  "items": [
+    {
+      "id": "R01",
+      "query": "同一文件的多处编辑能不能并行发",
+      "keywords": [
+        "多个 Edit",
+        "同一文件",
+        "并行"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part1.md",
+          "heading": "同一文件的多个 Edit 不可同一批并行发出"
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "query": "合并重复代码前要检查副本是否已经分化",
+      "keywords": [
+        "去重前必查",
+        "分化",
+        "守卫差异"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part1.md",
+          "heading": "去重前必查副本是否分化（返回契约/守卫差异）"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "query": "把内联的降级副本改成委托调用收敛单一真源",
+      "keywords": [
+        "内联降级副本",
+        "委托调用",
+        "单一真源"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part1.md",
+          "heading": "内联降级副本改为委托调用（单一真源）"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "query": "为什么不能从 Bash 直接调 ps1 脚本",
+      "keywords": [
+        ".ps1",
+        "禁止从 Bash 调",
+        "PowerShell 工具跑"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part2.md",
+          "heading": "Windows 下 .ps1 必须用 PowerShell 工具跑，禁止从 Bash 调"
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "query": "TS 迁移之后门禁检测 0 个模块恒假通过",
+      "keywords": [
+        "扩展名漂移",
+        "恒假通过",
+        "TS 迁移"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part2.md",
+          "heading": "门禁脚本扩展名漂移致恒假通过（TS 迁移后循环检测 0 模块）"
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "query": "内联脚本抽数据外置到 JSON 有什么安全要求",
+      "keywords": [
+        "内联脚本",
+        "数据外置",
+        "安全铁律"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-code.part2.md",
+          "heading": "从内联脚本抽取数据外置到 JSON 的安全铁律"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "query": "为什么总跳过 utility skill 只命中 meta-skill",
+      "keywords": [
+        "meta-skill",
+        "路由层级",
+        "跳过"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-decision.md",
+          "heading": "meta-skill 路由层级：为什么会跳过 utility skill"
+        }
+      ]
+    },
+    {
+      "id": "R08",
+      "query": "改了权威一处为什么全局没生效",
+      "keywords": [
+        "传播盲区",
+        "改一处不等于改全局"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-decision.md",
+          "heading": "建议传播盲区 — 改一处不等于改全局"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "query": "CC 的评分是全量审还是抽样",
+      "keywords": [
+        "CC 评分",
+        "采样"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-decision.md",
+          "heading": "CC 评分是采样不是全量"
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "query": "分数比上次低是不是退步了",
+      "keywords": [
+        "分数波动",
+        "退步"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-decision.md",
+          "heading": "分数波动不代表退步"
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "query": "评分把不存在的小系统当真了，对象混淆",
+      "keywords": [
+        "虚假系统",
+        "评分对象混淆"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part1.md",
+          "heading": "虚假系统幻觉 — 评分对象混淆"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "query": "为什么打地鼠式修复永远修不完",
+      "keywords": [
+        "pre-CC",
+        "打地鼠"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part1.md",
+          "heading": "pre-CC 打地鼠原理"
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "query": "账面分和实战分差多少",
+      "keywords": [
+        "账面分",
+        "实战分"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part1.md",
+          "heading": "账面分 vs 实战分 — 对话初始流程 62 分，账面 82 分"
+        }
+      ]
+    },
+    {
+      "id": "R14",
+      "query": "junction 操作必须遵守的三条原则",
+      "keywords": [
+        "LinkType",
+        "os.walk",
+        "三要则"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part2.md",
+          "heading": "junction 操作三要则"
+        }
+      ]
+    },
+    {
+      "id": "R15",
+      "query": "Write 工具写 ps1 的编码默认是什么",
+      "keywords": [
+        "Write 工具",
+        "BOM",
+        "UTF-8"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part1.md",
+          "heading": "Write 工具写 .ps1 默认 UTF-8 无 BOM"
+        }
+      ]
+    },
+    {
+      "id": "R16",
+      "query": "CC CLI print 模式下工具名怎么不识别",
+      "keywords": [
+        "--print",
+        "WorkBuddy",
+        "专有工具名"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-memory.part2.md",
+          "heading": "CC CLI --print 模式下不能用 WorkBuddy 专有工具名"
+        }
+      ]
+    },
+    {
+      "id": "R17",
+      "query": "OC 会话超时了怎么规避",
+      "keywords": [
+        "OC session",
+        "超时规避"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-oc.part1.md",
+          "heading": "OC session 超时规避"
+        }
+      ]
+    },
+    {
+      "id": "R18",
+      "query": "派发后台任务后能不能直接结束回合",
+      "keywords": [
+        "轮询",
+        "通知",
+        "回合"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-oc.part1.md",
+          "heading": "后台任务派发后必须轮询等待，禁止提前结束回合"
+        }
+      ]
+    },
+    {
+      "id": "R19",
+      "query": "轮询和等通知后放手是一回事吗",
+      "keywords": [
+        "精确语义",
+        "等通知后放手"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-oc.part1.md",
+          "heading": "P0#26 精确语义 — \"轮询\"≠\"等通知后放手\""
+        }
+      ]
+    },
+    {
+      "id": "R20",
+      "query": "派给 OC 的规程被它当成待评审文档了",
+      "keywords": [
+        "规程型提示词",
+        "误读",
+        "假成功"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-oc.part2.md",
+          "heading": "OC 任务派发：规程型提示词会被误读为待 review 文档（假成功）"
+        }
+      ]
+    },
+    {
+      "id": "R21",
+      "query": "Tabbit 浏览器自动化有什么妙招和激活方法",
+      "keywords": [
+        "Tabbit",
+        "妙招",
+        "四件套"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-other.part2.md",
+          "heading": "Tabbit 妙招 + 任务模式激活四件套（最关键，2026-07-14 自动刷课）"
+        }
+      ]
+    },
+    {
+      "id": "R22",
+      "query": "python 打印 emoji 报编码错误",
+      "keywords": [
+        "print",
+        "emoji",
+        "GBK"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-tools-other.part1.md",
+          "heading": "Python print(emoji) 触发 GBK 错误"
+        }
+      ]
+    },
+    {
+      "id": "R23",
+      "query": "开场加载的技能收尾没跑怎么办",
+      "keywords": [
+        "Phase 0",
+        "实际运行",
+        "只加载不跑"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-workflow-discipline.part1.md",
+          "heading": "Phase 0 加载的 skill 收尾必须实际运行（禁止只加载不跑）"
+        }
+      ]
+    },
+    {
+      "id": "R24",
+      "query": "总控台提示词引用了废弃 skill 名字漂移",
+      "keywords": [
+        "命名漂移",
+        "已废弃 skill"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-workflow-discipline.part2.md",
+          "heading": "权威提示词/skill 引用命名漂移 — 总控台提示词引用已废弃 skill"
+        }
+      ]
+    },
+    {
+      "id": "R25",
+      "query": "ZC 端并行子代理开到第三个就报错",
+      "keywords": [
+        "ZC 端",
+        "并行子代理上限",
+        "并发超限"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-workflow-discipline.part3.md",
+          "heading": "[2026-09-23] 🔴 ZC 端并行子代理上限=2，第 3 个起报并发超限"
+        }
+      ]
+    },
+    {
+      "id": "R26",
+      "query": "列 to-do 之前要不要先核实当前态",
+      "keywords": [
+        "当前态",
+        "前提须执行前核实",
+        "评分报告"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-workflow-traps.part1.md",
+          "heading": "to-do / 评分报告条目前提须执行前核实当前态"
+        }
+      ]
+    },
+    {
+      "id": "R27",
+      "query": "Flask 两个角色登录互相越权的坑",
+      "keywords": [
+        "登录",
+        "越权",
+        "角色"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-p1-workflow-traps.part3.md",
+          "heading": "Flask 双角色登录越权 — @login_required 不查角色（P0验证发现，2026-07-14）"
+        }
+      ]
+    },
+    {
+      "id": "R28",
+      "query": "系统维护里数据层计数纪律",
+      "keywords": [
+        "计数纪律",
+        "数据层"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons-system-maintenance.part1.md",
+          "heading": "1. 数据层与计数纪律"
+        }
+      ]
+    },
+    {
+      "id": "R29",
+      "query": "eval 跑分把生产路由轨迹数据污染了",
+      "keywords": [
+        "污染",
+        "production",
+        "jsonl"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part11.md",
+          "heading": "[2026-08-04] 🔴 eval 以 production 身份污染 route_trace.jsonl"
+        }
+      ]
+    },
+    {
+      "id": "R30",
+      "query": "DIRECT_MAP 的权威源是 py 还是 json",
+      "keywords": [
+        "DIRECT_MAP",
+        "权威源",
+        "direct_layer"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part11.md",
+          "heading": "[2026-08-04] 🟢 DIRECT_MAP 权威源是 direct_map.json 而非 direct_layer.py"
+        }
+      ]
+    },
+    {
+      "id": "R31",
+      "query": "日志说完成了但文件其实没落盘",
+      "keywords": [
+        "声称",
+        "落盘",
+        "续写"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part15.md",
+          "heading": "[2026-08-04] 🔴 跨会话续写：日志声称\"已完成\"的章节文件可能未落盘"
+        }
+      ]
+    },
+    {
+      "id": "R32",
+      "query": "Windows 下 rg 通配符路径报 os error 123",
+      "keywords": [
+        "rg",
+        "通配符",
+        "os error 123"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part16.md",
+          "heading": "[2026-08-04] 🔴 Windows rg 路径参数不展开通配符（os error 123）"
+        }
+      ]
+    },
+    {
+      "id": "R33",
+      "query": "保留设备名 nul 文件到底能不能删",
+      "keywords": [
+        "保留设备名",
+        "DeleteFileW",
+        "绕过"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part19.part1.md",
+          "heading": "[2026-08-08] 🔴 保留设备名 nul 删除突破：系统 Python + DeleteFileW(\\\\?\\) 绕过 WorkBuddy shim（推翻「删不掉只能屏蔽」）"
+        }
+      ]
+    },
+    {
+      "id": "R34",
+      "query": "重建 skill_content 忘了重建 BGE 全路由挂了",
+      "keywords": [
+        "skill_content",
+        "BGE",
+        "fail-closed"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part19.part4.md",
+          "heading": "[2026-08-08] 🔴 skill_content 重建后未重建 BGE = 全路由 fail-closed：权威与产物三层漂移"
+        }
+      ]
+    },
+    {
+      "id": "R35",
+      "query": "子代理汇报完成但磁盘零改动",
+      "keywords": [
+        "实证",
+        "假完成",
+        "磁盘"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part23.part2.md",
+          "heading": "[2026-08-10] 🔴 子代理假完成模式：报「完成」但磁盘零改动（当日 3 次实证）"
+        }
+      ]
+    },
+    {
+      "id": "R36",
+      "query": "大目录检索返回 0 命中可信吗",
+      "keywords": [
+        "0 命中",
+        "假阴性",
+        "裸跑复核"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part35.md",
+          "heading": "[2026-09-23] 🔴 大目录检索返回「0 命中」可能是假阴性，须换通道裸跑复核"
+        }
+      ]
+    },
+    {
+      "id": "R37",
+      "query": "分卷排序取最新为什么会排错",
+      "keywords": [
+        "字典序",
+        "数字序",
+        "分卷文件名"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part37.md",
+          "heading": "[2026-09-23] 🔴 分卷文件名排序取\"最新\"必用数字序：字典序会把 part8 排在 part36 之后"
+        }
+      ]
+    },
+    {
+      "id": "R38",
+      "query": "多会话同仓并存作业要守什么规矩",
+      "keywords": [
+        "三禁",
+        "多会话并存",
+        "局部提交"
+      ],
+      "expected": [
+        {
+          "file": "lessons/lessons.part36.md",
+          "heading": "[2026-09-23] 🔴 多会话并存同仓作业三禁（基线/暂存/局部提交）"
+        }
+      ]
+    },
+    {
+      "id": "R39",
+      "query": "严禁猜测标识符是哪条铁律",
+      "keywords": [
+        "标识符",
+        "严禁猜测",
+        "P0.1"
+      ],
+      "expected": [
+        {
+          "file": "core/behavior_core.md",
+          "heading": "P0.1 严禁猜测标识符"
+        }
+      ]
+    },
+    {
+      "id": "R40",
+      "query": "不许迎合我，该质疑就质疑的规则",
+      "keywords": [
+        "独立质疑",
+        "禁止迎合"
+      ],
+      "expected": [
+        {
+          "file": "core/behavior_core.md",
+          "heading": "#21 独立质疑与纠错（五条指令，禁止迎合）— 2026-09-21 用户立规"
+        }
+      ]
+    },
+    {
+      "id": "R41",
+      "query": "技能退役的触发阈值怎么定",
+      "keywords": [
+        "Retire",
+        "触发阈值",
+        "候选"
+      ],
+      "expected": [
+        {
+          "file": "meta/retire_policy.part1.md",
+          "heading": "Retire 触发阈值（命中任一即进候选）"
+        }
+      ]
+    },
+    {
+      "id": "R42",
+      "query": "4KB 治理零豁免规则在哪",
+      "keywords": [
+        "治理",
+        "4KB",
+        "零豁免"
+      ],
+      "expected": [
+        {
+          "file": "meta/bigfile_governance.part1.md",
+          "heading": "治理规则速览（R161 2026-08-03 零豁免）"
+        }
+      ]
+    },
+    {
+      "id": "R43",
+      "query": "怎么判断是不是简单任务",
+      "keywords": [
+        "简单任务",
+        "判断标准"
+      ],
+      "expected": [
+        {
+          "file": "system/framework_common.md",
+          "heading": "简单任务判断标准"
+        }
+      ]
+    },
+    {
+      "id": "R44",
+      "query": "常见认知偏差怎么防范",
+      "keywords": [
+        "认知偏差",
+        "防范"
+      ],
+      "expected": [
+        {
+          "file": "system/critical_thinking.md",
+          "heading": "常见认知偏差防范"
+        }
+      ]
+    }
+  ]
+}

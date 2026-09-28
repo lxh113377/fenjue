@@ -1,0 +1,29 @@
+# 焚诀 pre-commit 门禁 — 2026-08-12 恢复（R192 单一真相源 + 安全）
+# 统一入口：eval/pre_commit_hooks.py（truth-consistency + secret-scan + pytest）
+repos:
+  - repo: local
+    hooks:
+      - id: fenjue-gate
+        name: fenjue-gate (truth-consistency + secret-scan + pytest)
+        entry: python eval/pre_commit_hooks.py
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: noise-lint
+        name: noise-lint (R198 生成文件存放规范 / 致命纪律 #17)
+        entry: python scripts/noise_lint.py --quiet
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: noise-guard
+        name: noise-guard (R198.2 广义噪声 F5/F6/F9 硬门禁)
+        entry: python scripts/noise_guard.py --quiet
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: conflict-detect
+        name: conflict-detect (R198.3 规则冲突 D1-D4 机器检测)
+        entry: python <MEMORY_ROOT>/scripts/conflict_detect.py --quiet
+        language: system
+        pass_filenames: false
+        always_run: true

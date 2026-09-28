@@ -1,0 +1,28 @@
+{
+  "schema": "fenjue-empty-baseline-ledger-v1",
+  "_note": "空基线「已初始化」登记表（对标轮四 7-C）。空面必须能自证扫过什么、扫了多少、什么时候扫的；新增空面未登记即 C32 红。",
+  "entries": [
+    {
+      "id": "style-ratchet",
+      "scanned_units": 226,
+      "surface": "scan_dirs_py_files",
+      "at": "2026-09-24",
+      "note": "{} = 无存量风格违例；须证明 ruff 真的扫过 eval/scripts/audit/feedback 四面"
+    },
+    {
+      "id": "llm-failure-cases",
+      "scanned_units": 3286,
+      "surface": "llm_decisions_lines",
+      "at": "2026-09-24",
+      "note": "[] = 尚无 LLM 判错样本；须证明决策流有在记录（否则是没接线而非没错）"
+    },
+    {
+      "id": "blindset-rotation",
+      "scanned_units": 291,
+      "surface": "layered_testset",
+      "at": "2026-09-24",
+      "note": "active_version=0 + history=[] = 季度轮换从未执行；登记须给 next_due，否则永为 vacuous。面口径取 layered_testset.json（CI 实跑集，轮换的真正题源），非 blind_test_queries 的 4 条壳",
+      "next_due": "2026-12-31"
+    }
+  ]
+}

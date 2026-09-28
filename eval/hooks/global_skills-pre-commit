@@ -1,0 +1,36 @@
+#!/bin/sh
+# global_skills 仓 pre-commit —— L1 注入预算「源头侧」快检（焚诀对标轮四 P0-17 / 治 D-28）
+#
+# 【为什么装在这个仓】C25 判据面在焚诀仓，但注入区的**增长源**在本仓（A-memory-start
+#   的 SKILL.md / contract.md 占基线 76%）。本仓此前 `.git/hooks` 只有 post-commit，
+#   没有任何 pre-commit ⇒ 一次技能发布 +3000B 在提交当时零校验，红只在下游爆且不可归因
+#   （实测 2026-09-24：焚诀 verify 从 28/28 变 29 PASS/1 FAIL，本地一字未动）。
+# 【版本化副本】焚诀 eval/hooks/global_skills-pre-commit（.git/hooks/* 不被 git 跟踪，
+#   换机重装：cp 焚诀那份到本仓 .git/hooks/pre-commit）
+# 【只拦恶化，不误伤】与注入文件无关的提交、以及任何让总量下降的瘦身提交一律放行——
+#   即使当前处于存量红中（否则没人能修好它）。判据与出路见焚诀 eval/inject_source_guard.py。
+# 【fail-open 边界】解释器/治理仓不可达 → 放行并告警（非本机最小环境不阻塞）；
+#   只有「本次提交把注入区推过基线或继续叠加」才拒。紧急绕过：FENJUE_SOURCE_GUARD=0。
+[ -n "$CI" ] && exit 0
+
+REPO=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+[ -n "$REPO" ] || exit 0
+
+# 与 GM 仓同族教训：git 向钩子透传 GIT_DIR/GIT_INDEX_FILE 会劫持跨仓 git 调用的判据面
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE
+
+FJ="${FENJUE_REPO:-<USER_HOME>/Desktop/workspace/焚诀}"
+GUARD="$FJ/eval/inject_source_guard.py"
+[ -f "$GUARD" ] || { echo '[source-guard] 未找到焚诀治理仓（异机/最小环境）→ 跳过' >&2; exit 0; }
+
+PY="<USER_HOME>/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
+if [ ! -x "$PY" ]; then
+  PY=$(command -v python3 2>/dev/null || command -v python 2>/dev/null || true)
+fi
+[ -n "$PY" ] || { echo '[source-guard] 未找到 python 解释器 → 跳过（不阻塞提交）' >&2; exit 0; }
+
+"$PY" "$GUARD" --repo "$REPO" || {
+  echo '[source-guard] ❌ L1 注入预算源头快检未通过 —— 提交被拒（出路见上方 REJECT 行）' >&2
+  exit 1
+}
+exit 0

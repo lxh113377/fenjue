@@ -1,0 +1,470 @@
+{
+  "_meta": {
+    "schema": "fenjue-behavior-fingerprint-v1",
+    "purpose": "lessons 命中率度量核心 — 把'记住教训'升级为'用上教训'。每条教训绑定可机器检查的行为指纹, 收尾门禁扫描产物/动作, 命中=真用上, 未命中=记住了但没用。",
+    "created": "2026-08-02",
+    "mainline": "主线④ lessons 命中率度量"
+  },
+  "fingerprints": [
+    {
+      "id": "FP-01",
+      "lesson": "数据层生成器必须四道防线 (lessons-p0 #7)",
+      "category": "数据安全",
+      "trigger_actions": [
+        "生成/覆盖 json/索引/数据层文件",
+        "跑 scan_skills/auto-fix 类生成器"
+      ],
+      "target_files": [
+        "<MEMORY_ROOT>\\scripts\\*.ps1",
+        "*.py"
+      ],
+      "checks": [
+        {
+          "type": "contains_any",
+          "patterns": [
+            "KNOWN_DOMAINS",
+            "notin $KNOWN_DOMAINS"
+          ],
+          "note": "防线1 白名单"
+        },
+        {
+          "type": "contains_any",
+          "patterns": [
+            "Count -eq 0",
+            "跳过写入"
+          ],
+          "note": "防线2 写前校验"
+        },
+        {
+          "type": "contains_all",
+          "patterns": [
+            ".tmp",
+            "Move-Item"
+          ],
+          "note": "防线3 原子替换"
+        },
+        {
+          "type": "contains_any",
+          "patterns": [
+            "写后校验",
+            "守恒"
+          ],
+          "note": "防线4 守恒校验"
+        }
+      ],
+      "hit_rule": "全部 check 通过 = 命中 (真用上)"
+    },
+    {
+      "id": "FP-02",
+      "lesson": "CC 评分 prompt 禁嵌重 PowerShell 命令 (R17)",
+      "category": "评分派发",
+      "trigger_actions": [
+        "写 CC 评分 prompt",
+        "派发 claude --print 评分"
+      ],
+      "target_files": [
+        "PROMPTS/cc_*.txt",
+        "PROMPTS/oc_*.txt"
+      ],
+      "checks": [
+        {
+          "type": "not_contains_any",
+          "patterns": [
+            "degradation-test.ps1",
+            "pre-cc-check.ps1",
+            "-File",
+            "pwsh"
+          ],
+          "note": "prompt 内不得让 CC 跑重脚本"
+        },
+        {
+          "type": "contains_any",
+          "patterns": [
+            "cat",
+            "grep -n",
+            "test -f",
+            "wc -c",
+            "ls"
+          ],
+          "note": "只让 CC 做轻量文件实测"
+        }
+      ],
+      "hit_rule": "两条 check 都过 = 命中"
+    },
+    {
+      "id": "FP-03",
+      "lesson": "删文件/数据前先 grep 证明无硬依赖 (oc-dispatch part1)",
+      "category": "数据安全",
+      "trigger_actions": [
+        "删除/移动/清理文件",
+        "清 ghost/残留"
+      ],
+      "target_files": [
+        "执行日志",
+        "session 记录"
+      ],
+      "checks": [
+        {
+          "type": "context_evidence",
+          "note": "删除动作前应有 grep/search 痕迹(由收尾报告人工确认)"
+        }
+      ],
+      "hit_rule": "收尾报告声明删除前做过 grep = 命中"
+    },
+    {
+      "id": "FP-04",
+      "lesson": "同一文件多处 Edit 不可并行 (p1-code part1)",
+      "category": "编码",
+      "trigger_actions": [
+        "批量编辑",
+        "多文件修改"
+      ],
+      "target_files": [
+        "工具调用记录"
+      ],
+      "checks": [
+        {
+          "type": "context_evidence",
+          "note": "同文件并行编辑会触发 File modified 报错; 报错即未命中"
+        }
+      ],
+      "hit_rule": "无 File modified since read 报错 = 命中"
+    },
+    {
+      "id": "FP-05",
+      "lesson": "评分 prompt 无锚定: 只预载原始证据不给机器分 (lessons-p0 #8)",
+      "category": "评分派发",
+      "trigger_actions": [
+        "写三门/评分 prompt"
+      ],
+      "target_files": [
+        "PROMPTS/*.txt"
+      ],
+      "checks": [
+        {
+          "type": "not_contains_any",
+          "patterns": [
+            "机器分基线",
+            "判定 PASS",
+            "综合分 ="
+          ],
+          "note": "不预载分数结论（R214-2: 删除裸数字 pattern 147.4/147.5——2026-09-06 实证误伤：Temp 池 split_integrity_cc.txt 中该数字出自 R119 历史日志语料（被审计对象文本），非预载锚定；语义模式已完整覆盖教训本体）"
+        },
+        {
+          "type": "contains_any",
+          "patterns": [
+            "原始证据",
+            "自行推导",
+            "盲测",
+            "没有收到任何\"机器评分结果\""
+          ],
+          "note": "要求门自己从证据推导"
+        }
+      ],
+      "hit_rule": "两条 check 都过 = 命中"
+    },
+    {
+      "id": "FP-06",
+      "lesson": "修复前先验证完整根因链 (用户铁律: 完全摸透再修)",
+      "category": "修复纪律",
+      "trigger_actions": [
+        "修 bug",
+        "改出问题后重试"
+      ],
+      "target_files": [
+        "执行日志"
+      ],
+      "checks": [
+        {
+          "type": "context_evidence",
+          "note": "修复动作前应有根因验证痕迹(复现/读源码/确认不变式)"
+        }
+      ],
+      "hit_rule": "收尾报告含根因链描述 = 命中"
+    },
+    {
+      "id": "FP-07",
+      "lesson": "生成器/测量脚本写后必须校验 (verify-measure 族)",
+      "category": "数据安全",
+      "trigger_actions": [
+        "写生成器",
+        "写测量脚本"
+      ],
+      "target_files": [
+        "eval/*.py",
+        "scripts/*.ps1",
+        "<MEMORY_ROOT>\\scripts\\*.ps1"
+      ],
+      "checks": [
+        {
+          "type": "contains_any",
+          "patterns": [
+            "verify",
+            "校验",
+            "assert",
+            "守恒",
+            "回读"
+          ],
+          "note": "脚本含自校验逻辑 (R-fix 2026-08-16: 目标指向 eval/scripts 真实脚本)"
+        }
+      ],
+      "hit_rule": "含自校验 = 命中"
+    },
+    {
+      "id": "FP-08",
+      "lesson": "修改带尺寸/版本声明的文件后必须同步引用面 (size-drift 族)",
+      "category": "同步",
+      "trigger_actions": [
+        "改 md 文件",
+        "改带版本锁的文件"
+      ],
+      "target_files": [
+        "<MEMORY_ROOT>\\meta\\VERSION_LOCK.md"
+      ],
+      "checks": [
+        {
+          "type": "version_toc_consistent",
+          "index": "<MEMORY_ROOT>\\meta\\VERSION_LOCK.md",
+          "parts": "VERSION_LOCK.part*.md",
+          "part_pattern": "\\.part(\\d+)\\.",
+          "note": "索引引用的 part 卷全部存在且计数一致 (R-fix 2026-08-16: 机械判定)"
+        }
+      ],
+      "hit_rule": "索引卷数 == 实际 part 数且 0 缺失 = 命中"
+    },
+    {
+      "id": "FP-09",
+      "lesson": "修复根因后必须写验证脚本跑断言 (2026-08-02 数据层事故沉淀)",
+      "category": "数据安全",
+      "trigger_actions": [
+        "修 bug 后收尾",
+        "改脚本后验证"
+      ],
+      "target_files": [
+        "eval/*.py"
+      ],
+      "checks": [
+        {
+          "type": "verify_scripts_exist",
+          "dirs": [
+            "eval",
+            "audit"
+          ],
+          "min": 3,
+          "pattern": "(verify|audit|check|test)",
+          "note": "eval/audit 含 >=3 个验证/审计脚本 (R-fix 2026-08-16: 机械判定)"
+        }
+      ],
+      "hit_rule": "验证脚本 >=3 个 = 命中"
+    },
+    {
+      "id": "FP-10",
+      "lesson": "批量删除/替换时用 replace_all 前确认唯一性 (2026-08-02 误删 system 行)",
+      "category": "编码",
+      "trigger_actions": [
+        "批量替换",
+        "删除多行",
+        "regex 删除"
+      ],
+      "target_files": [
+        "*.ps1",
+        "*.py",
+        "*.json"
+      ],
+      "checks": [
+        {
+          "type": "not_contains_any",
+          "patterns": [
+            "删除后不校验",
+            "直接删不检查"
+          ]
+        },
+        {
+          "type": "context_evidence",
+          "note": "删除/替换动作后立即校验受影响文件完整性"
+        }
+      ],
+      "hit_rule": "删除后校验 = 命中"
+    },
+    {
+      "id": "FP-11",
+      "lesson": "子代理派发时给足上下文避免返工 (2026-08-02 并行派发沉淀)",
+      "category": "协作",
+      "trigger_actions": [
+        "delegate_task 派发",
+        "写子代理 prompt"
+      ],
+      "target_files": [
+        "<MEMORY_ROOT>\\prompts\\workflow_seven_step.md"
+      ],
+      "checks": [
+        {
+          "type": "contains_all",
+          "patterns": [
+            "备选方案",
+            "验收判据",
+            "失败预算",
+            "回滚预案"
+          ],
+          "note": "七步工作流任务卡模板含完整上下文字段 (R-fix 2026-08-16: 机械判定)"
+        }
+      ],
+      "hit_rule": "任务卡模板含 4 个上下文字段 = 命中"
+    },
+    {
+      "id": "FP-12",
+      "lesson": "评分/审计 prompt 不得预载定性措辞结论 (2026-08-02 软锚定实证)",
+      "category": "评分派发",
+      "trigger_actions": [
+        "写评分 prompt",
+        "写审计 prompt"
+      ],
+      "target_files": [
+        "PROMPTS/*.txt"
+      ],
+      "checks": [
+        {
+          "type": "not_contains_any",
+          "patterns": [
+            "全部良性",
+            "已验证属实",
+            "一致无问题",
+            "无需修改"
+          ],
+          "note": "不预载定性结论"
+        }
+      ],
+      "hit_rule": "无定性结论措辞 = 命中"
+    },
+    {
+      "id": "FP-13",
+      "lesson": "注册新 skill 必须重建 BGE 嵌入矩阵 (2026-08-02 盲测双门独立抓到)",
+      "category": "数据安全",
+      "trigger_actions": [
+        "注册 skill",
+        "改 skill_ids.json",
+        "改 bge_fullbody_skills.json"
+      ],
+      "target_files": [
+        "eval/bge_fullbody_embeddings.npy",
+        "eval/bge_fullbody_skills.json"
+      ],
+      "checks": [
+        {
+          "type": "npy_shape_matches",
+          "npy": "eval/bge_fullbody_embeddings.npy",
+          "json": "eval/bge_fullbody_skills.json",
+          "note": "注册后验证嵌入对齐 (npy.shape[0] == len(skills))"
+        }
+      ],
+      "hit_rule": "npy 行数 == 技能表条数 = 命中"
+    },
+    {
+      "id": "FP-14",
+      "lesson": "盲测三门必须用不同随机样本集 (2026-08-02 用户拍板方案A)",
+      "category": "评分派发",
+      "trigger_actions": [
+        "派发多门盲测",
+        "写盲测 prompt"
+      ],
+      "target_files": [
+        "PROMPTS/*.txt"
+      ],
+      "checks": [
+        {
+          "type": "contains_any",
+          "patterns": [
+            "SAMPLE_1",
+            "SAMPLE_2",
+            "SAMPLE_3",
+            "样本集"
+          ],
+          "note": "每门分配独立样本集"
+        },
+        {
+          "type": "not_contains_any",
+          "patterns": [
+            "相同的10条",
+            "共用样本",
+            "同一批查询"
+          ]
+        }
+      ],
+      "hit_rule": "每门有独立样本集 = 命中"
+    },
+    {
+      "id": "FP-15",
+      "lesson": "路由文档计数必须与数据层一致 (2026-08-02 OC门发现 skill_routing 151 vs 实际136)",
+      "category": "同步",
+      "trigger_actions": [
+        "改 skill_routing.md",
+        "改路由表",
+        "增删 skill 后"
+      ],
+      "target_files": [
+        "<MEMORY_ROOT>\\skill_routing.md"
+      ],
+      "checks": [
+        {
+          "type": "count_matches_source",
+          "index": "<MEMORY_ROOT>\\skill_routing.md",
+          "source": "skill/registry/unified-skills-index.json",
+          "pattern": "\\*\\*总计：(\\d+)\\s*个 skill\\s*/\\s*(\\d+)\\s*个领域\\*\\*",
+          "note": "R263 判据升级（2026-09-22）：原 not_contains_any 硬编码 2026-08-02 漂移症状值「总计：151」，该值现已是注册表正确值（实测 151）且与 build_indexes 注入行互斥 ⇒ 恒判未命中（假失败）；改为动态比对「文档计数 == 注册表实测」，lesson 本体（路由表计数必须与数据层一致）保留"
+        },
+        {
+          "type": "context_evidence",
+          "note": "路由表总计 == 实际域JSON合计 (136)"
+        }
+      ],
+      "hit_rule": "路由表计数对齐实际 = 命中"
+    },
+    {
+      "id": "FP-16",
+      "lesson": "同名单文件禁止双源漂移 — 同步必须覆盖所有副本 (2026-08-02 CC二轮抓 eval/skill_ids 130 vs 权威136)",
+      "category": "同步",
+      "trigger_actions": [
+        "改 skill_ids.json",
+        "改数据层索引",
+        "注册 skill"
+      ],
+      "target_files": [
+        "<MEMORY_ROOT>\\skill_content\\skill_ids.json",
+        "eval/bge_fullbody_skills.json"
+      ],
+      "checks": [
+        {
+          "type": "json_count_equal",
+          "a": "<MEMORY_ROOT>\\skill_content\\skill_ids.json",
+          "b": "eval/bge_fullbody_skills.json",
+          "note": "多副本文件(权威源+eval)计数一致, 改一处同步全部"
+        }
+      ],
+      "hit_rule": "双源计数一致 = 命中"
+    },
+    {
+      "id": "FP-17",
+      "lesson": "开场预读声明（execution_guide 三行: lessons预读/skill加载/记忆加载）(R128)",
+      "category": "正确率/调用率",
+      "trigger_actions": [
+        "复杂任务开场",
+        "执行引导 execution_guide"
+      ],
+      "target_files": [
+        "memory/*.md"
+      ],
+      "checks": [
+        {
+          "type": "contains_all",
+          "patterns": [
+            "lessons预读: 命中",
+            "skill加载:",
+            "记忆加载: 命中"
+          ],
+          "note": "三行声明都在当日日志 = 开场按引导执行"
+        }
+      ],
+      "hit_rule": "全部 pattern 在同一日志 = 命中 (预读/加载/按需三指标声明)"
+    }
+  ]
+}

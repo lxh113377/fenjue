@@ -1,0 +1,50 @@
+{
+  "schema": "fenjue-upstream-skills-v1",
+  "_note": "P1-1 上游技能追踪登记表（对标产出）。记录本地技能与上游开源技能的映射关系 + 追踪的上游版本，供 eval/upstream_drift_check.py 周期性比对漂移。",
+  "_updated": "2026-09-23",
+  "_policy": "上游技能一律不改权威源自动同步：先出漂移报告 → 人工裁决（吸收/保持分叉/弃用）→ 再动手。禁止静默覆盖本地分叉（本地版本常含本仓特化，如中文口语路由与门禁联动）。",
+  "upstream": {
+    "repo": "obra/superpowers",
+    "version": "6.4.1",
+    "released": "2026-09-18",
+    "mirror_hint": "%TEMP%/superpowers_ref_20260923",
+    "license": "MIT",
+    "note": "浅克隆镜像，可随时删除重建：git clone --depth 1 https://github.com/obra/superpowers.git <dir>"
+  },
+  "mappings": [
+    {
+      "local": "brainstorming",
+      "upstream": "brainstorming",
+      "relation": "同源分叉",
+      "local_note": "description 与上游逐字一致；本地 10.6KB vs 上游 17.1KB",
+      "missing_hint": "上游含三路径分类（spike/bounded/architectural）+ HARD-GATE 审批门 + Visual Companion"
+    },
+    {
+      "local": "writing-plans",
+      "upstream": "writing-plans",
+      "relation": "同源分叉",
+      "local_note": "description 与上游一致；本地 6.0KB vs 上游 8.9KB",
+      "missing_hint": "上游含 plan 头（Spec 指针 / Global Constraints / Review Focus）+ 禁占位符清单 + plan-document-reviewer-prompt"
+    },
+    {
+      "local": "executing-plans",
+      "upstream": "executing-plans",
+      "relation": "同源分叉（落后最严重）",
+      "local_note": "本地 2.5KB vs 上游 19.9KB（约 1/8）",
+      "missing_hint": "上游已重建为 Native 内联执行 + ledger 抗压缩 + 完成合同 + Rulings not stalls + task-start/task-done 脚本"
+    },
+    {
+      "local": "test-driven-development",
+      "upstream": "test-driven-development",
+      "relation": "同源（基本同步）",
+      "local_note": "本地 9.9KB vs 上游 9.4KB，体量接近",
+      "missing_hint": "上游含 writing-good-tests.md 附属文件 + 11 行防理性化表"
+    }
+  ],
+  "review_cadence": {
+    "trigger": "季度复查，或上游发布新 minor 版本（v6.x → v6.y）时",
+    "owner": "人（裁决吸收/分叉/弃用）",
+    "command": "python eval/upstream_drift_check.py  |  python eval/upstream_drift_check.py --json",
+    "record": "每次复查把结论追加到 deliverables/上游技能漂移检测_2026-09-23.md §复查记录"
+  }
+}

@@ -1,0 +1,70 @@
+# 焚诀 pyproject — 工具链统一配置（R208 O-8）
+# 模式: 仅工具配置（pytest/mypy/ruff），无 [project]/[build-system]——
+# 本仓为扁平脚本仓（非 package），避免 Python 打包语义干扰 import。
+# 单一真相源: 此处为 pytest/mypy/ruff 唯一配置（pytest.ini/mypy.ini 已并入后删除）。
+# 保留独立: .coveragerc（coverage 门禁 fail_under，CI 已接线不动）。
+
+[project]
+name = "fenjue"
+version = "1.0.0"
+description = "记忆焚诀 — 多 Agent 统一记忆与技能路由治理系统（对外子集）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "刘星辉" }]
+keywords = ["ai-agent", "memory", "skill-routing", "hit-rate-evaluation", "governance"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.scripts]
+fenjue-hitrate = "eval.hitrate_cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["eval/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-q -p no:cacheprovider --timeout=120 --strict-markers"
+# R208 A2: markers 注册区——当前仅用内置 parametrize，无需注册项。
+# 后续新增自定义 marker（@pytest.mark.x）必须先在此登记，否则 --strict-markers 报错。
+markers = [
+    "integration: 需外部重资产/真实面的用例（冷态分钟级），默认不在快档与 pre-commit 链跑",
+]
+
+[tool.mypy]
+# R208 O-7: 宽松增量——只查显式列出的文件（follow_imports=skip），不强制历史遗留全注解。
+python_version = "3.13"
+follow_imports = "skip"
+ignore_missing_imports = true
+check_untyped_defs = false
+warn_unused_ignores = false
+
+[tool.ruff]
+# R208 O-8: 基础配置。渐进收紧由后续轮次定（不阻塞提交）。
+line-length = 120
+target-version = "py313"
+# 派生/归档/第三方目录不扫（与 .aiexclude 精神一致）
+exclude = [
+    ".git",
+    ".github",
+    ".cache",
+    "_trash",
+    "_temp",
+    "_bak",
+    "archive",
+    "eval/bge_onnx",
+    "publish/skill-hitrate-toolkit",
+    "db_performance_optimization",
+]
+
+[tool.ruff.lint]
+# ruff 官方默认基础规则集（最保守）:
+#   F=pyflakes（未定义/未使用 import 等）E4/E7/E9=语法级错误。
+# 不含 E501 行宽——历史代码大量长行，强制会海量噪音；E 系列其余规则同理留待后续收紧。
+select = ["E4", "E7", "E9", "F"]
+# E402 豁免（R210-05）：本仓为扁平脚本仓，sys.path.insert 后 import 顶层模块
+# 是标准惯用法（见 conftest.py / workflow_gate.py），非真实错误。
+ignore = ["E402"]

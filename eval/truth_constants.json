@@ -1,0 +1,307 @@
+{
+  "_meta": "焚诀单一真相源常量 — 变更须留痕并经门禁自证（C31 归因台账等），不设人工签批门（2026-09-24 用户裁定：原「owner签字方可改」条款永久废除）。所有脚本/CI/壳文档须引用，禁止手抄。; 2026-09-22 用户裁定「31 个磁盘在役件入册」：从 retired_skills 摘除 31 项（20 个市场件为 2026-09-21 OC 卸载时登记、其后经市场重装回磁盘；11 个 local-* 为 Intel 分发样例包，灰区裁定仅限「维护范围」不含入册）",
+  "_version": "1.0",
+  "_changed": "2026-08-12 初始创建（system-design-truth-source-fix 落地）；2026-08-12 R195 +workflow 块（owner 授权）；2026-08-16 R198.6 +retired_skills 黑名单（用户确认退役 32 skill 防批量入库还原）；2026-08-16 retire_skill.py 登记 testing；2026-09-14 retire_skill 步骤③ 补登记 6 件已删 skill（原退役为手工删目录，漏登记）：cloudbase-webapp-deploy-debug,deep-research-pro,fenjue-advisor-scoring,fenjue-cc-audit-cycle,multi-search-engine,skill-install；2026-09-14 retire_skill 步骤③ 补登记 6 件已删 skill（原退役为手工删目录，漏登记）：story-long-scan,story-short-scan；2026-09-14 HM 恢复在役：endpoints.active += hm、retired -= hm、junction_paths += hm（用户确认在役）；2026-09-14 workflow.platforms += hm、scripts += wf_hm.ps1；2026-09-21 OC 退役（用户确认）：endpoints.active -= oc、workflow.platforms -= oc（retired.oc 登记）；同轮 behavior_core 块同步 V41/22锚点; 2026-09-21 skill_fusion 批量登记 21 项(A-skill-manager 融合); 2026-09-21 OC 卸载：36 个插件源技能登记退役（磁盘依据随 npm 包移除）；2026-09-22 用户裁定：「每轮『老大。』开头」由 P0 降为 P1（要求不变）⇒ GM 侧 R174 卷 P0 重排 18→17（+P1 1 条，V37）；behavior_core 块（V41/22锚点）本身未变；2026-09-22 ZC（ZCode）入役（用户确认，权威端由四端扩为五端 = HM/WB/CX/TC/ZC）：endpoints.active/labels/notes += zc、junction_paths += zc、workflow.platforms += zc、scripts += wf_zc.ps1；磁盘实测 ~/.zcode/skills 与 ~/.zcode/memory 已建为一级 junction 直连 <SKILLS_ROOT> 与 <MEMORY_ROOT>（原 205 个绕经 TR 端的二级 junction 已拆，清单留痕 ~/.zcode/_bak_zcode_skills_junctions_20260922.txt）；ZCode 主包实测仅认 ~/.zcode/skills/、无内置 memory 目录约定，记忆经 ~/.zcode/AGENTS.md 引导直读；2026-09-23 OpenCode（OC）入役（用户确认，权威端由五端扩为六端 = HM/WB/CX/TC/ZC/OC）：代号oc由退役OpenClaw腾位复用，endpoints.active/labels/notes/junction_paths += oc、workflow.platforms += oc（scripts.wf_oc.ps1 沿用并改注）；磁盘实测 ~/.config/opencode/skills 与 ~/.config/opencode/memory 已建为一级 junction 直连 <SKILLS_ROOT> 与 <MEMORY_ROOT>（另建 ~/.opencode/* 兼容位双 junction），skills 数组另直指 <SKILLS_ROOT> 双轨兜底；OpenCode V2 内置仅认 skills 目录、无内置 memory 目录约定，记忆经 ~/.config/opencode/AGENTS.md 引导直读（与 ZC 端同形态）；2026-09-24 qw（千问办公）/qd（Qoder CN）入役（用户确认，权威端由六端扩为八端 = HM/WB/CX/TC/ZC/OC/QW/QD）：代号qw由下线QW腾位复用（旧QW为QoderWork CN，~/.qoderworkcn已无实测；新QW为千问办公~/.qwenworkcn，同awareness/main/AGENTS.md注入系）；endpoints.active/labels/notes/junction_paths += qw/qd、workflow.platforms/scripts += qw/qd；磁盘实测两端原skills均为真实目录（原生技能已备份），双junction直连权威源 + AGENTS.md/SOUL.md双文件引导（ZC/OC同形态）；2026-09-24 C25 注入硬预算棘轮（P1E-2）：新增 inject_budget 段（P0 强制注入区 5 文件/硬顶 65536B/基线 61472B 当日实测），门禁 check_c25_inject_budget（governance_layer）+ 隔离桩 stub_c25_inject_budget; 2026-09-24 对标轮四续批（QD 端，用户当轮指示）：① 永久废除「owner签字方可改」条款（同步改 eval/generate_index.py 模板 / index.md / GM memory/06-constraints.md；deliverables/ 与旧报告属历史留痕不改写），改为「变更须留痕并经门禁自证」；② 新增 C31 注入预算归因台账（eval/inject_ledger.py），基线只能经台账 applied 移动；③ 棘轮基线经台账条目（actor=global_skills 22990da+961bad6，V10.68.0/V10.69.0 发布 +3000B）由 61472 移动至 64472，硬顶 65536 不变。; 2026-09-26T11:20:00 千问办公（qw）退役（用户裁定 B 档=账面+拆物理挂载）：endpoints.active 8→7 = wb/tr/cx/hm/zc/oc/qd、junction_paths/workflow.platforms/scripts 同步摘 qw、retired.qw 合并两段沿革留痕；派生面 registry（platform_tiers/cross_platform_map/unified-skills-index install_state.qw→false）+ platform-qw.json 入 _trash（C4 禁残留）；GM 侧 cross_platform_map routing 与 startup 表同步七端；顺带修 platform-keys.ps1 六端漂移与 sync-skills-bridge.ps1 四端旧注释（用户同轮批准）",
+  "retired_skills": [
+    "1password",
+    "A-skill-onboarding",
+    "apple-notes",
+    "apple-reminders",
+    "bear-notes",
+    "blogwatcher",
+    "blucli",
+    "camsnap",
+    "clawhub",
+    "cloudbase-webapp-deploy-debug",
+    "contextweave-interactive-architecture__skillhub",
+    "control-ui",
+    "create-skill",
+    "cross-platform-skill-sync",
+    "data-layer-consistency-fix",
+    "deep-research-pro",
+    "eightctl",
+    "embedding-index-alignment",
+    "fenjue-advisor-scoring",
+    "fenjue-cc-audit-cycle",
+    "fenjue-routing-health-check",
+    "gemini",
+    "gh-issues",
+    "gifgrep",
+    "gog",
+    "goplaces",
+    "guizang-ppt-skill",
+    "healthcheck",
+    "himalaya",
+    "install-skill-dependency",
+    "meme-maker",
+    "model-usage",
+    "multi-search-engine",
+    "node-connect",
+    "notion",
+    "obsidian",
+    "openai-whisper",
+    "openhue",
+    "ordercli",
+    "peekaboo",
+    "poster__skillhub",
+    "sag",
+    "session-logs",
+    "sherpa-onnx-tts",
+    "skill-creator",
+    "skill-defer-to-authority",
+    "skill-drift-surgery",
+    "skill-hitrate-full-audit",
+    "skill-hitrate-improvement-pipeline",
+    "skill-install",
+    "skill-manager",
+    "skill-merge",
+    "skill-midtask-recheck",
+    "skill-routing-regeneration",
+    "skill-routing-test-driven-fix",
+    "skill-scaffold-with-audit",
+    "skill-trigger-diagnosis",
+    "skills-security-check",
+    "songsee",
+    "sonoscli",
+    "spotify-player",
+    "story-long-scan",
+    "story-short-scan",
+    "summarize",
+    "things-mac",
+    "tmux",
+    "trello",
+    "weather",
+    "xurl"
+  ],
+  "retire_policy": {
+    "threshold": 0,
+    "block_ingest": true,
+    "frequency": "monthly"
+  },
+  "endpoints": {
+    "active": [
+      "wb",
+      "tr",
+      "cx",
+      "hm",
+      "zc",
+      "oc",
+      "qd"
+    ],
+    "labels": {
+      "wb": "WorkBuddy",
+      "tr": "TRAE SOLO CN (=tc)",
+      "cx": "Codex CLI",
+      "cc": "Claude Code",
+      "oc": "OpenCode",
+      "hm": "Hermes Agent",
+      "zc": "ZCode",
+      "qw": "千问办公",
+      "qd": "Qoder CN"
+    },
+    "aliases": {
+      "tr": "tc"
+    },
+    "notes": {
+      "cc": "Claude Code 已弃用 2026-09-08：installMethod=global，<USER_HOME>\\.claude\\ 目录不存在、无 junction 消费者，配置在 .claude.json",
+      "zc": "ZCode 2026-09-22 入役（用户确认）：~/.zcode/skills 与 ~/.zcode/memory 均为一级 junction 直连 <SKILLS_ROOT> / <MEMORY_ROOT>；程序内置仅认 ~/.zcode/skills/ 目录、无内置 memory 目录约定，记忆经 ~/.zcode/AGENTS.md 引导直读（与 CC 端 direct_read 同形态）",
+      "oc": "OpenCode 2026-09-23 入役（用户确认）：代号oc由退役OpenClaw腾位复用；在役端由五端扩为六端 = HM/WB/CX/TC/ZC/OC；~/.config/opencode/skills 与 ~/.config/opencode/memory 均为一级 junction 直连 <SKILLS_ROOT> / <MEMORY_ROOT>（另建 ~/.opencode/* 兼容位双 junction），skills 数组另直指 <SKILLS_ROOT> 双轨兜底；程序内置仅认 skills 目录、无内置 memory 目录约定，记忆经 ~/.config/opencode/AGENTS.md 引导直读（与 ZC 端同形态）",
+      "qw": "千问办公（~/.qwenworkcn）2026-09-24 入役、2026-09-26 退役（用户裁定 B 档）：代号 qw 由下线旧 QW（QoderWork CN）腾位复用后再度让位；入役期 skills/memory 双 junction 直连权威源 + ~/.qwenworkcn/AGENTS.md+SOUL.md 双文件引导，退役时两 junction 已非递归拆除、壳文件入 _trash（可回滚）。旧 QW 本体仍下线。",
+      "qd": "Qoder CN 2026-09-24 入役（用户确认，新端）：在役端由六端扩为八端 = HM/WB/CX/TC/ZC/OC/QW/QD；~/.qoder-cn/skills 与 ~/.qoder-cn/memory 均为一级 junction 直连 <SKILLS_ROOT> 与 <MEMORY_ROOT>；程序skills目录实测为真实目录（含dingtalk-*等原生技能，已备份），记忆经 ~/.qoder-cn/AGENTS.md + SOUL.md 双文件引导直读"
+    },
+    "retired": {
+      "qw": "已下线 2026-08-04（QoderWork CN 旧端，~/.qoderworkcn 已无实测）；2026-09-24 代号 qw 由千问办公（~/.qwenworkcn）接管复用（八端）；2026-09-26 千问办公退役（用户裁定）：endpoints.active 8→7 = HM/WB/CX/TC/ZC/OC/QD，~/.qwenworkcn/{skills,memory} junction 拆除、AGENTS.md/SOUL.md 入 _trash；本条为两段历史的合并留痕，旧 QW 本体与千问办公均不在役",
+      "cc": "已弃用 2026-09-08（目录不存在/无 junction 消费者，权威端由四端收敛为四端）",
+      "oc": "已退役 2026-09-21（用户确认，在役端 = WB/TR/CX/HM）【2026-09-22 校正注：ZC 入役后在役端 = HM/WB/CX/TC/ZC；原文保留不改，因其在当日为真】【2026-09-23 注：代号oc由 OpenCode 接管复用，在役端扩为六端 = HM/WB/CX/TC/ZC/OC；OpenClaw 本体仍退役】"
+    },
+    "incompatible": {
+      "mv": "Tantivy不兼容",
+      "td": "不存在(从未注册)"
+    },
+    "_source": "<MEMORY_ROOT>\\cross_platform_map.json V1.7"
+  },
+  "junction_paths": {
+    "wb": {
+      "skills": "<USER_HOME>\\.workbuddy\\skills",
+      "memory": "<USER_HOME>\\.workbuddy\\memory_content"
+    },
+    "tr": {
+      "skills": "<USER_HOME>\\.trae-cn\\skills",
+      "memory": "<USER_HOME>\\.trae-cn\\memory_content"
+    },
+    "cx": {
+      "skills": null,
+      "memory": "<USER_HOME>\\.Codex\\memory_content"
+    },
+    "cc": {
+      "skills": null,
+      "memory": "<USER_HOME>\\.claude\\memory_content"
+    },
+    "oc": {
+      "skills": "<USER_HOME>\\.config\\opencode\\skills",
+      "memory": "<USER_HOME>\\.config\\opencode\\memory"
+    },
+    "hm": {
+      "skills": null,
+      "memory": "<USER_HOME>\\AppData\\Local\\hermes\\memories"
+    },
+    "zc": {
+      "skills": "<USER_HOME>\\.zcode\\skills",
+      "memory": "<USER_HOME>\\.zcode\\memory"
+    },
+    "qd": {
+      "skills": "<USER_HOME>\\.qoder-cn\\skills",
+      "memory": "<USER_HOME>\\.qoder-cn\\memory"
+    }
+  },
+  "workflow": {
+    "doc_path": "<MEMORY_ROOT>\\prompts\\workflow_seven_step.md",
+    "version": "1.1",
+    "steps": [
+      "1_memory_start",
+      "2_prompt_better",
+      "3_ask_questions",
+      "4_project_handoff",
+      "5_task_card",
+      "6_execute",
+      "7_get_memory_savepoint"
+    ],
+    "platforms": [
+      "wb",
+      "tr",
+      "cx",
+      "hm",
+      "zc",
+      "oc",
+      "qd"
+    ],
+    "scripts": {
+      "oc": "scripts\\wf_oc.ps1",
+      "wb": "scripts\\wf_wb.ps1",
+      "tr": "scripts\\wf_tr.ps1",
+      "cx": "scripts\\wf_cx.ps1",
+      "hm": "scripts\\wf_hm.ps1",
+      "zc": "scripts\\wf_zc.ps1",
+      "qd": "scripts\\wf_qd.ps1"
+    },
+    "gate_script": "eval\\workflow_gate.py",
+    "owner": "辉哥"
+  },
+  "mainlines": [
+    {
+      "id": 1,
+      "key": "sync",
+      "name": "跨平台skill互通同步",
+      "kind": "scored",
+      "scorer": "score_sync"
+    },
+    {
+      "id": 2,
+      "key": "memory",
+      "name": "多agent统一记忆+路由系统",
+      "kind": "scored",
+      "scorer": "score_memory"
+    },
+    {
+      "id": 3,
+      "key": "routing",
+      "name": "skill命中率优化",
+      "kind": "scored",
+      "scorer": "score_routing"
+    },
+    {
+      "id": 4,
+      "key": "lessons",
+      "name": "lessons命中率度量",
+      "kind": "metric",
+      "scorer": "lessons_hitrate"
+    },
+    {
+      "id": 5,
+      "key": "attention",
+      "name": "注意力优化(注意力税)",
+      "kind": "metric",
+      "scorer": "attention_sim"
+    },
+    {
+      "id": 6,
+      "key": "pread",
+      "name": "前置使用率采样度量",
+      "kind": "metric",
+      "scorer": "pread_audit"
+    }
+  ],
+  "fragment": {
+    "max_bytes": 4096,
+    "rule": ">4KB必拆,0孤儿part(刻意设计,非技术债)"
+  },
+  "scorecard": {
+    "track_150": {
+      "total": 150,
+      "pass_line": 120,
+      "pass_pct": 0.8,
+      "line_pass": 40,
+      "line_total": 50,
+      "dim_pass_rate": 0.8,
+      "lines": "①②③ 各50"
+    },
+    "track_200": {
+      "total": 200,
+      "pass_line": 170,
+      "pass_pct": 0.85,
+      "composition": "六线全评(2026-08-16用户拍板): ①⑤⑥也纳入打分, 6线各约33分, 需为3条度量线设计打分规则"
+    },
+    "active_track": "track_200",
+    "pass_pct": 0.8
+  },
+  "line5_weights": {
+    "dilution": 0.5,
+    "hit_top1": 0.25,
+    "hit_top10": 0.25,
+    "note": "R217 用户拍板: Top-10 加权纳入(双轨披露防刷分); 检索分量内 Top-1/Top-10 各半; 三权和必须=1.0"
+  },
+  "paths": {
+    "global_memory": "<MEMORY_ROOT>",
+    "global_skills": "<SKILLS_ROOT>"
+  },
+  "behavior_core": {
+    "anchors": 22,
+    "valid": 22,
+    "version": "V41",
+    "source": "<MEMORY_ROOT>\\core\\behavior_core.md",
+    "updated": "2026-09-21"
+  },
+  "inject_budget": {
+    "_note": "C25（P1E-2，2026-09-24）：L1 注入硬预算棘轮 —— P0 强制注入区五文件字节和只许降不许升（对标 OpenClaw 20k/60k / Anthropic 25k）。baseline=棘轮基线（实测快照，只许下调）；hard_cap=绝对上限（防基线失控放宽）。文件清单增删即抬压实测面，超 baseline FAIL → 精简/拆 references 侧车后人工下调 baseline（棘轮紧扣）。 | 2026-09-24 经台账 applied（P0 #23 立规 +447B，actor=global_memory b755ebc）由 62889 移动至 63336",
+    "hard_cap_bytes": 65536,
+    "baseline_bytes": 63336,
+    "baseline_measured": "2026-09-24",
+    "files": [
+      {
+        "id": "a_memory_start_skill",
+        "path": "<SKILLS_ROOT>/A-memory-start/SKILL.md",
+        "bytes": 25456
+      },
+      {
+        "id": "a_memory_start_contract",
+        "path": "<SKILLS_ROOT>/A-memory-start/references/contract.md",
+        "bytes": 18616
+      },
+      {
+        "id": "behavior_core",
+        "path": "<MEMORY_ROOT>/core/behavior_core.md",
+        "bytes": 8350
+      },
+      {
+        "id": "shell_zc",
+        "path": "<USER_HOME>/.zcode/AGENTS.md",
+        "bytes": 3214
+      },
+      {
+        "id": "shell_project",
+        "path": "AGENTS.md",
+        "bytes": 5836
+      }
+    ]
+  }
+}

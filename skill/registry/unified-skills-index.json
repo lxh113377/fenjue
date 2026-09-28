@@ -1,0 +1,4735 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-09-26T11:20:00",
+  "version": "V2.14",
+  "ops_guide": "CRUD操作手册见同目录下的 OPERATIONS.md",
+  "cross_platform_map_ref": "cross_platform_map.json",
+  "generated_from": "cross_platform_map.json + 手动扫描 <SKILLS_ROOT>",
+  "skills": {
+    "_my-skills": {
+      "name": "_my-skills",
+      "display_name": " my skills",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "A-ask-questions": {
+      "name": "A-ask-questions",
+      "display_name": "A ask questions",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.5.0"
+    },
+    "A-get-memory": {
+      "name": "A-get-memory",
+      "display_name": "A get memory",
+      "domain": "memory",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "4.30.0"
+    },
+    "fenjue-memory-audit": {
+      "name": "fenjue-memory-audit",
+      "display_name": "A memory align",
+      "domain": "memory",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.7.0"
+    },
+    "A-memory-start": {
+      "name": "A-memory-start",
+      "display_name": "A memory start",
+      "domain": "memory",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "10.69.0"
+    },
+    "A-project-handoff": {
+      "name": "A-project-handoff",
+      "display_name": "A project handoff",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "3.52.3"
+    },
+    "A-prompt-better": {
+      "name": "A-prompt-better",
+      "display_name": "A prompt better",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.3.0"
+    },
+    "byted-mediakit-shared": {
+      "name": "byted-mediakit-shared",
+      "display_name": "byted mediakit shared",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "byted-seedance-video-generate": {
+      "name": "byted-seedance-video-generate",
+      "display_name": "byted seedance video generate",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "byted-seedream-image-generate": {
+      "name": "byted-seedream-image-generate",
+      "display_name": "byted seedream image generate",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "canvas-design": {
+      "name": "canvas-design",
+      "display_name": "canvas design",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "c-cleanup": {
+      "name": "c-cleanup",
+      "display_name": "c cleanup",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.2.0"
+    },
+    "coding-agent": {
+      "name": "coding-agent",
+      "display_name": "coding agent",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "data-analysis": {
+      "name": "data-analysis",
+      "display_name": "data analysis",
+      "domain": "data",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "data-visualization": {
+      "name": "data-visualization",
+      "display_name": "data visualization",
+      "domain": "data",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "debugging-fixing": {
+      "name": "debugging-fixing",
+      "display_name": "debugging fixing",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.1.0"
+    },
+    "diagram-maker": {
+      "name": "diagram-maker",
+      "display_name": "diagram maker",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "doc-coauthoring": {
+      "name": "doc-coauthoring",
+      "display_name": "doc coauthoring",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "docx": {
+      "name": "docx",
+      "display_name": "docx",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.0.0"
+    },
+    "find-skills": {
+      "name": "find-skills",
+      "display_name": "find skills",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.4"
+    },
+    "github": {
+      "name": "github",
+      "display_name": "github",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "gsap": {
+      "name": "gsap",
+      "display_name": "gsap",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "gstack": {
+      "name": "gstack",
+      "display_name": "gstack",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "hook-analyzer-skill": {
+      "name": "hook-analyzer-skill",
+      "display_name": "hook analyzer skill",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.2"
+    },
+    "hyperframes": {
+      "name": "hyperframes",
+      "display_name": "hyperframes",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "hyperframes-cli": {
+      "name": "hyperframes-cli",
+      "display_name": "hyperframes cli",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "hyperframes-media": {
+      "name": "hyperframes-media",
+      "display_name": "hyperframes media",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "hyperframes-registry": {
+      "name": "hyperframes-registry",
+      "display_name": "hyperframes registry",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "mcporter": {
+      "name": "mcporter",
+      "display_name": "mcporter",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "nano-pdf": {
+      "name": "nano-pdf",
+      "display_name": "nano pdf",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "node-inspect-debugger": {
+      "name": "node-inspect-debugger",
+      "display_name": "node inspect debugger",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "openai-whisper-api": {
+      "name": "openai-whisper-api",
+      "display_name": "openai whisper api",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "oracle": {
+      "name": "oracle",
+      "display_name": "oracle",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "pdf": {
+      "name": "pdf",
+      "display_name": "pdf",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.1"
+    },
+    "pixelle-api-ensure": {
+      "name": "pixelle-api-ensure",
+      "display_name": "pixelle api ensure",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "pptx": {
+      "name": "pptx",
+      "display_name": "pptx",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "python-debugpy": {
+      "name": "python-debugpy",
+      "display_name": "python debugpy",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "refactoring": {
+      "name": "refactoring",
+      "display_name": "refactoring",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "report-generator-skill": {
+      "name": "report-generator-skill",
+      "display_name": "report generator skill",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.2"
+    },
+    "shell-encoding-pitfalls": {
+      "name": "shell-encoding-pitfalls",
+      "display_name": "shell encoding pitfalls",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "spike": {
+      "name": "spike",
+      "display_name": "spike",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "taskflow": {
+      "name": "taskflow",
+      "display_name": "taskflow",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "ui-ux-pro-max": {
+      "name": "ui-ux-pro-max",
+      "display_name": "ui ux pro max",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "utf8-encoding-fix": {
+      "name": "utf8-encoding-fix",
+      "display_name": "utf8 encoding fix",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "video-frames": {
+      "name": "video-frames",
+      "display_name": "video frames",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "video-whisper-transcribe": {
+      "name": "video-whisper-transcribe",
+      "display_name": "video whisper transcribe",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "web-design-guidelines": {
+      "name": "web-design-guidelines",
+      "display_name": "web design guidelines",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "wechat-automation": {
+      "name": "wechat-automation",
+      "display_name": "wechat automation",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "xlsx": {
+      "name": "xlsx",
+      "display_name": "xlsx",
+      "domain": "data",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.1"
+    },
+    "agent-browser": {
+      "name": "agent-browser",
+      "display_name": "agent browser",
+      "description": "",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "algorithmic-art": {
+      "name": "algorithmic-art",
+      "display_name": "algorithmic art",
+      "description": "",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "dogfood": {
+      "name": "dogfood",
+      "display_name": "dogfood",
+      "description": "",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "electron": {
+      "name": "electron",
+      "display_name": "electron",
+      "description": "",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "frontend-skill": {
+      "name": "frontend-skill",
+      "display_name": "frontend skill",
+      "description": "",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "screenshot": {
+      "name": "screenshot",
+      "display_name": "screenshot",
+      "description": "",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "shadcn": {
+      "name": "shadcn",
+      "display_name": "shadcn",
+      "description": "",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T17:10:47.6725457+08:00",
+      "version": "1.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "computer-use-guidance-windows": {
+      "name": "computer-use-guidance-windows",
+      "display_name": "computer use guidance windows",
+      "description": "",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "community",
+      "user_created": false,
+      "last_modified": "2026-07-05T23:41:28.5666666+08:00",
+      "version": "0.9.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-dual-gate-quality-audit": {
+      "name": "openclaw-dual-gate-quality-audit",
+      "display_name": "openclaw dual gate quality audit",
+      "description": "",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "user-created",
+      "user_created": true,
+      "last_modified": "2026-07-05T23:41:28.5666666+08:00",
+      "version": "1.3.0",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-fenjue-weekly": {
+      "name": "openclaw-fenjue-weekly",
+      "display_name": "openclaw fenjue weekly",
+      "description": "",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "user-created",
+      "user_created": true,
+      "last_modified": "2026-07-05T23:41:28.5666666+08:00",
+      "version": "2.0.2",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "openclaw-task-supervision": {
+      "name": "openclaw-task-supervision",
+      "display_name": "openclaw task supervision",
+      "description": "",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "source": "user-created",
+      "user_created": true,
+      "last_modified": "2026-07-05T23:41:28.5666666+08:00",
+      "version": "1.3.1",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      }
+    },
+    "discover-agent-cli": {
+      "name": "discover-agent-cli",
+      "domain": "system",
+      "source": "community",
+      "user_created": false,
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "display_name": "discover agent cli",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "prompt-system-audit": {
+      "name": "prompt-system-audit",
+      "domain": "system",
+      "source": "community",
+      "user_created": false,
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "display_name": "prompt system audit",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.5.0"
+    },
+    "cross-platform-agent-sync": {
+      "name": "cross-platform-agent-sync",
+      "display_name": "cross-platform-agent-sync",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "description": "Cross-platform agent behavior rule sync",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.3.2"
+    },
+    "prompt-consolidation": {
+      "name": "prompt-consolidation",
+      "display_name": "prompt-consolidation",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "description": "Clean append-only patch layers from prompt files",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.1.0"
+    },
+    "vp-perspective-audit": {
+      "name": "vp-perspective-audit",
+      "display_name": "vp-perspective-audit",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "description": "VP perspective audit - predict agent behavior",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.0"
+    },
+    "windows-cli-utf8-wrapper": {
+      "name": "windows-cli-utf8-wrapper",
+      "display_name": "windows-cli-utf8-wrapper",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "description": "Windows CLI UTF-8 wrapper for Chinese prompts",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "workflow-preflight-check": {
+      "name": "workflow-preflight-check",
+      "display_name": "workflow preflight check",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "windows-gitbash-chinese-path-pit": {
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "name": "windows-gitbash-chinese-path-pit",
+      "source": "user-created",
+      "user_created": true,
+      "domain": "local",
+      "display_name": "windows gitbash chinese path pit"
+    },
+    "oc-dispatch-exec-guard": {
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.1",
+      "compatible_platforms": [
+        "oc wb cc tc",
+        "hm"
+      ],
+      "name": "oc-dispatch-exec-guard",
+      "source": "user-created",
+      "user_created": true,
+      "domain": "system",
+      "display_name": "oc-dispatch-exec-guard"
+    },
+    "bigfile-split": {
+      "name": "bigfile-split",
+      "display_name": "bigfile-split",
+      "description": "Split oversized memory/knowledge-base files via the **composite-pointer + semantic-leaf** paradigm",
+      "domain": "memory",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "qc_equivalent": null,
+      "unified_equivalent": null,
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "source": "user-created",
+      "user_created": true,
+      "last_modified": "2026-07-14T02:46:27.978932+08:00",
+      "version": "1.4.0"
+    },
+    "consulting-analysis": {
+      "domain": "research",
+      "source": "community",
+      "description": "",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "display_name": "consulting-analysis",
+      "upstream": null,
+      "name": "consulting-analysis",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "version": "1.2.0"
+    },
+    "audit-runner-safe-aggregate": {
+      "domain": "general_utils",
+      "source": "user-created",
+      "description": "安全判定范式：逐行精确匹配 [FAIL]/[DEVIATION]/[ERROR] 标签，避免全局 any() 掩盖真失败。",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "display_name": "audit runner safe aggregate",
+      "name": "audit-runner-safe-aggregate",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "version": "1.0.0"
+    },
+    "chaoshi-image-optimization": {
+      "name": "chaoshi-image-optimization",
+      "display_name": "chaoshi image optimization",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.3.0"
+    },
+    "cloudbase__skillhub": {
+      "name": "cloudbase__skillhub",
+      "display_name": "cloudbase (skillhub)",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "skillhub",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.34.6"
+    },
+    "chaoshi-web-deploy": {
+      "name": "chaoshi-web-deploy",
+      "display_name": "chaoshi web deploy",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "3.5.1"
+    },
+    "static-site-batch-audit-fix": {
+      "name": "static-site-batch-audit-fix",
+      "display_name": "static site batch audit fix",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "windows-bash-cli-interop-pitfalls": {
+      "name": "windows-bash-cli-interop-pitfalls",
+      "display_name": "windows bash cli interop pitfalls",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "chaoshi-admin-inline-edit": {
+      "name": "chaoshi-admin-inline-edit",
+      "display_name": "chaoshi admin inline edit",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "byted-bp-cdn-pagesdeploy": {
+      "name": "byted-bp-cdn-pagesdeploy",
+      "display_name": "byted bp cdn pagesdeploy",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "skillhub",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "fenjue-lessons-hitrate": {
+      "name": "fenjue-lessons-hitrate",
+      "display_name": "fenjue lessons hitrate",
+      "domain": "memory",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.0.0"
+    },
+    "wechat-voice-transcription": {
+      "name": "wechat-voice-transcription",
+      "display_name": "wechat voice transcription",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "html-ppt": {
+      "name": "html-ppt",
+      "display_name": "html ppt",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "elon-musk-perspective": {
+      "name": "elon-musk-perspective",
+      "display_name": "elon musk perspective",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "oc": true,
+        "wb": true,
+        "cc": true,
+        "tc": true,
+        "mv": null,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "cloudbase-db-optimize": {
+      "name": "cloudbase-db-optimize",
+      "display_name": "cloudbase-db-optimize",
+      "domain": "data",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "office-automation-pro": {
+      "name": "office-automation-pro",
+      "display_name": "office-automation-pro",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "story": {
+      "name": "story",
+      "display_name": "story",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "story-cover": {
+      "name": "story-cover",
+      "display_name": "story-cover",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "story-deslop": {
+      "name": "story-deslop",
+      "display_name": "story-deslop",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "story-import": {
+      "name": "story-import",
+      "display_name": "story-import",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "story-long-analyze": {
+      "name": "story-long-analyze",
+      "display_name": "story-long-analyze",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "story-long-write": {
+      "name": "story-long-write",
+      "display_name": "story-long-write",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.1"
+    },
+    "story-review": {
+      "name": "story-review",
+      "display_name": "story-review",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "story-setup": {
+      "name": "story-setup",
+      "display_name": "story-setup",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.8"
+    },
+    "story-short-analyze": {
+      "name": "story-short-analyze",
+      "display_name": "story-short-analyze",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "3.0.0"
+    },
+    "story-short-write": {
+      "name": "story-short-write",
+      "display_name": "story-short-write",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "workbuddy-mcp": {
+      "name": "workbuddy-mcp",
+      "display_name": "workbuddy-mcp",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "wps-knowledgebase": {
+      "name": "wps-knowledgebase",
+      "display_name": "wps-knowledgebase",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.0.3"
+    },
+    "天眼一下": {
+      "name": "天眼一下",
+      "display_name": "天眼一下",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "cc": true,
+        "oc": true,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "testing": {
+      "domain": "code",
+      "version": "1.0.0",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "user_created": false,
+      "source": "community",
+      "name": "testing",
+      "display_name": "testing",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm"
+      ]
+    },
+    "9b-lightworkflow": {
+      "name": "9b-lightworkflow",
+      "display_name": "9b lightworkflow",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.4.0"
+    },
+    "browser-cdp": {
+      "name": "browser-cdp",
+      "display_name": "browser cdp",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "first-principles-decomposer": {
+      "name": "first-principles-decomposer",
+      "display_name": "first principles decomposer",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "frontend-slides": {
+      "name": "frontend-slides",
+      "display_name": "frontend slides",
+      "domain": "creative",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "hermes-installer": {
+      "name": "hermes-installer",
+      "display_name": "hermes installer",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "taskflow-inbox-triage": {
+      "name": "taskflow-inbox-triage",
+      "display_name": "taskflow inbox triage",
+      "domain": "automation",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "windows-native-ocr": {
+      "name": "windows-native-ocr",
+      "display_name": "windows native ocr",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc",
+        "hm"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "mv": null,
+        "cc": true,
+        "oc": true,
+        "wb": true,
+        "tc": true,
+        "td": true,
+        "hm": true,
+        "codex": true,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "A-java-problem": {
+      "name": "A-java-problem",
+      "display_name": "A-java-problem",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.1"
+    },
+    "code-review": {
+      "name": "code-review",
+      "display_name": "code-review",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "sq-cleanmgr-c": {
+      "name": "sq-cleanmgr-c",
+      "display_name": "C盘清理管家",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.0"
+    },
+    "wb-git-commit-recipe": {
+      "name": "wb-git-commit-recipe",
+      "display_name": "wb-git-commit-recipe",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.1.0"
+    },
+    "ican-frontend-design-system": {
+      "name": "ican-frontend-design-system",
+      "display_name": "ican frontend design system",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "cc",
+        "tc"
+      ],
+      "source": "community",
+      "user_created": false,
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "4.3.0"
+    },
+    "ican-deploy": {
+      "name": "ican-deploy",
+      "display_name": "ican-deploy",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.2.0"
+    },
+    "story-scan": {
+      "name": "story-scan",
+      "display_name": "story-scan",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "video-breakdown-skill": {
+      "name": "video-breakdown-skill",
+      "display_name": "video-breakdown-skill",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "ai-video-homework-pipeline": {
+      "name": "ai-video-homework-pipeline",
+      "display_name": "ai-video-homework-pipeline",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "audio-deliverable-pipeline": {
+      "name": "audio-deliverable-pipeline",
+      "display_name": "audio-deliverable-pipeline",
+      "domain": "media",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "html-to-docx-win-fix": {
+      "name": "html-to-docx-win-fix",
+      "display_name": "html-to-docx-win-fix",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    },
+    "win-toolchain-pitfalls": {
+      "name": "win-toolchain-pitfalls",
+      "display_name": "win-toolchain-pitfalls",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.1"
+    },
+    "A-project-better": {
+      "name": "A-project-better",
+      "display_name": "A-project-better",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.8.0"
+    },
+    "A-skill-manager": {
+      "name": "A-skill-manager",
+      "display_name": "A-skill-manager",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": true,
+      "source": "user-created",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.5.0"
+    },
+    "brainstorming": {
+      "name": "brainstorming",
+      "display_name": "brainstorming",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "brand-guidelines": {
+      "name": "brand-guidelines",
+      "display_name": "brand-guidelines",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "chart-visualization": {
+      "name": "chart-visualization",
+      "display_name": "chart-visualization",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "defuddle": {
+      "name": "defuddle",
+      "display_name": "defuddle",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "executing-plans": {
+      "name": "executing-plans",
+      "display_name": "executing-plans",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.0.0"
+    },
+    "figma": {
+      "name": "figma",
+      "display_name": "figma",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "frontend-design": {
+      "name": "frontend-design",
+      "display_name": "frontend-design",
+      "domain": "web",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "internal-comms": {
+      "name": "internal-comms",
+      "display_name": "internal-comms",
+      "domain": "system",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "json-canvas": {
+      "name": "json-canvas",
+      "display_name": "json-canvas",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "knowledge-capture": {
+      "name": "notion-knowledge-capture",
+      "display_name": "notion-knowledge-capture",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-asr": {
+      "name": "local-asr",
+      "display_name": "local-asr",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-computer-use": {
+      "name": "local-computer-use",
+      "display_name": "local-computer-use",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-img2img": {
+      "name": "local-img2img",
+      "display_name": "local-img2img",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-mineru": {
+      "name": "local-mineru",
+      "display_name": "local-mineru",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-ocr-npu": {
+      "name": "local-ocr-npu",
+      "display_name": "local-ocr-npu",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-realtime-translator": {
+      "name": "local-realtime-translator",
+      "display_name": "local-realtime-translator",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-screenshot-qa": {
+      "name": "local-screenshot-qa",
+      "display_name": "local-screenshot-qa",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-tts": {
+      "name": "local-tts",
+      "display_name": "local-tts",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-txt2img": {
+      "name": "local-txt2img",
+      "display_name": "local-txt2img",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "local-vram": {
+      "name": "local-vram",
+      "display_name": "local-vram",
+      "domain": "local",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "meeting-intelligence": {
+      "name": "notion-meeting-intelligence",
+      "display_name": "notion-meeting-intelligence",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "notion-cli": {
+      "name": "notion-cli",
+      "display_name": "notion-cli",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "obsidian-bases": {
+      "name": "obsidian-bases",
+      "display_name": "obsidian-bases",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "obsidian-cli": {
+      "name": "obsidian-cli",
+      "display_name": "obsidian-cli",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "obsidian-markdown": {
+      "name": "obsidian-markdown",
+      "display_name": "obsidian-markdown",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "research-documentation": {
+      "name": "notion-research-documentation",
+      "display_name": "notion-research-documentation",
+      "domain": "research",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "slides": {
+      "name": "slides",
+      "display_name": "slides",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "spec-to-implementation": {
+      "name": "notion-spec-to-implementation",
+      "display_name": "notion-spec-to-implementation",
+      "domain": "doc",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "test-driven-development": {
+      "name": "test-driven-development",
+      "display_name": "test-driven-development",
+      "domain": "code",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "theme-factory": {
+      "name": "theme-factory",
+      "display_name": "theme-factory",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "writing-plans": {
+      "name": "writing-plans",
+      "display_name": "writing-plans",
+      "domain": "design",
+      "compatible_platforms": [
+        "oc",
+        "wb",
+        "tc",
+        "cx"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "community"
+    },
+    "dingtalk-aisearch": {
+      "name": "dingtalk-aisearch",
+      "display_name": "dingtalk-aisearch",
+      "domain": "research",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-aitable": {
+      "name": "dingtalk-aitable",
+      "display_name": "dingtalk-aitable",
+      "domain": "data",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-calendar": {
+      "name": "dingtalk-calendar",
+      "display_name": "dingtalk-calendar",
+      "domain": "media",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-chat": {
+      "name": "dingtalk-chat",
+      "display_name": "dingtalk-chat",
+      "domain": "research",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-contact": {
+      "name": "dingtalk-contact",
+      "display_name": "dingtalk-contact",
+      "domain": "research",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-doc": {
+      "name": "dingtalk-doc",
+      "display_name": "dingtalk-doc",
+      "domain": "doc",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-drive": {
+      "name": "dingtalk-drive",
+      "display_name": "dingtalk-drive",
+      "domain": "local",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-event": {
+      "name": "dingtalk-event",
+      "display_name": "dingtalk-event",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-mail": {
+      "name": "dingtalk-mail",
+      "display_name": "dingtalk-mail",
+      "domain": "research",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-minutes": {
+      "name": "dingtalk-minutes",
+      "display_name": "dingtalk-minutes",
+      "domain": "local",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-misc": {
+      "name": "dingtalk-misc",
+      "display_name": "dingtalk-misc",
+      "domain": "system",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-shared": {
+      "name": "dingtalk-shared",
+      "display_name": "dingtalk-shared",
+      "domain": "automation",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-todo": {
+      "name": "dingtalk-todo",
+      "display_name": "dingtalk-todo",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "dingtalk-wiki": {
+      "name": "dingtalk-wiki",
+      "display_name": "dingtalk-wiki",
+      "domain": "research",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.62.3"
+    },
+    "rag-eval": {
+      "name": "rag-eval",
+      "display_name": "rag-eval",
+      "domain": "general_utils",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "2.6.0"
+    },
+    "sqlalchemy-loader-criteria-pitfalls": {
+      "name": "sqlalchemy-loader-criteria-pitfalls",
+      "display_name": "sqlalchemy-loader-criteria-pitfalls",
+      "domain": "data",
+      "compatible_platforms": [
+        "wb",
+        "tr",
+        "cx",
+        "hm",
+        "zc",
+        "oc",
+        "qw",
+        "qd"
+      ],
+      "user_created": false,
+      "source": "community",
+      "install_state": {
+        "wb": true,
+        "tc": true,
+        "codex": true,
+        "oc": true,
+        "cc": null,
+        "hm": null,
+        "mv": null,
+        "td": null,
+        "zc": true,
+        "qw": false,
+        "qd": true
+      },
+      "version": "1.0.0"
+    }
+  },
+  "platforms": {
+    "td": {
+      "name": "ToDesk AI",
+      "sync_type": "junction",
+      "memory_type": "junction",
+      "skills_path": "D:\\\\to desk ai\\\\skills"
+    },
+    "hm": {
+      "name": "Hermes Agent",
+      "sync_type": "junction",
+      "memory_type": "logical_bridge",
+      "skills_path": "<USER_HOME>\\AppData\\Local\\hermes\\skills\\global"
+    }
+  },
+  "_meta": {
+    "cleanup": "2026-08-15 skill 清理: 剔除 27 死链, 保留 6 OC 插件源"
+  }
+}

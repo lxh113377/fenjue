@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>焚诀 — 多Agent统一记忆与技能路由系统</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --flame: #E85D04;
+  --flame-light: #F48C06;
+  --flame-glow: #FFBA08;
+  --ink: #1A1A2E;
+  --ink-soft: #3D3D5C;
+  --paper: #FAFBFC;
+  --card: #FFFFFF;
+  --border: #E8ECF0;
+  --accent-blue: #2563EB;
+  --accent-green: #059669;
+  --accent-purple: #7C3AED;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(26,26,46,0.06);
+  --shadow-hover: 0 8px 40px rgba(26,26,46,0.10);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--flame-light); border-radius: 3px; }
+
+/* Typography */
+h1, h2, h3, h4 { font-family: 'Sora', 'Noto Sans SC', sans-serif; line-height: 1.3; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Layout */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+section { padding: 100px 0; }
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(165deg, #FFFFFF 0%, #FFF8F0 40%, #FFF3E6 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,140,6,0.05) 0%, transparent 70%);
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(232,93,4,0.08);
+  border: 1px solid rgba(232,93,4,0.15);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--flame);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--flame);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero h1 .flame-char {
+  background: linear-gradient(135deg, var(--flame) 0%, var(--flame-glow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.hero-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-metric .value {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--flame);
+}
+
+.hero-metric .label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--flame);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-top: 16px;
+  max-width: 640px;
+}
+
+/* ===== PROBLEM SECTION ===== */
+.problem-section { background: var(--card); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.problem-card {
+  padding: 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--paper);
+  transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+  border-color: var(--flame-light);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.problem-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.problem-card:nth-child(1) .problem-icon { background: rgba(232,93,4,0.1); }
+.problem-card:nth-child(2) .problem-icon { background: rgba(37,99,235,0.1); }
+.problem-card:nth-child(3) .problem-icon { background: rgba(124,58,237,0.1); }
+
+.problem-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.problem-stat {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--flame);
+}
+
+/* ===== THREE PILLARS ===== */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+}
+
+.pillar-card {
+  padding: 40px 32px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.pillar-card:nth-child(1)::before { background: linear-gradient(90deg, var(--flame), var(--flame-glow)); }
+.pillar-card:nth-child(2)::before { background: linear-gradient(90deg, var(--accent-blue), #60A5FA); }
+.pillar-card:nth-child(3)::before { background: linear-gradient(90deg, var(--accent-green), #34D399); }
+
+.pillar-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  opacity: 0.06;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.pillar-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.pillar-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pillar-tag {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+}
+
+.pillar-card:nth-child(1) .pillar-tag { border-color: rgba(232,93,4,0.2); color: var(--flame); background: rgba(232,93,4,0.04); }
+.pillar-card:nth-child(2) .pillar-tag { border-color: rgba(37,99,235,0.2); color: var(--accent-blue); background: rgba(37,99,235,0.04); }
+.pillar-card:nth-child(3) .pillar-tag { border-color: rgba(5,150,105,0.2); color: var(--accent-green); background: rgba(5,150,105,0.04); }
+
+/* ===== ARCHITECTURE ===== */
+.arch-section { background: var(--card); }
+
+.arch-diagram {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+  position: relative;
+}
+
+.arch-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.arch-layer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arch-layer-label {
+  width: 120px;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-align: right;
+  color: var(--ink-soft);
+}
+
+.arch-layer-content {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.arch-node {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all 0.2s ease;
+}
+
+.arch-node:hover { transform: scale(1.05); }
+
+.arch-node.platform { background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8; }
+.arch-node.memory { background: #F0FDF4; border-color: #BBF7D0; color: #15803D; }
+.arch-node.routing { background: #FFF7ED; border-color: #FED7AA; color: #C2410C; }
+.arch-node.skill { background: #FAF5FF; border-color: #E9D5FF; color: #7E22CE; }
+.arch-node.eval { background: #FEF2F2; border-color: #FECACA; color: #DC2626; }
+
+.arch-arrow {
+  text-align: center;
+  padding: 8px 0;
+  color: var(--ink-soft);
+  opacity: 0.4;
+  font-size: 18px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  padding-left: 60px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--flame), var(--flame-glow), var(--accent-green));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+  padding: 28px 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--flame-light);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -48px;
+  top: 32px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--flame);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 3px rgba(232,93,4,0.2);
+}
+
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--flame);
+  margin-bottom: 8px;
+}
+
+.timeline-item h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.timeline-item p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.timeline-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 4px 12px;
+  background: rgba(5,150,105,0.06);
+  border: 1px solid rgba(5,150,105,0.15);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent-green);
+}
+
+/* ===== METRICS DASHBOARD ===== */
+.metrics-section { background: var(--ink); color: #fff; }
+.metrics-section .section-tag { color: var(--flame-glow); }
+.metrics-section .section-title { color: #fff; }
+.metrics-section .section-desc { color: rgba(255,255,255,0.6); }
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.metric-card {
+  padding: 32px 24px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(232,93,4,0.3);
+  transform: translateY(-2px);
+}
+
+.metric-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.metric-card:nth-child(1) .metric-value { color: var(--flame-glow); }
+.metric-card:nth-child(2) .metric-value { color: #60A5FA; }
+.metric-card:nth-child(3) .metric-value { color: #34D399; }
+.metric-card:nth-child(4) .metric-value { color: #A78BFA; }
+.metric-card:nth-child(5) .metric-value { color: #F472B6; }
+
+.metric-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+.metric-bar {
+  margin-top: 16px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0;
+}
+
+.metric-card:nth-child(1) .metric-bar-fill { background: var(--flame-glow); }
+.metric-card:nth-child(2) .metric-bar-fill { background: #60A5FA; }
+.metric-card:nth-child(3) .metric-bar-fill { background: #34D399; }
+.metric-card:nth-child(4) .metric-bar-fill { background: #A78BFA; }
+.metric-card:nth-child(5) .metric-bar-fill { background: #F472B6; }
+
+/* ===== EVOLUTION CHART ===== */
+.evolution-chart {
+  margin-top: 64px;
+  padding: 40px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+}
+
+.chart-title {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 24px;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 200px;
+}
+
+.chart-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart-bar {
+  width: 100%;
+  max-width: 60px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, var(--flame-glow), var(--flame));
+  transition: height 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.chart-bar-label {
+  margin-top: 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+.chart-bar-value {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--flame-glow);
+  white-space: nowrap;
+}
+
+/* ===== TECH STACK ===== */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.tech-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.tech-item:hover {
+  border-color: var(--flame-light);
+  box-shadow: var(--shadow);
+}
+
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  background: rgba(232,93,4,0.08);
+}
+
+.tech-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tech-item p {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  opacity: 0.6;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(250,251,252,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 40px;
+}
+
+.nav-brand {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--flame); }
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  section { padding: 60px 0; }
+  .hero-metrics { gap: 24px; }
+  .nav-links { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .timeline { padding-left: 40px; }
+  .timeline::before { left: 14px; }
+  .timeline-dot { left: -38px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">焚诀</a>
+  <ul class="nav-links">
+    <li><a href="#problem">问题</a></li>
+    <li><a href="#pillars">三大主线</a></li>
+    <li><a href="#architecture">架构</a></li>
+    <li><a href="#timeline">演进</a></li>
+    <li><a href="#metrics">指标</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">Active Project · 2026.07.04 — Present</div>
+    <h1><span class="flame-char">焚</span>诀</h1>
+    <p class="hero-subtitle">多 Agent 统一记忆与技能路由系统。让 5 个 AI 平台共享 150+ 技能，一条指令精准命中正确工具。</p>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <span class="value" data-count="93.4" data-suffix="%">0</span>
+        <span class="label">路由 Top-1 准确率</span>
+      </div>
+      <div class="hero-metric">
+        <span class="value" data-count="151" data-suffix="">0</span>
+        <span class="label">注册技能</span>
+      </div>
+      <div class="hero-metric">
+        <span class="value" data-count="5" data-suffix="端">0</span>
+        <span class="label">平台互通</span>
+      </div>
+      <div class="hero-metric">
+        <span class="value" data-count="135" data-suffix="/135">0</span>
+        <span class="label">技能健康度</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem-section" id="problem">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">The Problem</div>
+      <h2 class="section-title">为什么需要焚诀？</h2>
+      <p class="section-desc">当 AI Agent 的技能库膨胀到 150+ 且分散在 5 个平台时，管理变成了一场噩梦。</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">🔀</div>
+        <h3>技能孤岛</h3>
+        <p>5 个 AI 平台（OpenClaw / WorkBuddy / Claude Code / TRAE / QoderWork）各自维护独立技能库。在一个平台安装的技能，其他平台完全不知道。重复安装、版本漂移、手动同步成为日常。</p>
+        <div class="problem-stat">5 平台 × 150+ skill = 手动同步地狱</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🧠</div>
+        <h3>记忆断裂</h3>
+        <p>每个 Agent 有独立记忆系统，跨会话经验无法沉淀。同一个错误在不同平台反复犯，踩坑教训无法共享，每次对话都从零开始。</p>
+        <div class="problem-stat">经验留存率 ≈ 0%（跨平台）</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🎯</div>
+        <h3>路由失明</h3>
+        <p>150+ 技能摆在面前，但 Agent 不知道该用哪个。纯关键词匹配的初始命中率只有 6.7%——相当于 100 次调用里只有 7 次找对了工具。</p>
+        <div class="problem-stat">初始 Top-1 命中率: 6.7%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three Pillars -->
+<section id="pillars">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Solution</div>
+      <h2 class="section-title">三大主线，平行推进</h2>
+      <p class="section-desc">从 2026 年 7 月 4 日的一个朴素需求，演化为三线并行的完整系统。</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-num">01</div>
+        <h3>跨平台技能互通</h3>
+        <p>通过 Junction 符号链接 + 自动同步脚本，实现任一端增删技能后全端自动感知。157 项技能目录 diff=0，完全闭环。</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Junction 同步</span>
+          <span class="pillar-tag">Registry V2.0</span>
+          <span class="pillar-tag">190 条注册</span>
+          <span class="pillar-tag">周自动同步</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-num">02</div>
+        <h3>统一记忆 + 路由</h3>
+        <p>&lt;memory-root&gt; 作为多端共享的统一记忆权威源，配合 skill_routing（13 领域）+ intent_classifier（116 条精确路由），让每个 Agent 都拥有完整上下文。</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">global_memory</span>
+          <span class="pillar-tag">13 领域路由</span>
+          <span class="pillar-tag">三级意图分类</span>
+          <span class="pillar-tag">经验自动沉淀</span>
+        </div>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-num">03</div>
+        <h3>命中率优化</h3>
+        <p>四层管线架构：直连映射（43 条正则短路）→ Tag 倒排索引（465 标签）→ BGE 语义向量 → Memory 上下文增强。从 6.7% 一路飙升到 93.4%。</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">DIRECT_MAP</span>
+          <span class="pillar-tag">Tag 系统</span>
+          <span class="pillar-tag">BGE 语义</span>
+          <span class="pillar-tag">LLM 消歧</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="arch-section" id="architecture">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Architecture</div>
+      <h2 class="section-title">系统架构</h2>
+      <p class="section-desc">四层路由管线 + 五端统一记忆，从用户查询到精准技能加载的完整链路。</p>
+    </div>
+    <div class="arch-diagram reveal">
+      <div class="arch-layers">
+        <div class="arch-layer">
+          <div class="arch-layer-label">平台层</div>
+          <div class="arch-layer-content">
+            <span class="arch-node platform">OpenClaw</span>
+            <span class="arch-node platform">WorkBuddy</span>
+            <span class="arch-node platform">Claude Code</span>
+            <span class="arch-node platform">TRAE CN</span>
+            <span class="arch-node platform">QoderWork</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↕ Junction 同步</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">记忆层</div>
+          <div class="arch-layer-content">
+            <span class="arch-node memory">&lt;memory-root&gt;</span>
+            <span class="arch-node memory">lessons/</span>
+            <span class="arch-node memory">memory/</span>
+            <span class="arch-node memory">core/</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ 查询输入</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">路由层</div>
+          <div class="arch-layer-content">
+            <span class="arch-node routing">L0 直连映射</span>
+            <span class="arch-node routing">L1 Tag 过滤</span>
+            <span class="arch-node routing">L2 BGE 语义</span>
+            <span class="arch-node routing">L3 LLM 消歧</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ 精准命中</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">技能层</div>
+          <div class="arch-layer-content">
+            <span class="arch-node skill">151 Skills</span>
+            <span class="arch-node skill">13 领域</span>
+            <span class="arch-node skill">465 标签</span>
+            <span class="arch-node skill">116 精确路由</span>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ 质量保障</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">评估层</div>
+          <div class="arch-layer-content">
+            <span class="arch-node eval">回归测试</span>
+            <span class="arch-node eval">盲区分析</span>
+            <span class="arch-node eval">触发词审计</span>
+            <span class="arch-node eval">pre-cc-check</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Evolution</div>
+      <h2 class="section-title">演进时间线</h2>
+      <p class="section-desc">从一个 txt 文件里的朴素愿望，到四层管线 93.4% 命中率的完整系统。</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-04</div>
+        <h3>起源：一个 txt 文件</h3>
+        <p>在 history/skill互通.txt 里写下最初目标："不论在哪个平台下载或删除一个 skill，其余平台都会互通。" 焚诀项目正式诞生。</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-10 ~ 07-14</div>
+        <h3>基建期：评分体系 + 路由架构</h3>
+        <p>建立四门并行评分体系（优化记忆/skill tree/我的skill），完成 intent_classifier 三级路由重建，消除 grep 暴力匹配。behavior_core 迭代至 V25（33 个行为锚点）。</p>
+        <div class="timeline-metric">↑ 路由架构从 0 到三级</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-22</div>
+        <h3>工程化：Git 仓库 + Registry 治理</h3>
+        <p>初始化 Git 版本控制，清理 registry ghost 条目，建立 190 条技能注册表。告别文件名后缀式版本管理(.bak/_v2)。</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-28</div>
+        <h3>突破日：6.7% → 93.4%</h3>
+        <p>一天之内完成四层全管线落地：直连映射(17条) + Tag系统(465标签倒排索引) + BGE语义向量 + Memory上下文增强。修复 Memory Boost 拖后腿 Bug，Top-1 命中率从 6.7% 飙升至 93.4%。</p>
+        <div class="timeline-metric">↑ Top-1: 6.7% → 93.4% (+14x)</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-28 (同日)</div>
+        <h3>全网改造：135 Skill 触发词重塑</h3>
+        <p>对全部 135 个 skill 执行触发词质量改造，最终 135/135 健康（100% PASS, 0 FAIL）。再生器幂等耐久验证通过。</p>
+        <div class="timeline-metric">✓ 135/135 PASS</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026-07-30</div>
+        <h3>闭环：五端互通 + 程序化路由</h3>
+        <p>QW 端 Junction 闭环（157 项 diff=0），五端 memory 互通全绿。落地 Startup Rule #5 程序化 Pre-Route，将路由从"模型自觉"升级为"程序化强制"。三主线诊断修复完成。</p>
+        <div class="timeline-metric">✓ 5端 HEALTHY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics -->
+<section class="metrics-section" id="metrics">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Results</div>
+      <h2 class="section-title">量化成果</h2>
+      <p class="section-desc">所有指标均可通过脚本复验，非人工声称。</p>
+    </div>
+    <div class="metrics-grid reveal">
+      <div class="metric-card">
+        <div class="metric-value" data-count="93.4" data-suffix="%">0</div>
+        <div class="metric-label">路由 Top-1 准确率</div>
+        <div class="metric-bar"><div class="metric-bar-fill" data-width="93.4"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-count="135" data-suffix="/135">0</div>
+        <div class="metric-label">技能健康度</div>
+        <div class="metric-bar"><div class="metric-bar-fill" data-width="100"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-count="135" data-suffix="/150">0</div>
+        <div class="metric-label">优化记忆评分</div>
+        <div class="metric-bar"><div class="metric-bar-fill" data-width="90"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-count="140" data-suffix="/150">0</div>
+        <div class="metric-label">Skill Tree 评分</div>
+        <div class="metric-bar"><div class="metric-bar-fill" data-width="93.3"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" data-count="142" data-suffix="/150">0</div>
+        <div class="metric-label">我的 Skill 评分</div>
+        <div class="metric-bar"><div class="metric-bar-fill" data-width="94.7"></div></div>
+      </div>
+    </div>
+
+    <!-- Evolution Chart -->
+    <div class="evolution-chart reveal">
+      <div class="chart-title">命中率演进 (Top-1 Accuracy)</div>
+      <div class="chart-bars">
+        <div class="chart-bar-group">
+          <div class="chart-bar" data-height="7" style="height: 0;">
+            <span class="chart-bar-value">6.7%</span>
+          </div>
+          <div class="chart-bar-label">纯关键词</div>
+        </div>
+        <div class="chart-bar-group">
+          <div class="chart-bar" data-height="29" style="height: 0;">
+            <span class="chart-bar-value">28.9%</span>
+          </div>
+          <div class="chart-bar-label">+TF-IDF</div>
+        </div>
+        <div class="chart-bar-group">
+          <div class="chart-bar" data-height="72" style="height: 0;">
+            <span class="chart-bar-value">72.1%</span>
+          </div>
+          <div class="chart-bar-label">+BGE+LLM</div>
+        </div>
+        <div class="chart-bar-group">
+          <div class="chart-bar" data-height="93" style="height: 0;">
+            <span class="chart-bar-value">93.4%</span>
+          </div>
+          <div class="chart-bar-label">四层全管线</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section id="tech">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Tech Stack</div>
+      <h2 class="section-title">技术组件</h2>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item reveal">
+        <div class="tech-icon">🐍</div>
+        <div>
+          <h4>unified_router.py</h4>
+          <p>78KB 四层路由核心引擎，直连+Tag+BGE+Memory 全管线</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🔗</div>
+        <div>
+          <h4>NTFS Junction</h4>
+          <p>多端共享 &lt;memory-root&gt; 的零拷贝同步方案</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🧮</div>
+        <div>
+          <h4>BGE-zh 语义向量</h4>
+          <p>135 skill 全文嵌入索引，离线语义召回 <100ms</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🏷️</div>
+        <div>
+          <h4>Tag 倒排索引</h4>
+          <p>465 标签 × 权重分层 + NOT USE 负标签消歧</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🤖</div>
+        <div>
+          <h4>LLM 决策层</h4>
+          <p>6 条件自动触发消歧，NOT USE 边界修正 BGE 盲区</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">📊</div>
+        <div>
+          <h4>aggregate_status.py</h4>
+          <p>端到端聚合报告生成，消除 STATUS.md 竞态覆写</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🧪</div>
+        <div>
+          <h4>回归测试集</h4>
+          <p>50 条分层测试 (easy/medium/hard/negative) 防回归</p>
+        </div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🔄</div>
+        <div>
+          <h4>周维护自动化</h4>
+          <p>Cron 定时同步 + 回归 + 盲区分析 + 聚合报告</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">焚诀</div>
+    <p>多 Agent 统一记忆与技能路由系统 · 2026.07.04 — Present</p>
+    <p style="margin-top: 8px;">Built by 锋(Feng) for Lobster · Git: 4 commits · 5 Platforms · 151 Skills</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const isFloat = target % 1 !== 0;
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const current = target * eased;
+      el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Metric bars animation
+function animateBars() {
+  document.querySelectorAll('.metric-bar-fill').forEach(bar => {
+    bar.style.width = bar.dataset.width + '%';
+  });
+}
+
+// Chart bars animation
+function animateChart() {
+  document.querySelectorAll('.chart-bar').forEach(bar => {
+    bar.style.height = bar.dataset.height + '%';
+  });
+}
+
+// Trigger animations when metrics section is visible
+const metricsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      animateBars();
+      animateChart();
+      metricsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+const metricsSection = document.getElementById('metrics');
+if (metricsSection) metricsObserver.observe(metricsSection);
+
+// Hero counters on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hero-metrics [data-count]').forEach(el => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const isFloat = target % 1 !== 0;
+      const duration = 2000;
+      const start = performance.now();
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const current = target * eased;
+        el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    });
+  }, 300);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "schema": "fenjue-three-door-v2",
+  "ts": "2026-08-03T13:05",
+  "method": "三门独立盲测评分(方案A: 每门独立随机样本集, 生产日志156条池抽取互不重叠) + 严格口径判定",
+  "machine_baseline": {
+    "score": 148.6,
+    "ts": "2026-08-03",
+    "verdict": "PASS",
+    "note": "scorecard.py --json 实跑 R141: 主线①50.7+②50+③48.8; 盲测 70 条全对; Marvis 6 技能接入后基线"
+  },
+  "doors": {
+    "oc": {
+      "score": null,
+      "model": "deepseek-v4-flash",
+      "method": "OC门盲测SAMPLE_1(10条真实查询, FENJUE_ROUTE_TRACE=0只读实测)",
+      "ok": true,
+      "round": 3,
+      "lines": {
+        "line1": 50,
+        "line2": 50,
+        "line3": 49.7
+      },
+      "note": "待真实三端重跑(样本就绪 eval/three_door_samples/, 基线 148.6)",
+      "blind": "10/10"
+    },
+    "cc": {
+      "score": null,
+      "model": "deepseek-v4-flash",
+      "method": "CC门盲测SAMPLE_2(10条真实查询, 只读实测)",
+      "ok": true,
+      "round": 3,
+      "lines": {
+        "line1": 50,
+        "line2": 50,
+        "line3": 48.7
+      },
+      "note": "待真实三端重跑(样本就绪 eval/three_door_samples/, 基线 148.6)",
+      "blind": "9/10"
+    },
+    "hermes": {
+      "score": null,
+      "model": "deepseek-v4-flash",
+      "method": "Hermes门盲测SAMPLE_3(10条真实查询, 复测10/10 exact)",
+      "ok": true,
+      "round": 3,
+      "lines": {
+        "line1": 50,
+        "line2": 50,
+        "line3": 49.2
+      },
+      "note": "待真实三端重跑(样本就绪 eval/three_door_samples/, 基线 148.6)",
+      "blind": "9.5/10"
+    }
+  },
+  "final_score": null,
+  "verdict_strict": "PENDING",
+  "verdict_note": "R154: 子代理方式产生复读污染(#44 门禁: 三门非独立), 分数作废; 需 OC/CC/Hermes 真三端独立执行或人工盲测",
+  "report": "reports/融合评分卡_三门审计_2026-08-02-r3.md",
+  "samples_ready": {
+    "path": "eval/three_door_samples",
+    "method": "R123 生产池随机抽样 3×10 互不重叠未调参",
+    "ts": "2026-08-03"
+  },
+  "fixed_since_last": {
+    "watcher": "FenjueAutoSync 计划任务已创建(R137), CC 门 watcher 4/6 修复",
+    "registry": "三方对齐 195(R140), CC 门 registry 7/10 修复",
+    "version": "platform JSON 全部重建(R140), CC 门 version 4/6 修复",
+    "accuracy": "口径修正后 accuracy 8/8(R101)",
+    "note": "2026-08-03 机器可修维度全部闭环; 三端重跑只需核验剩余主观维度"
+  },
+  "rerun": {
+    "ts": "2026-08-03T13:05",
+    "method": "R150 三门重跑(用户批准 2026-08-03): 3×10 互不重叠样本只读实测(FENJUE_ROUTE_TRACE=0) + 机器维度实测(scorecard/cross_layer_audit/计划任务)",
+    "fixes": [
+      "DIRECT_MAP +6 语义直连: 思维导图→diagram-maker / 海报→local-txt2img / 落地页+科技·动画→hyperframes / 封面→canvas-design / 语音识别→local-asr / 可视化页面→chart-visualization",
+      "BGE 加载/编码 try/except 兜底 → TF-IDF 确定性降级(原 OC 门扣分项, 防路由崩溃)",
+      "watcher 计划任务 FenjueAutoSync Ready 验证(R137)",
+      "registry 三方一致 144 / platform JSON 全量重建验证(R140)"
+    ],
+    "verification": "回归 ALL PASS(easy 34/34 + medium 30/30) / 评估全管线 100%(83/83) / 终检 30/30 / scorecard 148.6 PASS / 冻结集 89% 设计基线",
+    "note": "同分根因: 机器可测 17 维确定性收敛 + OC/Hermes 样本全命中(非回声, CC 门独立抓到 1 条模糊未命中佐证独立性)"
+  },
+  "r154_invalidation": {
+    "ts": "2026-08-03",
+    "reason": "door_cc_r3/door_hermes_r3 子代理报告完全相同的三门分数(OC149.7/CC148.7/Hermes149.2)且报告文件缺失——独立盲测不可能同结果, 判定为共享文件系统复读污染",
+    "action": "分数作废, three_door_scores 置 PENDING; DIRECT_MAP/BGE 改动经总控台审查修正后保留有效部分"
+  },
+  "r158_cancelled": {
+    "ts": "2026-08-03",
+    "decision": "用户拍板: 取消三门审计机制, 由 Codex 独立完成评分",
+    "replaced_by": "eval/codex_audit_scores.json (fenjue-codex-audit-v1)",
+    "note": "本文件仅归档, 不再用于判定; 样本集 three_door_samples/ 继续作为 Codex 盲测样本"
+  }
+}

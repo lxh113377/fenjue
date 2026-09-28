@@ -1,0 +1,11 @@
+{
+  "model": "BAAI/bge-small-zh-v1.5",
+  "dim": 512,
+  "count": 167,
+  "encoding": "full-body (SKILL.md first 800 chars)",
+  "source": "skill/registry/unified-skills-index.json",
+  "snapshot": "7999e1d3359715c523056ef9478215996d62a620",
+  "tfidf": {
+    "corpus": "SKILL.md first 800 chars (同源 BGE)"
+  }
+}

@@ -1,0 +1,34 @@
+# R209-2④（2026-09-04）：供应链自动更新（报告 §2.6 D1）
+# requirements-ci.txt 顶层依赖全部 == 锁定 → dependabot 以 PR 形式提议版本变更，
+# 升级策略遵循文件头注记：改版本 → 本地全量 pytest + verify + 覆盖率复跑全绿后合入。
+# grouped：工具链（ruff/mypy）一组低风险合并；运行时依赖（numpy/scipy/sklearn/onnxruntime）
+# 单独 PR 逐个评估（BGE 语义层数值一致性需人工复跑）。
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+      timezone: "Asia/Shanghai"
+    groups:
+      lint-toolchain:
+        patterns:
+          - "ruff"
+          - "mypy"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    ignore:
+      # onnxruntime 升级走专门评估轮（R209-2④C），不走自动 PR——BGE 输出向量数值
+      # 一致性需 BGE 回归集复跑确认，自动化 PR 无法覆盖
+      - dependency-name: "onnxruntime"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    labels:
+      - "ci"

@@ -1,0 +1,152 @@
+{
+ "schema": "fenjue-testset-provenance-v1",
+ "ts": "2026-08-03T23:40:00",
+ "testset": "eval/layered_testset.json",
+ "summary": {
+  "total_queries": 284,
+  "tiers": 5,
+  "layers": {
+   "skills": 144,
+   "cli": 59,
+   "short": 51,
+   "fault_finding": 19,
+   "negative": 11
+  }
+ },
+ "layers": [
+  {
+   "tier": "skills",
+   "queries": 144,
+   "sources": [
+    {
+     "source": "auto-draft",
+     "queries": 60,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "R163 分层盲测集构建轮自动起草；layered_testset.json 落盘时间戳 2026-08-03 22:00:54"
+    },
+    {
+     "source": "test_queries.json(reuse)",
+     "queries": 57,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "复用 eval/test_queries.json（文件时间戳 2026-08-03 19:34；源集最早 2026-07-28 构建，多轮迭代）"
+    },
+    {
+     "source": "blind_test_queries.json(reuse)",
+     "queries": 27,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "复用 eval/blind_test_queries.json（文件时间戳 2026-08-03 21:13）"
+    }
+   ]
+  },
+  {
+   "tier": "cli",
+   "queries": 59,
+   "sources": [
+    {
+     "source": "curated-cli",
+     "queries": 59,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "R163 分层盲测集构建轮手工精编（CLI 域）；layered_testset.json 落盘时间戳 2026-08-03 22:00:54"
+    }
+   ]
+  },
+  {
+   "tier": "short",
+   "queries": 49,
+   "sources": [
+    {
+     "source": "curated-short",
+     "queries": 49,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "R163 分层盲测集构建轮手工精编（短查询域）；layered_testset.json 落盘时间戳 2026-08-03 22:00:54"
+    }
+   ]
+  },
+  {
+   "tier": "fault_finding",
+   "queries": 19,
+   "sources": [
+    {
+     "source": "curated-fault",
+     "queries": 19,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "R163 分层盲测集构建轮手工精编（故障排查域）；layered_testset.json 落盘时间戳 2026-08-03 22:00:54"
+    }
+   ]
+  },
+  {
+   "tier": "negative",
+   "queries": 13,
+   "sources": [
+    {
+     "source": "blind_test_queries.json",
+     "queries": 6,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "复用 eval/blind_test_queries.json（文件时间戳 2026-08-03 21:13），负向/盲区类"
+    },
+    {
+     "source": "test_queries.json",
+     "queries": 7,
+     "author": "焚诀主 Agent (Codex)",
+     "date": "2026-08-03",
+     "basis": "复用 eval/test_queries.json（文件时间戳 2026-08-03 19:34），负向/盲区类"
+    }
+   ]
+  }
+ ],
+ "frozen": {
+  "file": "eval/frozen_blind_test.json",
+  "tier": "frozen_real",
+  "queries": 10,
+  "author": "焚诀主 Agent (Codex)",
+  "established": "2026-08-01",
+  "basis": "2026-08-01 人工盲评建立（10 条真实场景，永不参与调参）；2026-08-03 幽灵清理校准期望：baoyu-article-illustrator→byted-seedream-image-generate、github-code-review→github；文件时间戳 2026-08-03 07:08:40；2026-08-04 R170 期望变更：写个脚本定期备份数据库 blindspot→exact(tencent-cos-skill__skillhub)"
+ },
+ "freeze_rules": [
+  "frozen_blind_test.json 与 layered_testset.json 的期望是金集：任何条目变更（增/删/改期望/改 judge）必须写入 changelog，记录变更人、日期、原因、影响计数",
+  "评分轮只测不调：不允许在 scorecard/盲测运行时修改金集",
+  "路由调参（DIRECT_MAP/Tag/BGE/LLM）不得以金集条目为训练目标；frozen 集永不进任何调参流程",
+  "跨轮对比统一用归一化达成率（cap 口径），裸百分比不可直接比大小"
+ ],
+ "changelog": [
+  {
+   "date": "2026-08-01",
+   "who": "焚诀主 Agent (Codex)",
+   "what": "frozen_blind_test.json 建立（10 条真实场景盲评）",
+   "why": "R102 配套：独立冻结基准，防自写测试集虚高"
+  },
+  {
+   "date": "2026-08-03",
+   "who": "焚诀主 Agent (Codex)",
+   "what": "layered_testset.json 建立（5 层 284 条，R163 批2）",
+   "why": "分层盲测集替代单一测试集，覆盖 skills/cli/short/fault_finding/negative"
+  },
+  {
+   "date": "2026-08-03",
+   "who": "焚诀主 Agent (Codex)",
+   "what": "frozen 期望校准：baoyu-article-illustrator→byted-seedream-image-generate；github-code-review→github",
+   "why": "R164 幽灵清理：移除幽灵技能，期望指向实路由技能",
+   "impact": "2/10 条期望变更，不影响样本量"
+  },
+  {
+   "date": "2026-08-03",
+   "who": "焚诀主 Agent (Codex)",
+   "what": "testset_provenance.json 建立（本文件）",
+   "why": "R166-U3：金集来源/作者/日期可溯，消除同生态自写无记录"
+  },
+  {
+   "date": "2026-08-04",
+   "who": "焚诀主 Agent (Codex)",
+   "what": "R170 生产缺口闭环：'开始写第一章小说'/'写个脚本定期备份数据库' 由负例/盲区改为精确期望（doc-coauthoring / tencent-cos-skill__skillhub）；DIRECT_MAP 同步新增 1 条直连",
+   "why": "生产 trace 高频 NONE 实锤（备份数据库 178×）+ 第一性原理计划拍板真实使用闭环",
+   "impact": "blind_test negative 6→4 / blind_hard 25→27；layered negative 13→11 / short 49→51；frozen 1/10 期望变更（总样本量不变 284）"
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "fenjue-blindset-gate-baseline-v1",
+  "_note": "ci_blind_eval 回归门的基线源。有效阈值 = max(硬底, top1_pct - allow_drop_pp)。换盲测集版本（eval/rotate_blindset.py --force 抬 active_version）后**必须重标本文件**，否则门禁按「基线版本不符」直接红——这是有意的耦合，防止「改题集即漂过门」。",
+  "top1_pct": 88.3,
+  "n": 291,
+  "blindset_version": 0,
+  "allow_drop_pp": 1.0,
+  "hard_floor_pct": 50.0,
+  "allow_drop_rationale": "2026-09-24 实测：同一管线连跑 3 次 Top-1 恒等（确定性），容差 1.0pp 仅吸收四舍五入。基线取分层集实测 88.3%（271/291 命中；理论上限 max_achievable=95.2%，差额来自期望技能已退役的题）。注：账面旧值 93.1% 系 2026-09-21 快照，且 CI 当时实跑的是 frozen 10 条集（非同一份），已一并纠正。",
+  "measured_at": "2026-09-24",
+  "source": "ci-blind-eval-raw.json（eval/frozen_blind_eval.py --json）",
+  "max_achievable_pct": 95.2
+}

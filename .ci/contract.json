@@ -1,0 +1,34 @@
+{
+  "schema": "fenjue-ci-green-contract-v1",
+  "repo": "lxh113377/fenjue-private-archive",
+  "branch": "master",
+  "refresh_days": 7,
+  "note": "推送前跑的 blocking 检查。刻意不放整条 18 闸链（那已在每次 commit 的 pre-commit 跑过，实测约 50s；本仓 post-commit 会自动 push，再跑一遍等于把墙钟翻倍）。这里只放「远端会红、且并行会话可能在我提交之后把它改红」的静态面。",
+  "checks": [
+    {
+      "name": "truth-consistency",
+      "cmd": "python eval/verify_truth_consistency.py",
+      "timeout_s": 300,
+      "blocking": true
+    },
+    {
+      "name": "control-char-lock",
+      "cmd": "python eval/control_char_lock.py",
+      "timeout_s": 120,
+      "blocking": true
+    },
+    {
+      "name": "wiring-census",
+      "cmd": "python eval/wiring_census.py",
+      "timeout_s": 120,
+      "blocking": true
+    },
+    {
+      "name": "greencheck-selftest",
+      "cmd": "python <SKILLS_ROOT>/A-project-handoff/scripts/greencheck.py --selftest",
+      "timeout_s": 180,
+      "blocking": true,
+      "note": "把判据本体的三要素自证接进阻断链：静音凭据/契约校验/探测过滤被改宽时，推送当场拦下。实测 0.5s。"
+    }
+  ]
+}

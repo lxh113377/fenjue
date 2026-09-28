@@ -1,0 +1,324 @@
+{
+  "schema": "fenjue-defect-tracking-v1",
+  "updated_at": "2026-08-04T20:32:02",
+  "state_machine": [
+    "open",
+    "in_progress",
+    "fixed",
+    "verified",
+    "closed"
+  ],
+  "notes": "verified 必须附验证命令输出; closed 需带 resolution(open/in_progress/fixed/verified 为未闭环)。R168: 所有 open 缺陷必须带 owner + deadline; 带 escape_hatch_deadline 的缺陷若超期仍未修复/未附决策文档，scorecard 直接阻断 PASS（防文档化绕过门禁）。",
+  "defects": [
+    {
+      "id": "oc-4",
+      "query": "我手机上的笔记怎么同步",
+      "weakness": "缺少手机笔记/跨设备用户数据同步相关技能",
+      "source": "codex_audit_scores.json red_team.pending (oc-4)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（路由决策轮; 生产 trace 已实锤 NONE ×3）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route('我手机上的笔记怎么同步') 返回显式 NONE 并附决策说明",
+        "或新增跨设备同步技能后 route(query) 命中该技能"
+      ],
+      "evidence": "生产 trace NONE ×3 (2026-08-02~08-03); 主 Agent orchestrator_crosscheck_u1.md 核验",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route('我手机上的笔记怎么同步')=NONE（现有技能均不适用）；验收=显式 NONE+决策文档 reports/R170_真实使用闭环_2026-08-04.md §oc-4"
+        }
+      ],
+      "resolution": "explicit_none_with_decision_doc: route('我手机上的笔记怎么同步')=NONE（现有技能均不适用）；验收=显式 NONE+决策文档 reports/R170_真实使用闭环_2026-08-04.md §oc-4"
+    },
+    {
+      "id": "oc-5",
+      "query": "做一个本地前端可视化html页面,展示我这个项目做的所有东西(是什么东西,为什么这么做,解决了什么问题)",
+      "weakness": "缺少项目README/概览自动生成专用技能",
+      "source": "codex_audit_scores.json red_team.pending (oc-5)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（技能创建: 评估 chart-visualization/report-generator-skill 扩展或新增概览技能）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route(query) 命中 chart-visualization 或专用项目概览技能",
+        "或路由返回显式 NONE 并附合并到现有技能的决策文档"
+      ],
+      "evidence": "red_team.pending oc-5; R158 拍板 chart-visualization 为可接受替代（false_positive oc-5 备注）",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route(oc-5 长查询)=chart-visualization（项目概览可视化，R158 已拍板可接受替代）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route(oc-5 长查询)=chart-visualization（项目概览可视化，R158 已拍板可接受替代）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "oc-10",
+      "query": "这个视频太长了帮我总结下",
+      "weakness": "缺少视频内容摘要/速览专用技能",
+      "source": "codex_audit_scores.json red_team.pending (oc-10)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（转写技能摘要入口扩展: video-whisper-transcribe 语义直连）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route('这个视频太长了帮我总结下') 命中 video-whisper-transcribe 或专用视频摘要技能",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending oc-10; R164 语义直连 video-whisper-transcribe（false_positive oc-10 备注）",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route('这个视频太长了帮我总结下')=video-whisper-transcribe（R164 语义直连）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route('这个视频太长了帮我总结下')=video-whisper-transcribe（R164 语义直连）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "cc-3",
+      "query": "这是我的记忆系统项目文件夹，为codex配置我的记忆系统memory tree和skill tree",
+      "weakness": "缺少记忆系统/技能树初始化配置向导技能",
+      "source": "codex_audit_scores.json red_team.pending (cc-3)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（配置向导: 评估并入 A-memory-start/项目初始化触发词）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route(query) 命中 A-memory-start 或专用配置向导技能",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending cc-3",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route(cc-3 查询)=cross-platform-agent-sync（专用配置向导技能，DIRECT_MAP 新增记忆/技能树配置模式）；与计划'A-memory-start 触发词'偏差见决策文档 §cc-3"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route(cc-3 查询)=cross-platform-agent-sync（专用配置向导技能，DIRECT_MAP 新增记忆/技能树配置模式）；与计划'A-memory-start 触发词'偏差见决策文档 §cc-3"
+    },
+    {
+      "id": "cc-8",
+      "query": "1.番茄免费小说作品标签 2.简介 3.为这本书创作一个封面",
+      "weakness": "缺少书籍出版/多步骤内容创作工作流技能",
+      "source": "codex_audit_scores.json red_team.pending (cc-8)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（创作工作流: 评估合并到现有 doc-coauthoring/封面生成技能链）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route(query) 命中多步创作工作流技能（或组合命中）",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending cc-8",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route(cc-8 查询)=doc-coauthoring（多步创作链起步，封面承接 canvas-design/seedream）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route(cc-8 查询)=doc-coauthoring（多步创作链起步，封面承接 canvas-design/seedream）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "cc-10",
+      "query": "分析一下我的历史对话总结我的习惯",
+      "weakness": "缺少用户行为分析/习惯挖掘专用技能",
+      "source": "codex_audit_scores.json red_team.pending (cc-10)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（DIRECT_MAP 直连 A-get-memory; R158 已拍板）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route('分析一下我的历史对话总结我的习惯') 命中 A-get-memory",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending cc-10; R158 拍板 false_positive cc-10 备注",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route('分析一下我的历史对话总结我的习惯')=A-get-memory（R158 拍板直连）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route('分析一下我的历史对话总结我的习惯')=A-get-memory（R158 拍板直连）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "hermes-3",
+      "query": "帮我做个思维导图",
+      "weakness": "缺少思维导图专用技能",
+      "source": "codex_audit_scores.json red_team.pending (hermes-3)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（U3 探针实测已可路由 diagram-maker；建议关闭为已覆盖，或拍板新建专用技能）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route('帮我做个思维导图') 命中现有制图技能（当前 diagram-maker）且记录决策（已覆盖/建专用技能二选一）",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending hermes-3; U3 miss_rate_probe 实测 route→diagram-maker (2026-08-04)",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "triage_note",
+          "note": "U3 漏检探针实测命中 diagram-maker，pending 疑似过期；处置二选一：关闭为已覆盖 / 保留专用技能决策项"
+        },
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route('帮我做个思维导图')=diagram-maker（U3 探针实测命中）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route('帮我做个思维导图')=diagram-maker（U3 探针实测命中）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "hermes-8",
+      "query": "生成一张海报",
+      "weakness": "缺少海报设计/图文排版专用技能",
+      "source": "codex_audit_scores.json red_team.pending (hermes-8)",
+      "status": "closed",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（U3 探针实测已可路由 byted-seedream-image-generate；建议关闭为已覆盖，或拍板新建海报专用技能）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "route('生成一张海报') 命中图像生成技能（当前 byted-seedream-image-generate）且记录决策（已覆盖/建专用技能二选一）",
+        "或显式 NONE 并附决策文档"
+      ],
+      "evidence": "red_team.pending hermes-8; U3 miss_rate_probe 实测 route→byted-seedream-image-generate (2026-08-04)",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "triage_note",
+          "note": "U3 漏检探针实测命中 byted-seedream-image-generate，pending 疑似过期；处置二选一：关闭为已覆盖 / 保留专用技能决策项"
+        },
+        {
+          "ts": "2026-08-04",
+          "action": "closed_by_r170",
+          "note": "route('生成一张海报')=byted-seedream-image-generate（U3 探针实测命中）；验收命令=unified_router.py --json 实测"
+        }
+      ],
+      "resolution": "covered_by_existing_skill: route('生成一张海报')=byted-seedream-image-generate（U3 探针实测命中）；验收命令=unified_router.py --json 实测"
+    },
+    {
+      "id": "hermes-4",
+      "query": "把文件备份到对象存储",
+      "weakness": "缺少对象存储/云存储备份相关技能（已证实为误报）",
+      "source": "codex_audit_scores.json red_team.pending (hermes-4, refuted)",
+      "status": "closed",
+      "resolution": "refuted",
+      "owner": "已关闭",
+      "owner_suggestion": "无（CC 知识盲区误报）",
+      "deadline": "2026-08-03",
+      "acceptance_criteria": [
+        "route('把文件备份到对象存储') 命中 tencent-cos-skill__skillhub"
+      ],
+      "evidence": "codex_audit_scores.json false_positive hermes-4: tencent-cos-skill__skillhub 即对象存储(COS)备份技能",
+      "history": [
+        {
+          "ts": "2026-08-03",
+          "action": "closed_as_refuted",
+          "note": "tencent-cos-skill__skillhub 即对象存储技能, CC 知识盲区误报"
+        }
+      ]
+    },
+    {
+      "id": "defect-A",
+      "query": "skill_routing 文档计数 = 144 未找到",
+      "weakness": "cross_layer_audit 期望 skill_routing.md 含 `**总计：144 个 skill**` 计数表述, 当前未找到（分卷/口径变化导致）",
+      "source": "eval/cross_layer_audit.py 第 28 项（文档层）",
+      "status": "closed",
+      "resolution": "fixed_verified: cross_layer 29/29, skill_routing 计数=144（壳+2 分卷动态读取）",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（文档维护轮: 在 skill_routing.md 或其分卷补总计计数行）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "复跑 cross_layer_audit.py --json → all_pass=true（29/29）",
+        "skill_routing.md（或其分卷）存在总计 144 计数行"
+      ],
+      "evidence": "cross_layer_audit.py --json @2026-08-03T23:35:29: passed=27/29, FAIL=skill_routing 文档计数（detail=未找到）",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_as_fixed",
+          "note": "cross_layer_audit.py --json @00:44:35 all_pass=true；skill_routing 文档计数 PASS（**总计：144 个 skill，扫描壳+2 分卷）"
+        }
+      ]
+    },
+    {
+      "id": "defect-B",
+      "query": "AGENTS.md 指标同步: part5 标 149.4/150, scorecard 实时实测 148.3/150",
+      "weakness": "AGENTS.md.part5.md 系统指标表仍标 149.4/150(99.6%), 与 scorecard 实时实测不一致; cross_layer_audit 第 29 项 FAIL",
+      "source": "eval/cross_layer_audit.py 第 29 项（文档层）",
+      "status": "closed",
+      "resolution": "fixed_verified: AGENTS.md.part5.md 已同步 scorecard 实时值 148.3/150",
+      "owner": "已关闭",
+      "owner_suggestion": "主 Agent（脚本化同步: 用 aggregate_status/scorecard 输出刷新 AGENTS.md.part5 指标行）",
+      "deadline": "2026-08-04",
+      "acceptance_criteria": [
+        "复跑 cross_layer_audit.py --json → all_pass=true（29/29）",
+        "AGENTS.md.part5.md 指标与 scorecard 实时值一致（或改由脚本同步）"
+      ],
+      "evidence": "AGENTS.md.part5.md=149.4/150; scorecard.py --json @2026-08-03T23:35:21 overall=148.3/150（任务书核验时刻 148.7/150, 共享工作区实时漂移）; cross_layer_audit FAIL=AGENTS.md 指标同步（detail=148.3/150 in part5）",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_as_fixed",
+          "note": "cross_layer_audit.py --json @00:44:35 AGENTS.md 指标同步 PASS（148.3/150 in part5, part5=1596B ≤4096B）"
+        }
+      ]
+    },
+    {
+      "id": "defect-C",
+      "query": "dataintegrity 注册→索引 80%（功能化内容自洽未满）",
+      "weakness": "主线① dataintegrity=7.6/8：内容级自洽 95.0%，其中 注册→索引 80% —— 约 20% 索引条目与注册表不一致（scorecard machine confirmed）",
+      "source": "eval/scorecard.py red_team.confirmed (主线① dataintegrity)",
+      "status": "closed",
+      "resolution": "fixed_verified: functional_dim_checks.py 注册→索引口径修正 — 36 条缺口全为 OC-only 插件技能(1password/apple-notes 等)，经 OC 插件系统加载、天然不在 skill_content 路由作用域(144=七端全局共享集)；改为路由消费平台口径(wb/cc/tc/td/hm/codex)后 注册→索引=144/144=100%，内容级自洽 health=100%",
+      "owner": "主 Agent（数据层修复轮）",
+      "owner_suggestion": "主 Agent（数据层修复轮: 对齐 skill_ids/索引与注册表，或补决策文档说明 80% 为可接受设计基线）",
+      "deadline": "2026-08-10",
+      "escape_hatch_deadline": "2026-08-07",
+      "acceptance_criteria": [
+        "functional_dim_checks.py 复跑 内容级自洽 100%（注册→索引 100%）",
+        "或附决策文档：注册→索引 80% 为可接受设计基线，且复跑 scorecard 不再计入 confirmed"
+      ],
+      "evidence": "functional_dim_checks.py --json @2026-08-04: route_cover=1.0, health=100.0 (注册→索引 100%)；决策依据=36 条缺失全为 OC-only 插件技能",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_as_fixed",
+          "note": "metric 口径修正（OC-only 插件技能非路由作用域）+ 决策依据写入代码注释；functional_dim_checks 复跑 health=100%"
+        }
+      ]
+    },
+    {
+      "id": "defect-D",
+      "query": "content_snr M4=0.50 自检金标准陈旧",
+      "weakness": "主线② content_snr=5.2/6：M4=0.50（自检金标准未随文档更新而陈旧），scorecard machine confirmed",
+      "source": "eval/scorecard.py red_team.confirmed (主线② content_snr)",
+      "status": "closed",
+      "resolution": "fixed_verified: degradation-test.ps1 2b/4c 分卷适配（Get-SkillRoutingText 壳+分卷合并读取），复跑 17/17 PASS；content_snr.py M4=1.00，内容信噪比 6/6",
+      "owner": "主 Agent（内容信噪比轮）",
+      "owner_suggestion": "主 Agent（内容信噪比轮: 更新 M4 金标准至当前文档并复跑 content_snr.py）",
+      "deadline": "2026-08-10",
+      "escape_hatch_deadline": "2026-08-07",
+      "acceptance_criteria": [
+        "content_snr.py 复跑 M4=1.00",
+        "或附决策文档：M4=0.50 为既定容忍的陈旧金标准，并更新判定口径"
+      ],
+      "evidence": "degradation-test.ps1 @2026-08-04: 17/17 PASS（2b=13 domain triggers, 4c=routing=144 JSON=144）；content_snr.py @2026-08-04: M4=1.00, 6/6",
+      "history": [
+        {
+          "ts": "2026-08-04",
+          "action": "closed_as_fixed",
+          "note": "自检金标准 partN 适配（2b/4c 只读根壳→壳+分卷）；复跑 degradation-test 17/17 + content_snr 6/6"
+        }
+      ]
+    }
+  ]
+}

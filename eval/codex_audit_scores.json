@@ -1,0 +1,190 @@
+{
+  "schema": "fenjue-codex-audit-v1",
+  "ts": "2026-08-03",
+  "method": "R158 用户拍板: 取消三门审计机制, 由 Codex 独立完成评分",
+  "machine_baseline": {
+    "score": 149.4,
+    "out_of": 150,
+    "pct": 99.6,
+    "band": "优秀",
+    "ts": "2026-08-03T21:29:14",
+    "source": "scorecard.py 全量实测 (R164: 分层盲测集 284/284 命中, 路由轮修复后)"
+  },
+  "codex_blind": {
+    "total": 30,
+    "exact": 28,
+    "usable": 2,
+    "wrong": 0,
+    "weighted_pct": 98.3,
+    "samples": "eval/three_door_samples/sample_{oc,cc,hermes}.json (30 条真实查询)",
+    "judged_by": "Codex 独立判定 (R164 修复 + R165 复核轮刷新, 逐条档案 eval/codex_blind_judgments.json)"
+  },
+  "independent_checks": {
+    "cross_layer_audit": "29/29 PASS",
+    "blind_set": "分层 284/284 命中 (加权94.2) | frozen 10/10",
+    "regression": "ALL PASS (89/89 + 69/69)",
+    "lessons": "9/9 = 100%",
+    "degradation": "17/17 PASS (R164 修复 skill_ids 误计)",
+    "content_snr": "6/6 (M1-M4 全绿)"
+  },
+  "verdict": "PASS",
+  "verdict_note": "R164 刷新: 机器基线 149.4/150(99.6%, 优秀) + 分层盲测 284/284 + 路由轮修复(3缺口+15盲区) + 独立核验全绿; 审计系统自身四问题(金标准/门禁/审计skill/经验库)已修复; R165 CC 复测: 一致性 60%→66.7%(0 新确认缺口, 3 缺口中 2 条直接对齐)",
+  "red_team": {
+    "ts": "2026-08-03T21:45:55",
+    "confirmed": [],
+    "false_positive": [
+      {
+        "id": "oc-3",
+        "note": "CC 无焚诀语境: A-get-memory 即\"任务后经验反哺引擎\", knowledge-capture 是 Notion 知识捕获"
+      },
+      {
+        "id": "oc-5",
+        "note": "R158 已拍板 可视化页面→chart-visualization; frontend-design 为可接受替代"
+      },
+      {
+        "id": "oc-10",
+        "note": "视频总结入口=转写(video-whisper-transcribe, R164 语义直连); report-generator-skill 是分析报告生成, 非总结入口"
+      },
+      {
+        "id": "cc-5",
+        "note": "R164 已修: 项目不足/提建议 → vp-perspective-audit(DIRECT_MAP 直连); CC 本轮漂移到 openclaw-task-supervision(上轮 CC 亦判 vp-perspective-audit), 属 CC 自身波动非新缺口"
+      },
+      {
+        "id": "cc-7",
+        "note": "A-get-memory 即总结经验技能; CC 误选 knowledge-capture"
+      },
+      {
+        "id": "cc-10",
+        "note": "R158 已拍板 历史对话习惯→A-get-memory; CC 误选 knowledge-capture"
+      },
+      {
+        "id": "hermes-4",
+        "note": "tencent-cos-skill__skillhub 即对象存储(COS)备份技能; CC 的\"无对象存储技能\"为知识盲区误报"
+      },
+      {
+        "id": "hermes-6",
+        "note": "taskflow 自动化语义直连命中; CC 本轮改选 coding-agent 泛编码, 不如 taskflow 贴切(上轮 CC 为 NONE, 判定不稳)"
+      },
+      {
+        "id": "hermes-9",
+        "note": "R158 决策 落地页+科技·动画→hyperframes; CC 无该语境误选 frontend-design"
+      }
+    ],
+    "pending": [
+      {
+        "id": "oc-4",
+        "query": "我手机上的笔记怎么同步",
+        "weakness": "缺少手机笔记/跨设备用户数据同步相关技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "oc-5",
+        "query": "做一个本地前端可视化html页面,展示我这个项目做的所有东西(是什么东西,为什么这么做,解决了什么问题)",
+        "weakness": "缺少项目README/概览自动生成专用技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "oc-10",
+        "query": "这个视频太长了帮我总结下",
+        "weakness": "缺少视频内容摘要/速览专用技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "cc-3",
+        "query": "这是我的记忆系统项目文件夹，为codex配置我的记忆系统memory tree和skill tree",
+        "weakness": "缺少记忆系统/技能树初始化配置向导技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "cc-8",
+        "query": "1.番茄免费小说作品标签 2.简介 3.为这本书创作一个封面",
+        "weakness": "缺少书籍出版/多步骤内容创作工作流技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "cc-10",
+        "query": "分析一下我的历史对话总结我的习惯",
+        "weakness": "缺少用户行为分析/习惯挖掘专用技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "hermes-3",
+        "query": "帮我做个思维导图",
+        "weakness": "缺少思维导图专用技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "hermes-8",
+        "query": "生成一张海报",
+        "weakness": "缺少海报设计/图文排版专用技能",
+        "status": "closed",
+        "closed_by": "R170 真实使用闭环",
+        "closed_date": "2026-08-04"
+      },
+      {
+        "id": "hermes-4",
+        "query": "把文件备份到对象存储",
+        "weakness": "缺少对象存储/云存储备份相关技能",
+        "status": "refuted",
+        "note": "tencent-cos-skill__skillhub 即对象存储技能, CC 知识盲区"
+      }
+    ],
+    "blindspots": [
+      {
+        "query": "手机笔记同步",
+        "note": "R158 修复: 无对应技能 → NONE 显式声明"
+      },
+      {
+        "query": "分析历史对话总结习惯",
+        "note": "R158 修复: 误路由 consulting-analysis → A-get-memory"
+      }
+    ],
+    "counts": {
+      "confirmed": 0,
+      "false_positive": 9,
+      "pending": 9,
+      "blindspots": 2,
+      "closed_by_r170": 8
+    }
+  },
+  "cc_recheck": {
+    "ts": "2026-08-03T21:45:55",
+    "cli": "claude",
+    "source": "three_door",
+    "n": 30,
+    "agree": 20,
+    "disagree": 10,
+    "agreement_rate": 66.7,
+    "confirmed": [],
+    "cc_deviation": [
+      "oc-3",
+      "oc-5",
+      "oc-10",
+      "cc-5",
+      "cc-7",
+      "cc-10",
+      "hermes-4",
+      "hermes-6",
+      "hermes-9"
+    ],
+    "edge": [
+      "cc-8"
+    ],
+    "report": "reports\\cc_independent_recheck_2026-08-03_r2.json",
+    "note": "R164 修复后复测: 一致性 60%→66.7%; 3 确认缺口 2 条直接对齐(cc-6/hermes-2), cc-5 路由已修但 CC 本轮自身漂移; CC 噪声偏高"
+  }
+}

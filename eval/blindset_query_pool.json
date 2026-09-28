@@ -1,0 +1,122 @@
+[
+  {
+    "query": "silk语音文件怎么转写",
+    "expected_skill": "wechat-voice-transcription",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "给视频加字幕转文字",
+    "expected_skill": "video-whisper-transcribe",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "把经验反哺到记忆里",
+    "expected_skill": "A-get-memory",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "做一个本地前端可视化html页面",
+    "expected_skill": "chart-visualization",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "查企业工商信息",
+    "expected_skill": "天眼一下",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "用 OpenAI 的 API 做语音识别",
+    "expected_skill": "openai-whisper-api",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "记忆系统审计一下",
+    "expected_skill": "fenjue-memory-audit",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "提取视频字幕",
+    "expected_skill": "video-whisper-transcribe",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "帮我设计一个网站的前端界面",
+    "expected_skill": "frontend-skill",
+    "judge": "usable-suboptimal",
+    "source": "cc_recheck_2026-08-03"
+  },
+  {
+    "query": "微信群发消息自动化",
+    "expected_skill": "wechat-automation",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "分析一下我的历史对话总结我的习惯",
+    "expected_skill": "A-get-memory",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "帮我优化一下这个Excel表格",
+    "expected_skill": "xlsx",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "把文件备份到对象存储",
+    "expected_skill": "tencent-cos-skill__skillhub",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "写个自动化脚本监控文件夹变化",
+    "expected_skill": "taskflow",
+    "judge": "usable-suboptimal",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "生成一张海报",
+    "expected_skill": "byted-seedream-image-generate",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "帮我做一个落地页，科技风格的，要有动画效果",
+    "expected_skill": "hyperframes",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "做PPT汇报",
+    "expected_skill": "pptx",
+    "judge": "exact",
+    "source": "three_door_samples"
+  },
+  {
+    "query": "关于主线任务还有哪些不足",
+    "expected_skill": "vp-perspective-audit",
+    "judge": "usable-suboptimal",
+    "source": "cc_recheck_2026-08-03"
+  },
+  {
+    "query": "UI设计一个dashboard页面",
+    "expected_skill": "ui-ux-pro-max",
+    "judge": "exact",
+    "source": "cc_recheck_2026-08-03"
+  },
+  {
+    "query": "这轮做得怎么样",
+    "expected_skill": "A-get-memory",
+    "judge": "usable-suboptimal",
+    "source": "layered_v1"
+  }
+]

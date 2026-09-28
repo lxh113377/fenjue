@@ -1,0 +1,78 @@
+[
+  {
+    "tier": "frozen_real",
+    "description": "冻结独立盲测集 — 真实场景query，永不参与调参（2026-08-01 盲评建立，10条全部未进入任何训练/调参流程）。每次评分只测不调，作为路由真实能力的独立基准。",
+    "queries": [
+      {
+        "query": "帮我给博客文章配一张风格统一的插画",
+        "expected_skill": "byted-seedream-image-generate",
+        "domain": "creative",
+        "note": "2026-08-03 幽灵清理: baoyu-article-illustrator 已移除, DIRECT_MAP 改指 seedream; 期望校准为实路由技能",
+        "judge": "exact"
+      },
+      {
+        "query": "把PPT里的文字提取出来做成演讲稿",
+        "expected_skill": "pptx",
+        "domain": "office",
+        "note": "盲评✅1.0 精确",
+        "judge": "exact"
+      },
+      {
+        "query": "这周给客户写个邮件催款",
+        "expected_skill": "internal-comms",
+        "domain": "comms",
+        "note": "盲评✅1.0 精确",
+        "judge": "exact"
+      },
+      {
+        "query": "给一个GitHub项目写代码审查意见",
+        "expected_skill": "github",
+        "domain": "code",
+        "note": "2026-08-03 幽灵清理: github-code-review 已移除, DIRECT_MAP 改指 github; 期望校准为实路由技能",
+        "judge": "exact"
+      },
+      {
+        "query": "把Excel表格转成PDF格式",
+        "expected_skill": "xlsx",
+        "domain": "office",
+        "note": "盲评⚠️0.8 实路由xlsx(可用)",
+        "judge": "usable-suboptimal"
+      },
+      {
+        "query": "微信群里收到一条语音消息怎么转文字",
+        "expected_skill": "wechat-voice-transcription",
+        "domain": "media",
+        "note": "2026-08-01修复: 同步共享库+BGE重建+DIRECT_MAP前置, 现直连命中",
+        "judge": "exact"
+      },
+      {
+        "query": "设计一个数据看板的配色方案",
+        "expected_skill": "chart-visualization",
+        "domain": "data",
+        "note": "盲评✅0.9 精确",
+        "judge": "exact"
+      },
+      {
+        "query": "用ffmpeg把视频转成gif动图",
+        "expected_skill": "video-frames",
+        "domain": "media",
+        "note": "盲评⚠️0.7 实路由video-frames(可用)",
+        "judge": "usable-suboptimal"
+      },
+      {
+        "query": "写个脚本定期备份数据库",
+        "expected_skill": "tencent-cos-skill__skillhub",
+        "domain": "web",
+        "note": "R170 决策: 通用备份由盲区 NONE 改为精确命中 tencent-cos(对象存储备份技能); 决策文档 reports/R170_真实使用闭环_2026-08-04.md",
+        "judge": "exact"
+      },
+      {
+        "query": "检查一下我这台电脑的磁盘空间",
+        "expected_skill": "c-cleanup",
+        "domain": "system",
+        "note": "盲评✅0.9 精确",
+        "judge": "exact"
+      }
+    ]
+  }
+]

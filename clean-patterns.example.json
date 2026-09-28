@@ -1,0 +1,5 @@
+{
+  "_comment": "复制为仓库上级目录的 clean-patterns.json（**不要提交进公开仓**），值填你自己要拦的正则。缺该文件时门禁只查形态类模式并打 partial。",
+  "my_uid": "REPLACE_ME",
+  "my_real_root": "REPLACE_ME"
+}

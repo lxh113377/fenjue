@@ -1,0 +1,72 @@
+[
+  {
+    "tier": "easy",
+    "query": "帮我把这份 markdown 转成 PDF",
+    "expected_skill": "pdf-export"
+  },
+  {
+    "tier": "easy",
+    "query": "这批 CSV 有重复行和空值，先清洗一下",
+    "expected_skill": "data-clean"
+  },
+  {
+    "tier": "easy",
+    "query": "把这个统计结果画成柱状图",
+    "expected_skill": "chart-render"
+  },
+  {
+    "tier": "easy",
+    "query": "后端还没好，先 mock 一个接口给前端联调",
+    "expected_skill": "api-mock"
+  },
+  {
+    "tier": "easy",
+    "query": "这条 SQL 很慢，帮我看看索引",
+    "expected_skill": "sql-optimize"
+  },
+  {
+    "tier": "medium",
+    "query": "线上一直报错，帮我从日志里找根因",
+    "expected_skill": "log-triage"
+  },
+  {
+    "tier": "medium",
+    "query": "这个 PR 的改动你过一遍给点建议",
+    "expected_skill": "code-review"
+  },
+  {
+    "tier": "medium",
+    "query": "给这个模块补测试，要跑到全绿",
+    "expected_skill": "unit-test"
+  },
+  {
+    "tier": "medium",
+    "query": "项目要对外了，写份说明文档和变更记录",
+    "expected_skill": "doc-write"
+  },
+  {
+    "tier": "hard",
+    "query": "界面要出英文版，字符串先抽出来",
+    "expected_skill": "i18n-translate"
+  },
+  {
+    "tier": "hard",
+    "query": "页面点一下卡三秒，先看看是哪儿耗的",
+    "expected_skill": "perf-profile"
+  },
+  {
+    "tier": "hard",
+    "query": "第三方包有没有爆出来的洞，能不能升",
+    "expected_skill": "dep-audit"
+  },
+  {
+    "tier": "hard",
+    "query": "帮我把表格里的数字做成一张能放进幻灯片的图",
+    "expected_skill": "chart-render"
+  },
+  {
+    "tier": "hard",
+    "query": "数据库查得慢，是不是该加个什么",
+    "expected_skill": "sql-optimize"
+  }
+]
