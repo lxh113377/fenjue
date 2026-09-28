@@ -27,7 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
+      - name: Configure Pages (enable it if the repo has no Pages site yet)
+        # 实测红因（run 36477680466）：默认 enablement=false 时，若 Pages 尚未启用，
+        # configure-pages 直接 `Get Pages site failed ... Not Found` 判红——
+        # 而「第一次 push 触发部署、Pages 还不存在」正是最常见的首次落地顺序。
+        # 置 true 让动作自己建站，红因消失；这也是把「配置在场」变成「行为回执」的做法。
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
