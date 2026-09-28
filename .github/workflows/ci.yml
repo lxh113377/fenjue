@@ -32,4 +32,6 @@ jobs:
       - name: Routing hit-rate evaluation on bundled examples
         run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
       - name: Test suite
-        run: python -m pytest -q
+        # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
+        # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。
+        run: python -m pytest

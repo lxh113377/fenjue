@@ -25,7 +25,7 @@ python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queri
 
 # 测试（需 dev 依赖：pyproject 的 addopts 带 --timeout，由 pytest-timeout 提供）
 python -m pip install -r requirements-dev.txt
-python -m pytest -q
+python -m pytest
 ```
 
 上面三条命令都不需要作者本机的任何路径。
@@ -117,11 +117,14 @@ python scripts/public_clean_check.py              # 扫全树；缺身份配置�
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python -m pytest -q
+python -m pytest
 ```
 
-干净 clone 面实测（2026-09-29，Windows + Python 3.12）：**674 条用例 / 626 通过 / 48 跳过 / 0 失败，rc=0**，
-覆盖 70 个测试模块。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+干净 clone 面实测（2026-09-29，Windows + Python 3.12）：**`626 passed, 48 skipped in 28.24s`，rc=0**，
+覆盖 70 个测试模块 / 674 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+
+> 别在命令行再补一个 `-q`：`pyproject.toml` 的 `addopts` 已含 `-q`，
+> 叠加成 `-qq` 会把上面这行汇总整行压掉，你就只剩一串点了。
 
 另有 20 个测试模块**没有**随本子集分发，因为它们断言的是作者本机的真仓状态、
 私有技能根或 182 MB 模型权重——在对外子集里必然测不到东西。处置是
