@@ -29,7 +29,9 @@ Those two gates live in the private source repository; in this subset the equiva
 - [Contributing](https://github.com/lxh113377/fenjue/blob/main/CONTRIBUTING.md): dev workflow + concurrency discipline
 - [Security policy](https://github.com/lxh113377/fenjue/blob/main/SECURITY.md): what counts as a vulnerability here, and known structural risks
 - [Changelog](https://github.com/lxh113377/fenjue/blob/main/CHANGELOG.md): per-version behaviour changes with reproducible evidence
-- Demo page: `docs/showcase.html` in this repo (no hosted deployment exists; an earlier revision of this file linked a GitHub Pages URL that measures 404)
+- [Online demo](https://lxh113377.github.io/fenjue/): Pages site deployed from `docs/` by `pages.yml`
+  (measured HTTP 200 / 2,699 B at 2026-09-29 04:2x +08; the same URL measured 404 the same day before the
+  Pages site existed, so this claim is timestamped rather than permanent)
 - [License (MIT)](https://github.com/lxh113377/fenjue/blob/main/LICENSE)
 
 ## Optional

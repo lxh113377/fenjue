@@ -132,8 +132,11 @@ demonstration (three deliberately non-overlapping skills), so its hit-rate readi
 
 ## Docs & demo
 
-- `docs/showcase.html` — demo page, open it directly in a browser. No hosted deployment exists for this
-  repo; an earlier revision of this file linked a GitHub Pages URL that measures 404, removed 2026-09-29.
+- Live demo: https://lxh113377.github.io/fenjue/ — deployed by `pages.yml` straight from `docs/`
+  (measured **HTTP 200 / 2,699 B** at 2026-09-29 04:2x +08 from this machine). The same URL measured 404 at
+  03:5x the same day, before the Pages site existed, which is why every reachability claim here carries a
+  timestamp instead of being stated as permanent.
+- `docs/showcase.html` — demo page, also served at the URL above and openable locally.
 - `docs/INSTALL.md` plus per-frontend notes; `llms.txt` for machine readers; `THIRD-PARTY-NOTICES.md` for licences.
 - Contribution discipline: `CONTRIBUTING.md`. Vulnerability definitions: `SECURITY.md`.
   Version history: `CHANGELOG.md`. Judges present-but-unwired, each with its measured exit code and the

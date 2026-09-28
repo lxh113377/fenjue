@@ -239,6 +239,9 @@ CI 地板按 Linux 面定（`--cov-fail-under=28`），不按开发机定。
 - 面向 LLM 的站点摘要：`llms.txt`
 - 第三方依赖与许可：`THIRD-PARTY-NOTICES.md`
 - 未随包分发的测试模块：`eval/tests/EXCLUDED.md`
+- 在线演示：https://lxh113377.github.io/fenjue/ （由 `pages.yml` 把 `docs/` 发成 Pages；
+  2026-09-29 04:2x 本机复测 **HTTP 200／2,699 B**。同一地址在 03:5x 实测是 404（那时 Pages 还没建站），
+  所以这条带时刻而不是写成永久事实——可达性按「域名×时刻」报，禁止引用无时刻的旧读数）
 - 贡献与并发工作纪律：`CONTRIBUTING.md`；漏洞定义与报告口径：`SECURITY.md`
 - 版本变更账：`CHANGELOG.md`；**在场但未接线的判据清单**（逐条带实测 rc 与接线前提）：`docs/DEBT_UNWIRED.md`
 
