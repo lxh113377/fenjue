@@ -5,7 +5,7 @@
 
 [![CI](https://github.com/lxh113377/fenjue/actions/workflows/ci.yml/badge.svg)](https://github.com/lxh113377/fenjue/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.10%2B-green.svg)](pyproject.toml)
+[![Python](https://img.shields.io/badge/python-3.12%2B-green.svg)](pyproject.toml)
 
 **本仓库是对外子集。** 它不含作者的个人记忆语料、会话日志、技能正文或模型权重。
 仓内所有数字都是**在干净 clone 面上实跑**得出的；跑不出来的一律不写。
@@ -28,6 +28,10 @@ python -m pytest -q
 ```
 
 上面三条命令都不需要作者本机的任何路径。
+
+> **Python 版本下限是 3.12**，不是随手写的：依赖钉了 `numpy==2.5.2`，
+> 而它在 PyPI 上的 `requires_python` 实测为 `>=3.12`。首版 CI 声明 3.11 因此装不上依赖直接判红——
+> 版本口径必须由依赖反推，不能由习惯填写。
 
 ---
 

@@ -2,5 +2,7 @@
 # 与 requirements-ci.txt 的分工：后者是完整 CI 链（含 onnxruntime 语义层与
 # pytest-cov 门禁），前者是「clone 完 pip install 就能跑 README 第一条命令」。
 # 版本口径沿用本仓 CI 已验证的 pin，不另立一套。
+# ⚠️ 下限由依赖反推：numpy 2.5.2 在 PyPI 的 requires_python 实测为 >=3.12，
+#    因此本文件只在 Python 3.12+ 上可解析（CI 与 README 同口径）。
 numpy==2.5.2
 scikit-learn==1.9.0

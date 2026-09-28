@@ -9,7 +9,7 @@ name = "fenjue"
 version = "1.0.0"
 description = "记忆焚诀 — 多 Agent 统一记忆与技能路由治理系统（对外子集）"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "刘星辉" }]
 keywords = ["ai-agent", "memory", "skill-routing", "hit-rate-evaluation", "governance"]
