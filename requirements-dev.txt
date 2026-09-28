@@ -1,0 +1,6 @@
+# 测试与门禁依赖（跑 `python -m pytest` 前必装）
+# 为什么单列：pyproject 的 addopts 带 `--timeout=120`，该参数由 pytest-timeout 提供；
+# 只装 pytest 会让 pytest 以「unrecognized arguments」直接退出码 4（CI 实测抓到）。
+pytest==9.1.1
+pytest-timeout==2.4.0
+pytest-cov==7.1.0

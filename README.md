@@ -23,7 +23,8 @@ python -m pip install -r requirements.txt
 # 命中率评估：合成数据集，零外部依赖、零网络
 python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
 
-# 测试
+# 测试（需 dev 依赖：pyproject 的 addopts 带 --timeout，由 pytest-timeout 提供）
+python -m pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
@@ -115,16 +116,27 @@ python scripts/public_clean_check.py              # 扫全树；缺身份配置�
 ## 测试说明
 
 ```bash
+python -m pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-干净 clone 面实测（2026-09-29）：**674 条用例 / 626 通过 / 48 跳过 / 0 失败，rc=0**，
+干净 clone 面实测（2026-09-29，Windows + Python 3.12）：**674 条用例 / 626 通过 / 48 跳过 / 0 失败，rc=0**，
 覆盖 70 个测试模块。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
 
 另有 20 个测试模块**没有**随本子集分发，因为它们断言的是作者本机的真仓状态、
 私有技能根或 182 MB 模型权重——在对外子集里必然测不到东西。处置是
 **具名摘除并登记原因**（`eval/tests/EXCLUDED.md`），而不是放宽断言：
 放宽等于造一把恒绿的尺子，比不测更坏。
+
+### CI 抓到两条本地测不出的缺陷
+
+这两条都是「我在本机验了绿，但本机不是评委的环境」，正是 CI 存在的理由：
+
+1. `requirements.txt` 钉 `numpy==2.5.2`，其 PyPI `requires_python` 实测 `>=3.12`，
+   而 CI 声明 3.11 ⇒ 依赖装不上，`Install runtime deps` 判红（run 36463774744）。
+2. `pyproject.toml` 的 `addopts` 带 `--timeout=120`，该参数由 `pytest-timeout` 提供，
+   而 CI 只装了 `pytest` ⇒ `error: unrecognized arguments: --timeout=120`，退出码 4。
+   修法不是删参数，而是补 `requirements-dev.txt` 让依赖闭包完整。
 
 ## 实际使用案例
 
