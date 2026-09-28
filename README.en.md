@@ -30,6 +30,20 @@ python -m pytest -q
 None of those commands requires a path from the author's machine. The Python floor is derived from the
 dependencies themselves (`numpy 2.5.2` publishes `Requires-Python >=3.12` on PyPI), not from habit.
 
+## Install as commands (optional)
+
+```bash
+python -m pip install .
+fenjue-hitrate --skills-dir examples/skills --queries examples/queries.json --top 3
+fenjue-bench --sizes 12,100,500,1000
+fenjue-mcp                      # stdio MCP server (needs the extra below)
+```
+
+The wheel is 592 KB and CI has a dedicated `install-face` job that installs it into a clean venv and
+runs all three commands from **outside** the repository, because the source-tree face can never reveal
+a packaging defect. Publishing to PyPI is **not** done (needs an account + Trusted Publishing), so the
+supported story is "install from source", never `pip install fenjue`.
+
 ## Optional: expose the router to an agent over MCP
 
 ```bash
@@ -110,8 +124,9 @@ demonstration (three deliberately non-overlapping skills), so its hit-rate readi
 
 - The BGE semantic layer and the L3 memory layer are **not** in this subset (182 MB weights / private
   memory root), so only the TF-IDF-equivalent scoring is exercised here.
-- `pip install .` is not supported: this is a flat script repository, not a package. The claim was
-  measured to fail and has been removed from `pyproject.toml` (see the note there).
+- PyPI publication is **not** done (needs an account and Trusted Publishing). `pip install .` works and
+  is re-verified on every push by the CI `install-face` job, but `pip install fenjue` is not yet a true
+  statement. Debt register: `docs/DEBT_UNWIRED.md` (L-4).
 - `ruff` reports findings on this face and is therefore **not** wired into CI yet; a permanently red
   gate teaches the next person to comment it out.
 
@@ -121,6 +136,8 @@ demonstration (three deliberately non-overlapping skills), so its hit-rate readi
   repo; an earlier revision of this file linked a GitHub Pages URL that measures 404, removed 2026-09-29.
 - `docs/INSTALL.md` plus per-frontend notes; `llms.txt` for machine readers; `THIRD-PARTY-NOTICES.md` for licences.
 - Contribution discipline: `CONTRIBUTING.md`. Vulnerability definitions: `SECURITY.md`.
+  Version history: `CHANGELOG.md`. Judges present-but-unwired, each with its measured exit code and the
+  precondition to wire it: `docs/DEBT_UNWIRED.md`.
 
 ## License
 

@@ -1,33 +1,53 @@
-# 焚诀 pyproject — 工具链统一配置（R208 O-8）
-# 模式: 仅工具配置（pytest/mypy/ruff），无 [project]/[build-system]——
-# 本仓为扁平脚本仓（非 package），避免 Python 打包语义干扰 import。
-# 单一真相源: 此处为 pytest/mypy/ruff 唯一配置（pytest.ini/mypy.ini 已并入后删除）。
-# 保留独立: .coveragerc（coverage 门禁 fail_under，CI 已接线不动）。
+# 焚诀 pyproject — 打包与工具链统一配置
+# 模式: [project] + [build-system] + 单包 `eval`（2026-09-29 轮166 起 `pip install .` 真能装）。
+#   上一版这里写的是「本仓非 package、不声明 [project.scripts]」，因为当时实测 pip install . 失败。
+#   本轮把失败面补齐而不是继续声明做不到：见 [build-system] 与 [tool.setuptools]。
+# 单一真相源: 此处为 pytest/mypy/ruff/packaging 唯一配置（pytest.ini/mypy.ini 已并入后删除）。
+# 保留独立: .coveragerc（子集面地板由 CI 的 --cov-fail-under 覆盖，理由写在该文件注记里）。
+# 依赖只钉一处: [project.dependencies] 走 dynamic 读 requirements.txt，
+#   绝不在本文件再抄一份版本号 —— 抄第二次就是下一个「两份真相互相矛盾」的产地。
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "fenjue"
-version = "1.0.0"
+version = "1.1.0"
 description = "记忆焚诀 — 多 Agent 统一记忆与技能路由治理系统（对外子集）"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "刘星辉" }]
 keywords = ["ai-agent", "memory", "skill-routing", "hit-rate-evaluation", "governance"]
+dynamic = ["dependencies"]
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Quality Assurance",
 ]
 
-# ⚠️ 本仓**不是** pip 可安装的包，因此这里不声明 [project.scripts]。
-#    2026-09-29 对标轮实测：此前声明的 `fenjue-hitrate = "eval.hitrate_cli:main"`
-#    在干净面 `pip install .` 直接失败（无 [build-system]，且 eval/ 不是 package、
-#    仓内模块一律靠 conftest 的 sys.path 注入导入）。留着这行等于对外承诺一个
-#    装不出来的命令——按本仓纪律，做不到的事写进交付物就是对组委会不实陈述。
-#    正解二选一，均记为「未做·有前提」：① 把 eval/ 做成真 package（含 265 个文件
-#    与派生 JSON 语料的打包语义，会牵动 74 个测试模块的导入面）；② 只发布一个
-#    指向仓根的极薄 shim。两者都要 PyPI 发布权限，归归属方裁。
-#    现在唯一正确的用法就是 README 里那条：pip install -r requirements.txt 后在仓根跑 CLI。
+# 三条对外入口都要求 rc 由 main() 返回（setuptools 折成退出码）。
+# 装出来的 wheel 只含 eval/ 顶层 .py 与 *.json（271 blob 实测 2.79 MB，无模型权重）；
+# eval/tests 与 eval/verify_checks **不进包**：它们是仓内验证面，不是运行时产物。
+[project.scripts]
+fenjue-hitrate = "eval.hitrate_cli:main"
+fenjue-bench = "eval.bench_router:main"
+fenjue-mcp = "eval.mcp_server:main"
+
+# 只有 MCP 面是可选依赖：装了才有 eval/mcp_server.py，没装则相关用例判 SKIP（不判 PASS）。
+[project.optional-dependencies]
+mcp = ["mcp>=2.2,<3"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools]
+packages = ["eval"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+eval = ["*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["eval/tests"]

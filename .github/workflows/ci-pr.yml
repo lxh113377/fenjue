@@ -1,0 +1,54 @@
+name: ci-pr
+
+# PR 受理面（快档）：对标 mem0 把「受理闸」与「合入闸」拆成两条作业的做法。
+# 拆的理由不是省时间，是归因：本仓常有并发会话在写，push 全档红的时候不该让
+# 一个还没被受理的 PR 背同一个红。覆盖率/夜间基准不在这里跑。
+on:
+  pull_request:
+
+jobs:
+  pr-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install runtime + test deps
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-dev.txt
+      - name: Install MCP SDK (optional extra)
+        run: python -m pip install "mcp>=2.2,<3"
+      - name: Public-clean gate is drillable
+        run: python scripts/public_clean_check.py --selftest
+      - name: Public-clean gate on the tree
+        run: python scripts/public_clean_check.py
+      - name: Assert expected source dirs exist
+        run: |
+          for d in eval audit scripts; do
+            test -d "$d" || { echo "MISSING $d"; exit 1; }
+          done
+      - name: Syntax check
+        run: python -m compileall -q eval audit scripts
+      - name: Scoped lint ratchet (new/shipped entrypoints only)
+        # 名册来自 docs/DEBT_UNWIRED.md 的 L-1 行：全仓 ruff 尚有告警未清，
+        # 所以这里只对本端新增与三个对外入口的文件判红——增量收紧，不造必红闸。
+        run: |
+          python -m pip install "ruff==0.16.5"
+          python -m ruff check --output-format=concise \
+            eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
+            eval/doc_claim_face.py eval/check_doc_links.py \
+            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
+      - name: Hit-rate face (flat layout)
+        run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
+      - name: Hit-rate face (Agent Skills SKILL.md layout)
+        run: python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills --queries examples/agent-skills/queries.json --top 3
+      - name: Doc-link integrity
+        run: python eval/check_doc_links.py
+      - name: Endpoint-count claims match truth source
+        run: python eval/doc_claim_face.py
+      - name: Workflow job roster matches .ci/workflow_jobs.json
+        run: python scripts/ci_workflow_spec_check.py
+      - name: Test suite
+        run: python -m pytest

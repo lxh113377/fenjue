@@ -1,0 +1,38 @@
+{
+  "schema": "fenjue-workflow-jobs-v1",
+  "face": "public-subset",
+  "measured_at": "2026-09-29",
+  "note": "本文件是「对外子集应当有哪些 CI 作业」的唯一名册，由 scripts/ci_workflow_spec_check.py 现读现判。立它的原因：该脚本此前硬编 8 个作业名（build/test/prompt-version/feedback/summary/deploy/routing-health/rollback），那是**私有源仓**的 CI 形态；在子集面上它一跑就判红（实测 rc=1，缺 7 个作业），而红因与它想防的事无关——同一类缺陷本轮已在 eval/check_doc_links.py 上抓到过一次（硬编名册读的是另一个面）。名册改为随仓声明后：作业被删/改名 ⇒ 判红；面不同 ⇒ 换名册，不换判据代码。",
+  "required": [
+    {
+      "job": "build",
+      "file": ".github/workflows/ci.yml",
+      "on": ["push", "workflow_dispatch"],
+      "role": "全档：脱敏闸双向自证 + 语法 + 两条命中率面 + 两道文档判据 + 全量测试 + 覆盖率地板"
+    },
+    {
+      "job": "install-face",
+      "file": ".github/workflows/ci.yml",
+      "on": ["push", "workflow_dispatch"],
+      "role": "装面：wheel 装进干净 venv 后在仓外跑三个 console script（build 那个 job 测不到这一面）"
+    },
+    {
+      "job": "pr-gate",
+      "file": ".github/workflows/ci-pr.yml",
+      "on": ["pull_request"],
+      "role": "快档：PR 受理面，不跑覆盖率与基准，秒级反馈"
+    },
+    {
+      "job": "bench-nightly",
+      "file": ".github/workflows/bench-nightly.yml",
+      "on": ["schedule", "workflow_dispatch"],
+      "role": "夜间基准 + 装面 smoke（wheel 装进干净 venv 后仓外跑三个入口），产物上传 artifact"
+    },
+    {
+      "job": "deploy",
+      "file": ".github/workflows/pages.yml",
+      "on": ["push", "workflow_dispatch"],
+      "role": "把 docs/ 发成 Pages；未在场即视为「演示页可看性」承诺失效"
+    }
+  ]
+}

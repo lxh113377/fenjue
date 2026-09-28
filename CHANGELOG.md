@@ -3,6 +3,50 @@
 格式参考 Keep a Changelog；**版本号只在 GitHub Release 上成立**（tag + 资产），
 本文件记录每次对外可见的行为变更，条目必须带可复算依据（命令或 run id）。
 
+## v1.1.0 — 2026-09-29（轮166：打包分发面打通 + CI 拆双闸 + 名册化判据）
+
+对标第二轮的取证对象换成「上手路径最短」的样板：`gptme/gptme`（26 个 console script + PyPI +
+仓内 sphinx 文档站 + release 作业带 cron）、`pre-commit/pre-commit`（一行装、204 次 PyPI 发布）、
+`pydantic/pydantic-ai`（34 条 workflow / 21 条定时）、`letta-ai/letta-code`、`microsoft/autogen`
+（对照用：近 90 天 0 提交、PyPI 停在 2025-09-30）。结论是「clone→装→跑」这条链我方当时**断在装**：
+入口点 0 个、PyPI 404、`homepage` 为 null。
+
+### 新增
+
+- **可安装**：`[build-system]` + `packages=["eval"]` + `package-data` + 三条入口点
+  `fenjue-hitrate` / `fenjue-bench` / `fenjue-mcp`；依赖走 `dynamic = ["dependencies"]` 读
+  `requirements.txt`，**不在 pyproject 再抄一份版本**（抄第二次就是下一处双真相）。
+  实测：wheel 592 KB；装进新建 venv 后三条命令**在仓外**（cwd 换成临时目录）跑出读数，
+  MCP 那条回包含 `protocolVersion` 与两个工具名。`eval/__init__.py` 因此出现，
+  兄弟模块导入改成「先相对、失败退回绝对」，避免同一模块装后出现两个实例。
+- **CI 拆双闸**（对标 mem0 的 `ci-gate.yml` / `pr-gate.yml`）：`ci.yml` 只跑 push（全档 + 覆盖率地板
+  + `install-face` 独立 job），`ci-pr.yml` 跑 PR 快档。拆的理由是归因不是省算力——本仓常有并发会话在写。
+- **`bench-nightly.yml`**：cron + `workflow_dispatch`，跑 12/100/500/1000 全量基准并上传 artifact
+  （`if-no-files-found: error`，产物空了不许算跑过）。装面 smoke 刻意**不**重复放这里：同一事实只许一处判。
+- **`pages.yml` + `docs/index.html`**：把 `docs/` 发成 Pages，补 `homepage` 落点。
+  在实测到 HTTP 200 之前，仓内任何文档都不写"在线演示"（本轮此前刚清掉一条 404 的假演示链）。
+- **`docs/DEBT_UNWIRED.md`**：在场但未接线的判据清单，逐条带本轮实测 rc 与「接线前提」
+  （前提只写修复会产出的代码标识符/命令，写散文前提就永远不会变红）。
+
+### 修复
+
+- `scripts/ci_workflow_spec_check.py` 的硬编作业名册（8 个属**私有源仓** CI 形态）改为读
+  `.ci/workflow_jobs.json`；名册缺失/为空判 **UNVERIFIED** 不判 PASS。改造后本判据第一次在子集面
+  跑绿（实测 `PASS: 名册 5 个作业全部在声明的 workflow 文件里定义`）并接进 `ci.yml` / `ci-pr.yml` /
+  nightly 三处。同族缺陷本轮已在 `eval/check_doc_links.py` 上抓到并修过一次。
+- scoped lint 棘轮接 CI：对本端新增文件 + 三个对外入口跑 `ruff==0.16.5`，实测 rc=0；
+  全仓仍 88 处（其中 69 可自动修）未清，因此**没有**接全仓面（见债册 L-1）。修掉的 2 条是本端自己写的
+  `bench_router.py`（`F841` 未用变量、`E741` 歧义名 `l`）；顺带把基准的抽查改成复用计时趟的 top-k，
+  不再多跑第四趟打分——「计时的那次」和「被检查的那次」必须是同一次。
+
+### 未做（前提写在债册）
+
+- PyPI 发布（需账号 + Trusted Publishing）；`mypy` 未量过公开面告警故不接（L-3）；
+  `eval/check_gate_wiring.py` 判的是本机钩子面，未做按面选目标前不接 CI（L-2）。
+
+回归面：本机 pin 环境 `652 passed, 48 skipped`（与 v1.0.0 同数，加 `eval/__init__.py` 未造成用例流失）；
+`doc-links` / `doc-claims` / `spec-check` 三判据 rc=0。
+
 ## v1.0.0 — 2026-09-29
 
 对外子集首个版本。仓库由私有源仓的**已提交 SHA** 单向生成（见 `PUBLIC-SUBSET.md`），

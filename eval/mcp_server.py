@@ -42,7 +42,10 @@ except ModuleNotFoundError as exc:  # 入口级失败要给得出路，不给栈
 _ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_ROOT / "eval"))
 
-from hitrate_cli import evaluate, load_skills, score_matrix  # noqa: E402
+try:  # 包内用相对导入（防同一模块双实例），直接跑脚本时退回绝对导入
+    from .hitrate_cli import evaluate, load_skills, score_matrix
+except ImportError:
+    from hitrate_cli import evaluate, load_skills, score_matrix  # noqa: E402
 
 SKILLS_DIR = Path(os.environ.get("FENJUE_SKILLS_DIR", _ROOT / "examples" / "skills"))
 QUERIES_FILE = Path(os.environ.get("FENJUE_QUERIES_FILE", _ROOT / "examples" / "queries.json"))
@@ -102,5 +105,11 @@ def hitrate_report(top: int = 3) -> dict:
     return {"skills_dir": str(SKILLS_DIR), "queries_file": str(QUERIES_FILE), **res}
 
 
-if __name__ == "__main__":
+def main() -> int:
+    """stdio 服务入口（console script `fenjue-mcp` 指到这里）。阻塞至 stdin 关闭。"""
     mcp.run(transport="stdio")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

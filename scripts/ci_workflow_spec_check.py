@@ -9,25 +9,28 @@
   导致「工作流规范一致性」在 CI 里静默绿、未被真正强制（STATUS.md 标 ✅ 实为本地口径）。
 
   本脚本对不依赖外部源的规范部分做仓库内强制，使 CI 真正成为强制闸门:
-    1. .github/workflows/ci.yml 必须定义 8 个核心作业
-       (build/test/prompt-version/feedback/summary/deploy/routing-health/rollback)
+    1. 「本面应当有哪些 CI 作业」读自 `.ci/workflow_jobs.json`（随仓声明的名册），
+       逐条核对该 job 是否真在声明的 workflow 文件里定义；名册缺失或为空 ⇒ UNVERIFIED
     2. eval/workflow_gate.py::TASK_CARD_HEADERS 必须非空且 == 规范约定的 11 区任务卡字段
        （C12 契约的仓库内等价判定，无需外部规范文件）
 
-退出码: 0 = PASS / 1 = FAIL
+退出码: 0 = PASS / 1 = FAIL（含名册缺失，因为那意味着闸门无依据可判）
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CI_YML = os.path.join(ROOT, ".github", "workflows", "ci.yml")
-EXPECTED_JOBS = [
-    "build", "test", "prompt-version", "feedback", "summary",
-    "deploy", "routing-health", "rollback",
-]
+# 作业名册来自仓内声明文件，而不是本脚本里的一份硬编常量。
+# 改这里的原因（2026-09-29 对标轮实测）：本脚本此前硬编 8 个作业名
+# （build/test/prompt-version/feedback/summary/deploy/routing-health/rollback），
+# 那是**私有源仓**的 CI 形态；对外子集只有一条 ci.yml，于是一跑就判红、
+# 且红因与它想防的事无关（缺的作业本就不属于这个面）。同一族缺陷本轮已在
+# eval/check_doc_links.py 上抓到过一次：判据的分母必须由被检对象自己声明。
+ROSTER = os.path.join(ROOT, ".ci", "workflow_jobs.json")
 # C12 规范任务卡字段（与 eval/workflow_gate.py::TASK_CARD_HEADERS 契约一致，11 区）
 EXPECTED_TASK_CARD_HEADERS = [
     "## 本轮目标", "## 验收判据", "## 负面测试用例", "## 备选方案",
@@ -37,19 +40,39 @@ EXPECTED_TASK_CARD_HEADERS = [
 
 
 def check_ci_jobs() -> bool:
-    if not os.path.isfile(CI_YML):
-        print(f"[ci-jobs] FAIL: 找不到 {os.path.relpath(CI_YML, ROOT)}")
+    """名册里每个 (job, file) 都必须在该 workflow 文件里定义，缺一判红。"""
+    if not os.path.isfile(ROSTER):
+        print(f"[ci-jobs] UNVERIFIED: 作业名册缺失 {os.path.relpath(ROSTER, ROOT)}"
+              " —— 名册不在场时本判据看不见任何面，不得记 PASS")
         return False
-    with open(CI_YML, encoding="utf-8") as fh:
-        text = fh.read()
-    missing = [
-        j for j in EXPECTED_JOBS
-        if not re.search(rf"^\s{{2}}{re.escape(j)}:\s*$", text, re.M)
-    ]
+    with open(ROSTER, encoding="utf-8") as fh:
+        roster = json.load(fh)
+    required = roster.get("required") or []
+    if not required:
+        print("[ci-jobs] UNVERIFIED: 名册 required 为空，检查未发生")
+        return False
+    missing, unreadable = [], []
+    for item in required:
+        job, rel = item.get("job"), item.get("file")
+        if not job or not rel:
+            missing.append(f"名册条目缺键: {item}")
+            continue
+        path = os.path.join(ROOT, rel)
+        if not os.path.isfile(path):
+            unreadable.append(rel)
+            missing.append(f"{rel}（文件不在场）")
+            continue
+        with open(path, encoding="utf-8") as fh:
+            text = fh.read()
+        if not re.search(rf"^\s{{2}}{re.escape(job)}:\s*$", text, re.M):
+            missing.append(f"{rel} :: {job}")
     if missing:
-        print(f"[ci-jobs] FAIL: ci.yml 缺失作业: {missing}")
+        print(f"[ci-jobs] FAIL: 名册要求 {len(required)} 个作业，缺失/不可读 {len(missing)} 个: {missing}")
+        if unreadable:
+            print(f"[ci-jobs] 盲区（workflow 文件读不到）: {unreadable}")
         return False
-    print(f"[ci-jobs] PASS: ci.yml 含全部 {len(EXPECTED_JOBS)} 个核心作业")
+    print(f"[ci-jobs] PASS: 名册 {len(required)} 个作业全部在声明的 workflow 文件里定义"
+          f"（面={roster.get('face', '?')}）")
     return True
 
 

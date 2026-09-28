@@ -1,0 +1,35 @@
+name: pages
+
+# 把 docs/ 发成 GitHub Pages。存在理由：对标轮实测本仓 `homepage` 字段为 null，
+# 是对比样本六仓里唯一没有文档落点的；而赛道官方描述明确「尤其关注工具易用性、
+# **文档完善程度**与实际使用案例」。这条作业把「文档在场」升级成「文档可看」。
+# 注：Pages 源需先设为 GitHub Actions（build_type=workflow）。没配成功时本作业会红，
+# 那时对外一律按「未部署」表述，禁写"演示页在线"。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4

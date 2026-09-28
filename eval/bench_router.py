@@ -37,7 +37,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from hitrate_cli import score_matrix  # noqa: E402
+try:  # 装成包时用相对导入，避免同一模块出现两个实例
+    from .hitrate_cli import score_matrix
+except ImportError:  # 直接跑脚本时（__package__ 为空）退回绝对导入
+    from hitrate_cli import score_matrix  # noqa: E402
 
 VOCAB = ["评审", "图表", "日志", "索引", "翻译", "部署", "测试", "文档", "性能", "安全"]
 VERBS = ["帮我", "请问", "需要", "想要", "麻烦"]
@@ -90,17 +93,22 @@ def _warmup() -> None:
 
 
 def _time_once(skills: list[dict], queries: list[str], top: int):
-    """一趟：返回 (建索引秒, 每次取 top-k 的毫秒列表)。计时期间不开 tracemalloc。"""
+    """一趟：返回 (建索引秒, 每次取 top-k 的毫秒列表, 每条查询的 top-k 下标)。
+
+    top-k 下标顺手返回而不是再跑第四趟打分：抽查要用它，而多跑一趟既慢又让
+    「计时的那次」和「被检查的那次」不是同一次，读数的因果就不成立。
+    计时期间不开 tracemalloc（见 bench_size 里的单独一趟）。
+    """
     latents = []
     t0 = time.perf_counter()
     sim = score_matrix(skills, queries)
     build = time.perf_counter() - t0
-    names = [s["name"] for s in skills]
+    picks = []
     for row in sim:
         t1 = time.perf_counter()
-        order = [names[i] for i in row.argsort()[::-1]][:top]
+        picks.append([int(i) for i in row.argsort()[::-1][:top]])
         latents.append((time.perf_counter() - t1) * 1000.0)
-    return build, latents, names
+    return build, latents, picks
 
 
 def bench_size(n_skills: int, anchor: int = 5, n_query: int = 20, top: int = 3,
@@ -108,11 +116,12 @@ def bench_size(n_skills: int, anchor: int = 5, n_query: int = 20, top: int = 3,
     skills = synthetic_skills(n_skills)
     queries, expects = synthetic_queries(n_query, anchor)
 
-    builds, all_latents = [], []
+    builds, all_latents, last_picks = [], [], []
     for _ in range(repeats):
-        b, l, _names = _time_once(skills, queries, top)
-        builds.append(b)
-        all_latents.extend(l)
+        build, lat, picks = _time_once(skills, queries, top)
+        builds.append(build)
+        all_latents.extend(lat)
+        last_picks = picks
 
     # 内存单独一趟：tracemalloc 会给每次分配加钩子，混在计时里两头都不准。
     tracemalloc.start()
@@ -121,8 +130,7 @@ def bench_size(n_skills: int, anchor: int = 5, n_query: int = 20, top: int = 3,
     tracemalloc.stop()
 
     tokens = [s["tokens"] for s in skills]
-    sim = score_matrix(skills, queries)
-    correct = sum(int(tokens[int(sim[j].argsort()[::-1][0])] == expects[j])
+    correct = sum(int(bool(last_picks) and tokens[last_picks[j][0]] == expects[j])
                   for j in range(len(expects)))
 
     lat_sorted = sorted(all_latents)

@@ -1,0 +1,40 @@
+name: bench-nightly
+
+# 夜间两件事：① 规模基准（出 JSON + Markdown 两份产物并上传 artifact）；
+# ② 装面 smoke —— 把 wheel 装进干净 venv，在**仓外**跑那三个 console script。
+# ②存在的原因：CI 其余步骤都在源码树上跑 `python eval/xxx.py`，而评委拿到的是
+# `pip install` 之后的命令面；这两条路的失败模式不同（包内相对导入、数据文件是否进包、
+# 入口点是否真存在），只测前者就等于没测后者。
+# 本作业刻意不与 ci.yml 合并：它红不代表合入面坏，反过来也不许被 main 的绿掩盖。
+on:
+  schedule:
+    - cron: "17 19 * * *"
+  workflow_dispatch:
+
+jobs:
+  bench-nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install runtime deps
+        run: python -m pip install -r requirements.txt
+      - name: Scale benchmark (JSON)
+        run: |
+          mkdir -p out
+          python eval/bench_router.py --sizes 12,100,500,1000 --json > out/bench-nightly.json
+          python eval/bench_router.py --sizes 12,100,500,1000 > out/bench-nightly.txt
+      - name: Roster + doc gates on the nightly face
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python eval/doc_claim_face.py
+          python eval/check_doc_links.py
+          python scripts/ci_workflow_spec_check.py
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bench-nightly
+          path: out/
+          if-no-files-found: error

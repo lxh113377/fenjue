@@ -26,6 +26,11 @@ python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queri
 # 规模基准：12 到 1000 个技能的建索引耗时与单查询延迟
 python eval/bench_router.py --sizes 12,100,500,1000
 
+# 装成命令面（可选，二选一即可）
+python -m pip install .
+fenjue-hitrate --skills-dir examples/skills --queries examples/queries.json --top 3
+fenjue-bench --sizes 12,100,500,1000
+
 # 测试（需 dev 依赖：pyproject 的 addopts 带 --timeout，由 pytest-timeout 提供）
 python -m pip install -r requirements-dev.txt
 python -m pytest
@@ -225,7 +230,7 @@ CI 地板按 Linux 面定（`--cov-fail-under=28`），不按开发机定。
 | hard 层命中率 | 40%（5 条中 2 条 Top-1） | 未做同义扩展与查询改写，是下一步 |
 | 48 条跳过用例 | 需外部重资产 / 真实 CI | 不构成功能缺失，但这部分行为在本包内未被验证 |
 | Windows 专属工具链 | `scripts/*.ps1` 与计划任务脚本 | 非 Windows 不可用；CI 只覆盖 Linux |
-| `pip install .` | **不支持**（实测失败后已把假的入口点声明从 `pyproject.toml` 撤掉） | 本仓是扁平脚本仓：模块靠 `conftest.py` 的 sys.path 注入导入，不是 package。做成真包要动 73 个测试模块的导入面与派生 JSON 语料的打包语义，且需 PyPI 发布权限 |
+| `pip install .` | **支持**（轮166 起：补 `[build-system]` + `packages=["eval"]` + 三条入口点） | wheel 实测 592 KB；装进干净 venv 后 `fenjue-hitrate` / `fenjue-bench` / `fenjue-mcp` 三条命令**在仓外**跑出读数，该面由 CI 的 `install-face` job 每次 push 复验。未做＝发布到 PyPI（需账号与 Trusted Publishing，见 `docs/DEBT_UNWIRED.md` 的 L-4）⇒ 对外只说「从源码安装」，禁写 `pip install fenjue` |
 | ruff 未接 CI | 公开面实测 88 处告警（69 处可自动修） | 接进去而不清完 = 给下一个贡献者造一把必红的尺子；清完再接 |
 
 ## 文档
@@ -235,6 +240,7 @@ CI 地板按 Linux 面定（`--cov-fail-under=28`），不按开发机定。
 - 第三方依赖与许可：`THIRD-PARTY-NOTICES.md`
 - 未随包分发的测试模块：`eval/tests/EXCLUDED.md`
 - 贡献与并发工作纪律：`CONTRIBUTING.md`；漏洞定义与报告口径：`SECURITY.md`
+- 版本变更账：`CHANGELOG.md`；**在场但未接线的判据清单**（逐条带实测 rc 与接线前提）：`docs/DEBT_UNWIRED.md`
 
 ## 与源仓的关系
 

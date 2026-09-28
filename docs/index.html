@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>记忆焚诀 · 对外子集</title>
+<style>
+  :root{--ink:#1c2430;--muted:#5b6875;--line:#e3e8ee;--accent:#2f6f4f;background:#fbfcfd}
+  *{box-sizing:border-box}
+  body{margin:0;padding:48px 20px;font:16px/1.7 "Segoe UI","Microsoft YaHei",system-ui,sans-serif;color:var(--ink);background:var(--ink)}
+  main{max-width:820px;margin:0 auto;background:var(--background);border:1px solid var(--line);border-radius:14px;padding:34px 38px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:.3px}
+  .sub{color:var(--muted);margin:0 0 26px}
+  h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+  ul{padding-left:20px;margin:0}
+  li{margin:7px 0}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(47,111,79,.28)}
+  a:hover{border-bottom-color:var(--accent)}
+  code{background:#eef2f0;padding:2px 6px;border-radius:5px;font-size:14px}
+  .note{color:var(--muted);font-size:14px;margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+  <h1>记忆焚诀 · 对外子集</h1>
+  <p class="sub">多 Agent 统一记忆与技能路由治理系统。本页只放可当场复算的东西。</p>
+
+  <h2>演示与安装</h2>
+  <ul>
+    <li><a href="showcase.html">演示页 showcase.html</a>（静态，无需后端）</li>
+    <li><a href="INSTALL.md">安装总览 INSTALL.md</a></li>
+    <li>各端安装册：<a href="INSTALL-wb.md">WorkBuddy</a> · <a href="INSTALL-cx.md">Codex CLI</a> · <a href="INSTALL-hm.md">Hermes</a> · <a href="INSTALL-zc.md">ZCode</a></li>
+  </ul>
+
+  <h2>三条命令自证（clone 后）</h2>
+  <ul>
+    <li><code>python -m pip install -r requirements.txt -r requirements-dev.txt</code></li>
+    <li><code>python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3</code></li>
+    <li><code>python eval/bench_router.py --sizes 12,100,500,1000</code> · <code>python -m pytest</code></li>
+  </ul>
+
+  <h2>仓库</h2>
+  <ul>
+    <li>源码与提交历史：<a href="https://github.com/lxh113377/fenjue">github.com/lxh113377/fenjue</a></li>
+    <li>版本说明：<a href="https://github.com/lxh113377/fenjue/blob/main/CHANGELOG.md">CHANGELOG.md</a> · 安全口径：<a href="https://github.com/lxh113377/fenjue/blob/main/SECURITY.md">SECURITY.md</a></li>
+  </ul>
+
+  <p class="note">本页由 <code>docs/</code> 直接部署，不含后端与个人数据。仓内文档一律只写干净 clone 上跑得出的数字；
+  跑不出的写在 <code>PUBLIC-SUBSET.md</code> 与 <code>eval/tests/EXCLUDED.md</code> 里并说明原因。</p>
+</main>
+</body>
+</html>

@@ -1,8 +1,12 @@
 name: ci
 
+# 触发面刻意**不含 pull_request**：PR 走 ci-pr.yml 的快档（对标 mem0 把受理闸与合入闸
+# 拆成 ci-gate.yml / pr-gate.yml 两条的做法）。拆的理由不是省算力，是归因——
+# 本仓常有并发会话在写，让未受理的 PR 与 main 共用一条全档链，红了分不清是谁的。
+# 全档（含覆盖率地板与基准）仍只在 push 与手动派发时跑。
 on:
   push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -49,8 +53,20 @@ jobs:
         # 而同一仓的 truth_constants.json 现值 7。判据不写常量，权威值现算。
         run: python eval/doc_claim_face.py
       - name: Scale benchmark smoke
-        # 12 与 100 两档；1000 档留给本地/夜间全量跑，CI 只保证「跑得动且抽查有效」。
+        # 12 与 100 两档；1000 档留给夜间全量跑，CI 只保证「跑得动且抽查有效」。
         run: python eval/bench_router.py --sizes 12,100 --queries 8
+      - name: Scoped lint ratchet (new/shipped entrypoints)
+        # 名册与 ci-pr.yml 同一份文件清单；全仓 ruff 尚有告警未清，见 docs/DEBT_UNWIRED.md 的 L-1。
+        run: |
+          python -m pip install "ruff==0.16.5"
+          python -m ruff check --output-format=concise \
+            eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
+            eval/doc_claim_face.py eval/check_doc_links.py \
+            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
+      - name: Workflow job roster matches .ci/workflow_jobs.json
+        # 接线原因：这条判据早在仓里，但判的是私有面的 8 作业名册，一跑就红，于是长期没人接。
+        # 名册改为随仓声明后它才第一次具备「在子集面上跑绿」的可能——判据要能绿一次才算活。
+        run: python scripts/ci_workflow_spec_check.py
       - name: Test suite
         # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
         # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。
@@ -62,3 +78,44 @@ jobs:
         # 差的那 10 条是平台专属跳过）。沿用 .coveragerc 的 43 是**源仓面**的量 ⇒ 必红。
         # 28 = 32 × 0.875，按本仓惯例留 3–7pp 缓冲；上调路径同 .coveragerc 注记。
         run: python -m pytest --cov=eval --cov-report=term --cov-fail-under=28
+
+  # 装面独立成 job（不与 build 同环境）：build 在源码树上跑，`import eval` 命中的是仓内目录，
+  # 那条路永远测不到「pip install 之后」的面。runner 之间环境隔离，才是干净的第二个面。
+  install-face:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build wheel from source
+        run: |
+          python -m pip install build
+          python -m build --wheel --outdir dist
+      - name: Install wheel into a clean venv (deps must come from pyproject dynamic)
+        run: |
+          set -e
+          python -m venv .venv-wheel
+          "$GITHUB_WORKSPACE/.venv-wheel/bin/python" -m pip install --quiet dist/*.whl "mcp>=2.2,<3"
+          "$GITHUB_WORKSPACE/.venv-wheel/bin/python" -c "import numpy, sklearn, flask; print('运行依赖由包元数据带入')"
+          test -x "$GITHUB_WORKSPACE/.venv-wheel/bin/fenjue-hitrate" || { echo "入口点没装出来: fenjue-hitrate"; exit 1; }
+          test -x "$GITHUB_WORKSPACE/.venv-wheel/bin/fenjue-bench" || { echo "入口点没装出来: fenjue-bench"; exit 1; }
+          test -x "$GITHUB_WORKSPACE/.venv-wheel/bin/fenjue-mcp" || { echo "入口点没装出来: fenjue-mcp"; exit 1; }
+      - name: Run the three installed commands from OUTSIDE the repo
+        # cwd 换到临时目录：任何隐式依赖仓根路径的写法都会在这一步暴露，而不是在评委机器上暴露。
+        run: |
+          set -e
+          BIN="$GITHUB_WORKSPACE/.venv-wheel/bin"
+          SMOKE=$(mktemp -d)
+          cd "$SMOKE"
+          "$BIN/fenjue-hitrate" --skills-dir "$GITHUB_WORKSPACE/examples/skills" \
+            --queries "$GITHUB_WORKSPACE/examples/queries.json" --top 3
+          "$BIN/fenjue-bench" --sizes 12,100 --queries 8
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
+            '{"jsonrpc":"2.0","method":"notifications/initialized","params":{}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}' | "$BIN/fenjue-mcp" > mcp.json
+          grep -q protocolVersion mcp.json
+          grep -q route_skill mcp.json
+          grep -q hitrate_report mcp.json
+          echo "装面回执齐全：三条命令均在仓外跑出读数"
