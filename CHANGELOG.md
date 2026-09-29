@@ -3,6 +3,44 @@
 格式参考 Keep a Changelog；**版本号只在 GitHub Release 上成立**（tag + 资产），
 本文件记录每次对外可见的行为变更，条目必须带可复算依据（命令或 run id）。
 
+## v1.2.0 — 2026-09-29（轮167：易用性轴与「实际使用案例」轴补齐）
+
+第三轮对标的取证对象换成易用性样板：`cli/cli`（单一 `gh` 总命令 + docs/primer/getting-started，70 个 docs 文件）、
+`gptme`（**`gptme/cli/doctor.py` + `gptme/cli/onboard.py`** 与 8 个以上 console script）、
+`memodb-io/memobase`（`docs/site/quickstart.mdx` + `assets/quickstart.py`）、`getzep/zep`（按语言分目录的 `examples/`）。
+对照之下我方缺的不是能力而是**入口形状**：三个分立命令、没有总入口、没有一条命令问「这台机器哪条链通」、
+没有「实际使用案例」文档载体（而赛道官方描述第三格正是它）。
+
+### 新增
+
+- **统一入口 `fenjue`**（`eval/fenjue_cli.py`，console script `fenjue`）：子命令
+  `route` / `eval` / `bench` / `mcp` / `doctor` / `mcp-config`，另有 `--version`。
+- **`fenjue doctor`**：串跑 8 项随包自检（脱敏闸双向自证、文档链接、端数对账、workflow 名册、
+  两条命中率面、基准 smoke、MCP 真握手），逐条给 rc。三条边界写成行为而非文案：
+  载体不在场 ⇒ 跳过并给原因（不计通过）；零检查 ⇒ rc=2；任一红 ⇒ rc=1 且点名。
+- **`fenjue mcp-config --client claude|qoder|generic|codex`**：输出可直接粘贴的接入配置
+  （JSON / TOML 两种形态），并在 stderr 注明命令面来源是装好的 `fenjue-mcp` 还是源码树
+  `python -m eval.mcp_server`——不给来源的配置就是让人照着跑不通的配置。
+- **`docs/CASE_STUDY.md`**：四组实际使用案例，每组带「当时遇到什么 → 哪条判据抓到 → 现在能一条命令复算什么」。
+- 新增测试 `eval/tests/test_fenjue_cli.py` 12 例：版本单源自证、route 排序与空清单 rc=2、
+  配置生成 JSON 可解析 / TOML 有节头 / 未知 client 被拒、doctor 全绿真跑一次 +
+  注入必红检查必须点名 + 载体缺失记跳过 + 零检查判 rc=2。
+- CI 两处新面：build job 跑 `doctor --json` 并断言聚合到 ≥8 项且逐项 rc 一致
+  （判的是聚合面本身，不是重复判各单项）；install-face 跑装出来的 `fenjue --version` /
+  `fenjue route` / `fenjue mcp-config` 并 `json.loads` 校验配置生成物。
+
+### 修复
+
+- **版本单源化**：`eval/__init__.py` 里那份 `__version__ = "1.1.0"` 删除，运行时一律经
+  `_version()` 读分布元数据或 `pyproject.toml`；两处都读到且不等 ⇒ 报 `DRIFT` 并 rc=2。
+  同一事实存两份是本仓这三轮里被自己判据抓到最多次的形态。
+- **`scripts/mcp_stdio_smoke.py` 的参数拆分按平台分档**：posix 模式的 `shlex.split`
+  会把 Windows 路径里的反斜杠当转义吃掉（`C:\Users\…\python.exe` → `C:Users…python.exe`，
+  实测 doctor 因此起不来服务）⇒ `posix=(sys.platform != "win32")`，并新增 `--server-arg`
+  可重复参数，让调用方不再把参数拼进单个命令串。
+- **`doctor --json` 的回执不再污染 stdout**：结论行改走 stderr，否则 stdout 是
+  「JSON + 一行尾巴」，`json.loads` 报 Extra data——判据自己的输出格式也是契约。
+
 ## v1.1.0 — 2026-09-29（轮166：打包分发面打通 + CI 拆双闸 + 名册化判据）
 
 对标第二轮的取证对象换成「上手路径最短」的样板：`gptme/gptme`（26 个 console script + PyPI +

@@ -35,6 +35,15 @@ FACE_PATTERNS = ["README*.md", "AGENTS.md", "index.md", "llms.txt",
                  os.path.join("docs", "*.md")]
 # 数字与端点名词紧邻才算「在声明端数」；中间隔了别的词一律不判（宁漏不误伤）。
 CLAIM_RE = re.compile(r"(\d+)\s*(?:个)?\s*(?:编码助手|端(?:到)?\b|agents?\b)", re.I)
+# 行内代码 = 逐字引用，不是本仓在主张。本判据上线第二轮就抓到这个形状：
+# docs/CASE_STUDY.md 要留痕「README.en.md 曾写 `6 agents`」这类**历史错值**，
+# 而历史留痕不许改写（本仓铁律）⇒ 判据若把引文当主张，就等于逼人改掉证据。
+# 所以匹配前先剥掉 `...` 片段；配套反例腿见 --selftest（裸声明必须命中、引文必须不命中）。
+CODE_SPAN_RE = re.compile(r"`[^`]*`")
+
+
+def strip_code(text: str) -> str:
+    return CODE_SPAN_RE.sub("", text)
 
 
 def authoritative_count() -> int:
@@ -68,7 +77,7 @@ def scan(files: list[str], want: int) -> tuple[list[str], int, list[str]]:
             continue
         with f:
             for line_no, line in enumerate(f, 1):
-                for m in CLAIM_RE.finditer(line):
+                for m in CLAIM_RE.finditer(strip_code(line)):
                     hits += 1
                     got = int(m.group(1))
                     if got != want:
@@ -120,6 +129,17 @@ def selftest() -> int:
             print(f"[selftest FAIL] 反例腿没咬住：hits={hits} bad={len(bad)}")
             return 1
         print(f"[selftest ok] 反例腿判红：声明 {want + 4} 对真相源 {want}")
+    with tempfile.TemporaryDirectory() as td:
+        # 第二条反例腿（方向相反）：**逐字引用不得被当成主张**。
+        # 没有这条腿，判据就会逼作者改掉历史错值的留痕——那是本仓铁律禁止的事。
+        cited = os.path.join(td, "CITE.md")
+        with open(cited, "w", encoding="utf-8") as f:
+            f.write(f"英文 README 曾写 `{want - 1} agents`，现值以 truth_constants 为准\n")
+        bad2, hits2, _ = scan([cited], want)
+        if hits2 or bad2:
+            print(f"[selftest FAIL] 引文腿被误判成主张：hits={hits2} bad={bad2}")
+            return 1
+        print("[selftest ok] 引文腿不误报（行内代码=逐字引用，不计主张）")
     with tempfile.TemporaryDirectory() as td:
         blank = os.path.join(td, "blank.md")
         open(blank, "w", encoding="utf-8").close()

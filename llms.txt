@@ -19,7 +19,11 @@ Those two gates live in the private source repository; in this subset the equiva
 - Test suite: `python -m pytest -q`
 - Endpoint count: length of `endpoints.active` in `eval/truth_constants.json`, asserted against prose by `python eval/doc_claim_face.py`
 - Documentation link integrity on shipped root docs: `python eval/check_doc_links.py`
-- MCP surface for agents: `python eval/mcp_server.py` (needs the optional `mcp>=2.2,<3` extra)
+- MCP surface for agents: `python eval/mcp_server.py` (needs the optional `mcp>=2.2,<3` extra), or
+  `python eval/fenjue_cli.py mcp-config --client claude` to emit a paste-ready config
+- Whole-tool self-check in one command: `python eval/fenjue_cli.py doctor` (8 shipped checks, one rc each;
+  missing carriers are reported as skipped-with-reason and never count as passing)
+- Worked usage cases with recomputation commands: [docs/CASE_STUDY.md](docs/CASE_STUDY.md)
 
 ## Docs
 

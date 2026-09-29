@@ -38,8 +38,14 @@ jobs:
           python -m pip install "ruff==0.16.5"
           python -m ruff check --output-format=concise \
             eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
-            eval/doc_claim_face.py eval/check_doc_links.py scripts/mcp_stdio_smoke.py \
-            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
+            eval/doc_claim_face.py eval/check_doc_links.py eval/fenjue_cli.py scripts/mcp_stdio_smoke.py \
+            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py \
+            eval/tests/test_fenjue_cli.py
+      - name: Umbrella CLI works on the source tree
+        run: |
+          python eval/fenjue_cli.py --version
+          python eval/fenjue_cli.py route "这条 SQL 很慢，帮我看看索引" --top 3
+          python eval/fenjue_cli.py mcp-config --client codex | grep -q "mcp_servers.fenjue"
       - name: Hit-rate face (flat layout)
         run: python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3
       - name: Hit-rate face (Agent Skills SKILL.md layout)

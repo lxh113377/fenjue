@@ -34,16 +34,24 @@ LIST = json.dumps({"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": 
 
 
 def _frames(cmd: str) -> list[str]:
-    return shlex.split(cmd) if " " in cmd.strip() else [cmd]
+    """拆命令串。Windows 必须用 posix=False：默认 posix 模式会把反斜杠当转义符吃掉，
+    一个绝对解释器路径进去，出来就成了一段丢了所有分隔符的连写串
+    （实测 doctor 因此起不来服务）。这不是格式化偏好而是平台语义差异，
+    所以按平台分档而不是硬写一种。此处刻意不写盘符字面量：本仓的 path-hygiene 棘轮
+    会拦跟踪文件里的盘符路径，而这条注释不需要它也能讲清发生了什么。"""
+    return shlex.split(cmd, posix=(sys.platform != "win32")) if " " in cmd.strip() else [cmd]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--server", required=True, help="MCP 服务命令（可执行文件路径或带参数的命令串）")
+    ap.add_argument("--server", required=True, help="MCP 服务可执行文件路径，或带参数的命令串")
+    ap.add_argument("--server-arg", action="append", default=[],
+                    help="追加给服务的参数，可重复；优先用它而不是把参数拼进 --server 字符串"
+                         "（拼接要过 shlex，路径里的空格与反斜杠在两个平台上语义不同，实测会吞）")
     ap.add_argument("--wait", type=float, default=60.0, help="收齐应答的等待上限（秒）")
     args = ap.parse_args()
 
-    argv = _frames(args.server)
+    argv = _frames(args.server) + list(args.server_arg)
     try:
         proc = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE, text=True, encoding="utf-8",

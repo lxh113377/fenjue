@@ -58,15 +58,31 @@ jobs:
       - name: MCP stdio handshake probe (source-tree face)
         # 与 install-face 用的是同一个探针，只是服务从仓内起：两面各证一次，
         # 免得「装出来的能握手、仓里的不能」这种半瘫状态被单条步掩盖。
-        run: python scripts/mcp_stdio_smoke.py --server "$(command -v python) eval/mcp_server.py"
+        run: python scripts/mcp_stdio_smoke.py --server "$(command -v python)" --server-arg eval/mcp_server.py
+      - name: Umbrella CLI aggregates the shipped self-checks (doctor)
+        # 这条步判的不是「各判据是否绿」（上一步已各自跑过），而是**聚合面本身**：
+        # doctor 必须至少汇总 8 项、JSON 单文档可解析、聚合出的 rc 与逐项 rc 一致。
+        # 只测拼装不测聚合，就会出现「单项都绿、doctor 报两行红」这种半瘫。
+        run: |
+          python eval/fenjue_cli.py doctor --json > doctor.json
+          python - <<'PY'
+          import json
+          d = json.loads(open("doctor.json", encoding="utf-8").read())
+          checks = d["checks"]
+          assert len(checks) >= 8, f"doctor 只汇总了 {len(checks)} 项，载体疑似丢失"
+          assert all(c["rc"] == 0 for c in checks), [c for c in checks if c["rc"]]
+          assert not str(d["version"]).startswith(("UNVERIFIED", "DRIFT")), d["version"]
+          print(f"doctor 聚合面 OK：{len(checks)} 项，版本单源={d['version']}")
+          PY
       - name: Scoped lint ratchet (new/shipped entrypoints)
         # 名册与 ci-pr.yml 同一份文件清单；全仓 ruff 尚有告警未清，见 docs/DEBT_UNWIRED.md 的 L-1。
         run: |
           python -m pip install "ruff==0.16.5"
           python -m ruff check --output-format=concise \
             eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
-            eval/doc_claim_face.py eval/check_doc_links.py scripts/mcp_stdio_smoke.py \
-            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py
+            eval/doc_claim_face.py eval/check_doc_links.py eval/fenjue_cli.py scripts/mcp_stdio_smoke.py \
+            eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py \
+            eval/tests/test_fenjue_cli.py
       - name: Workflow job roster matches .ci/workflow_jobs.json
         # 接线原因：这条判据早在仓里，但判的是私有面的 8 作业名册，一跑就红，于是长期没人接。
         # 名册改为随仓声明后它才第一次具备「在子集面上跑绿」的可能——判据要能绿一次才算活。
@@ -115,6 +131,12 @@ jobs:
           "$BIN/fenjue-hitrate" --skills-dir "$GITHUB_WORKSPACE/examples/skills" \
             --queries "$GITHUB_WORKSPACE/examples/queries.json" --top 3
           "$BIN/fenjue-bench" --sizes 12,100 --queries 8
+          # 统一入口的装面：--version 必须报出版本且与 pyproject 单源一致；
+          # route 必须能排序；mcp-config 的 JSON 必须可被 json.loads（配置生成物不可解析=白给）。
+          "$BIN/fenjue" --version
+          "$BIN/fenjue" route "把这个统计结果画成柱状图" --skills-dir "$GITHUB_WORKSPACE/examples/skills" --top 3
+          "$BIN/fenjue" mcp-config --client claude > cfg.json
+          "$BIN/python" -c "import json;d=json.load(open('cfg.json'));s=d['mcpServers']['fenjue'];assert s['command'] and isinstance(s['args'],list);print('mcp-config 可解析：',s['command'])"
           # MCP 握手走仓内 Popen 探针（scripts/mcp_stdio_smoke.py），不用 shell 管道：
           # `printf | fenjue-mcp` 在写完那一刻 EOF，Linux runner 上服务端还没答 tools/list
           # 就退出（run 36478129692 实测红在这），而同一条命令在 Windows 能拿到完整回包——

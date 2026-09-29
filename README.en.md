@@ -55,6 +55,23 @@ Point your agent's MCP config at that command and the routing layer becomes a ca
 something you shell out to and then parse stdout of. `FENJUE_SKILLS_DIR` / `FENJUE_QUERIES_FILE` select
 the data face; both default to the synthetic examples in this repo.
 
+## One command to ask "what works on this machine"
+
+```bash
+fenjue --version
+fenjue route "this SQL query is slow, check the indexes" --top 3
+fenjue doctor                        # runs the 8 shipped self-checks, one rc each
+fenjue mcp-config --client claude    # paste-ready config (codex gets TOML)
+```
+
+Three behaviours are baked into `doctor` rather than documented: a missing carrier is reported as
+*skipped with a reason* and never counts as passing, zero executed checks exits 2, and any failing
+check exits 1 while naming it. Version is single-sourced — `_version()` reads distribution metadata
+(installed) or `pyproject.toml` (source tree), and if both are readable but disagree it prints `DRIFT`
+and exits 2, because "the same fact stored twice" is the defect this repo has caught itself in most often.
+
+Worked cases, each with the command that recomputes it, live in `docs/CASE_STUDY.md`.
+
 ## Problems it solves
 
 - **Fragmented memory**: agents keep separate memories and never see each other's knowledge →

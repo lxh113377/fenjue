@@ -13,7 +13,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fenjue"
-version = "1.1.0"
+version = "1.2.0"
 description = "记忆焚诀 — 多 Agent 统一记忆与技能路由治理系统（对外子集）"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -32,6 +32,7 @@ classifiers = [
 # eval/tests 与 eval/verify_checks **不进包**：它们是仓内验证面，不是运行时产物。
 [project.scripts]
 fenjue-hitrate = "eval.hitrate_cli:main"
+fenjue = "eval.fenjue_cli:main"
 fenjue-bench = "eval.bench_router:main"
 fenjue-mcp = "eval.mcp_server:main"
 

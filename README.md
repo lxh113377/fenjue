@@ -78,7 +78,7 @@ flowchart LR
 | 目录 | 内容 |
 |---|---|
 | `eval/` | 路由与门禁主体：四层路由、真相源校验、闸的闸、状态聚合，以及三个对外入口 `hitrate_cli.py` / `bench_router.py` / `mcp_server.py` |
-| `eval/tests/` | 73 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
+| `eval/tests/` | 74 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
 | `audit/` | 触发词冲突、语义重叠、注意力税模拟等审计脚本 |
 | `scripts/` | 外发内容安全门禁、噪声治理、钩子安装 |
 | `skill/registry/` | 跨端技能注册表（JSON，派生件） |
@@ -168,6 +168,23 @@ python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills \
 ⚠️ `examples/agent-skills/` 只有 3 个刻意互不重叠的技能，是**格式演示**，
 它跑出来的 100% 不构成任何路由质量评价——评价看上面第 1 节那张分层表。
 
+### 6. 统一入口与一条命令自检
+
+```bash
+python eval/fenjue_cli.py --version            # 装好后同样： fenjue --version
+python eval/fenjue_cli.py route "这条 SQL 很慢，帮我看看索引" --top 3
+python eval/fenjue_cli.py doctor               # 把随包 8 项自检串跑一遍，逐条给 rc
+python eval/fenjue_cli.py mcp-config --client claude    # 生成可直接粘贴的接入配置（codex 出 TOML）
+```
+
+`doctor` 的三条边界是行为写死的，不是文案：**载体不在场 ⇒ 记「跳过 + 原因」不算通过**；
+**一项都没跑 ⇒ rc=2**（零检查不等于全绿）；**任一条红 ⇒ rc=1 且点名那一条**。
+版本是单源的：`--version` 读分布元数据（装了）或 `pyproject.toml`（源码树），
+两处都能读到而不等就报 `DRIFT` 并 rc=2——本仓刚被自己的判据抓过一次"同一事实存两份"，
+所以 `eval/__init__.py` 里刻意不再放第二份 `__version__` 常量。
+
+实际使用案例（含每组的复算命令与被判据抓出的真缺陷）在 **`docs/CASE_STUDY.md`**。
+
 ## 测试说明
 
 ```bash
@@ -176,8 +193,8 @@ python -m pytest
 ```
 
 干净 clone 面实测（2026-09-29，Windows + Python 3.12.2，按 `requirements.txt` +
-`requirements-dev.txt` 精确 pin 装出来的隔离 venv）：**`652 passed, 48 skipped`，rc=0**，
-覆盖 73 个测试模块 / 700 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+`requirements-dev.txt` 精确 pin 装出来的隔离 venv）：**`664 passed, 48 skipped`，rc=0**，
+覆盖 74 个测试模块 / 712 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
 
 > 别在命令行再补一个 `-q`：`pyproject.toml` 的 `addopts` 已含 `-q`，
 > 叠加成 `-qq` 会把上面这行汇总整行压掉，你就只剩一串点了。
@@ -189,10 +206,12 @@ python -m pytest
 现两处都收：flask 归入运行依赖（它是随包模块的 import 面），`requirements-dev.txt` 改为
 引用运行依赖而不是把同一个 pin 再抄一遍。
 
-同一提交的 **CI 面（Linux）实测 `642 passed, 58 skipped`**——比本机面多跳 10 条、少过 10 条，
-差的是平台专属用例（`scripts/*.ps1` 与计划任务那批）。两句都是实测，不折叠成一句：
-Windows 面 652/48，Linux 面 642/58。覆盖率同理：Linux 32% 对 Windows 34.07%，
-CI 地板按 Linux 面定（`--cov-fail-under=28`），不按开发机定。
+同一提交在 **CI 面（Linux）与本机面（Windows）的用例数本来就不相等**：差的是平台专属用例
+（`scripts/*.ps1` 与计划任务那批，实测一轮差 10 条）。所以这里只写规则不写死两个面的数——
+两边各自的汇总行随时可取：本机 `python -m pytest` 末行，CI 侧
+`gh run view <run-id> --log | grep -oE "[0-9]+ passed, [0-9]+ skipped in .*"`。
+覆盖率同理：Linux 面比 Windows 面低约 2pp（本轮 32% 对 34.07%），CI 地板按 **Linux 面**定
+（`--cov-fail-under=28`），不按开发机定。
 
 另有 20 个测试模块**没有**随本子集分发，因为它们断言的是作者本机的真仓状态、
 私有技能根或 182 MB 模型权重——在对外子集里必然测不到东西。处置是
