@@ -6,9 +6,9 @@
 
 | id | 对象 | 本轮实测 | 状态与接线前提 |
 |---|---|---|---|
-| L-1 | `ruff check .`（全仓） | rc=1，**88 处**（69 处可自动修） | 未接全仓面。已接的是 scoped 名册（本端新增文件 + 三个对外入口，rc=0，写在 ci.yml 与 ci-pr.yml）。前提＝清完余量后把 scoped 名册换成全仓；直接接全仓等于造一把必红的闸 |
+| L-1 | `ruff check .`（全仓） | **轮173 复尺**：`ruff 0.16.5`（与 CI 同一把尺）本轮起点实测 88 ⇒ safe autofix 后 **73**（`669 passed, 49 skipped` 不回退，`git ls-files \| wc -l` = 433）。余量构成：54×F401（全在 `eval/verify_checks/*_layer.py` 与 `eval/verify_truth_consistency.py`）＋16×E741（`l`）＋2×F841＋1×E701 | 未接全仓面，scoped 名册保留（本轮把 `eval/command_face_parity.py` 与其测试件补进名册）。**两处结构性前提，不是"再努力一点"**：① autofix 真删过 `verify_checks` 分片共用的 import 前言，4 条用例当场 `AttributeError: SKILL_CONTENT`——那批名字由 `verify_truth_consistency.py` 的 `_CHECK_HOME` 跨片属性代理**晚绑定**，F401 看不见这个读者（已整族回退，回退后全绿）；前提＝给该代理补一条「删任一分片的 import 必须变红」的守卫腿，再谈逐行 `# noqa: F401`；② 16 处 `l` 里有 4 处绑定跨行（`for l in links:` 的函数体在后续行、两处推导式续行到下一行），按行改名必坏，前提＝作用域级改写（AST）而不是按行替换。直接接全仓等于造一把必红的闸 |
 | L-2 | `eval/check_gate_wiring.py` | rc=1，5 项失效：W1 检 `.git/hooks/pre-commit`（clone 里本来就没有钩子）、W2 检 `<MEMORY_ROOT>\.git\hooks`（私有记忆根） | 判据对象是**作者本机与私有源仓**的钩子接入面，在对外子集里必红。接线前提＝让它按面选目标（子集面只该检 `.pre-commit-config.yaml` 能否被 `pre-commit validate-config` 解析），未做；本轮只在 `scripts/ci_workflow_spec_check.py` 上做成了同类改造 |
-| L-3 | `mypy`（配置在场，`[tool.mypy]`） | 未在本轮跑 | 无 CI 步骤。前提＝先量公开面告警数并按模块分批收紧，禁一次性接入 |
+| L-3 | `mypy`（配置在场，`[tool.mypy]`） | **轮173 第一次量**：`mypy 2.3.1`，`python -m mypy eval scripts audit` ⇒ **72 errors in 37 files（checked 260 source files）**。分布样例：`eval/tune_threshold.py:70` assignment 不兼容、`eval/bge_layer.py:225` 需变量注解 | 无 CI 步骤（本轮**只量未接**——一条第一版就命中 72 行的尺子接进去就是必红闸）。前提＝按文件分批：先把 `eval/command_face_parity.py`、`eval/fenjue_cli.py`、`scripts/mcp_stdio_smoke.py` 三个对外入口改到逐文件零告警，再以 `mypy <具名清单>` 接入（与 L-1 的 scoped 名册同一形状）；全仓面等 72 清零，禁一次性接入 |
 | L-4 | PyPI 发布 | `curl https://pypi.org/pypi/fenjue/json` ⇒ 404（本轮实测） | 包已可 `pip install .`（wheel 592KB 实测装通，三个入口在仓外跑绿，见 CI 的 install-face job），但**发布到 PyPI 需账号与 Trusted Publishing 配置**，归归属方裁。未发布前对外一律写「从源码安装」，禁写 `pip install fenjue` |
 | L-5 | `docs/` Pages 站点 | **已闭合**：Pages 源经 API 设为 GitHub Actions（`build_type=workflow`），部署 run `36478918872` completed/success，站点实测 **HTTP 200／2,699 B**（2026-09-29 04:2x +08，本机直连） | 复算：`gh api repos/lxh113377/fenjue/pages --jq .html_url` 与 `curl -sI https://lxh113377.github.io/fenjue/`。可达性一律带时刻——同一地址同日 03:5x 实测是 404（那时尚未建站），所以文档里每条在线链接都注了测量时间，禁把 200 当永久事实 |
 | L-6 | `.ci/contract.json` | 文件内 `repo` 字段写 `lxh113377/fenjue-private-archive`、`branch: master`（本轮直读原文） | 这是私有面的契约被原样带进公开面。改造前提＝要么按子集重写 checks 与 repo/branch，要么在 `PUBLIC-SUBSET.md` 里显式标注"此文件描述源仓"。本轮未动它（属他人写的口径，需归属方裁） |
@@ -26,7 +26,28 @@ python scripts/ci_workflow_spec_check.py ; echo rc=$?     # 期望 rc=0（名册
 每条的「前提」写的是**修复会产出的代码标识符或命令**（如 `pages.yml`、scoped 名册），
 不写散文式期望——散文前提永远不会变红，也就永远无人执行。
 
+## 〔2026-09-29 轮173 追加〕新判据 `command_face_parity.py` 的自身限度
+
+接它的时候报告 M-8 只剩后半句（「未做逐 claim 双向 diff 工具」）。它现在**只**核三样语言无关对象：
+入口点、子命令、测试命令行。以下形态**不在射程**，据实登记，不许被一句"双语已对账"盖过去：
+
+| id | 对象 | 现状与限度 | 前提 |
+|---|---|---|---|
+| L-10 | 散文式主张的双语对账 | 不核。第一版按"代码块行集合"比，两面差 **53 处**且全是译名与排版噪声（mermaid 节点标签、基准表输出行）——一条第一版就命中 50 余行的尺子没资格当闸（R236 补注③），故收窄到命令 token | 要扩到散文 claim，前提＝先给"同一主张"一个显式句柄（如两面同段的锚点标记），而不是再回去猜语义 |
+| L-11 | 链接/URL 的双语一致性 | 不核。曾实现过一版"两面 URL 集合相等"，真面首跑命中 2 处且**都该放行**（中文面链 CI workflow 页、英文面链 actions 首页，两个都是活页）——它是"教作者改语料"形状的闸。链接是否死由 `check_doc_links.py` 判（同事实一处判，不双载体） | — |
+| L-12 | `docs/*.md` 与 `index.md` 的命令面 | 只核 `llms.txt`（本轮 llms 缺 3/4 入口点就是它抓的）；`docs/INSTALL*.md` 未进 FACES | 前提＝先量各册的合法面差异（安装册本就该只写该端命令），否则接进去就是一把必红闸 |
+
+
+
 ## 〔2026-09-29 对标第 79 轮追加〕L-1 的重跑值，与「文档计数族」这条新盲区
+
+> 〔轮173 复核〕下面那句「0.16.5 下午重跑为 **122 errors / 97 fixable**」与轮173 在同一条命令
+> `python -m ruff check --statistics .`（尺子同为 `ruff 0.16.5`，工作树 = 本仓 `4030395`）实测的
+> **88** 不等。两句都自称同一把尺，差 34 处却**没有一句记下取数面**——这正是本文件 L-1 上面
+> 「lint 计数必须同时写尺子版本」没写完的另一半：**还须写哪棵树、哪个 rev**。
+> 现值以轮173 的 88（safe autofix 后 73）为准；122 那句原样保留不删（它是当日某个面的时点读数，
+> 历史留痕不改写），但禁止再当现状引用。复算＝
+> `git rev-parse --short HEAD && python -m ruff --version && python -m ruff check --statistics .`
 
 `python -m pip install "ruff==0.16.5" && python -m ruff check . | tail -2` 当日下午重跑为
 **122 errors / 97 fixable**（本表 L-1 与 `README.md` 先前写的 88/69 是同一天上午的面）。

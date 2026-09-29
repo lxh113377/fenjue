@@ -15,7 +15,6 @@
 """
 import argparse
 import json
-import os
 from collections import Counter
 
 USAGE_PATH = r"<MEMORY_ROOT>\meta\lessons_usage.jsonl"

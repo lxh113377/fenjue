@@ -16,14 +16,33 @@ Those two gates live in the private source repository; in this subset the equiva
 
 - Hit rate, tiered: `python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3`
 - Scale behaviour (index time / per-query latency / peak allocation): `python eval/bench_router.py --sizes 12,100,500,1000`
-- Test suite: `python -m pytest -q`
+- Test suite: `python -m pytest` (do **not** append `-q`: `addopts` in `pyproject.toml` already
+  carries `-q`, and a second one makes it `-qq`, which suppresses the `N passed, M skipped` line
+  the CI parity gate parses — measured 2026-09-29: `pytest` ⇒ `655 passed, 49 skipped`,
+  `pytest -q` ⇒ no counts line at all)
 - Endpoint count: length of `endpoints.active` in `eval/truth_constants.json`, asserted against prose by `python eval/doc_claim_face.py`
 - Documentation link integrity on shipped root docs: `python eval/check_doc_links.py`
 - MCP surface for agents: `python eval/mcp_server.py` (needs the optional `mcp>=2.2,<3` extra), or
   `python eval/fenjue_cli.py mcp-config --client claude` to emit a paste-ready config
-- Whole-tool self-check in one command: `python eval/fenjue_cli.py doctor` (8 shipped checks, one rc each;
+- Whole-tool self-check in one command: `python eval/fenjue_cli.py doctor` (one rc per entry of `CHECKS`
+  in `eval/fenjue_cli.py` — the count is read from the roster, not kept by hand, so adding a check cannot
+  leave a stale number here;
   missing carriers are reported as skipped-with-reason and never count as passing)
 - Worked usage cases with recomputation commands: [docs/CASE_STUDY.md](docs/CASE_STUDY.md)
+
+## Installed commands (after `python -m pip install .`)
+
+Every console script below is read live from `[project.scripts]` in `pyproject.toml`; the CI step
+`Command face parity` fails if this file stops listing any of them, so the list cannot silently rot.
+
+- `fenjue` — one entrypoint for everything; subcommands are `route`, `eval`, `bench`, `mcp`,
+  `hitrate`, `doctor`, `mcp-config`, plus `--version`
+- `fenjue-hitrate` — tiered hit-rate report (same engine as `python eval/hitrate_cli.py`)
+- `fenjue-bench` — scale benchmark (same engine as `python eval/bench_router.py`)
+- `fenjue-mcp` — MCP stdio server for agent integration
+
+All four are verified **from outside the repository** (cwd = a temp directory) on every push by the
+`install-face` job, so "installed but not runnable" cannot pass CI.
 
 ## Docs
 

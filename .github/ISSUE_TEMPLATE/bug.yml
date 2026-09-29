@@ -41,7 +41,7 @@ body:
     id: actual
     attributes:
       label: 实际输出（原样粘贴，含退出码）
-      description: 退出码请显式取（`python -m pytest -q; echo rc=$?`），管道后的 rc 是被管道的那条命令的
+      description: 退出码请显式取（`python -m pytest; echo rc=$?`），管道后的 rc 是被管道的那条命令的；不要在这条命令后再加 -q——`pyproject.toml` 的 `addopts` 已经带 `-q`，再叠一次就成了 `-qq`，那一行的 `N passed, M skipped` 就不会输出
     validations:
       required: true
   - type: textarea

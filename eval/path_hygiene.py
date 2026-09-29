@@ -18,7 +18,6 @@
     python eval/path_hygiene.py                # 校验
     python eval/path_hygiene.py --update-baseline  # 重新生成基线（显式收口后用）
 """
-import ast
 import json
 import os
 import re

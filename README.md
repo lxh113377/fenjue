@@ -78,7 +78,7 @@ flowchart LR
 | 目录 | 内容 |
 |---|---|
 | `eval/` | 路由与门禁主体：四层路由、真相源校验、闸的闸、状态聚合，以及三个对外入口 `hitrate_cli.py` / `bench_router.py` / `mcp_server.py` |
-| `eval/tests/` | 74 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
+| `eval/tests/` | 75 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
 | `audit/` | 触发词冲突、语义重叠、注意力税模拟等审计脚本 |
 | `scripts/` | 外发内容安全门禁、噪声治理、钩子安装 |
 | `skill/registry/` | 跨端技能注册表（JSON，派生件） |
@@ -173,7 +173,7 @@ python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills \
 ```bash
 python eval/fenjue_cli.py --version            # 装好后同样： fenjue --version
 python eval/fenjue_cli.py route "这条 SQL 很慢，帮我看看索引" --top 3
-python eval/fenjue_cli.py doctor               # 把随包 8 项自检串跑一遍，逐条给 rc
+python eval/fenjue_cli.py doctor               # 把随包自检串跑一遍，逐条给 rc（项数 = `CHECKS` 长度，不在散文里写死）
 python eval/fenjue_cli.py mcp-config --client claude    # 生成可直接粘贴的接入配置（codex 出 TOML）
 ```
 
@@ -194,10 +194,12 @@ python -m pytest
 
 干净 clone 面实测。**同一份提交在两个面上用例数本来就不等，所以两面分开写**：
 
-- CI 面（Linux runner，与本页 CI 徽章同一次 run）：`654 passed, 58 skipped`，rc=0
-- 本机面（Windows + Python 3.12.2，2026-09-29 14:3x，按 `requirements.txt` + `requirements-dev.txt` 精确 pin 装出来的隔离 venv）：`655 passed, 49 skipped`，rc=0
+- CI 面（Linux runner）：**不在这里写死**。复算＝`gh run view <run-id> --log | grep -oE "[0-9]+ passed, [0-9]+ skipped in .*"`；
+  该面由 CI 的 `README face parity` 步与**同一次跑批**的日志对账（`eval/doc_claim_face.py` 族[pytest汇总]），
+  所以任何一次 CI 变红都意味着有人改了用例而没改这里——那正是它该做的
+- 本机面（Windows + Python 3.12.2，2026-09-29 18:0x，按 `requirements.txt` + `requirements-dev.txt` 精确 pin 装出来的隔离 venv）：`669 passed, 49 skipped`，rc=0
 
-本机面覆盖 74 个测试模块 / 704 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+本机面覆盖 75 个测试模块 / 718 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
 
 第一行由 CI 的 `README face parity` 步与**同一次跑批**的汇总行对账（`eval/doc_claim_face.py`
 族[pytest汇总]），写歪 CI 就红；第二行带「本机」面标记，CI 拿 Linux 读数去比它属于逼供，
@@ -278,8 +280,8 @@ python -m pytest
 
 | 面 | 源仓（私有治理档案） | 本仓（对外子集） |
 |---|---|---|
-| 跟踪文件 | 913（2026-09-29 时点值，源仓面，**clone 本仓复算不出**） | 431（复算＝`git ls-files \| wc -l`；上一版写 402） |
-| 测试模块 / 用例 | 90 / 982（同上，源仓面） | 74 / 704。数法：70 继承自源仓 ＋ 4 个公开面新增（`test_hitrate_cli`/`test_bench_router`/`test_fenjue_cli`/`test_mcp_server`）＝74；另有 20 个源仓模块具名摘除，见 `eval/tests/EXCLUDED.md`。上一版这里写「70 / 674」——那是没算上公开面新增的旧形状，与本文件「目录」行的 74 自相矛盾 |
+| 跟踪文件 | 913（2026-09-29 时点值，源仓面，**clone 本仓复算不出**） | 433（复算＝`git ls-files \| wc -l`；上一版写 431，差的是 `eval/command_face_parity.py` 与它的测试件） |
+| 测试模块 / 用例 | 90 / 982（同上，源仓面） | 75 / 718。数法：70 继承自源仓 ＋ 5 个公开面新增（`test_hitrate_cli`/`test_bench_router`/`test_fenjue_cli`/`test_mcp_server`/`test_command_face_parity`）＝75；另有 20 个源仓模块具名摘除，见 `eval/tests/EXCLUDED.md`。上一版这里写「74 / 704」——与本文件「目录」行同源，被 `doc_claim_face.py` 族[测试模块] 在新增那一次当场判红 |
 | 机器综合评分 | 149.6 / 200（74.8%，Codex 判定未达标） | 不适用（评分卡依赖私有语料） |
 | 内容 | 含会话日志、个人记忆、技能正文、模型权重 | 全部剔除；示例数据为合成 |
 

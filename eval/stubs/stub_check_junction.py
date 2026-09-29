@@ -16,7 +16,6 @@
 登记：eval/stubs/registry.json → id=JUNCTION-hm-skills
 """
 import os
-import re
 import shutil
 import subprocess
 import sys

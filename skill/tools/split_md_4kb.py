@@ -641,7 +641,9 @@ def _st_split_bytes(sb):
     p = os.path.join(sb, 'sample.md')
     data = _st_sample()
     Path(p).write_bytes(data)
-    import types as _t, io as _io, contextlib as _cl
+    import types as _t
+    import io as _io
+    import contextlib as _cl
     with _cl.redirect_stdout(_io.StringIO()):
         cmd_split(_t.SimpleNamespace(file=p, force=True, manifest=None))
     parts = sorted(glob.glob(os.path.join(sb, 'sample.part*.md')), key=part_sort_key)
@@ -669,7 +671,9 @@ def _st_resnap_guard(sb):
     Path(full_backup_path(p)).write_bytes(data)
     with Path(idx).open('a', encoding='utf-8') as f:
         f.write(json.dumps(row, ensure_ascii=False) + '\n')
-    import types as _t, io as _io, contextlib as _cl
+    import types as _t
+    import io as _io
+    import contextlib as _cl
     v = parts[-1]
     o = Path(v).read_bytes()
     Path(v).write_bytes(o[: max(1, len(o) // 4)])   # 截到 1/4 → 整体缩水 > 20%
@@ -688,7 +692,9 @@ def _st_prune_orphan(sb):
     """prune：孤儿文件与库外条目必须被归档到 _archive"""
     orphan = os.path.join(DEFAULT_SPLIT_BACKUP, 'ORPHAN_probe.md.snap')
     Path(orphan).write_bytes(b'orphan')
-    import types as _t, io as _io, contextlib as _cl
+    import types as _t
+    import io as _io
+    import contextlib as _cl
     with _cl.redirect_stdout(_io.StringIO()):
         rc = cmd_prune(_t.SimpleNamespace(root=os.path.join(sb, 'nope'), dry_run=False))
     if rc != 0:
@@ -717,7 +723,9 @@ def _st_unify_idempotent(sb):
     rows.append({'ts': 'x', 'op': 'snap', 'file': p, 'backup': old,
                  'original_sha256': sha256(b'legacy'), 'original_bytes': 6})
     Path(idx).write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows), encoding='utf-8')
-    import types as _t, io as _io, contextlib as _cl
+    import types as _t
+    import io as _io
+    import contextlib as _cl
     with _cl.redirect_stdout(_io.StringIO()):
         rc1 = cmd_unify_names(_t.SimpleNamespace(dry_run=False))
         buf = _io.StringIO()

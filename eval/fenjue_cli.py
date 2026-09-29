@@ -107,6 +107,7 @@ CHECKS = [
     ("public-clean-selftest", ["scripts/public_clean_check.py", "--selftest"]),
     ("doc-links", ["eval/check_doc_links.py"]),
     ("doc-claims", ["eval/doc_claim_face.py"]),
+    ("command-face-parity", ["eval/command_face_parity.py"]),
     ("workflow-roster", ["scripts/ci_workflow_spec_check.py"]),
     ("hitrate-face", ["eval/hitrate_cli.py", "--skills-dir", "examples/skills",
                       "--queries", "examples/queries.json", "--top", "3"]),

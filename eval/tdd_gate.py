@@ -99,7 +99,7 @@ def _pairs(tokens):
     while i < len(toks):
         st, p = toks[i][0], toks[i][2:].strip() if len(toks[i]) > 2 else ""
         if st == "R" and i + 2 < len(toks):
-            out.append(("R", toks[i + 2].strip()));
+            out.append(("R", toks[i + 2].strip()))
             i += 3
         else:
             if p:

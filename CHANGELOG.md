@@ -3,6 +3,59 @@
 格式参考 Keep a Changelog；**版本号只在 GitHub Release 上成立**（tag + 资产），
 本文件记录每次对外可见的行为变更，条目必须带可复算依据（命令或 run id）。
 
+## Unreleased — 2026-09-29（轮173：双语命令面对账 + 一处「教人跑出一条没有用例数的绿」）
+
+对标报告 §4 的 M-8 只完成了半边（「已重写英文面并接线判据；未做逐 claim 双向 diff 工具」），
+本轮补上，并按报告 §5 的顺序推进 L-1。取证时点 2026-09-29 17:4x–18:2x，全部本机实跑。
+
+### 新增
+
+- **`eval/command_face_parity.py`**（doctor 第九项自检，进 `ci.yml` / `ci-pr.yml` 双闸）：
+  判「对外声明的命令面」三面一致——入口点取 `pyproject [project.scripts]`、子命令取
+  `fenjue --help` 的 argparse 自述行，两面（`README.md` / `README.en.md`）+ `llms.txt` 逐条对账。
+  它补的是 `doc_claim_face.py` 盖不到的那一格：后者判「每面各自 ⇄ 真相源」，两面彼此不看，
+  于是"两面都自洽、但一面承诺了另一面没有的用法"能双双溜过。
+  反向腿 9 项（1 对偶 + 6 注入/回归 + 2 盲区），复算＝`python eval/command_face_parity.py --selftest`。
+  **本件自己第一版被反例腿咬到两处判据缺陷**（不是语料缺陷）：`\s+` 跨行把散文里的行尾
+  `fenjue` 与次行 `python` 拼成一条假承诺；`(\S.*)?` 让 `python -m pytest -q`（pytest 与 -q 之间
+  是空格）整行不匹配 ⇒ 判据对它最想抓的那个形状直接失明。两条都补了钉死它们的回归腿。
+
+### 修（接线第一次跑真面就抓到的）
+
+- `llms.txt` 只列了 **1/4** 条 console script——`llms.txt` 是给 agent 读的机器友好面，
+  按它装完的 agent 拿不到另外三条命令。补 `Installed commands` 一节（四条入口点 + 七个子命令）。
+- `README.en.md` 两处教 `python -m pytest -q`：`pyproject` 的 `addopts` 已带 `-q`，再叠一次就是
+  `-qq`，而 `-qq` **不打** `N passed, M skipped` 那一行 ⇒ 评委照英文面跑完，拿到的是"一份没有
+  用例数的绿"，而本仓 CI 的 `README face parity` 步判的正是那一行。同一条缺陷今天在本机
+  复现脚本上咬过一次（回执里 `PYTEST_RC=0` 后面确实没有汇总行）。两侧实测：
+  `pytest` ⇒ `669 passed, 49 skipped`；`pytest -q` ⇒ 零条汇总。`.github/ISSUE_TEMPLATE/bug.yml`
+  里的同形建议一并改。
+- 撤掉四处写死的计数（`8 项自检`×3、CI 面汇总值×1）改为复算指针：一次正常提交就变不了绿的
+  数字没资格留在散文里——本仓自己的立身主张就是「写死数字会被抓」。
+
+### 全仓 lint（L-1）：量到 73，但**没有**接全仓闸
+
+`ruff 0.16.5`（与 CI 同一把尺）实测 88 ⇒ safe autofix 后 **73**（`669 passed, 49 skipped` 不回退）。
+剩下这 73 处不是"再努力一点"的问题，两处有结构性前提：
+① `eval/verify_checks/*_layer.py` + `verify_truth_consistency.py` 的 54 处 F401 是**分片模块共用
+   一段 import 前言**，其中被跨片属性代理 `_CHECK_HOME` 晚绑定的那些删不得——autofix 真删过一次，
+   后果是 4 条用例 `AttributeError: SKILL_CONTENT`（当场被测试拦下，已整族回退）；
+② 16 处 E741 的 `l` 里有 4 处绑定跨行（`for l in links:` 的函数体在后续行、两处推导式续行），
+   按行改名必坏，需要作用域级改写。
+⇒ 全仓面不接，scoped 名册保留并补进本轮两个新件。逐条前提见 `docs/DEBT_UNWIRED.md` L-1。
+
+### 账面（同一把尺的两个时点）
+
+| 面 | 本轮起点（`4030395`） | 本轮后 |
+|---|---|---|
+| 本机评委面（真 venv + 干净 clone） | `655 passed, 49 skipped` | `669 passed, 49 skipped`（+14 条，全为新判据的腿） |
+| 测试模块 | 74 | 75 |
+| doctor 随包自检 | 8 | 9（`command-face-parity`） |
+| 全仓 ruff（0.16.5） | 88 | 73（未接全仓面，前提见上） |
+| 跟踪文件 | 431 | 433 |
+
+
+
 ## v1.2.0 — 2026-09-29（轮167：易用性轴与「实际使用案例」轴补齐）
 
 第三轮对标的取证对象换成易用性样板：`cli/cli`（单一 `gh` 总命令 + docs/primer/getting-started，70 个 docs 文件）、

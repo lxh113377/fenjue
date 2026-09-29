@@ -77,7 +77,7 @@ class TestDoctor:
     def test_full_doctor_is_green(self):
         """真跑一遍 doctor：它是「这台机器上哪条链是通的」的唯一载体，不能只测拼装逻辑。
 
-        单条测试放宽到 420s（默认 addopts 是 120s）：doctor 串行起 8 个子进程，
+        单条测试放宽到 420s（默认 addopts 是 120s）：doctor 串行起整张 CHECKS 名册的子进程，
         每个都要 import sklearn，120s 在慢机器上是会误杀的墙钟线——被杀掉读数就不是读数。
         """
         proc = subprocess.run([sys.executable, str(ROOT / "eval" / "fenjue_cli.py"), "doctor", "--json"],

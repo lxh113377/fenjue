@@ -57,6 +57,16 @@ jobs:
         # pytest 汇总那一族在这里仍是盲区（本步没有跑批日志）——由后面
         # 「README face parity」步喂上同一次跑批的原文才真正咬人。
         run: python eval/doc_claim_face.py --audit-receipts
+      - name: Command-face parity judge is drillable (self-test, both directions)
+        run: python eval/command_face_parity.py --selftest
+      - name: Command face parity (entrypoints / subcommands / test command across both README faces)
+        # 立它的理由（对标轮 §4 M-8 的后半句）：doc_claim_face 判的是「每面各自 ⇄ 真相源」，
+        # 两面彼此不看。接线第一次跑真面就抓到 llms.txt（给 agent 读的机器友好面）只列了
+        # 1/4 条 console script——按它装完的 agent 拿不到另外三条命令；同轮人工复核又抓到
+        # 英文面教 `python -m pytest -q`，与 addopts 的 -q 叠成 -qq ⇒ 汇总行不输出，
+        # 评委照英文面跑完得到的是"一份没有用例数的绿"。判据不写常量：
+        # 入口点取 pyproject [project.scripts]、子命令取 `fenjue --help` 的自述行。
+        run: python eval/command_face_parity.py
       - name: Scale benchmark smoke
         # 12 与 100 两档；1000 档留给夜间全量跑，CI 只保证「跑得动且抽查有效」。
         run: python eval/bench_router.py --sizes 12,100 --queries 8
@@ -86,6 +96,7 @@ jobs:
           python -m ruff check --output-format=concise \
             eval/__init__.py eval/hitrate_cli.py eval/bench_router.py eval/mcp_server.py \
             eval/doc_claim_face.py eval/check_doc_links.py eval/fenjue_cli.py scripts/mcp_stdio_smoke.py \
+            eval/command_face_parity.py eval/tests/test_command_face_parity.py \
             eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py \
             eval/tests/test_fenjue_cli.py
       - name: Workflow job roster matches .ci/workflow_jobs.json

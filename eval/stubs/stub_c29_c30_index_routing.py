@@ -16,7 +16,6 @@
 纯函数面单测当时全绿，只有走「注册表真实调用路径」的集成断言才拦得下 —— 故本桩含
 CASES_INT（层 b 集成面 + 对照组），且集成面必须观察到 scanned>0。
 """
-import json
 import os
 import re
 import sys

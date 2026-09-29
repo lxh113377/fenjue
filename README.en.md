@@ -24,7 +24,7 @@ python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queri
 python eval/bench_router.py --sizes 12,100,500,1000
 
 # Tests
-python -m pytest -q
+python -m pytest
 ```
 
 None of those commands requires a path from the author's machine. The Python floor is derived from the
@@ -62,7 +62,7 @@ the data face; both default to the synthetic examples in this repo.
 ```bash
 fenjue --version
 fenjue route "this SQL query is slow, check the indexes" --top 3
-fenjue doctor                        # runs the 8 shipped self-checks, one rc each
+fenjue doctor                        # runs every shipped self-check, one rc each (count = len(CHECKS))
 fenjue mcp-config --client claude    # paste-ready config (codex gets TOML)
 ```
 
@@ -95,7 +95,7 @@ Reproduce them with the commands above; do not quote these numbers without re-ru
 | Endpoint count | length of `endpoints.active` in `eval/truth_constants.json` — the gate reads it live, so no count is duplicated in prose |
 | Tiered hit rate | `python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queries.json --top 3` |
 | Scale behaviour | `python eval/bench_router.py --sizes 12,100,500,1000` |
-| Test suite | `python -m pytest -q` |
+| Test suite | `python -m pytest` |
 
 Machine reading taken 2026-09-29 on a clean clone (Python 3.12.2 / Windows-AMD64, after warming the
 sklearn lazy imports; the tool itself takes the median of three passes per row): 1000 synthetic skills

@@ -12,7 +12,6 @@
         防「违规样本其实是干净数据」——R271/批1 同族假通过）。
 登记：eval/stubs/registry.json → id=C31-inject-ledger
 """
-import json
 import os
 import sys
 import tempfile

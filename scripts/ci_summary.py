@@ -15,7 +15,6 @@
 不依赖任何外部服务；缺失文件降级为“跳过”提示，不报错退出。
 """
 import glob
-import json
 import os
 import sys
 import xml.etree.ElementTree as ET
