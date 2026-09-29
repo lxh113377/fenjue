@@ -18,5 +18,155 @@
     "query": "给这份报表配一张图，另外把跑得很慢的那条语句调一下",
     "expected_skill": "sql-optimize",
     "tier": "hard"
+  },
+  {
+    "query": "mock 一个还没上线的支付回调接口，先让前端把流程点通",
+    "expected_skill": "api-mock",
+    "tier": "easy"
+  },
+  {
+    "query": "把这三个视图的字段说明整理成一份对外接口文档",
+    "expected_skill": "api-doc",
+    "tier": "easy"
+  },
+  {
+    "query": "服务端日志一直刷异常，先把根因归一下类",
+    "expected_skill": "log-triage",
+    "tier": "easy"
+  },
+  {
+    "query": "这条统计 SQL 跑 12 秒，帮我看是哪个环节拖的",
+    "expected_skill": "sql-optimize",
+    "tier": "easy"
+  },
+  {
+    "query": "logs 目录已经 40 个 G 了，按保留 30 天的策略处理一下",
+    "expected_skill": "log-archive",
+    "tier": "easy"
+  },
+  {
+    "query": "这批 CSV 有一堆空值和重复行，先弄干净再入库",
+    "expected_skill": "csv-clean",
+    "tier": "easy"
+  },
+  {
+    "query": "给运营做一页能天天看的指标大屏",
+    "expected_skill": "dashboard-build",
+    "tier": "easy"
+  },
+  {
+    "query": "同一套代码测试今天红明天绿，帮我找原因",
+    "expected_skill": "flaky-test",
+    "tier": "easy"
+  },
+  {
+    "query": "镜像每次构建都要重下依赖，慢得受不了",
+    "expected_skill": "docker-build",
+    "tier": "easy"
+  },
+  {
+    "query": "流水线上一个作业挂了，本地跑又是好的",
+    "expected_skill": "ci-pipeline",
+    "tier": "easy"
+  },
+  {
+    "query": "老表要加两列并把存量数据搬过去，得能回退",
+    "expected_skill": "sql-migrate",
+    "tier": "easy"
+  },
+  {
+    "query": "订单表里的 amount 和账单表的 amt 是不是同一个口径",
+    "expected_skill": "schema-audit",
+    "tier": "easy"
+  },
+  {
+    "query": "把用户行为数据每天增量同步到分析库，并核对有没有漏",
+    "expected_skill": "data-sync",
+    "tier": "medium"
+  },
+  {
+    "query": "补一下支付模块的测试，很多分支一次都没跑到",
+    "expected_skill": "test-coverage",
+    "tier": "medium"
+  },
+  {
+    "query": "接口文档里的字段名和数据库列名对不上，逐条核一下",
+    "expected_skill": "schema-audit",
+    "tier": "medium"
+  },
+  {
+    "query": "日志太多把磁盘撑爆了，边归档边保留最近三天的",
+    "expected_skill": "log-archive",
+    "tier": "medium"
+  },
+  {
+    "query": "报表要出图，另外取数那条语句太慢一起处理",
+    "expected_skill": "sql-optimize",
+    "tier": "hard"
+  },
+  {
+    "query": "清洗完这批数据顺手同步到镜像库，字段含义别弄混了",
+    "expected_skill": "csv-clean",
+    "tier": "hard"
+  },
+  {
+    "query": "流水线里的构建步骤特别慢，是不是镜像层的问题",
+    "expected_skill": "docker-build",
+    "tier": "hard"
+  },
+  {
+    "query": "接口没好，前端要联调，先把契约和桩一起给出来",
+    "expected_skill": "api-mock",
+    "tier": "hard"
+  },
+  {
+    "query": "测试偶发失败，而且失败的分支本来就没被覆盖率算进去",
+    "expected_skill": "flaky-test",
+    "tier": "hard"
+  },
+  {
+    "query": "大屏要接实时数据，同步策略和看板布局一起定",
+    "expected_skill": "dashboard-build",
+    "tier": "hard"
+  },
+  {
+    "query": "迁移脚本要改表结构，迁移完发现日志里全是慢查询告警",
+    "expected_skill": "sql-migrate",
+    "tier": "hard"
+  },
+  {
+    "query": "把接口注释自动生成文档，顺便看看能不能同步到测试用例里",
+    "expected_skill": "api-doc",
+    "tier": "hard"
+  },
+  {
+    "query": "数据两边对不上账，先查同步漏了还是字段口径不一致",
+    "expected_skill": "data-sync",
+    "tier": "hard"
+  },
+  {
+    "query": "报表这块图错了，底层 SQL 也得改，改完补测试",
+    "expected_skill": "test-coverage",
+    "tier": "hard"
+  },
+  {
+    "query": "容器里跑的任务日志刷屏，先分诊再把历史日志压走",
+    "expected_skill": "log-triage",
+    "tier": "hard"
+  },
+  {
+    "query": "CI 上的构建缓存把老依赖带进来了，测试因此忽红忽绿",
+    "expected_skill": "ci-pipeline",
+    "tier": "hard"
+  },
+  {
+    "query": "CSV 导入后字段全空，看是清洗规则还是列名映射的问题",
+    "expected_skill": "csv-clean",
+    "tier": "hard"
+  },
+  {
+    "query": "给这个看板配一张趋势图，并说明哪块还没做",
+    "expected_skill": "chart-render",
+    "tier": "hard"
   }
 ]

@@ -33,6 +33,19 @@
 - 撤掉四处写死的计数（`8 项自检`×3、CI 面汇总值×1）改为复算指针：一次正常提交就变不了绿的
   数字没资格留在散文里——本仓自己的立身主张就是「写死数字会被抓」。
 
+### L-5：`examples/agent-skills` 从「格式演示」补成**能承载命中率评价**的语料
+
+报告原话是「现仅 3 个互不重叠技能 ⇒ 命中率 100% 无评价意义」。那 100% 不是成绩，是语料没有判别力。
+本轮把这一面扩到 **15 件合成技能 / 34 条查询**（easy 14 · medium 5 · hard 15），触发词**故意**撞车：
+`日志` 同属 `log-triage` 与 `log-archive`、`数据` 同属 `csv-clean` 与 `data-sync`、
+`构建` 同属 `docker-build` 与 `ci-pipeline`、`字段` 同属 `schema-audit` 与 `api-doc`。
+
+本轮实测（复算＝`python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills --queries examples/agent-skills/queries.json --top 3`）：
+easy 13/14 = 92.9% · medium 4/5 = 80.0% · **hard 8/15 = 53.3%** · 合计 top1 25/34 = 73.5%、top3 30/34 = 88.2%。
+hard 档那个 53.3% 是这张表里最有用的数——它证明语料问得出路由器答不出的地方，
+MISS 逐条可看（`--show-cases`），例如「给这个看板配一张趋势图」被判到 `dashboard-build` 而期望 `chart-render`。
+
+测试侧同时换立场：`test_hitrate_cli.py` 不再断言「标准面恒全对」（那句是把 100% 当验收），改判**结构判别力**——共用触发词少于 3 个即判红（`test_standard_corpus_can_discriminate`）、hard 档少于 10 条判红、每条查询的期望技能必须在语料里；另按 flat 面同一惯例把对外数字锁进测试（改分词器或权重必然撞红，有意如此）。
 ### 全仓 lint（L-1）：量到 73，但**没有**接全仓闸
 
 `ruff 0.16.5`（与 CI 同一把尺）实测 88 ⇒ safe autofix 后 **73**（`669 passed, 49 skipped` 不回退）。

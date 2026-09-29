@@ -142,8 +142,11 @@ flowchart LR
 
 `--skills-dir` accepts both the flat layout used by `examples/skills` and the **Agent Skills**
 directory layout (`<skill-name>/SKILL.md`, as published by anthropics/skills), so a third-party skill
-tree can be evaluated without translating it first. See `examples/agent-skills/` — that set is a format
-demonstration (three deliberately non-overlapping skills), so its hit-rate reading carries no quality signal.
+tree can be evaluated without translating it first. `examples/agent-skills/` holds 15 synthetic skills over
+34 queries whose trigger words **deliberately collide** (`log` belongs to both triage and archiving, `data` to
+both cleaning and syncing), so the reading discriminates instead of being 100% by construction — measured at
+2026-09-29: easy 92.9% / medium 80.0% / hard 53.3% top-1, overall 73.5% top-1 and 88.2% top-3. The collision
+surface itself is pinned by `test_standard_corpus_can_discriminate`.
 
 ## Known limits
 

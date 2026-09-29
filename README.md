@@ -82,7 +82,7 @@ flowchart LR
 | `audit/` | 触发词冲突、语义重叠、注意力税模拟等审计脚本 |
 | `scripts/` | 外发内容安全门禁、噪声治理、钩子安装 |
 | `skill/registry/` | 跨端技能注册表（JSON，派生件） |
-| `examples/` | 12 个**合成**技能 + 14 条分层查询（扁平 `*.md`）；另有 `agent-skills/` 演示标准 `<name>/SKILL.md` 布局，用于零环境跑通评估链 |
+| `examples/` | 12 件**合成**技能 + 14 条分层查询（扁平 `*.md`）；另有 `agent-skills/` 用标准 `<name>/SKILL.md` 布局放了 15 件合成技能与 34 条查询（触发词**故意**互相撞车，见下面第 5 节），用于零环境跑通评估链 |
 | `docs/` | 各端安装册与演示页 |
 
 ## 示例用法
@@ -165,8 +165,22 @@ python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills \
   --queries examples/agent-skills/queries.json --top 3
 ```
 
-⚠️ `examples/agent-skills/` 只有 3 个刻意互不重叠的技能，是**格式演示**，
-它跑出来的 100% 不构成任何路由质量评价——评价看上面第 1 节那张分层表。
+这一面在 2026-09-29 轮173 之前只有 3 件互不重叠的技能，跑出来恒 100%——那**不是**成绩，
+是语料没有判别力。现在 15 件技能的触发词故意撞车（`日志` 同属分诊与归档、`数据` 同属清洗与同步、
+`构建` 同属镜像与流水线…），撞车面由测试 `test_standard_corpus_can_discriminate` 钉住
+（共用触发词少于 3 个即判红，防后人把它退化成「怎么排都对」的假语料）。
+
+本轮实测（复算＝`python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills --queries examples/agent-skills/queries.json --top 3`）：
+
+| 档 | 样本 | Top-1 | Top-3 |
+|---|---|---|---|
+| easy | 14 | 92.9% | 100.0% |
+| medium | 5 | 80.0% | 80.0% |
+| hard | 15 | 53.3% | 80.0% |
+| 合计 | 34 | **73.5%** | **88.2%** |
+
+hard 档 53.3% 是这张表里最有用的一个数：它说明语料真能问到路由器答不出的地方。
+分数本身随分词器与权重变，改一处必然撞红 `eval/tests/test_hitrate_cli.py` 的锁数腿（有意如此）。
 
 ### 6. 统一入口与一条命令自检
 

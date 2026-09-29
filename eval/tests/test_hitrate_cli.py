@@ -49,9 +49,16 @@ class TestLayouts:
         assert "code-review" in names
 
     def test_agent_skills_standard_layout_loads(self):
-        """标准目录格式（<name>/SKILL.md）必须免翻译直接可评估。"""
+        """标准目录格式（<name>/SKILL.md）必须免翻译直接可评估。
+
+        2026-09-29 轮173：这一面从 3 个刻意互不重叠的技能扩到 15 个（触发词故意撞车），
+        因为报告 L-5 指出「3 个互不重叠技能 ⇒ 命中率 100% 无评价意义」。
+        断言改为**结构**（件数下界 + 原三件在内），不再钉死集合相等，
+        否则以后每加一个示例技能都要来改一次测试。
+        """
         names = {s["name"] for s in load_skills(STANDARD)}
-        assert names == {"chart-render", "log-triage", "sql-optimize"}
+        assert {"chart-render", "log-triage", "sql-optimize"} <= names
+        assert len(names) >= 15, f"标准布局面技能数 {len(names)} < 15，语料判别力不足"
 
     def test_profile_uses_frontmatter_triplet(self):
         skill = next(s for s in load_skills(STANDARD) if s["name"] == "log-triage")
@@ -87,9 +94,43 @@ class TestEvaluation:
         skills = load_skills(STANDARD)
         cases = json.loads(STANDARD_Q.read_text(encoding="utf-8"))
         res = evaluate(skills, cases, top=3)
-        assert res["n_cases"] == 4
+        # 与 flat 面同一立场：这组数是 README 对外引用的，改分词器/权重必然撞红这里。
+        assert res["skills"] == 15 and res["n_cases"] == 34
+        assert res["overall"]["top1"] == 25
+        assert res["overall"]["top3"] == 30
         assert set(res["tiers"]) == {"easy", "medium", "hard"}
-        assert res["overall"]["top1"] == 4, "3 个互不重叠的技能做格式演示，应当全对"
+        hard = res["tiers"]["hard"]
+        assert (hard["n"], hard["top1"], hard["topn"]) == (15, 8, 12)
+        # 期望值由被测对象自报的分子分母现算，不在测试里存第二份小数：
+        # 报表把 top1_rate 舍到四位（0.5333），直接写 8/15 会被自己的近似值判红。
+        assert hard["top1_rate"] == round(hard["top1"] / hard["n"], 4)
+        assert hard["top3_rate"] == round(hard["topn"] / hard["n"], 4)
+
+    def test_standard_corpus_can_discriminate(self):
+        """语料的**判别力**是结构属性，不随路由器好坏变化，所以这条不会惩罚改进。
+
+        立它的理由：报告 L-5 的原话是「命中率 100% 无评价意义」——那不是因为分数高，
+        而是因为 3 个技能触发词互不重叠，任何排法都对。所以这里判的是三件结构：
+        难度梯度在场、歧义面在场、每条查询的期望技能真的可解。
+        """
+        skills = load_skills(STANDARD)
+        cases = json.loads(STANDARD_Q.read_text(encoding="utf-8"))
+        names = {s["name"] for s in skills}
+        tiers: dict[str, int] = {}
+        for c in cases:
+            tiers[c["tier"]] = tiers.get(c["tier"], 0) + 1
+            assert c["expected_skill"] in names, f"期望技能不在语料里：{c['expected_skill']}"
+        assert len(tiers) >= 3 and min(tiers.values()) >= 5, f"难度梯度不足：{tiers}"
+        hard = [c for c in cases if c["tier"] == "hard"]
+        assert len(hard) >= 10, f"hard 档仅 {len(hard)} 条，撑不起『实际使用案例』那格的说服力"
+        # 歧义面：至少三个触发词被两个以上技能共用，否则又是"怎么排都对"的假语料
+        owners: dict[str, set[str]] = {}
+        for s in skills:
+            for tok in s["profile"].split():
+                if len(tok) >= 2:
+                    owners.setdefault(tok, set()).add(s["name"])
+        shared = {t for t, o in owners.items() if len(o) >= 2}
+        assert len(shared) >= 3, f"语料触发词几乎不重叠（共用词 {len(shared)}），不构成评价面"
 
 
 class TestFrontmatter:
