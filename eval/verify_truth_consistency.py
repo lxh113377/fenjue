@@ -94,8 +94,8 @@ C15_CODE_MARK_RE = re.compile(r'\b[0-9a-f]{7,40}\b|rule_editor')
 
 # import truth_constants
 sys.path.insert(0, EVAL_DIR)
-from config import GLOBAL_SKILLS, GLOBAL_MEMORY, SKILL_CONTENT, PLUGIN_SKILLS_DIR  # noqa: E402
-from truth_constants import (  # noqa: E402
+from config import GLOBAL_SKILLS, GLOBAL_MEMORY, SKILL_CONTENT, PLUGIN_SKILLS_DIR  # noqa: E402,F401  # L-1重导出面（晚绑定读者在册），删即红，见test_reexport_surface_guard
+from truth_constants import (  # noqa: E402,F401  # L-1重导出面（同上）
     ENDPOINTS, DEAD_PLATFORMS, ENDPOINT_COUNT, MAINLINE_COUNT,
     WORKFLOW_DOC_PATH, WORKFLOW_VERSION, WORKFLOW_PLATFORMS,
     WORKFLOW_SCRIPTS, WORKFLOW_GATE_SCRIPT,
@@ -280,48 +280,16 @@ def _ensure_eval_path():
 def _cgw_run(cgw, failures=None):
     """跑 check_gate_wiring 的检查主体（避开 argparse 的 sys.argv 依赖）。
 
+    面按 cgw.detect_face() 自动判定后走 cgw.run_checks 单实现
+    （2026-09-29 L-2 收口：此前本函数是第二份手抄实现，与 cgw.main() 双源，
+    改一处漏一处；现两处调用方同走 run_checks）。
     failures：可选的对外报告列表（wrapper 用它把失效原因带出去；不传则内部自用）。
     """
     failures = [] if failures is None else failures
-    notes = []
-    cgw.check_hook(cgw.FJ_HOOK, "W1 焚诀仓", failures, notes)
-    cgw.check_hook(cgw.GM_HOOK, "W2 GM 仓", failures, notes)
-    for path, label in ((cgw.FJ_COPY, "W3 焚诀仓副本"), (cgw.GM_COPY, "W3 GM 仓副本")):
-        if not os.path.exists(path):
-            failures.append(f"{label} 缺失（{path}）")
-    ci_ok = False
-    if os.path.exists(cgw.CI_YML):
-        with open(cgw.CI_YML, encoding="utf-8", errors="ignore") as fh:
-            ci_ok = "verify_truth_consistency" in fh.read()
-    if not ci_ok:
-        failures.append("W4 CI 未引用 verify")
-    import glob as _g
-    weekly = sorted(_g.glob(cgw.WEEKLY_GLOB_PREFIX + "*.md"))
-    weekly_hit = False
-    for p in weekly:
-        with open(p, encoding="utf-8", errors="ignore") as fh:
-            if "verify_truth_consistency" in fh.read():
-                weekly_hit = True
-                break
-    if not weekly or not weekly_hit:
-        failures.append("W7 周维护 checklist 未调用 verify")
-    # W6（2026-09-23 补）：verify 头部「接入点:」声明 ↔ WIRE_MAP 覆盖一致性。
-    # 原 wrapper 只跑到 W7，**W6 被漏掉** —— 而 W6 恰是 check_gate_wiring 的立身之本
-    #（「声明了却没有对应自检」= 声明腐烂成谎言，且不会有任何症状）。补上。
-    if not os.path.exists(cgw.VERIFY):
-        failures.append("W6 verify 脚本缺失")
-    else:
-        with open(cgw.VERIFY, encoding="utf-8", errors="ignore") as fh:
-            head = fh.read()[:4000]
-        m = re.search(r"接入点:\s*\n((?:\s*-\s*.+\n)+)", head)
-        if not m:
-            failures.append("W6 verify 头部未解析到「接入点:」声明块（判据面失效，R247）")
-        else:
-            declared = [ln.strip().lstrip("-").strip() for ln in m.group(1).splitlines()]
-            unmapped = [d for d in declared if not any(k in d for k in cgw.WIRE_MAP)]
-            if unmapped:
-                failures.append(f"W6 声明了 {len(unmapped)} 条无对应自检的接入点: {unmapped}")
-    return 1 if failures else 0
+    face = cgw.detect_face()
+    fails, _notes, _skips = cgw.run_checks(face)
+    failures.extend(fails)
+    return 1 if fails else 0
 
 
 

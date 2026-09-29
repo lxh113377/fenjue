@@ -57,6 +57,8 @@ jobs:
         run: python eval/doc_claim_face.py
       - name: Command face parity (entrypoints / subcommands / test command across both READMEs)
         run: python eval/command_face_parity.py
+      - name: README tier table matches recomputed hit-rate (M-8 claim face)
+        run: python eval/check_readme_numbers.py --selftest && python eval/check_readme_numbers.py
       - name: Workflow job roster matches .ci/workflow_jobs.json
         run: python scripts/ci_workflow_spec_check.py
       - name: Test suite

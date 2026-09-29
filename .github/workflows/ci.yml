@@ -67,6 +67,11 @@ jobs:
         # 评委照英文面跑完得到的是"一份没有用例数的绿"。判据不写常量：
         # 入口点取 pyproject [project.scripts]、子命令取 `fenjue --help` 的自述行。
         run: python eval/command_face_parity.py
+      - name: README tier table matches recomputed hit-rate (M-8 claim face)
+        # 立它的理由（对标轮 §4 M-8 未做的一半「逐 claim 双向 diff 工具」）：
+        # 散文主张没有显式句柄，猜语义的对账第一版即 50 余处噪声；只核数字表
+        # （分层表 4 行 12 格 ⇄ hitrate_cli.evaluate 同批函数活算，top=3）。
+        run: python eval/check_readme_numbers.py --selftest && python eval/check_readme_numbers.py
       - name: Scale benchmark smoke
         # 12 与 100 两档；1000 档留给夜间全量跑，CI 只保证「跑得动且抽查有效」。
         run: python eval/bench_router.py --sizes 12,100 --queries 8
@@ -98,11 +103,18 @@ jobs:
             eval/doc_claim_face.py eval/check_doc_links.py eval/fenjue_cli.py scripts/mcp_stdio_smoke.py \
             eval/command_face_parity.py eval/tests/test_command_face_parity.py \
             eval/tests/test_hitrate_cli.py eval/tests/test_mcp_server.py eval/tests/test_bench_router.py \
-            eval/tests/test_fenjue_cli.py
+            eval/tests/test_fenjue_cli.py \
+            eval/check_readme_numbers.py eval/tests/test_check_gate_wiring_face.py \
+            eval/tests/test_reexport_surface_guard.py
       - name: Workflow job roster matches .ci/workflow_jobs.json
         # 接线原因：这条判据早在仓里，但判的是私有面的 8 作业名册，一跑就红，于是长期没人接。
         # 名册改为随仓声明后它才第一次具备「在子集面上跑绿」的可能——判据要能绿一次才算活。
         run: python scripts/ci_workflow_spec_check.py
+      - name: Gate-wiring self-check selects face (no stale-face red)
+        # 接线原因（DEBT_UNWIRED.md L-2）：本判据在公开面恒红，红因是「量了另一个面」
+        # （本机钩子/GM 仓在干净签出上必然没有）。2026-09-29 起按面选目标：
+        # 子集面核版本化副本 + CI 门禁链引用 + pre-commit 声明解析，GM 项记 SKIP 不计通过。
+        run: python eval/check_gate_wiring.py
       - name: Test suite
         # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
         # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。

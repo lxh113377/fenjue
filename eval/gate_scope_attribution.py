@@ -95,7 +95,7 @@ def streaks(ledger_path: str = LEDGER) -> dict:
     counts = {}
     try:
         with open(ledger_path, encoding="utf-8") as f:
-            rows = [json.loads(l) for l in f if l.strip()]
+            rows = [json.loads(ln) for ln in f if ln.strip()]
     except (OSError, ValueError):
         return counts
     for r in rows:

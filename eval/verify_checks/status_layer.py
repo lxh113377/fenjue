@@ -301,7 +301,6 @@ def check_c29_index_reconciliation(index_text=None, scorecard=None, status_text=
         issues.append('index.md 未解析到任何端数声明（零命中）')
 
     # ② 注册表条数 == 实测
-    uni_ok = True
     try:
         true_skills = len(_root.load_registry_uni().get('skills', {}))
     except Exception as e:

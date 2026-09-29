@@ -1,0 +1,73 @@
+{
+  "verify_truth_consistency.py": [
+    "glob",
+    "time",
+    "GLOBAL_MEMORY",
+    "SKILL_CONTENT",
+    "PLUGIN_SKILLS_DIR",
+    "ENDPOINTS",
+    "DEAD_PLATFORMS",
+    "WORKFLOW_DOC_PATH",
+    "WORKFLOW_VERSION",
+    "WORKFLOW_PLATFORMS",
+    "WORKFLOW_SCRIPTS",
+    "WORKFLOW_GATE_SCRIPT",
+    "BEHAVIOR_CORE_VERSION",
+    "BEHAVIOR_CORE_ANCHORS",
+    "BEHAVIOR_CORE_VALID",
+    "INJECT_BUDGET_FILES",
+    "INJECT_BUDGET_BASELINE",
+    "INJECT_BUDGET_HARD_CAP",
+    "SCORECARD_ACTIVE_TRACK",
+    "SCORECARD_ACTIVE_TOTAL",
+    "SCORECARD_ACTIVE_PASS_LINE",
+    "derive_max_gate_id"
+  ],
+  "verify_checks/registry_layer.py": [
+    "glob",
+    "json",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/data_layer.py": [
+    "glob",
+    "json",
+    "re",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/doc_layer.py": [
+    "json",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/governance_layer.py": [
+    "glob",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/skill_layer.py": [
+    "glob",
+    "json",
+    "re",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/status_layer.py": [
+    "glob",
+    "subprocess",
+    "sys"
+  ],
+  "verify_checks/workflow_layer.py": [
+    "glob",
+    "json",
+    "subprocess"
+  ],
+  "verify_checks/workspace_layer.py": [
+    "glob",
+    "json",
+    "re",
+    "subprocess",
+    "sys"
+  ]
+}

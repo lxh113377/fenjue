@@ -71,7 +71,7 @@ def append_log(lines):
     body = []
     if os.path.isfile(LOG):
         with open(LOG, encoding="utf-8") as f:
-            body = [l for l in f.read().splitlines() if not l.startswith(HEADER_MARK)]
+            body = [ln for ln in f.read().splitlines() if not ln.startswith(HEADER_MARK)]
     stamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     merged = body + ["## %s" % stamp] + lines
     trimmed = merged[-KEEP_LINES:]

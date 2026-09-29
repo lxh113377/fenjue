@@ -24,6 +24,7 @@ venv/
 .vscode/
 
 # 万一有人在克隆里重建私有挂载点，一律不入库
+# 符号链接（指向仓外记忆库/技能库的 junction，不重复跟踪；C22 声明段，删规则即判红）
 /skill_tree/
 /memory_content/
 /global_memory/

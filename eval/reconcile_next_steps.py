@@ -245,8 +245,8 @@ def main():
         'counts': {k: len(v) for k, v in res.items()},
         'ids_scanned': len(id_entries),
         'DUP_IDS': [{'id': k,
-                     'at': ['%s:%d[%s]' % (f, l, 'x' if c else ' ')
-                            for f, l, c in v]}
+                     'at': ['%s:%d[%s]' % (f, ln, 'x' if c else ' ')
+                            for f, ln, c in v]}
                     for k, v in sorted(dup_ids.items())],
         'DUP_CONTRADICTORY': sorted(dup_bad),
         'DONE_UNCHECKED': res['DONE_UNCHECKED'],
@@ -278,7 +278,7 @@ def main():
         for k, v in sorted(dup_ids.items()):
             flag = '矛盾' if k in dup_bad else '同号'
             print('  [%s] %s 出现在 %s' % (flag, k,
-                  ' , '.join('%s:%d[%s]' % (f, l, 'x' if c else ' ') for f, l, c in v)))
+                  ' , '.join('%s:%d[%s]' % (f, ln, 'x' if c else ' ') for f, ln, c in v)))
 
     if args.gate:
         # 同号同状态只是引用歧义（历史遗留，警告）；同 ID 一条 [ ] 一条 [x] 是账面失真，

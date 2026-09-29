@@ -62,7 +62,7 @@ def test_ttl_expired_entry_is_dropped(tmp_path, monkeypatch):
     key = rc.make_key(_q(), {"top_k": 5})
     rc.store(key, {"top1": "old"})
     path = rc.CACHE_PATH
-    lines = [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()]
+    lines = [json.loads(ln) for ln in open(path, encoding="utf-8") if ln.strip()]
     lines[0]["ts"] = time.time() - (rc.TTL_SECONDS + 3600)
     with open(path, "w", encoding="utf-8") as f:
         for rec in lines:
@@ -103,7 +103,7 @@ def test_compaction_keeps_within_cap(monkeypatch):
     monkeypatch.setattr(rc, "MAX_ENTRIES", 5)
     for i in range(14):
         rc.store(rc.make_key("查询 %d" % i, {"top_k": 5}), {"top1": "s%d" % i})
-    recs = [json.loads(l) for l in open(rc.CACHE_PATH, encoding="utf-8") if l.strip()]
+    recs = [json.loads(ln) for ln in open(rc.CACHE_PATH, encoding="utf-8") if ln.strip()]
     assert len(recs) <= rc.MAX_ENTRIES * 2, "缓存条目必须有界"
     assert len(recs) < 14, "未触发压缩"
     assert rc.lookup(rc.make_key("查询 13", {"top_k": 5}))["top1"] == "s13"

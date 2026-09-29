@@ -35,7 +35,7 @@ import sys
 try:
     import tomllib
 except ModuleNotFoundError:  # py<3.11：本仓下限是 3.12，这里只为让"为什么装不出"可读
-    tomllib = None
+    tomllib = None  # type: ignore[assignment]  # 守卫式使用（下文先判 None），mypy 8 轮收敛之一
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PYPROJECT = os.path.join(ROOT, "pyproject.toml")

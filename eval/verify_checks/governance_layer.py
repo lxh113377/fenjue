@@ -108,6 +108,9 @@ def check_c19_gate_wiring(skip_external=False):
                             + ' | '.join(local_face[:3]))
         return ('FAIL', f'{len(reasons) or 1} 项接入点失效: '
                         + (' | '.join(reasons[:3]) or '（无明细）'))
+    face = cgw.detect_face()
+    if face == "subset":
+        return ('PASS', '子集面接入点落地（版本化副本 + CI 门禁链 + pre-commit 声明；GM 两项 SKIP 未计入）')
     return ('PASS', 'W1~W7 接入点全部落地（两仓 hook + 副本 + CI + 周维护 + 声明覆盖）')
 
 

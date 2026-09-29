@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PY = sys.executable
 
 
-def _version() -> tuple[str, str]:
+def _version() -> tuple[str, list[tuple[str, str]]]:
     """版本单源：装了读分布元数据，源码树读 pyproject.toml；两处都有就必须相等。
 
     写成函数而不是常量，是因为本仓刚吃过一次同族的亏：同一个事实存两份（pyproject 里一份、

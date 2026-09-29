@@ -103,9 +103,9 @@ def main():
         say(rc == 0 and '[WARN]' in out and '不可信' in out,
             '边界-b 根不存在: exit 0 但显式 WARN 不可信', 'rc=%d' % rc)
     finally:
-        for l in links:
-            if os.path.exists(l) or os.path.islink(l):
-                rmdir(l)
+        for ln in links:
+            if os.path.exists(ln) or os.path.islink(ln):
+                rmdir(ln)
         shutil.rmtree(base, ignore_errors=True)
 
     n, d = sum(1 for x in PASS if x), len(PASS)

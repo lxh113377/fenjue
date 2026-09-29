@@ -60,6 +60,13 @@ def main() -> int:
         print(f"[FATAL] 起不来服务：{argv}（{exc}）", file=sys.stderr)
         return 2
 
+    # 管道 None 即前提缺失（rc=2）：mypy 把 Popen 的三个流判成 Optional，
+    # 这里显式收窄，后续读写不再靠「想当然非空」。
+    if proc.stdin is None or proc.stdout is None or proc.stderr is None:
+        print("[FATAL] 服务进程管道未建立（stdin/stdout/stderr 有 None）", file=sys.stderr)
+        proc.terminate()
+        return 2
+
     replies: dict = {}
     stderr_tail: list[str] = []
 

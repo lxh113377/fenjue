@@ -105,11 +105,11 @@ def run_stub(rel_path):
                            cwd=PROJECT_DIR)
     except Exception as e:
         return False, '执行异常: %s' % e
-    lines = [l for l in (r.stdout or '').strip().splitlines() if l.strip()]
+    lines = [ln for ln in (r.stdout or '').strip().splitlines() if ln.strip()]
     # 可诊断性（对标轮五，CI 实测痛点）：桩在 ubuntu 上红时，runner 只报 "12/13" 或
     # "未解析到 N/M 汇总（末行=(空)）"，看不出**是哪一例**、也看不出崩溃原因（stderr 被吞）。
     # 失败时把桩自身的 [FAIL] 用例行与 stderr 尾部一并带出——不降低判据，只让红可查。
-    fails = [l.strip() for l in lines if l.strip().startswith('[FAIL]')]
+    fails = [ln.strip() for ln in lines if ln.strip().startswith('[FAIL]')]
     err_tail = ' ;; '.join((r.stderr or '').strip().splitlines()[-2:])[:220]
 
     def _with_detail(summary, ok):

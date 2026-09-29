@@ -1,9 +1,9 @@
 {
   "schema": "fenjue-ci-green-contract-v1",
-  "repo": "lxh113377/fenjue-private-archive",
-  "branch": "master",
+  "repo": "lxh113377/fenjue",
+  "branch": "main",
   "refresh_days": 7,
-  "note": "推送前跑的 blocking 检查。刻意不放整条 18 闸链（那已在每次 commit 的 pre-commit 跑过，实测约 50s；本仓 post-commit 会自动 push，再跑一遍等于把墙钟翻倍）。这里只放「远端会红、且并行会话可能在我提交之后把它改红」的静态面。",
+  "note": "推送前跑的 blocking 检查。2026-09-29 公开面重写：此前 repo/branch 指向私有归档仓(fenjue-private-archive/master)且 greencheck 步引用仓外 <SKILLS_ROOT>，在公开面不可执行；现四项命令均可在本仓干净检出内跑通。整条 18 闸链刻意不放（pre-commit 已跑过，post-commit 自动 push 后再跑等于墙钟翻倍）。这里只放「远端会红、且并行会话可能在我提交之后把它改红」的静态面。",
   "checks": [
     {
       "name": "truth-consistency",
@@ -24,11 +24,11 @@
       "blocking": true
     },
     {
-      "name": "greencheck-selftest",
-      "cmd": "python <SKILLS_ROOT>/A-project-handoff/scripts/greencheck.py --selftest",
+      "name": "workflow-spec",
+      "cmd": "python scripts/ci_workflow_spec_check.py",
       "timeout_s": 180,
       "blocking": true,
-      "note": "把判据本体的三要素自证接进阻断链：静音凭据/契约校验/探测过滤被改宽时，推送当场拦下。实测 0.5s。"
+      "note": "名册⇄workflow 双向对账：新增作业不同步到 .ci/workflow_jobs.json 时推送当场拦下。原 greencheck 步引用仓外 <SKILLS_ROOT> 下的 A-project-handoff 脚本，在公开面不存在，已替换（见 L-6）。"
     }
   ]
 }

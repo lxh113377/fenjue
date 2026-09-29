@@ -108,7 +108,7 @@ def cmd_rm(a) -> int:
         r = _git(["status", "--porcelain"], cwd=path)
         if (r.stdout or "").strip():
             print("[worktree] 该工作树有未提交改动，拒绝删除（确认后用 --force）：")
-            print("\n".join("  " + l for l in r.stdout.strip().splitlines()[:10]))
+            print("\n".join("  " + ln for ln in r.stdout.strip().splitlines()[:10]))
             return 1
     r = _git(["worktree", "remove", path], cwd=a.repo)
     if r.returncode != 0:

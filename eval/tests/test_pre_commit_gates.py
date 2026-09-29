@@ -51,8 +51,8 @@ def test_docstring_does_not_hardcode_gate_count():
     历史留痕行（含「对标轮」标记）豁免——本仓规则是历史不重写，只禁现状断言（C5 同口径）。
     """
     doc = pch.__doc__ or ""
-    live_lines = [l for l in doc.splitlines() if "对标轮" not in l]
-    offenders = [l.strip() for l in live_lines if STATIC_COUNT.search(l)]
+    live_lines = [ln for ln in doc.splitlines() if "对标轮" not in ln]
+    offenders = [ln.strip() for ln in live_lines if STATIC_COUNT.search(ln)]
     assert not offenders, "模块 docstring 抄写了闸数，改派生: %s" % offenders
 
 
@@ -86,9 +86,9 @@ def test_gm_hook_has_no_stale_c_range():
     text = _read(GM_HOOK_CANDIDATES[0])
     assert not STATIC_C_RANGE.search(text), "GM 仓 hook 抄写了 C 项范围（D-21 同族）"
     # 只检**代码行**是否把 verify 输出静音（注释里引述旧 bug 不算），失败必给明细（D-27）
-    silenced = [l.strip() for l in text.splitlines()
-                if "verify_truth_consistency.py" in l and "/dev/null" in l
-                and not l.strip().startswith("#")]
+    silenced = [ln.strip() for ln in text.splitlines()
+                if "verify_truth_consistency.py" in ln and "/dev/null" in ln
+                and not ln.strip().startswith("#")]
     assert not silenced, "GM 仓 hook 吞掉 verify 输出 = 失败无明细: %s" % silenced
 
 
@@ -139,8 +139,8 @@ def test_live_post_commit_is_tracked_copy_plus_tracker_tail():
         "在役 post-commit 与跟踪副本分叉：装的是别的内容或源更新后没重装。"
         "修复：python scripts/install_hooks.py --install（会先落 .bak-<时间戳>）")
     tail = live.split(tracked.rstrip("\n"), 1)[1] if tracked.rstrip("\n") in live else live
-    residue = [l.strip() for l in tail.splitlines()
-               if l.strip() and not l.strip().startswith(("# BEGIN", "# END", "repo_root=",
+    residue = [ln.strip() for ln in tail.splitlines()
+               if ln.strip() and not ln.strip().startswith(("# BEGIN", "# END", "repo_root=",
                                                           "ELECTRON_RUN_AS_NODE=", "export "))]
     assert not residue or (TRACKER_MARK in tail and not residue), (
         "钩子里除跟踪副本与 tracker 段之外还有第三种私货：%s" % residue[:3])

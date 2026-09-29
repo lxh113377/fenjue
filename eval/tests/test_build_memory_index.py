@@ -60,7 +60,7 @@ def test_missing_dir_row_is_red():
     target = next(r["dir"] for r in bmi.scan() if r["dir"] in bmi.KNOWLEDGE)
     prefix = "| `%s/` |" % target
     text = bmi.render(bmi.scan(), "2026-09-24")
-    kept = [l for l in text.splitlines(True) if not l.startswith(prefix)]
+    kept = [ln for ln in text.splitlines(True) if not ln.startswith(prefix)]
     assert len(kept) < len(text.splitlines(True)), "表行格式假设变了，本测试需同步"
     st, detail = bmi.check_text("".join(kept))
     assert st == "FAIL" and "W4" in detail

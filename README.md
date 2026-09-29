@@ -78,7 +78,7 @@ flowchart LR
 | 目录 | 内容 |
 |---|---|
 | `eval/` | 路由与门禁主体：四层路由、真相源校验、闸的闸、状态聚合，以及三个对外入口 `hitrate_cli.py` / `bench_router.py` / `mcp_server.py` |
-| `eval/tests/` | 75 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
+| `eval/tests/` | 77 个测试模块；未随包分发的模块及其原因见 `eval/tests/EXCLUDED.md` |
 | `audit/` | 触发词冲突、语义重叠、注意力税模拟等审计脚本 |
 | `scripts/` | 外发内容安全门禁、噪声治理、钩子安装 |
 | `skill/registry/` | 跨端技能注册表（JSON，派生件） |
@@ -213,7 +213,7 @@ python -m pytest
   这一行**刻意不带「本机/Windows」这类面标记**，所以它就是 CI 上被 `README face parity` 步（`eval/doc_claim_face.py` 族[pytest汇总]）拿同一次跑批对账的那一行——上一版把它改成「不写死」，代价是这一族在 CI 上变成没有内容可比的对账面，判据在场却咬不到东西
 - 本机面（Windows + Python 3.12.2，2026-09-29 18:0x，按 `requirements.txt` + `requirements-dev.txt` 精确 pin 装出来的隔离 venv）：`669 passed, 49 skipped`，rc=0
 
-本机面覆盖 75 个测试模块 / 718 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+本机面覆盖 77 个测试模块 / 739 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
 
 第一行由 CI 的 `README face parity` 步与**同一次跑批**的汇总行对账（`eval/doc_claim_face.py`
 族[pytest汇总]），写歪 CI 就红；第二行带「本机」面标记，CI 拿 Linux 读数去比它属于逼供，

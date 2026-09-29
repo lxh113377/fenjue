@@ -327,7 +327,8 @@ def cmd_split(args):
     Path(f).write_bytes(ptr_b)
     print('OK split %s (%d B -> 指针 %d B + %d 卷)' % (f, len(data), len(ptr_b), len(chunks)))
     print('     manifest += %s' % (args.manifest or DEFAULT_MANIFEST))
-    if _bk: print('     backup += %s' % _bk)
+    if _bk:
+        print('     backup += %s' % _bk)
     manifest_append(args.manifest or DEFAULT_MANIFEST, {
         'ts': datetime.datetime.now().isoformat(timespec='seconds'),
         'op': 'split', 'file': f,
@@ -629,7 +630,7 @@ def _st_case(fn):
 def _st_sample(size_hint=6000):
     lines = ['# selftest 样本', '']
     i = 0
-    while sum(len(l.encode('utf-8')) + 1 for l in lines) < size_hint:
+    while sum(len(ln.encode('utf-8')) + 1 for ln in lines) < size_hint:
         i += 1
         lines += ['## 段 %03d' % i, '内容行 %03d：用于触发 4KB 拆分边界。' % i, '']
     return ('\n'.join(lines) + '\n').encode('utf-8')

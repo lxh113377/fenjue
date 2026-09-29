@@ -110,7 +110,6 @@ def diagnose(root, sid):
     secs = locate(root, sid)
     findings = []
     for sec in secs:
-        cite_sec = "%s:%d" % (sec["path"], sec["line"])
         for m in SKILL_RE.finditer(sec["text"]):
             ln = sec["text"][:m.start()].count("\n") + sec["line"]
             findings.append({"dim": "skills", "cite": "%s:%d" % (sec["path"], ln),
