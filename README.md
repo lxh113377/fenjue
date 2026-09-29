@@ -208,9 +208,9 @@ python -m pytest
 
 干净 clone 面实测。**同一份提交在两个面上用例数本来就不等，所以两面分开写**：
 
-- CI 面（Linux runner）：**不在这里写死**。复算＝`gh run view <run-id> --log | grep -oE "[0-9]+ passed, [0-9]+ skipped in .*"`；
-  该面由 CI 的 `README face parity` 步与**同一次跑批**的日志对账（`eval/doc_claim_face.py` 族[pytest汇总]），
-  所以任何一次 CI 变红都意味着有人改了用例而没改这里——那正是它该做的
+- CI 面（Linux runner，与本页 `ci` run `36566463375` 同一次跑批，2026-09-29 20:12 +08 从 run 日志取）：`669 passed, 58 skipped`，rc=0
+  复算＝`gh run view 36566463375 --log | grep -oE "[0-9]+ passed, [0-9]+ skipped in .*"`；
+  这一行**刻意不带「本机/Windows」这类面标记**，所以它就是 CI 上被 `README face parity` 步（`eval/doc_claim_face.py` 族[pytest汇总]）拿同一次跑批对账的那一行——上一版把它改成「不写死」，代价是这一族在 CI 上变成没有内容可比的对账面，判据在场却咬不到东西
 - 本机面（Windows + Python 3.12.2，2026-09-29 18:0x，按 `requirements.txt` + `requirements-dev.txt` 精确 pin 装出来的隔离 venv）：`669 passed, 49 skipped`，rc=0
 
 本机面覆盖 75 个测试模块 / 718 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
