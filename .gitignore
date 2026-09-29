@@ -28,3 +28,6 @@ venv/
 /memory_content/
 /global_memory/
 *.onnx
+
+# CI 落盘给「README face parity」步对账用的跑批日志（每次 run 现生，不入库）
+ci-results/

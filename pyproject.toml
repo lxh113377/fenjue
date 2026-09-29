@@ -28,7 +28,10 @@ classifiers = [
 ]
 
 # 三条对外入口都要求 rc 由 main() 返回（setuptools 折成退出码）。
-# 装出来的 wheel 只含 eval/ 顶层 .py 与 *.json（271 blob 实测 2.79 MB，无模型权重）；
+# 装出来的 wheel 只含 eval/ 顶层 .py 与 *.json（无模型权重）。
+# 体积与 blob 数**不在本文件写**：这里曾写「271 blob 实测 2.79 MB」，而 README 同期写 592 KB、
+# 2026-09-29 复算是 598,827 B —— 同一件产物在同一仓里有三个值，第三个还是唯一能复算的。
+# 复算＝`python -m pip wheel --no-deps -w <dir> .`（产物字节）；CI 的 install-face job 每次 push 复验装通与三个入口。
 # eval/tests 与 eval/verify_checks **不进包**：它们是仓内验证面，不是运行时产物。
 [project.scripts]
 fenjue-hitrate = "eval.hitrate_cli:main"

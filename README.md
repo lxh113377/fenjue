@@ -192,9 +192,18 @@ python -m pip install -r requirements-dev.txt
 python -m pytest
 ```
 
-干净 clone 面实测（2026-09-29，Windows + Python 3.12.2，按 `requirements.txt` +
-`requirements-dev.txt` 精确 pin 装出来的隔离 venv）：**`664 passed, 48 skipped`，rc=0**，
-覆盖 74 个测试模块 / 712 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+干净 clone 面实测。**同一份提交在两个面上用例数本来就不等，所以两面分开写**：
+
+- CI 面（Linux runner，与本页 CI 徽章同一次 run）：`654 passed, 58 skipped`，rc=0
+- 本机面（Windows + Python 3.12.2，2026-09-29 14:3x，按 `requirements.txt` + `requirements-dev.txt` 精确 pin 装出来的隔离 venv）：`655 passed, 49 skipped`，rc=0
+
+本机面覆盖 74 个测试模块 / 704 条用例。跳过项是需要外部重资产（真实 CI 状态、模型权重）的用例。
+
+第一行由 CI 的 `README face parity` 步与**同一次跑批**的汇总行对账（`eval/doc_claim_face.py`
+族[pytest汇总]），写歪 CI 就红；第二行带「本机」面标记，CI 拿 Linux 读数去比它属于逼供，
+所以判据显式豁免它并把这个豁免**计数打印出来**（豁免数不印＝静默放行）。
+上一版这里只写一个不带面的汇总值（664/48），而当天下午两个面各自实跑是 655/49 与 654/58——
+三个数没有一个还活着，这就是「只写一个数、不写面」的下场。
 
 > 别在命令行再补一个 `-q`：`pyproject.toml` 的 `addopts` 已含 `-q`，
 > 叠加成 `-qq` 会把上面这行汇总整行压掉，你就只剩一串点了。
@@ -247,10 +256,11 @@ python -m pytest
 | BGE 语义层 | 未随包分发（182 MB ONNX 权重） | 本包只跑 TF-IDF 语义层；四层中的 L2-BGE 与 L3-Memory 在对外子集不可用 |
 | 生产路由器端到端可跑 | 需私有记忆根 | `eval/unified_router.py` 在场但需真实注册表；对外面只保证 `hitrate_cli.py` 可跑 |
 | hard 层命中率 | 40%（5 条中 2 条 Top-1） | 未做同义扩展与查询改写，是下一步 |
-| 48 条跳过用例 | 需外部重资产 / 真实 CI | 不构成功能缺失，但这部分行为在本包内未被验证 |
+| **公开面可跑的评测集占比** | **14 / 291 条 ≈ 4.8%**。仓内 `eval/layered_testset.json` 有 291 条分层查询（skills 151／cli 59／short 51／fault_finding 19／negative 11），但它的 121 个 `expected_skill` 全是**源仓技能名**，与 `examples/skills` 的 12 个合成技能交集为 **0** ⇒ 主评测集在本包内跑不动，对外只报得出上面那 14 条 | 这是「未实现功能须注明占比」里最容易漏的一格：文件随包分发看着像能跑。复算＝`python -c "import json,os;d=json.load(open('eval/layered_testset.json',encoding='utf-8'));exp={q.get('expected_skill') for t in d for q in t['queries']};pub={os.path.splitext(f)[0] for f in os.listdir('examples/skills')};print(sum(len(t['queries']) for t in d),len(exp),len(exp&pub))"` |
+| 49 条跳过用例（2026-09-29 复算，上一版写 48） | 需外部重资产 / 真实 CI | 不构成功能缺失，但这部分行为在本包内未被验证 |
 | Windows 专属工具链 | `scripts/*.ps1` 与计划任务脚本 | 非 Windows 不可用；CI 只覆盖 Linux |
-| `pip install .` | **支持**（轮166 起：补 `[build-system]` + `packages=["eval"]` + 三条入口点） | wheel 实测 592 KB；装进干净 venv 后 `fenjue-hitrate` / `fenjue-bench` / `fenjue-mcp` 三条命令**在仓外**跑出读数，该面由 CI 的 `install-face` job 每次 push 复验。未做＝发布到 PyPI（需账号与 Trusted Publishing，见 `docs/DEBT_UNWIRED.md` 的 L-4）⇒ 对外只说「从源码安装」，禁写 `pip install fenjue` |
-| ruff 未接 CI | 公开面实测 88 处告警（69 处可自动修） | 接进去而不清完 = 给下一个贡献者造一把必红的尺子；清完再接 |
+| `pip install .` | **支持**（轮166 起：补 `[build-system]` + `packages=["eval"]` + 三条入口点） | wheel 体积**不在本文件写死**（它随每次加模块变，写一次就错一次；2026-09-29 实测 598,827 B 是时点值）；复算＝`python -m pip wheel --no-deps -w <dir> .` 后取产物字节数，该面由 CI 的 `install-face` job 每次 push 复验。装进干净 venv 后 `fenjue-hitrate` / `fenjue-bench` / `fenjue-mcp` 三条命令**在仓外**跑出读数（`fenjue` 这第四条入口点在场但未进该复验名册，故不并列主张）。未做＝发布到 PyPI（需账号与 Trusted Publishing，见 `docs/DEBT_UNWIRED.md` 的 L-4）⇒ 对外只说「从源码安装」，禁写 `pip install fenjue` |
+| ruff 未接全仓面 | 复算＝`python -m pip install "ruff==0.16.5" && python -m ruff check . \| tail -2`；2026-09-29 实测 **122 处（97 处可自动修）**，上一版写 88/69 已过期——lint 计数必须同时写尺子版本，否则「88→122」到底是回归还是换了把尺无法归因 | 接进去而不清完 = 给下一个贡献者造一把必红的尺子；清完再接 |
 
 ## 文档
 
@@ -268,8 +278,8 @@ python -m pytest
 
 | 面 | 源仓（私有治理档案） | 本仓（对外子集） |
 |---|---|---|
-| 跟踪文件 | 913 | 402 |
-| 测试模块 / 用例 | 90 / 982 | 70 / 674 |
+| 跟踪文件 | 913（2026-09-29 时点值，源仓面，**clone 本仓复算不出**） | 431（复算＝`git ls-files \| wc -l`；上一版写 402） |
+| 测试模块 / 用例 | 90 / 982（同上，源仓面） | 74 / 704。数法：70 继承自源仓 ＋ 4 个公开面新增（`test_hitrate_cli`/`test_bench_router`/`test_fenjue_cli`/`test_mcp_server`）＝74；另有 20 个源仓模块具名摘除，见 `eval/tests/EXCLUDED.md`。上一版这里写「70 / 674」——那是没算上公开面新增的旧形状，与本文件「目录」行的 74 自相矛盾 |
 | 机器综合评分 | 149.6 / 200（74.8%，Codex 判定未达标） | 不适用（评分卡依赖私有语料） |
 | 内容 | 含会话日志、个人记忆、技能正文、模型权重 | 全部剔除；示例数据为合成 |
 

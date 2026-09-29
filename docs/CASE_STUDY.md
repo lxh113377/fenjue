@@ -112,3 +112,9 @@ python eval/hitrate_cli.py --skills-dir examples/skills --queries examples/queri
 python eval/bench_router.py --sizes 12,100,500,1000
 python -m pytest            # 本机面 652 passed / 48 skipped；Linux CI 面 642 / 58（平台专属跳过 10 条）
 ```
+
+〔2026-09-29 对标第 79 轮复核，上行原读数保留〕同一份 `main`（`f7d7bbc`）当日下午在干净 clone +
+精确 pin 面上重跑为 **655 passed, 49 skipped**，与上面两栏都不同——三个数各自当时都真，
+差别在被喂的依赖闭包与平台跳过面。这正说明**汇总行必须绑定「哪一次跑批」**，
+所以本仓现在把它交给 CI 对账：`README.md` 的那一行与 `--from-pytest-log` 喂进来的同一次跑批
+比对（`eval/doc_claim_face.py` 族[pytest汇总]），写歪即判红；本文件作为时点快照**不参与**该族。

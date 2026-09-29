@@ -46,12 +46,17 @@ jobs:
         # 此前该判据在场却不在 CI 里，结果 README 引用了不存在的 SECURITY.md
         # 达一个版本周期无人察觉（2026-09-29 对标轮实测）。
         run: python eval/check_doc_links.py
-      - name: Endpoint-count claim face is drillable (self-test both directions)
+      - name: Claim-face judge is drillable (self-test, both directions per family)
         run: python eval/doc_claim_face.py --selftest
-      - name: Endpoint-count claims in prose match eval/truth_constants.json
+      - name: Claim face in prose matches recomputed truth
         # 接线当场就抓到两处真漂移：README.en.md 声明 6 端、docs/INSTALL.md 声明 8 端，
         # 而同一仓的 truth_constants.json 现值 7。判据不写常量，权威值现算。
-        run: python eval/doc_claim_face.py
+        # 2026-09-29 第 79 轮补两族：测试模块（在仓/摘除两个现算合法值）、
+        # 以及 --audit-receipts 的「裸计数缺复算留痕」advisory 面（只印不改 rc；
+        # 首跑真面命中 18 行，按 R236 补注③ 先量误报率再谈升档，见 DEBT L-9）。
+        # pytest 汇总那一族在这里仍是盲区（本步没有跑批日志）——由后面
+        # 「README face parity」步喂上同一次跑批的原文才真正咬人。
+        run: python eval/doc_claim_face.py --audit-receipts
       - name: Scale benchmark smoke
         # 12 与 100 两档；1000 档留给夜间全量跑，CI 只保证「跑得动且抽查有效」。
         run: python eval/bench_router.py --sizes 12,100 --queries 8
@@ -90,7 +95,18 @@ jobs:
       - name: Test suite
         # 不额外加 -q：pyproject 的 addopts 已含 -q，再传一个就成了 -qq，
         # pytest 会把「N passed, M skipped」整行压掉——CI 日志于是没有任何用例数。
-        run: python -m pytest
+        # 汇总同时落盘给下一步对账。⚠️ `| tee` 会把 rc 换成 tee 的 rc，所以显式 pipefail：
+        # 判据的 rc 死在管道里＝「读数在、结论没了」，本仓为这一形状登记过专门条目。
+        run: |
+          set -o pipefail
+          mkdir -p ci-results
+          python -m pytest 2>&1 | tee ci-results/pytest.log
+      - name: README face parity (this run's summary vs what README claims)
+        # 单独成步而不是并进 Test suite：那一步红时这里不跑，正好——没有绿面汇总可对时
+        # 拿失败日志去对账只会造出第二条不相干的红。
+        # 为什么必须由 CI 喂：eval/doc_claim_face.py 的 pytest 族在本机没有跑批日志 ⇒ 记盲区
+        # （docs/DEBT_UNWIRED.md 的 L-7）。判据在场而没人喂输入 = 一把从不咬的牙。
+        run: python eval/doc_claim_face.py --from-pytest-log ci-results/pytest.log
       - name: Coverage measurement (blocking, floor from the CI face)
         # 单独一趟而不是并进 Test suite：那一步红时这一步就不跑了，正好丢掉最需要的读数。
         # 地板不取开发机、不取私有源仓面：run 36472484278 实测 Linux 面 composite 32%

@@ -39,7 +39,9 @@ fenjue-bench --sizes 12,100,500,1000
 fenjue-mcp                      # stdio MCP server (needs the extra below)
 ```
 
-The wheel is 592 KB and CI has a dedicated `install-face` job that installs it into a clean venv and
+The wheel size is deliberately **not** pinned in this file (it moves with every added module; 2026-09-29
+measured 598,827 bytes — recompute with `python -m pip wheel --no-deps -w <dir> .`). CI has a dedicated
+`install-face` job that installs it into a clean venv and
 runs all three commands from **outside** the repository, because the source-tree face can never reveal
 a packaging defect. Publishing to PyPI is **not** done (needs an account + Trusted Publishing), so the
 supported story is "install from source", never `pip install fenjue`.
@@ -96,8 +98,14 @@ Reproduce them with the commands above; do not quote these numbers without re-ru
 | Test suite | `python -m pytest -q` |
 
 Machine reading taken 2026-09-29 on a clean clone (Python 3.12.2 / Windows-AMD64, after warming the
-sklearn lazy imports and taking the median of three passes): 1000 synthetic skills ⇒ index 0.0446 s,
-per-query p95 0.107 ms, peak allocation 6.5 MB. The bundled example set gives Top-1 10/14 and Top-3 12/14
+sklearn lazy imports; the tool itself takes the median of three passes per row): 1000 synthetic skills
+⇒ index ≈ 0.04 s. **Latency is a session-variable metric — do not treat any single number here as a
+fact.** Four consecutive runs of the same command gave per-query p95 = 0.0142 / 0.0316 / 0.0452 ms
+(median 0.011–0.021 ms, peak allocation 6.47–6.92 MB); the figure this section used to print, 0.107 ms,
+sat in the same order of magnitude as the upper tail but could not be reproduced on request, which is
+exactly why the README now cites the range instead of one value. Recompute with
+`python eval/bench_router.py --sizes 1000 --json` (the JSON carries `repeats`, so the aggregation basis
+travels with the number). The bundled example set gives Top-1 10/14 and Top-3 12/14
 (easy 5/5, medium 3/4, hard 2/5).
 
 ## Architecture

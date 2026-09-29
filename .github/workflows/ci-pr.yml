@@ -52,9 +52,15 @@ jobs:
         run: python eval/hitrate_cli.py --skills-dir examples/agent-skills/skills --queries examples/agent-skills/queries.json --top 3
       - name: Doc-link integrity
         run: python eval/check_doc_links.py
-      - name: Endpoint-count claims match truth source
+      - name: Doc claims match recomputed truth (endpoints / test-module faces)
         run: python eval/doc_claim_face.py
       - name: Workflow job roster matches .ci/workflow_jobs.json
         run: python scripts/ci_workflow_spec_check.py
       - name: Test suite
-        run: python -m pytest
+        run: |
+          set -o pipefail
+          mkdir -p ci-results
+          python -m pytest 2>&1 | tee ci-results/pytest.log
+      - name: README face parity (this run's summary vs what README claims)
+        # 与 ci.yml 同一判据、同一步名：PR 面也必须能挡住「文档写着一个面、跑批是另一个面」。
+        run: python eval/doc_claim_face.py --from-pytest-log ci-results/pytest.log
