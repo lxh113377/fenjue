@@ -10,7 +10,7 @@
 # R207 P2-6（2026-09-02）：顶层依赖 == 锁定（实测 managed venv 版本）。
 # 目的：CI 全新环境可复现（此前 floating 版本漂移会让门禁行为随日期漂移）。
 # 升级策略：改版本 → 本地全量 pytest + verify + 覆盖率复跑全绿后同步更新本文件。
-numpy==2.5.2
+numpy==2.5.3
 scipy==1.18.0
 scikit-learn==1.9.0
 pytest==9.1.1
