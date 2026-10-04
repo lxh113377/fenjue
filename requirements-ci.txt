@@ -12,7 +12,7 @@
 # 升级策略：改版本 → 本地全量 pytest + verify + 覆盖率复跑全绿后同步更新本文件。
 numpy==2.5.2
 scipy==1.18.0
-scikit-learn==1.9.0
+scikit-learn==1.9.1
 pytest==9.1.1
 pytest-cov==7.1.0
 pytest-timeout==2.4.0
