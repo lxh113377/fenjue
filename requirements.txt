@@ -4,7 +4,7 @@
 # 版本口径沿用本仓 CI 已验证的 pin，不另立一套。
 # ⚠️ 下限由依赖反推：numpy 2.5.2 在 PyPI 的 requires_python 实测为 >=3.12，
 #    因此本文件只在 Python 3.12+ 上可解析（CI 与 README 同口径）。
-numpy==2.5.2
+numpy==2.5.4
 scikit-learn==1.9.0
 # flask 是 `feedback/app.py` 的运行依赖（该模块随本子集分发且在 pytest 收集面内）。
 # 此前它只出现在 requirements-ci.txt，导致按 README 装 requirements.txt 的评委面
