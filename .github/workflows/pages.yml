@@ -26,7 +26,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Configure Pages (enable it if the repo has no Pages site yet)
         # 实测红因（run 36477680466）：默认 enablement=false 时，若 Pages 尚未启用，
         # configure-pages 直接 `Get Pages site failed ... Not Found` 判红——
