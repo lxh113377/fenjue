@@ -8,6 +8,6 @@
 #     不只是测试依赖），本文件靠下面那行 -r 引用它 —— 同一个包在两份清单里
 #     各钉一个版本，迟早只改一处，那就是下一把"量错了面"的尺子的产地。
 -r requirements.txt
-pytest==9.1.1
+pytest==9.2.0
 pytest-timeout==2.4.0
 pytest-cov==7.1.0
